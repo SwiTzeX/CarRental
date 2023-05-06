@@ -9,6 +9,6 @@ module com.carrental.carrental {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.carrental.carrental to javafx.fxml;
-    exports com.carrental.carrental;
+    opens com.carrental to javafx.fxml;
+    exports com.carrental;
 }
