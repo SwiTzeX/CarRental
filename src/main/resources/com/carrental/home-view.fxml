@@ -49,7 +49,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;">
       <children>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
                <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Gear Type" textFill="#353550">
                  <items>
@@ -87,9 +87,34 @@
                <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
             </children>
             <padding>
-               <Insets left="30.0" top="15.0" />
+               <Insets left="30.0" right="30.0" top="15.0" />
             </padding>
          </HBox>
+         <VBox prefHeight="509.0" prefWidth="1304.0">
+            <padding>
+               <Insets left="30.0" right="30.0" />
+            </padding>
+            <children>
+               <HBox prefHeight="32.0" prefWidth="1244.0">
+                  <children>
+                     <Label text="X Vehicle found" textFill="#353550">
+                        <font>
+                           <Font name="Arial Bold" size="36.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
+               <HBox prefHeight="439.0" prefWidth="1244.0" spacing="15.0">
+                  <padding>
+                     <Insets top="10.0" />
+                  </padding>
+               </HBox>
+               <HBox prefHeight="25.0" prefWidth="1244.0" />
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </VBox>
       </children>
    </VBox>
    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;">
