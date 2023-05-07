@@ -1,0 +1,43 @@
+.menu
+{
+    -fx-background-color: transparent;
+    -fx-border-color: #d0d4de;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 2;
+}
+.menu:focused{
+    -fx-border-color: #6279FF;
+}
+.menu:hover {
+    -fx-border-color: #6279FF;
+}
+.menu-item .label {
+    -fx-text-fill: #d0d4de;
+}
+.menu-item:focused .label{
+    -fx-text-fill: #353550;
+}
+
+.menu-item:focused {
+    -fx-background-color: ffffff;
+}
+
+.context-menu {
+
+    -fx-background-color: ffffff;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 10; /* 4 1 8 1 */
+}
+.button{
+
+}
+.button:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}

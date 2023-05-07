@@ -35,6 +35,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -44,9 +46,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
-   <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0">
-      <Label prefHeight="55.0" prefWidth="124.0" text="LOGO">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
+   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <children>
+               <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Gear Type" textFill="#353550">
+                 <items>
+                   <MenuItem mnemonicParsing="false" text="Action 1" />
+                   <MenuItem mnemonicParsing="false" text="Action 2" />
+                 </items>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font name="Arial" size="12.0" />
+                  </font>
+               </MenuButton>
+               <MenuButton layoutX="40.0" layoutY="25.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Fuel Type" textFill="#353550">
+                  <items>
+                     <MenuItem mnemonicParsing="false" text="Action 1" />
+                     <MenuItem mnemonicParsing="false" text="Action 2" />
+                  </items>
+                  <font>
+                     <Font name="Arial" size="12.0" />
+                  </font>
+               </MenuButton>
+               <MenuButton layoutX="159.0" layoutY="25.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" styleClass="menu" stylesheets="@style/menu.css" text="Brands" textFill="#353550">
+                  <items>
+                     <MenuItem mnemonicParsing="false" text="Action 1" />
+                     <MenuItem mnemonicParsing="false" text="Action 2" />
+                  </items>
+               </MenuButton>
+               <MenuButton layoutX="289.0" layoutY="25.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" styleClass="menu" stylesheets="@style/menu.css" text="Color" textFill="#353550">
+                  <items>
+                     <MenuItem mnemonicParsing="false" text="Action 1" />
+                     <MenuItem mnemonicParsing="false" text="Action 2" />
+                  </items>
+               </MenuButton>
+               <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
+            </children>
+            <padding>
+               <Insets left="30.0" top="15.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;">
+      <Label prefHeight="55.0" prefWidth="124.0" text="LOGO" textFill="WHITE">
          <font>
             <Font size="38.0" />
          </font>
@@ -58,17 +105,17 @@
          <HBox.margin>
             <Insets left="30.0" />
          </HBox.margin>
-         <Label prefHeight="27.0" prefWidth="85.0" text="Home" textFill="#a8a8a8">
+         <Label prefHeight="27.0" prefWidth="85.0" text="Home" textFill="WHITE">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Label>
-         <Label layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="85.0" text="About" textFill="#a8a8a8">
+         <Label layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="85.0" text="About" textFill="WHITE">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
          </Label>
-         <Label layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="90.0" text="Contact Us" textFill="#a8a8a8">
+         <Label layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="90.0" text="Contact Us" textFill="WHITE">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
@@ -76,25 +123,25 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
          <HBox.margin>
-            <Insets right="5.0" />
+            <Insets right="10.0" />
          </HBox.margin>
-         <Button contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #353535; -fx-background-radius: 6;" text="Sign In" textFill="WHITE">
+         <Button contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
             <font>
                <Font name="Arial Bold" size="15.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #353535; -fx-background-radius: 6;" text="Sign Up" textFill="WHITE">
+         <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
             <font>
                <Font name="Arial Bold" size="15.0" />
             </font>
          </Button>
       </HBox>
    </HBox>
-   <HBox alignment="CENTER" layoutY="55.0" prefHeight="107.0" prefWidth="1400.0" spacing="3.0" style="-fx-background-color: f4f2f7;">
+   <HBox alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
-      <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="311.0" spacing="10.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 8 2 2 8;">
+      <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="311.0" spacing="10.0" style="-fx-background-color: 000000; -fx-background-radius: 8 2 2 8;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -104,13 +151,13 @@
          <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@icons/loc.png" />
          </ImageView>
-         <VBox prefHeight="67.0" prefWidth="190.0">
-            <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Location" textFill="#353535">
+         <VBox prefHeight="67.0" prefWidth="292.0">
+            <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Location" textFill="#353550">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
-            <TextField styleClass="textField" stylesheets="@style/textfield.css" />
+            <TextField prefHeight="26.0" prefWidth="215.0" styleClass="textField" stylesheets="@style/textfield.css" />
          </VBox>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -128,7 +175,7 @@
             </ImageView>
             <VBox prefHeight="67.0" prefWidth="190.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Date" textFill="#353535">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Date" textFill="#353550">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font>
@@ -144,7 +191,7 @@
             </ImageView>
             <VBox layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Time" textFill="#353535">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Time" textFill="#353550">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font>
@@ -172,7 +219,7 @@
             </ImageView>
             <VBox prefHeight="67.0" prefWidth="190.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Date" textFill="#353535">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Date" textFill="#353550">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font>
@@ -188,7 +235,7 @@
             </ImageView>
             <VBox layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Time" textFill="#353535">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Time" textFill="#353550">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font>
@@ -204,16 +251,31 @@
             <Insets bottom="20.0" left="5.0" top="20.0" />
          </HBox.margin>
       </HBox>
-      <fx:define>
-         <Image fx:id="btnImage" url="@icons/search.png" />
-      </fx:define>
-      <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: a390f0; -fx-background-radius: 8;" textFill="WHITE">
+      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
          <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" image="$btnImage" />
+            <ImageView fitHeight="22.0" fitWidth="22.0">
+               <image>
+                  <Image url="@icons/search.png" />
+               </image>
+            </ImageView>
          </graphic>
          <HBox.margin>
             <Insets left="6.0" />
          </HBox.margin>
       </Button>
-   </HBox>
+      <fx:define>
+         <Image fx:id="btnImage" url="@icons/search.png" />
+      </fx:define>
+
+      
+         </HBox>
+   <HBox alignment="CENTER" layoutX="56.0" layoutY="200.0" prefHeight="0.0" prefWidth="119.0" spacing="10.0" style="-fx-background-color: #FFFFFF;" />
+   <Label alignment="BOTTOM_CENTER" layoutX="575.0" layoutY="771.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff">
+      <font>
+         <Font name="Arial" size="16.0" />
+      </font>
+      <padding>
+         <Insets top="5.0" />
+      </padding>
+   </Label>
 </AnchorPane>
