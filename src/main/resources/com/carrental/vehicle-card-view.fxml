@@ -15,7 +15,10 @@
       <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: transparent;">
          <children>
             <ImageView fx:id="vehBrandImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-            <Label text="volkswagen" />
+            <Label fx:id="vehBrandModel" text="volkswagen" textFill="#353550">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font></Label>
          </children>
       </HBox>
       <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />

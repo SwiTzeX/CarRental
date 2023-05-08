@@ -11,8 +11,12 @@ public class Vehicle {
     public Integer price;
     public String image;
     public String brandImage;
+    public String brandName;
+    public String modelName;
 
-    public Vehicle(String type, String fuelType,String gearType,Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price,String image,String brand) {
+    public Vehicle(String brandName,String modelName,String type, String fuelType, String gearType, Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price, String image, String brand) {
+        this.brandName = brandName;
+        this.modelName = modelName;
         this.type = type;
         this.passengers = passengers;
         this.fuelType = fuelType;
@@ -103,5 +107,21 @@ public class Vehicle {
 
     public void setBrandImage(String brandImage) {
         this.brandImage = brandImage;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 }

@@ -41,7 +41,11 @@ public class VehicleCardController {
     @FXML
     private Label vehType;
 
+    @FXML
+    private Label vehBrandModel;
+
     public void setData(Vehicle vehicle){
+        vehBrandModel.setText(vehicle.getBrandName() + " " + vehicle.getModelName());
         vehType.setText(vehicle.getType());
         vehPrice.setText(String.valueOf(vehicle.getPrice())+".00 DH");
         vehPassengers.setText(String.valueOf(vehicle.getPassengers()));
@@ -54,5 +58,6 @@ public class VehicleCardController {
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
         vehBrandImage.setImage(brandImage);
+
     }
 }
