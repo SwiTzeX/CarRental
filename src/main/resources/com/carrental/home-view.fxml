@@ -47,9 +47,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
-   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" spacing="5.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
+   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <children>
-         <HBox prefHeight="29.0" prefWidth="1304.0" spacing="20.0">
+         <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
                <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Gear Type" textFill="#353550">
                  <items>
@@ -90,7 +90,7 @@
                <Insets left="30.0" right="30.0" top="15.0" />
             </padding>
          </HBox>
-         <VBox prefHeight="509.0" prefWidth="1304.0">
+         <VBox prefHeight="509.0" prefWidth="1304.0" spacing="3.0">
             <padding>
                <Insets left="30.0" right="30.0" />
             </padding>
@@ -104,12 +104,8 @@
                      </Label>
                   </children>
                </HBox>
-               <HBox fx:id="cardLayout" prefHeight="439.0" prefWidth="1244.0" spacing="15.0">
-                  <padding>
-                     <Insets top="10.0" />
-                  </padding>
-               </HBox>
-               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1244.0" spacing="3.0">
+               <HBox fx:id="cardLayout" prefHeight="430.0" prefWidth="1244.0" spacing="15.0" />
+               <HBox alignment="CENTER" prefHeight="5.0" prefWidth="1244.0" spacing="5.0">
                   <children>
                      <Button mnemonicParsing="false" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&lt;" textFill="#6279ff">
                         <font>
