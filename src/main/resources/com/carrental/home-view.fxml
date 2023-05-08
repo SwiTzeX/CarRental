@@ -90,7 +90,7 @@
                <Insets left="30.0" right="30.0" top="15.0" />
             </padding>
          </HBox>
-         <VBox prefHeight="509.0" prefWidth="1304.0" spacing="3.0">
+         <VBox prefHeight="509.0" prefWidth="1304.0" spacing="4.0">
             <padding>
                <Insets left="30.0" right="30.0" />
             </padding>
