@@ -41,7 +41,6 @@ public class VehicleCardController {
     @FXML
     private Label vehType;
 
-
     public void setData(Vehicle vehicle){
         vehType.setText(vehicle.getType());
         vehPrice.setText(String.valueOf(vehicle.getPrice())+".00 DH");

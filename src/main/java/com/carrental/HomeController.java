@@ -31,13 +31,12 @@ public class HomeController implements Initializable {
         try {
             for (int i = 0; i < vehicleCards.size(); i++) {
                 Vehicle vehicle = vehicleCards.get(i);
-                FXMLLoader fmxlLoader = new FXMLLoader();
-                fmxlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
-                VBox vehicleCard = fmxlLoader.load();
-                VehicleCardController vehicleCardController = fmxlLoader.getController();
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
+                VBox vehicleCard = fxmlLoader.load();
+                VehicleCardController vehicleCardController = fxmlLoader.getController();
                 vehicleCardController.setData(vehicle);
                 cardLayout.getChildren().add(vehicleCard);
-
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

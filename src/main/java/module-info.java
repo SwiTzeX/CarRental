@@ -8,6 +8,7 @@ module com.carrental.carrental {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.desktop;
 
     opens com.carrental to javafx.fxml;
     exports com.carrental;
