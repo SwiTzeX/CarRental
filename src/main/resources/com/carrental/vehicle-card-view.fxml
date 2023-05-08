@@ -14,13 +14,13 @@
    <children>
       <HBox prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent;">
          <children>
-            <ImageView fitHeight="30.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="vehBrandImage" fitHeight="30.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <ImageView fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
       <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="278.0" spacing="10.0">
          <children>
-            <Label alignment="CENTER" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30;" text="TYPE" textFill="WHITE">
+            <Label fx:id="vehType" alignment="CENTER" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30;" text="TYPE" textFill="WHITE">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -32,7 +32,7 @@
                         <Image url="@icons/user.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
+                  <Label fx:id="vehPassengers" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
                </children></HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="119.0">
                <children>
@@ -57,7 +57,7 @@
                         <Image url="@icons/gas.png" />
                      </image>
                   </ImageView>
-                  <Label text="Petrol" textFill="#353550">
+                  <Label fx:id="vehFuelType" text="Petrol" textFill="#353550">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Image url="@icons/manuel.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="55.0" text="Manuel" textFill="#353550">
+                  <Label fx:id="vehGearType" prefHeight="18.0" prefWidth="55.0" text="Manuel" textFill="#353550">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -92,7 +92,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="85.0" text="1000 tl" textFill="#353550">
+                  <Label fx:id="vehDeposit" alignment="CENTER" prefHeight="21.0" prefWidth="85.0" text="1000 tl" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -111,7 +111,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="97.0" text="400 km/h" textFill="#353550">
+                  <Label fx:id="vehMaxSpeed" alignment="CENTER" prefHeight="21.0" prefWidth="97.0" text="400 km/h" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -130,7 +130,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="240 CH" textFill="#353550">
+                  <Label fx:id="vehHorsePower" alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="240 CH" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -164,7 +164,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="145.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="12.0" prefWidth="88.0" text="500.00 DH" textFill="#6279ff">
+                  <Label fx:id="vehPrice" alignment="CENTER" prefHeight="12.0" prefWidth="88.0" text="500.00 DH" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="17.0" />
                      </font>
@@ -178,7 +178,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="278.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
+            <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

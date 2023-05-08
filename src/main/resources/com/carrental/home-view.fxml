@@ -47,7 +47,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
-   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <children>
          <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
@@ -97,19 +97,26 @@
             <children>
                <HBox prefHeight="32.0" prefWidth="1244.0">
                   <children>
-                     <Label text="X Vehicle found" textFill="#353550">
+                     <Label fx:id="totalVeh" text="X Vehicle found" textFill="#353550">
                         <font>
                            <Font name="Arial Bold" size="36.0" />
                         </font>
                      </Label>
                   </children>
                </HBox>
-               <HBox prefHeight="439.0" prefWidth="1244.0" spacing="15.0">
+               <HBox fx:id="cardLayout" prefHeight="439.0" prefWidth="1244.0" spacing="15.0">
                   <padding>
                      <Insets top="10.0" />
                   </padding>
                </HBox>
-               <HBox prefHeight="25.0" prefWidth="1244.0" />
+               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1244.0">
+                  <children>
+                     <Label text="1 2 3 4" textFill="#6279ff">
+                        <font>
+                           <Font name="Arial" size="17.0" />
+                        </font>
+                     </Label>
+                  </children></HBox>
             </children>
             <VBox.margin>
                <Insets />
@@ -117,7 +124,7 @@
          </VBox>
       </children>
    </VBox>
-   <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;">
+   <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <Label prefHeight="55.0" prefWidth="124.0" text="LOGO" textFill="WHITE">
          <font>
             <Font size="38.0" />
@@ -146,7 +153,7 @@
             </font>
          </Label>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
@@ -162,7 +169,7 @@
          </Button>
       </HBox>
    </HBox>
-   <HBox alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;">
+   <HBox alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
