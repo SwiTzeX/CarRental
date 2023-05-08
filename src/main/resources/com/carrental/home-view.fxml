@@ -47,9 +47,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
-   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
+   <VBox layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" spacing="5.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <children>
-         <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
+         <HBox prefHeight="29.0" prefWidth="1304.0" spacing="20.0">
             <children>
                <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Gear Type" textFill="#353550">
                  <items>
