@@ -109,13 +109,23 @@
                      <Insets top="10.0" />
                   </padding>
                </HBox>
-               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1244.0">
+               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1244.0" spacing="3.0">
                   <children>
+                     <Button mnemonicParsing="false" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&lt;" textFill="#6279ff">
+                        <font>
+                           <Font name="Arial Bold" size="12.0" />
+                        </font>
+                     </Button>
                      <Label text="1 2 3 4" textFill="#6279ff">
                         <font>
                            <Font name="Arial" size="17.0" />
                         </font>
                      </Label>
+                     <Button layoutX="592.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&gt;" textFill="#6279ff">
+                        <font>
+                           <Font name="Arial Bold" size="12.0" />
+                        </font>
+                     </Button>
                   </children></HBox>
             </children>
             <VBox.margin>
