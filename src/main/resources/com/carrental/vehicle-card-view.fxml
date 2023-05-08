@@ -12,9 +12,10 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="300.0" spacing="8.0" style="-fx-background-color: #F6F8FF; -fx-border-color: #f0f2ff; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.VehicleCardController">
    <children>
-      <HBox prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent;">
+      <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent;">
          <children>
-            <ImageView fx:id="vehBrandImage" fitHeight="30.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="vehBrandImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <Label text="volkswagen" />
          </children>
       </HBox>
       <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />

@@ -8,10 +8,11 @@ public class Vehicle {
     public Integer deposit;
     public Integer maxSpeed;
     public Integer horsePower;
-
     public Integer price;
+    public String image;
+    public String brandImage;
 
-    public Vehicle(String type, Integer passengers, String fuelType,String gearType, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price) {
+    public Vehicle(String type, String fuelType,String gearType,Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price,String image,String brand) {
         this.type = type;
         this.passengers = passengers;
         this.fuelType = fuelType;
@@ -20,6 +21,8 @@ public class Vehicle {
         this.maxSpeed = maxSpeed;
         this.horsePower = horsePower;
         this.price = price;
+        this.image = image;
+        this.brandImage = brand;
     }
 
     public String getType() {
@@ -84,5 +87,21 @@ public class Vehicle {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getBrandImage() {
+        return brandImage;
+    }
+
+    public void setBrandImage(String brandImage) {
+        this.brandImage = brandImage;
     }
 }
