@@ -16,13 +16,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 public class HomeController implements Initializable {
     @FXML
     private HBox cardLayout;
 
     @FXML
     private Label totalVeh;
+
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
+    public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
 
     @FXML
     private Button nextPageButton;
@@ -51,6 +54,24 @@ public class HomeController implements Initializable {
         return lists;
     }
 
+    public void loadCardsByPage(int pageNumber){
+        cardLayout.getChildren().clear();
+        pageNumber--;
+        try {
+            for (int i = 0; i < vehiclesHolder.get(pageNumber).size(); i++) { // vehiclesHolder.get(0) = first 4 items in vehicles // first page
+                Vehicle vehicle = vehiclesHolder.get(pageNumber).get(i);
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
+                VBox vehicleCard = fxmlLoader.load();
+                VehicleCardController vehicleCardController = fxmlLoader.getController();
+                vehicleCardController.setData(vehicle);
+                cardLayout.getChildren().add(vehicleCard);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         previousPageButton.setVisible(false);
@@ -62,25 +83,13 @@ public class HomeController implements Initializable {
         vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
-        List<List<Vehicle>> test = HomeController.split(vehicles,4);
-        System.out.println(test.get(1).get(1).getBrandName());
-        maxPages = (int) vehicles.size()/4 +1;
+        vehiclesHolder = HomeController.split(vehicles,4);
+        maxPages = vehiclesHolder.size();
         if (maxPages > 1){
             nextPageButton.setVisible(true);
         }
-        try {
-            for (int i = 0; i < vehicles.size(); i++) {
-                Vehicle vehicle = vehicles.get(i);
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
-                VBox vehicleCard = fxmlLoader.load();
-                VehicleCardController vehicleCardController = fxmlLoader.getController();
-                vehicleCardController.setData(vehicle);
-                cardLayout.getChildren().add(vehicleCard);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.loadCardsByPage(1);
+
     }
     @FXML
     public void nextPageDisplay(){
