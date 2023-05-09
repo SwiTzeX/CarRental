@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" styleClass="BorderPane_background" stylesheets="@style/loginpage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <VBox prefHeight="800.0" prefWidth="749.0" BorderPane.alignment="CENTER">
@@ -46,12 +45,12 @@
             </HBox>
             <HBox prefHeight="91.0" prefWidth="749.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #9378db; -fx-border-radius: 50; -fx-background-radius: 50;" text="SIGN IN " textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #9378db; -fx-border-radius: 50; -fx-background-radius: 50;" text="SIGN IN " textAlignment="CENTER" textFill="#353550">
                      <HBox.margin>
                         <Insets left="200.0" top="40.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Myanmar Text Bold" size="18.0" />
+                        <Font name="Arial" size="18.0" />
                      </font>
                   </Button>
                </children>
