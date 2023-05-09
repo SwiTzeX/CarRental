@@ -1,7 +1,10 @@
 package com.carrental.models;
 
+import java.util.ArrayList;
+
 public class Vehicle {
     public String type;
+    public String color;
     public Integer passengers;
     public String fuelType;
     public String gearType;
@@ -14,9 +17,10 @@ public class Vehicle {
     public String brandName;
     public String modelName;
 
-    public Vehicle(String brandName,String modelName,String type, String fuelType, String gearType, Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price, String image, String brand) {
+    public Vehicle(String brandName,String modelName,String type,String color, String fuelType, String gearType, Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price, String image, String brand) {
         this.brandName = brandName;
         this.modelName = modelName;
+        this.color = color;
         this.type = type;
         this.passengers = passengers;
         this.fuelType = fuelType;
@@ -27,6 +31,14 @@ public class Vehicle {
         this.price = price;
         this.image = image;
         this.brandImage = brand;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getType() {
@@ -124,4 +136,15 @@ public class Vehicle {
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
+
+    public static ArrayList<String> getAllBrandsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+        ArrayList<String> brands =new ArrayList<String>();
+        for(Vehicle vehicle:vehicles){
+            if (!brands.contains(vehicle.getBrandName())) {
+                brands.add(vehicle.getBrandName());
+            }
+        }
+        return brands;
+    }
+
 }

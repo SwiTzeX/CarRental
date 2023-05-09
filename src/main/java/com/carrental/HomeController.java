@@ -5,9 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,13 +23,22 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
+    private MenuButton brandsDropList;
+
+    @FXML
     private HBox cardLayout;
 
     @FXML
-    private Label totalVeh;
+    private Button clearFilterButton;
 
-    public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
-    public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
+    @FXML
+    private MenuButton colorsDropList;
+
+    @FXML
+    private MenuButton fuelDropList;
+
+    @FXML
+    private MenuButton gearDropList;
 
     @FXML
     private Button nextPageButton;
@@ -35,6 +48,18 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button previousPageButton;
+
+    @FXML
+    private HBox searchBox;
+
+    @FXML
+    private Label totalVeh;
+
+    @FXML
+    private VBox vehicleCardsBox;
+
+    public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
+    public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
@@ -72,16 +97,17 @@ public class HomeController implements Initializable {
         }
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
@@ -89,6 +115,10 @@ public class HomeController implements Initializable {
             nextPageButton.setVisible(true);
         }
         this.loadCardsByPage(1);
+        for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
+            brandsDropList.getItems().add(new MenuItem(brand));
+        }
+
 
     }
     @FXML
