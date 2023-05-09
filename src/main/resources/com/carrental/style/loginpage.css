@@ -1,9 +1,4 @@
-.Vbox_background_center{
-      -fx-background-image:url("edfwe.png");
-      -fx-background-size:800,600;
+.BorderPane_background{
+      -fx-background-image:url("adf.jpg");
+      -fx-background-size:1400,800 ;
 }
-.Vbox_background_right{
-      -fx-background-color:white;
-
-}
-
