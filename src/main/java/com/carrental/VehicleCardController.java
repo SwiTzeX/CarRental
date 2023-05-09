@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,6 +60,9 @@ public class VehicleCardController {
     @FXML
     private Label vehBrandModel;
 
+    boolean shadowAnimation = false;
+    Timeline timeline = null;
+
     public void setData(Vehicle vehicle){
         vehBrandModel.setText(vehicle.getBrandName() + " " + vehicle.getModelName());
         vehType.setText(vehicle.getType());
@@ -73,13 +77,19 @@ public class VehicleCardController {
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
         vehBrandImage.setImage(brandImage);
-
     }
     @FXML
     void mouseInAnimation(MouseEvent event) {
+        if (!shadowAnimation){
+            return;
+        }
         DropShadow shadow = new DropShadow(0, Color.web("#6279FF"));
+        card.setEffect(null);
         card.setEffect(shadow);
-        Timeline timeline = new Timeline(
+        if (timeline != null) {
+            timeline.stop();
+        }
+        timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(shadow.radiusProperty(), 0)),
                 new KeyFrame(Duration.seconds(0.5), new KeyValue(shadow.radiusProperty(), 20))
         );
@@ -90,9 +100,12 @@ public class VehicleCardController {
     }
     @FXML
     void mouseOutAnimation(MouseEvent event) {
+        if (!shadowAnimation){
+            return;
+        }
         DropShadow shadow = new DropShadow(20, Color.web("#6279FF"));
         card.setEffect(shadow);
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(shadow.radiusProperty(), 20)),
                 new KeyFrame(Duration.seconds(0.5), new KeyValue(shadow.radiusProperty(), 0)),
                 new KeyFrame(Duration.seconds(0.5), new KeyValue(card.effectProperty(), null))
@@ -100,4 +113,15 @@ public class VehicleCardController {
         timeline.setCycleCount(1);
         timeline.play();
     }
+
+    void loadIn(){
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1),card);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            shadowAnimation = true;
+        });
+    }
+
 }

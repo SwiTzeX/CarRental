@@ -1,8 +1,10 @@
 package com.carrental;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -12,6 +14,7 @@ import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,6 +83,7 @@ public class HomeController implements Initializable {
     }
 
     public void loadCardsByPage(int pageNumber){
+
         cardLayout.getChildren().clear();
         pageNumber--;
         try {
@@ -91,6 +95,7 @@ public class HomeController implements Initializable {
                 VehicleCardController vehicleCardController = fxmlLoader.getController();
                 vehicleCardController.setData(vehicle);
                 cardLayout.getChildren().add(vehicleCard);
+                vehicleCardController.loadIn();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
