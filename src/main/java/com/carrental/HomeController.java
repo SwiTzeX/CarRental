@@ -25,13 +25,13 @@ public class HomeController implements Initializable {
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
 
     @FXML
-    private Button nextPage;
+    private Button nextPageButton;
 
     @FXML
-    private Label pageNumber;
+    private Label pageNumberLabel;
 
     @FXML
-    private Button previousPage;
+    private Button previousPageButton;
     int maxPages;
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
@@ -53,8 +53,8 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        previousPage.setVisible(false);
-        nextPage.setVisible(false);
+        previousPageButton.setVisible(false);
+        nextPageButton.setVisible(false);
         vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
@@ -66,7 +66,7 @@ public class HomeController implements Initializable {
         System.out.println(test.get(1).get(1).getBrandName());
         maxPages = (int) vehicles.size()/4 +1;
         if (maxPages > 1){
-            nextPage.setVisible(true);
+            nextPageButton.setVisible(true);
         }
         try {
             for (int i = 0; i < vehicles.size(); i++) {
@@ -84,26 +84,28 @@ public class HomeController implements Initializable {
     }
     @FXML
     public void nextPageDisplay(){
-        int nbrPage = Integer.parseInt(pageNumber.getText());
-        nbrPage++;
-        pageNumber.setText(String.valueOf(nbrPage));
-        if(!previousPage.isVisible()) {
-            previousPage.setVisible(true);
+        int pageNumber = Integer.parseInt(pageNumberLabel.getText());
+        pageNumber++;
+        this.loadCardsByPage(pageNumber);
+        pageNumberLabel.setText(String.valueOf(pageNumber));
+        if(!previousPageButton.isVisible()) {
+            previousPageButton.setVisible(true);
         }
-        if(nbrPage == maxPages){
-            nextPage.setVisible(false);
+        if(pageNumber == maxPages){
+            nextPageButton.setVisible(false);
         }
     }
     @FXML
     public void previousPageDisplay(){
-        int nbrPage = Integer.parseInt(pageNumber.getText());
-        nbrPage--;
-        pageNumber.setText(String.valueOf(nbrPage));
-        if (nbrPage == 1) {
-            previousPage.setVisible(false);
+        int pageNumber = Integer.parseInt(pageNumberLabel.getText());
+        pageNumber--;
+        this.loadCardsByPage(pageNumber);
+        pageNumberLabel.setText(String.valueOf(pageNumber));
+        if (pageNumber == 1) {
+            previousPageButton.setVisible(false);
         }
-        if(nbrPage < maxPages){
-            nextPage.setVisible(true);
+        if(pageNumber < maxPages){
+            nextPageButton.setVisible(true);
         }
     }
 }

@@ -107,17 +107,17 @@
                <HBox fx:id="cardLayout" prefHeight="430.0" prefWidth="1244.0" spacing="15.0" />
                <HBox alignment="CENTER" prefHeight="5.0" prefWidth="1244.0" spacing="5.0">
                   <children>
-                     <Button fx:id="previousPage" mnemonicParsing="false" onAction="#previousPageDisplay" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&lt;" textFill="#6279ff">
+                     <Button fx:id="previousPageButton" mnemonicParsing="false" onAction="#previousPageDisplay" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&lt;" textFill="#6279ff">
                         <font>
                            <Font name="Arial Bold" size="12.0" />
                         </font>
                      </Button>
-                     <Label fx:id="pageNumber" text="1" textFill="#6279ff">
+                     <Label fx:id="pageNumberLabel" text="1" textFill="#6279ff">
                         <font>
                            <Font name="Arial" size="17.0" />
                         </font>
                      </Label>
-                     <Button fx:id="nextPage" layoutX="592.0" layoutY="10.0" mnemonicParsing="false" onAction="#nextPageDisplay" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&gt;" textFill="#6279ff">
+                     <Button fx:id="nextPageButton" layoutX="592.0" layoutY="10.0" mnemonicParsing="false" onAction="#nextPageDisplay" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&gt;" textFill="#6279ff">
                         <font>
                            <Font name="Arial Bold" size="12.0" />
                         </font>
