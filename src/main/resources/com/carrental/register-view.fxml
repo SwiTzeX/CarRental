@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;" />
+      <Pane layoutX="527.0" prefHeight="800.0" prefWidth="873.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #FFFFFF; -fx-border-radius: 30;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="527.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="266.0" layoutY="34.0" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="43.0" />
+               </font>
+            </Label>
+            <TextField layoutX="192.0" layoutY="118.0" prefWidth="500.0" promptText="Full Name" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField layoutX="192.0" layoutY="194.0" prefWidth="500.0" promptText="Age" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="192.0" layoutY="270.0" prefWidth="500.0" promptText="Phone Number" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="192.0" layoutY="346.0" prefWidth="500.0" promptText="National ID" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="192.0" layoutY="422.0" prefWidth="500.0" promptText="Email Address" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <PasswordField layoutX="192.0" layoutY="574.0" prefWidth="500.0" promptText="Comfirm Your Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <PasswordField layoutX="192.0" layoutY="498.0" prefWidth="500.0" promptText="Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="284.0" layoutY="650.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="707.0" text="Already have an account?" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="503.0" layoutY="707.0" text="Login">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
