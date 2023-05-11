@@ -107,12 +107,12 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        //vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
         totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();

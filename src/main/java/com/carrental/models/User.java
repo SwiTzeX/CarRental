@@ -1,16 +1,16 @@
 package com.carrental.models;
 
 public class User {
-    public String userId;
+    public Integer userId;
     public String email;
-    public String phoneNumber;
+    public Integer phoneNumber;
     public Byte status;
     public Integer age;
     public String fullName;
     public String password;
     public Byte isAdmin;
 
-    public User(String userId, String email, String phoneNumber, Byte status, Integer age, String fullName, String password, Byte isAdmin) {
+    public User(Integer userId, String email, Integer phoneNumber, Byte status, Integer age, String fullName, String password, Byte isAdmin) {
         this.userId = userId;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -21,15 +21,15 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public String getUserId() {
+    public Integer getUserId(int i) {
         return this.userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public String getEmail() {
+    public String getEmail(int i) {
         return this.email;
     }
 
@@ -37,11 +37,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber(int i) {
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
