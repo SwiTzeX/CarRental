@@ -43,7 +43,10 @@ public class Vehicle {
         this.trunkCapacity = trunkCapacity;
         this.maxSpeed = maxSpeed;
         this.horsePower = horsePower;
+        this.brandImage = "brands/volkswagen.png";
+        this.image = "vehicles/volkswagen-touareg.png";
     }
+
 
     public String getColor() {
         return color;
@@ -147,6 +150,38 @@ public class Vehicle {
 
     public void setModelName(String modelName) {
         this.modelName = modelName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getDisponibility() {
+        return disponibility;
+    }
+
+    public void setDisponibility(Boolean disponibility) {
+        this.disponibility = disponibility;
+    }
+
+    public Boolean getVehicleState() {
+        return vehicleState;
+    }
+
+    public void setVehicleState(Boolean vehicleState) {
+        this.vehicleState = vehicleState;
+    }
+
+    public Integer getTrunkCapacity() {
+        return trunkCapacity;
+    }
+
+    public void setTrunkCapacity(Integer trunkCapacity) {
+        this.trunkCapacity = trunkCapacity;
     }
 
     public static ArrayList<String> getAllBrandsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
