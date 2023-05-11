@@ -1,8 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
-
+<fx:root prefHeight="800.0" prefWidth="1400.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;">
+         <children>
+            <HBox alignment="CENTER" layoutX="247.0" layoutY="2.0" prefHeight="105.0" prefWidth="1154.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TEXT_ONLY" prefHeight="105.0" prefWidth="1057.0" text="Dashboard" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Myanmar MN" size="40.0" />
+                     </font>
+                  </Label>
+                  <Avatar>
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/ZeroOne%20Texhnology%20logo-01.png" />
+                     </image></Avatar>
+               </children>
+            </HBox>
+            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="342.0" style="-fx-background-color: A390F0;">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="109.0" prefWidth="255.0" text="LOGO">
+                     <font>
+                        <Font name="Myanmar MN" size="53.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Hyperlink>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="71.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Fleet Management" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="User Management" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Rental Management" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Pane layoutX="373.0" layoutY="111.0" prefHeight="303.0" prefWidth="292.0">
+               <children>
+                  <PieChart fx:id="piechart" layoutX="-132.0" layoutY="-42.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
 </fx:root>
