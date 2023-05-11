@@ -3,25 +3,28 @@ package com.carrental.models;
 import java.util.ArrayList;
 
 public class Vehicle {
+    public Integer id;
     public String type;
     public String color;
     public Integer passengers;
     public String fuelType;
     public String gearType;
-    public Integer deposit;
+    public float deposit;
     public Integer maxSpeed;
     public Integer horsePower;
-    public Integer price;
+    public float price;
     public String image;
     public String brandImage;
     public String brandName;
     public String modelName;
+    public Boolean disponibility;
+    public Boolean vehicleState;
+    public Integer trunkCapacity;
 
-    public Vehicle(String brandName,String modelName,String type,String color, String fuelType, String gearType, Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price, String image, String brand) {
-        this.brandName = brandName;
-        this.modelName = modelName;
-        this.color = color;
+    public Vehicle(Integer id, String type, String color, Integer passengers, String fuelType, String gearType, float deposit, Integer maxSpeed, Integer horsePower, float price, String image, String brandImage, String brandName, String modelName, Boolean disponibility, Boolean vehicleState, Integer trunkCapacity) {
+        this.id = id;
         this.type = type;
+        this.color = color;
         this.passengers = passengers;
         this.fuelType = fuelType;
         this.gearType = gearType;
@@ -30,7 +33,12 @@ public class Vehicle {
         this.horsePower = horsePower;
         this.price = price;
         this.image = image;
-        this.brandImage = brand;
+        this.brandImage = brandImage;
+        this.brandName = brandName;
+        this.modelName = modelName;
+        this.disponibility = disponibility;
+        this.vehicleState = vehicleState;
+        this.trunkCapacity = trunkCapacity;
     }
 
     public String getColor() {
@@ -73,11 +81,11 @@ public class Vehicle {
         this.fuelType = fuelType;
     }
 
-    public Integer getDeposit() {
+    public float getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(Integer deposit) {
+    public void setDeposit(float deposit) {
         this.deposit = deposit;
     }
 
@@ -97,11 +105,11 @@ public class Vehicle {
         this.horsePower = horsePower;
     }
 
-    public Integer getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -147,4 +155,22 @@ public class Vehicle {
         return brands;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                ", passengers=" + passengers +
+                ", fuelType='" + fuelType + '\'' +
+                ", gearType='" + gearType + '\'' +
+                ", deposit=" + deposit +
+                ", maxSpeed=" + maxSpeed +
+                ", horsePower=" + horsePower +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", brandImage='" + brandImage + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", modelName='" + modelName + '\'' +
+                '}';
+    }
 }
