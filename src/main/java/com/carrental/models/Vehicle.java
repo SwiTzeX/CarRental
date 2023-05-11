@@ -1,44 +1,48 @@
 package com.carrental.models;
 
+import com.carrental.SingletonConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Vehicle {
     public Integer id;
-    public String type;
+    public String modelName;
     public String color;
+    public Boolean disponibility;
+    public String brandName;
+    public Boolean vehicleState;
+    public float price;
+    public String type;
     public Integer passengers;
     public String fuelType;
     public String gearType;
     public float deposit;
+    public Integer trunkCapacity;
     public Integer maxSpeed;
     public Integer horsePower;
-    public float price;
     public String image;
     public String brandImage;
-    public String brandName;
-    public String modelName;
-    public Boolean disponibility;
-    public Boolean vehicleState;
-    public Integer trunkCapacity;
 
-    public Vehicle(Integer id, String type, String color, Integer passengers, String fuelType, String gearType, float deposit, Integer maxSpeed, Integer horsePower, float price, String image, String brandImage, String brandName, String modelName, Boolean disponibility, Boolean vehicleState, Integer trunkCapacity) {
+    public Vehicle(Integer id, String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
         this.id = id;
-        this.type = type;
+        this.modelName = modelName;
         this.color = color;
+        this.disponibility = disponibility;
+        this.brandName = brandName;
+        this.vehicleState = vehicleState;
+        this.price = price;
+        this.type = type;
         this.passengers = passengers;
         this.fuelType = fuelType;
         this.gearType = gearType;
         this.deposit = deposit;
+        this.trunkCapacity = trunkCapacity;
         this.maxSpeed = maxSpeed;
         this.horsePower = horsePower;
-        this.price = price;
-        this.image = image;
-        this.brandImage = brandImage;
-        this.brandName = brandName;
-        this.modelName = modelName;
-        this.disponibility = disponibility;
-        this.vehicleState = vehicleState;
-        this.trunkCapacity = trunkCapacity;
     }
 
     public String getColor() {
@@ -153,6 +157,41 @@ public class Vehicle {
             }
         }
         return brands;
+    }
+
+    public static ArrayList<Vehicle> getAllVehicles(){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Vehicle";
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            Vehicle v = null;
+            while(rs.next()){
+                Integer idV = rs.getInt(1);
+                String modelName = rs.getString(2);
+                String color = rs.getString(3);
+                Boolean disponibility = rs.getBoolean(4);
+                String brandName = rs.getString(5);
+                Boolean vehicleState = rs.getBoolean(6);
+                float price = rs.getFloat(7);
+                String type = rs.getString(8);
+                Integer passengers = rs.getInt(9);
+                String fuelType = rs.getString(10);
+                String gearType = rs.getString(11);
+                float deposit = rs.getFloat(12);
+                Integer trunkCapacity = rs.getInt(13);
+                Integer maxSpeed = rs.getInt(14);
+                Integer horsePower = rs.getInt(15);
+                v = new Vehicle(idV,modelName,color,disponibility,brandName,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+                vehicles.add(v);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return vehicles;
     }
 
     @Override
