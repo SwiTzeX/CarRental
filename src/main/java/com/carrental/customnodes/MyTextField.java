@@ -1,4 +1,4 @@
-package com.carrental;
+package com.carrental.customnodes;
 import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
