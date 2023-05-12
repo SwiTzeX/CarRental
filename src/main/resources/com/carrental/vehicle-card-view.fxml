@@ -29,7 +29,7 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="48.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="49.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +38,17 @@
                   </ImageView>
                   <Label fx:id="vehPassengers" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
                </children></HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="119.0">
+            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="53.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/kilogramme.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="vehPassengers1" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="50.0">
                <children>
                   <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

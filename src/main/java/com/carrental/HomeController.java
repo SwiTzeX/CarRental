@@ -100,7 +100,6 @@ public class HomeController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MyTextField test = new MyTextField("test");
@@ -111,7 +110,11 @@ public class HomeController implements Initializable {
         for(int i=0; i<5; i++) {
             vehicles.add(new Vehicle(2, "Volkswagen", "red", true, "Touareg", true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         }
-        totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
+        if(vehicles.size()> 1) {
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
+        }else{
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicle found");
+        }
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         if (maxPages > 1){
