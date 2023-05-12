@@ -57,7 +57,7 @@ public class MyTextField extends StackPane {
         scaleTransition.setToX(0.9);
         scaleTransition.setToY(0.9);
         scaleTransition.play();
-        isPromptTextShowing = true;
+        isPromptTextShowing = false;
     }
 
     private void hidePromptText() {
@@ -71,7 +71,7 @@ public class MyTextField extends StackPane {
         scaleTransition.setToX(1.1);
         scaleTransition.setToY(1.1);
         scaleTransition.play();
-        isPromptTextShowing = false;
+        isPromptTextShowing = true;
     }
 
     public String getText() {
