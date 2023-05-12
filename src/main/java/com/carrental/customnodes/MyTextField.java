@@ -25,7 +25,7 @@ public class MyTextField extends StackPane {
         textField.setStyle("-fx-border-color: grey;-fx-border-width: 0 0 1 0;-fx-background-color: transparent;");
         textField.setPadding(new Insets(0, 0, 0, -0.8));
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && isPromptTextShowing) {
+            if (newValue) {
                 showPromptText();
                 textField.setStyle("-fx-border-color: #a390f0;;-fx-border-width: 0 0 1 0;-fx-background-color: transparent;");
             } else if (!newValue && textField.getText().isEmpty()) {
@@ -49,29 +49,24 @@ public class MyTextField extends StackPane {
     private void showPromptText() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), promptTextLabel);
         translateTransition.setToY(-textField.getHeight());
+        translateTransition.setToX(-2);
         translateTransition.play();
-        Timeline trans = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(promptTextLabel.fontProperty(), new Font(14))));
-        trans.play();
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1), promptTextLabel);
         scaleTransition.setToX(0.9);
         scaleTransition.setToY(0.9);
         scaleTransition.play();
-        isPromptTextShowing = false;
     }
 
     private void hidePromptText() {
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), promptTextLabel);
-        translateTransition.setToY(0);
-        translateTransition.play();
-        Timeline trans = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(promptTextLabel.fontProperty(), new Font(14))));
-        trans.play();
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1), promptTextLabel);
         scaleTransition.setToX(1.1);
         scaleTransition.setToY(1.1);
         scaleTransition.play();
-        isPromptTextShowing = true;
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), promptTextLabel);
+        translateTransition.setToX(0);
+        translateTransition.setToY(0);
+        translateTransition.play();
+
     }
 
     public String getText() {

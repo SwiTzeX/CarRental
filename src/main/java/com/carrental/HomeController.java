@@ -103,15 +103,6 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
-        FXMLLoader fxmltest = new FXMLLoader();
-        fxmltest.setLocation(getClass().getResource("textField.fxml"));
-        try {
-            AnchorPane test = fxmltest.load();
-            searchBox.getChildren().add(test);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }*/
         MyTextField test = new MyTextField("test");
         searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
