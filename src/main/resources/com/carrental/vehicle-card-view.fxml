@@ -22,7 +22,7 @@
          </children>
       </HBox>
       <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="278.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="278.0" spacing="10.0">
          <children>
             <Label fx:id="vehType" alignment="CENTER" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30;" text="TYPE" textFill="WHITE">
                <font>
@@ -38,28 +38,17 @@
                   </ImageView>
                   <Label fx:id="vehPassengers" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
                </children></HBox>
-            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="53.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="49.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/kilogramme.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="vehPassengers1" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
+                  <Label fx:id="vehTrunkCapacityLabel" prefHeight="23.0" prefWidth="6.0" text="4" textFill="#6279ff" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="50.0">
-               <children>
-                  <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/info.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="50.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="278.0">

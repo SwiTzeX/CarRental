@@ -59,6 +59,8 @@ public class VehicleCardController {
 
     @FXML
     private Label vehBrandModel;
+    @FXML
+    private Label vehTrunkCapacityLabel;
 
     boolean shadowAnimation = false;
     Timeline timeline = null;
@@ -77,6 +79,7 @@ public class VehicleCardController {
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
         vehBrandImage.setImage(brandImage);
+        vehTrunkCapacityLabel.setText(String.valueOf(vehicle.getTrunkCapacity())+"kg");
     }
     @FXML
     void mouseInAnimation(MouseEvent event) {
