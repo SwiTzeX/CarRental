@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
+    public MenuButton typeDropList;
+    @FXML
     private MenuButton brandsDropList;
 
     @FXML

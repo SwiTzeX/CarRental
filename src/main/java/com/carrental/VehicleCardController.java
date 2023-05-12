@@ -79,7 +79,7 @@ public class VehicleCardController {
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
         vehBrandImage.setImage(brandImage);
-        vehTrunkCapacityLabel.setText(String.valueOf(vehicle.getTrunkCapacity())+"kg");
+        vehTrunkCapacityLabel.setText(String.valueOf(vehicle.getTrunkCapacity()));
     }
     @FXML
     void mouseInAnimation(MouseEvent event) {
