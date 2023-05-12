@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -40,8 +43,7 @@
                   </Hyperlink>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="71.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Dashboard" textFill="WHITE">
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="343.0" style="-fx-border-width: 20;" text="Dashboard" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -50,7 +52,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Fleet Management" textFill="WHITE">
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="328.0" style="-fx-border-width: 20;" text="Fleet Management" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -59,7 +61,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="User Management" textFill="WHITE">
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="346.0" style="-fx-border-width: 20;" text="User Management" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -68,7 +70,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" style="-fx-border-width: 20;" text="Rental Management" textFill="WHITE">
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="342.0" style="-fx-border-width: 20;" text="Rental Management" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -77,10 +79,30 @@
                   </HBox>
                </children>
             </VBox>
-            <Pane layoutX="451.0" layoutY="184.0" prefHeight="303.0" prefWidth="292.0">
+            <Pane layoutX="342.0" layoutY="208.0" prefHeight="331.0" prefWidth="1058.0">
          <children>
-                  <PieChart fx:id="piechart" layoutX="-2.0" layoutY="-1.0" prefHeight="303.0" prefWidth="292.0" />
+            <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="537.0" layoutY="20.0" legendVisible="false" prefHeight="320.0" prefWidth="490.0" title="Sales per month" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+                  <PieChart fx:id="piechart" layoutX="7.0" layoutY="-3.0" prefHeight="338.0" prefWidth="490.0" />
          </children>
             </Pane>
+      <Pane layoutX="457.0" layoutY="598.0" prefHeight="67.0" prefWidth="558.0">
+         <children>
+            <Label prefHeight="74.0" prefWidth="216.0" text="Sales per year">
+               <font>
+                  <Font name="Myanmar Text Bold" size="31.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
          </children>
       </AnchorPane>
