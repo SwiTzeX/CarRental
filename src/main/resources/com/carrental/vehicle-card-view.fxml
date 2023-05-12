@@ -38,17 +38,16 @@
                   </ImageView>
                   <Label fx:id="vehPassengers" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
                </children></HBox>
-            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="49.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="88.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/kilogramme.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="vehTrunkCapacityLabel" prefHeight="23.0" prefWidth="6.0" text="4" textFill="#6279ff" />
+                  <Label fx:id="vehTrunkCapacityLabel" prefHeight="23.0" prefWidth="44.0" text="4" textFill="#6279ff" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="50.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="278.0">
