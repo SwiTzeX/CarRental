@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="800.0" prefWidth="1400.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
-   <children>
-      <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;">
+<AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
          <children>
             <HBox alignment="CENTER" layoutX="247.0" layoutY="2.0" prefHeight="105.0" prefWidth="1154.0">
                <children>
@@ -23,7 +21,7 @@
                   </Label>
                </children>
             </HBox>
-            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="342.0" style="-fx-background-color: #6279FF;">
+            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="342.0" style="-fx-background-color: A390F0;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="109.0" prefWidth="255.0" text="LOGO">
                      <font>
@@ -79,12 +77,10 @@
                   </HBox>
                </children>
             </VBox>
-            <Pane layoutX="373.0" layoutY="111.0" prefHeight="303.0" prefWidth="292.0">
-               <children>
-                  <PieChart layoutX="-132.0" layoutY="-42.0" />
-               </children>
+            <Pane layoutX="451.0" layoutY="184.0" prefHeight="303.0" prefWidth="292.0">
+         <children>
+                  <PieChart fx:id="piechart" layoutX="-2.0" layoutY="-1.0" prefHeight="303.0" prefWidth="292.0" />
+         </children>
             </Pane>
          </children>
       </AnchorPane>
-   </children>
-</fx:root>
