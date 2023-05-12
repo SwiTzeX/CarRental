@@ -1,11 +1,14 @@
 package com.carrental;
 
+import com.carrental.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
+import java.sql.*;
 
 public class HelloApplication extends Application {
     @Override

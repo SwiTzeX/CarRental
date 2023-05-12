@@ -107,12 +107,10 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
+        vehicles = Vehicle.getAllVehicles();
+        for(int i=0; i<5; i++) {
+            vehicles.add(new Vehicle(2, "Volkswagen", "red", true, "Touareg", true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        }
         totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
@@ -123,8 +121,6 @@ public class HomeController implements Initializable {
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
             brandsDropList.getItems().add(new MenuItem(brand));
         }
-
-
     }
     @FXML
     public void nextPageDisplay(){
