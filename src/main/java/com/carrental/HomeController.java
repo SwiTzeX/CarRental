@@ -1,6 +1,6 @@
 package com.carrental;
 
-import javafx.animation.FadeTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -61,6 +63,8 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vehicleCardsBox;
 
+
+
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
@@ -105,6 +109,17 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /*
+        FXMLLoader fxmltest = new FXMLLoader();
+        fxmltest.setLocation(getClass().getResource("textField.fxml"));
+        try {
+            AnchorPane test = fxmltest.load();
+            searchBox.getChildren().add(test);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
+        MyTextField test = new MyTextField("test");
+        searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
         vehicles = Vehicle.getAllVehicles();

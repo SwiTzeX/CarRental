@@ -10,7 +10,7 @@ module com.carrental.carrental {
     requires eu.hansolo.tilesfx;
     requires java.desktop;
     requires java.sql;
-    requires mysql.connector.java;
+    requires mysql.connector.j;
 
     opens com.carrental to javafx.fxml;
     exports com.carrental;

@@ -37,3 +37,7 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea/
+/lib/javafx-swing-17.0.2-win.jar
+/lib/javafx-graphics-17.0.2-win.jar
+/lib/javafx-controls-17.0.2-win.jar
+/lib/javafx-base-17.0.2-win.jar
