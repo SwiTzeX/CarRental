@@ -193,6 +193,15 @@ public class Vehicle {
         }
         return brands;
     }
+    public static ArrayList<String> getAllColorsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+        ArrayList<String> colors =new ArrayList<String>();
+        for(Vehicle vehicle:vehicles){
+            if (!colors.contains(vehicle.getColor())) {
+                colors.add(vehicle.getColor());
+            }
+        }
+        return colors;
+    }
 
     public static ArrayList<Vehicle> getAllVehicles(){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -226,6 +235,11 @@ public class Vehicle {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return vehicles;
+    }
+
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
         return vehicles;
     }
 
