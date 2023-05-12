@@ -40,7 +40,7 @@
                </children></HBox>
             <HBox alignment="CENTER" prefHeight="29.0" prefWidth="53.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
-                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/kilogramme.png" />
                      </image>
