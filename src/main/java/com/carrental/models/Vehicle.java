@@ -1,37 +1,52 @@
 package com.carrental.models;
 
+import com.carrental.SingletonConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Vehicle {
-    public String type;
+    public Integer id;
+    public String modelName;
     public String color;
+    public Boolean disponibility;
+    public String brandName;
+    public Boolean vehicleState;
+    public float price;
+    public String type;
     public Integer passengers;
     public String fuelType;
     public String gearType;
-    public Integer deposit;
+    public float deposit;
+    public Integer trunkCapacity;
     public Integer maxSpeed;
     public Integer horsePower;
-    public Integer price;
     public String image;
     public String brandImage;
-    public String brandName;
-    public String modelName;
 
-    public Vehicle(String brandName,String modelName,String type,String color, String fuelType, String gearType, Integer passengers, Integer deposit, Integer maxSpeed, Integer horsePower, Integer price, String image, String brand) {
-        this.brandName = brandName;
+    public Vehicle(Integer id, String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
+        this.id = id;
         this.modelName = modelName;
         this.color = color;
+        this.disponibility = disponibility;
+        this.brandName = brandName;
+        this.vehicleState = vehicleState;
+        this.price = price;
         this.type = type;
         this.passengers = passengers;
         this.fuelType = fuelType;
         this.gearType = gearType;
         this.deposit = deposit;
+        this.trunkCapacity = trunkCapacity;
         this.maxSpeed = maxSpeed;
         this.horsePower = horsePower;
-        this.price = price;
-        this.image = image;
-        this.brandImage = brand;
+        this.brandImage = "brands/volkswagen.png";
+        this.image = "vehicles/volkswagen-touareg.png";
     }
+
 
     public String getColor() {
         return color;
@@ -73,11 +88,11 @@ public class Vehicle {
         this.fuelType = fuelType;
     }
 
-    public Integer getDeposit() {
+    public float getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(Integer deposit) {
+    public void setDeposit(float deposit) {
         this.deposit = deposit;
     }
 
@@ -97,11 +112,11 @@ public class Vehicle {
         this.horsePower = horsePower;
     }
 
-    public Integer getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -137,6 +152,38 @@ public class Vehicle {
         this.modelName = modelName;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getDisponibility() {
+        return disponibility;
+    }
+
+    public void setDisponibility(Boolean disponibility) {
+        this.disponibility = disponibility;
+    }
+
+    public Boolean getVehicleState() {
+        return vehicleState;
+    }
+
+    public void setVehicleState(Boolean vehicleState) {
+        this.vehicleState = vehicleState;
+    }
+
+    public Integer getTrunkCapacity() {
+        return trunkCapacity;
+    }
+
+    public void setTrunkCapacity(Integer trunkCapacity) {
+        this.trunkCapacity = trunkCapacity;
+    }
+
     public static ArrayList<String> getAllBrandsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
         ArrayList<String> brands =new ArrayList<String>();
         for(Vehicle vehicle:vehicles){
@@ -146,5 +193,72 @@ public class Vehicle {
         }
         return brands;
     }
+    public static ArrayList<String> getAllColorsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+        ArrayList<String> colors =new ArrayList<String>();
+        for(Vehicle vehicle:vehicles){
+            if (!colors.contains(vehicle.getColor())) {
+                colors.add(vehicle.getColor());
+            }
+        }
+        return colors;
+    }
 
+    public static ArrayList<Vehicle> getAllVehicles(){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Vehicle";
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            Vehicle v = null;
+            while(rs.next()){
+                Integer idV = rs.getInt(1);
+                String modelName = rs.getString(2);
+                String color = rs.getString(3);
+                Boolean disponibility = rs.getBoolean(4);
+                String brandName = rs.getString(5);
+                Boolean vehicleState = rs.getBoolean(6);
+                float price = rs.getFloat(7);
+                String type = rs.getString(8);
+                Integer passengers = rs.getInt(9);
+                String fuelType = rs.getString(10);
+                String gearType = rs.getString(11);
+                float deposit = rs.getFloat(12);
+                Integer trunkCapacity = rs.getInt(13);
+                Integer maxSpeed = rs.getInt(14);
+                Integer horsePower = rs.getInt(15);
+                v = new Vehicle(idV,modelName,color,disponibility,brandName,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+                vehicles.add(v);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return vehicles;
+    }
+
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        return vehicles;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                ", passengers=" + passengers +
+                ", fuelType='" + fuelType + '\'' +
+                ", gearType='" + gearType + '\'' +
+                ", deposit=" + deposit +
+                ", maxSpeed=" + maxSpeed +
+                ", horsePower=" + horsePower +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", brandImage='" + brandImage + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", modelName='" + modelName + '\'' +
+                '}';
+    }
 }

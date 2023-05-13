@@ -1,20 +1,16 @@
 package com.carrental;
 
-import javafx.animation.FadeTransition;
+import com.carrental.customnodes.MyTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +21,8 @@ import java.util.ResourceBundle;
 
 
 public class HomeController implements Initializable {
+    @FXML
+    public MenuButton typeDropList;
     @FXML
     private MenuButton brandsDropList;
 
@@ -60,6 +58,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private VBox vehicleCardsBox;
+
+
 
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
@@ -102,18 +102,21 @@ public class HomeController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MyTextField test = new MyTextField("test");
+        searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        vehicles.add(new Vehicle("Volkswagen","Touareg","Family","Brown","Petrol","Manual",5,1000,140,120,220,"vehicles/volkswagen-touareg.png","brands/volkswagen.png"));
-        totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
+        vehicles = Vehicle.getAllVehicles();
+        for(int i=0; i<5; i++) {
+            vehicles.add(new Vehicle(2, "Volkswagen", "red", true, "Touareg", true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        }
+        if(vehicles.size()> 1) {
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
+        }else{
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicle found");
+        }
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         if (maxPages > 1){
@@ -123,8 +126,6 @@ public class HomeController implements Initializable {
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
             brandsDropList.getItems().add(new MenuItem(brand));
         }
-
-
     }
     @FXML
     public void nextPageDisplay(){
