@@ -222,8 +222,7 @@ public class User {
         }
     }
 
-    public static boolean checkEmailPassword(String email,String password){
-        User user = User.getUserByEmail(email);
+    public static boolean checkUserPassword(User user,String password){
         assert user != null;
         if (!user.getPassword().equals(password)){
             return false;
