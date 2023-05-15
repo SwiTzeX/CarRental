@@ -11,6 +11,7 @@ import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -18,9 +19,9 @@ import java.util.*;
 
 public class HomeController implements Initializable {
     @FXML
-    public MenuButton typeDropList;
+    public ComboBox<String> typeDropList;
     @FXML
-    private MenuButton brandsDropList;
+    private ComboBox<String> brandsDropList;
 
     @FXML
     private HBox cardLayout;
@@ -29,13 +30,13 @@ public class HomeController implements Initializable {
     private Button clearFilterButton;
 
     @FXML
-    private MenuButton colorsDropList;
+    private ComboBox<String> colorsDropList;
 
     @FXML
-    private MenuButton fuelDropList;
+    private ComboBox<String> fuelDropList;
 
     @FXML
-    private MenuButton gearDropList;
+    private ComboBox<String> gearDropList;
 
     @FXML
     private Button nextPageButton;
@@ -101,7 +102,6 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         User u = new User(null,null,null,false,null,null,null,false);
         System.out.println(User.addToDatabase(u));
         System.out.println(User.deleteFromDatabase(User.getUserById(3)));
@@ -127,17 +127,24 @@ public class HomeController implements Initializable {
         }
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
-            RadioMenuItem item = new RadioMenuItem(brand);
+            brandsDropList.getItems().add(brand);
+        }
+    }
+    @FXML
+    public void filterVehicles(javafx.event.ActionEvent event) {
+            Text theText = new Text(brandsDropList.getValue());
+            double width = (int)theText.getBoundsInLocal().getWidth()+63;
+            brandsDropList.setPrefWidth(width);
+            /*RadioMenuItem item = new RadioMenuItem(brand);
             brandsDropList.getItems().add(item);
             item.setOnAction(event ->{
-                        brandsDropList.setText(brand);
+                        brandsDropList.setP(brand);
                         Text theText = new Text(brandsDropList.getText());
                         theText.setFont(brandsDropList.getFont());
                         double width = (int)theText.getBoundsInLocal().getWidth()+53;
                         brandsDropList.setPrefWidth(width);
                     }
-                    );
-        }
+                    );*/
     }
     @FXML
     public void nextPageDisplay(){

@@ -29,10 +29,6 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-
-
-
-
     public String getEmail(int i) {
         return this.email;
     }
@@ -118,11 +114,11 @@ public class User {
                 int id = rs.getInt(1);
                 String email = rs.getString(2);
                 String phoneNumber = rs.getString(3);
-                Boolean status = rs.getBoolean(4);
+                boolean status = rs.getBoolean(4);
                 int age = rs.getInt(5);
                 String fullName = rs.getString(6);
                 String password = rs.getString(7);
-                Boolean isAdmin = rs.getBoolean(8);
+                boolean isAdmin = rs.getBoolean(8);
                 users.add(new User(id,email,phoneNumber,status,age,fullName,password,isAdmin));
             }
             rs.close();
@@ -132,7 +128,6 @@ public class User {
         }
         return users;
     }
-
     public static User getUserById(int id){
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -179,7 +174,6 @@ public class User {
         }
         return null;
     }
-
     public static boolean addToDatabase(User u){
         try {
             Connection conn = SingletonConnection.getConnection();
