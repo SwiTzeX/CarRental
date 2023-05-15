@@ -236,7 +236,7 @@
                   <items>
                   </items>
                </ComboBox>
-               <ComboBox fx:id="brandsDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="35.0" prefWidth="89.0" promptText="Brands" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="brandsDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="35.0" prefWidth="98.0" promptText="Brands" styleClass="menu" stylesheets="@style/menu.css">
                   <items>
                   </items>
                </ComboBox>
