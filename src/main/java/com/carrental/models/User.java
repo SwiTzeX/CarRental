@@ -131,7 +131,7 @@ public class User {
     public static User getUserById(int id){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Users WHERE idUser="+id;
+            String req = "SELECT * FROM Users WHERE idU="+id;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
@@ -207,7 +207,7 @@ public class User {
         try {
             Connection conn = SingletonConnection.getConnection();
             System.out.println(u.getId());
-            String req = "DELETE FROM Users WHERE idUser="+u.getId()+" OR email="+u.getEmail();
+            String req = "DELETE FROM Users WHERE idU="+u.getId()+" OR email="+u.getEmail();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             return true;
