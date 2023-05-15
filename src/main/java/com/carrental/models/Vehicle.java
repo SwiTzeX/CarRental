@@ -27,7 +27,7 @@ public class Vehicle {
     public String image;
     public String brandImage;
 
-    public Vehicle(Integer id, String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
+    public Vehicle(Integer id, String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
         this.id = id;
         this.modelName = modelName;
         this.color = color;
@@ -207,7 +207,7 @@ public class Vehicle {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Vehicle";
+            String req = "SELECT * FROM Vehicles";
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             Vehicle v = null;
@@ -227,7 +227,7 @@ public class Vehicle {
                 Integer trunkCapacity = rs.getInt(13);
                 Integer maxSpeed = rs.getInt(14);
                 Integer horsePower = rs.getInt(15);
-                v = new Vehicle(idV,modelName,color,disponibility,brandName,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+                v = new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
                 vehicles.add(v);
             }
             rs.close();

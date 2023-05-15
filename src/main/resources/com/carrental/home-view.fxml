@@ -228,8 +228,6 @@
          <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
                <MenuButton fx:id="gearDropList" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" styleClass="menu" stylesheets="@style/menu.css" text="Gear Type" textFill="#353550">
-                 <items>
-                 </items>
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>

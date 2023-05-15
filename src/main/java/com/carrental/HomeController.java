@@ -1,23 +1,19 @@
 package com.carrental;
 
 import com.carrental.customnodes.MyTextField;
+import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class HomeController implements Initializable {
@@ -64,6 +60,8 @@ public class HomeController implements Initializable {
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
@@ -83,7 +81,6 @@ public class HomeController implements Initializable {
     }
 
     public void loadCardsByPage(int pageNumber){
-
         cardLayout.getChildren().clear();
         pageNumber--;
         try {
@@ -104,14 +101,20 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        User u = new User(null,null,null,false,null,null,null,false);
+        System.out.println(User.addToDatabase(u));
+        System.out.println(User.deleteFromDatabase(User.getUserById(3)));
+
         MyTextField test = new MyTextField("test");
         searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
         vehicles = Vehicle.getAllVehicles();
         for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "red", true, "Touareg", true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         }
+        vehicles.add(new Vehicle(2, "Test", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         if(vehicles.size()> 1) {
             totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
         }else{
@@ -124,7 +127,16 @@ public class HomeController implements Initializable {
         }
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
-            brandsDropList.getItems().add(new MenuItem(brand));
+            RadioMenuItem item = new RadioMenuItem(brand);
+            brandsDropList.getItems().add(item);
+            item.setOnAction(event ->{
+                        brandsDropList.setText(brand);
+                        Text theText = new Text(brandsDropList.getText());
+                        theText.setFont(brandsDropList.getFont());
+                        double width = (int)theText.getBoundsInLocal().getWidth()+53;
+                        brandsDropList.setPrefWidth(width);
+                    }
+                    );
         }
     }
     @FXML
