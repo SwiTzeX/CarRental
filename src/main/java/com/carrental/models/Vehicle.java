@@ -27,7 +27,7 @@ public class Vehicle {
     public String image;
     public String brandImage;
 
-    public Vehicle(Integer id, String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
+    public Vehicle(Integer id, String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
         this.id = id;
         this.modelName = modelName;
         this.color = color;
@@ -193,15 +193,23 @@ public class Vehicle {
         }
         return brands;
     }
+    public static ArrayList<String> getAllColorsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+        ArrayList<String> colors =new ArrayList<String>();
+        for(Vehicle vehicle:vehicles){
+            if (!colors.contains(vehicle.getColor())) {
+                colors.add(vehicle.getColor());
+            }
+        }
+        return colors;
+    }
 
     public static ArrayList<Vehicle> getAllVehicles(){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Vehicle";
+            String req = "SELECT * FROM Vehicles";
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
-            Vehicle v = null;
             while(rs.next()){
                 Integer idV = rs.getInt(1);
                 String modelName = rs.getString(2);
@@ -218,14 +226,49 @@ public class Vehicle {
                 Integer trunkCapacity = rs.getInt(13);
                 Integer maxSpeed = rs.getInt(14);
                 Integer horsePower = rs.getInt(15);
-                v = new Vehicle(idV,modelName,color,disponibility,brandName,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
-                vehicles.add(v);
+                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower));
             }
             rs.close();
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return vehicles;
+    }
+
+    public static Vehicle getVehiclesById(int id){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Vehicles  WHERE idV ="+id;
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if (rs.next()){
+                String modelName = rs.getString(2);
+                String color = rs.getString(3);
+                Boolean disponibility = rs.getBoolean(4);
+                String brandName = rs.getString(5);
+                Boolean vehicleState = rs.getBoolean(6);
+                float price = rs.getFloat(7);
+                String type = rs.getString(8);
+                Integer passengers = rs.getInt(9);
+                String fuelType = rs.getString(10);
+                String gearType = rs.getString(11);
+                float deposit = rs.getFloat(12);
+                Integer trunkCapacity = rs.getInt(13);
+                Integer maxSpeed = rs.getInt(14);
+                Integer horsePower = rs.getInt(15);
+                return new Vehicle(id, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
         return vehicles;
     }
 

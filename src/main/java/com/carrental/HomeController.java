@@ -1,32 +1,32 @@
 package com.carrental;
 
-import javafx.animation.FadeTransition;
+import com.carrental.customnodes.MyTextField;
+import com.carrental.models.Reservation;
+import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.util.Duration;
+import javafx.scene.text.Text;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.*;
+
 
 
 public class HomeController implements Initializable {
     @FXML
-    private MenuButton brandsDropList;
+    public ComboBox<String> typeDropList;
+    @FXML
+    private ComboBox<String> brandsDropList;
 
     @FXML
     private HBox cardLayout;
@@ -35,13 +35,13 @@ public class HomeController implements Initializable {
     private Button clearFilterButton;
 
     @FXML
-    private MenuButton colorsDropList;
+    private ComboBox<String> colorsDropList;
 
     @FXML
-    private MenuButton fuelDropList;
+    private ComboBox<String> fuelDropList;
 
     @FXML
-    private MenuButton gearDropList;
+    private ComboBox<String> gearDropList;
 
     @FXML
     private Button nextPageButton;
@@ -61,9 +61,13 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vehicleCardsBox;
 
+
+
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
@@ -83,7 +87,6 @@ public class HomeController implements Initializable {
     }
 
     public void loadCardsByPage(int pageNumber){
-
         cardLayout.getChildren().clear();
         pageNumber--;
         try {
@@ -102,16 +105,27 @@ public class HomeController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Date test1 = new Date(2023-1900, Calendar.MAY,16);
+        Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
+                new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
+                test1, test1,true);
+
+        MyTextField test = new MyTextField("test");
+        searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
         vehicles = Vehicle.getAllVehicles();
         for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "red", true, "Touareg", true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         }
-        totalVeh.setText(String.valueOf(vehicles.size())+" Vehicle found");
+        vehicles.add(new Vehicle(2, "Test", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        if(vehicles.size()> 1) {
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
+        }else{
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicle found");
+        }
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         if (maxPages > 1){
@@ -119,8 +133,14 @@ public class HomeController implements Initializable {
         }
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
-            brandsDropList.getItems().add(new MenuItem(brand));
+            brandsDropList.getItems().add(brand);
         }
+    }
+    @FXML
+    public void filterVehicles(javafx.event.ActionEvent event) {
+            Text theText = new Text(brandsDropList.getValue());
+            double width = (int)theText.getBoundsInLocal().getWidth()+63;
+            brandsDropList.setPrefWidth(width);
     }
     @FXML
     public void nextPageDisplay(){

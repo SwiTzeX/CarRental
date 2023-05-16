@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
+<!--ss-->
 <VBox fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseInAnimation" onMouseExited="#mouseOutAnimation" prefHeight="430.0" prefWidth="300.0" spacing="8.0" style="-fx-background-color: #F6F8FF; -fx-border-color: #f0f2ff; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.VehicleCardController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: transparent;">
@@ -22,14 +22,14 @@
          </children>
       </HBox>
       <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="278.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="278.0" spacing="10.0">
          <children>
             <Label fx:id="vehType" alignment="CENTER" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30;" text="TYPE" textFill="WHITE">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="48.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="49.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,16 +38,14 @@
                   </ImageView>
                   <Label fx:id="vehPassengers" prefHeight="22.0" prefWidth="10.0" text="4" textFill="#6279ff" />
                </children></HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="119.0">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="69.0" spacing="5.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #6279FF; -fx-border-radius: 20;">
                <children>
-                  <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/info.png" />
+                        <Image url="@icons/kilogramme.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
                   </ImageView>
+                  <Label fx:id="vehTrunkCapacityLabel" prefHeight="23.0" prefWidth="28.0" text="1000" textFill="#6279ff" />
                </children>
             </HBox>
          </children>
