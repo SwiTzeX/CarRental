@@ -42,6 +42,14 @@ public class User {
     }
 
     public void setId(Integer id) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET idU = " + id + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.id = id;
     }
 
@@ -50,6 +58,14 @@ public class User {
     }
 
     public void setEmail(String email) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET email = " + email + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.email = email;
     }
 
@@ -174,10 +190,10 @@ public class User {
         }
         return null;
     }
-    public static boolean addToDatabase(User u){
+    public static boolean create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null," + u.getEmail() + "," + u.getPhoneNumber() + "," + u.getStatus() + "," +u.getAge() + "," + u.getFullName() + "," + u.getPassword() + "," + u.getIsAdmin() + ")";
+            String req = "INSERT INTO Users VALUES(null," + email + "," + phoneNumber + "," + status + "," +age + "," + fullName+ "," + password + "," + isAdmin + ")";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             stmt.close();
@@ -187,48 +203,28 @@ public class User {
             throw new RuntimeException(e);
         }
     }
-    public static boolean updateInDatabase(User u){
+
+    public boolean delete(){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE INTO Users VALUES("+u.getId()+"," + u.getEmail() + "," + u.getPhoneNumber() + "," + u.getStatus() + "," +u.getAge() + "," + u.getFullName() + "," + u.getPassword() + "," + u.getIsAdmin() + ")";
+            System.out.println(this.getId());
+            String req = "DELETE FROM Users WHERE idU="+this.getId()+" OR email="+this.getEmail();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
-            return true;
-
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-
-    public static boolean deleteFromDatabase(User u){
-        if( u == null){
-            return false;
-        }
-        try {
-            Connection conn = SingletonConnection.getConnection();
-            System.out.println(u.getId());
-            String req = "DELETE FROM Users WHERE idU="+u.getId()+" OR email="+u.getEmail();
-            Statement stmt = conn.createStatement();
-            int rs = stmt.executeUpdate(req);
-            return true;
+            return rs > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static boolean checkUserPassword(User user,String password){
-        assert user != null;
-        if (!user.getPassword().equals(password)){
-            return false;
-        }
-        return true;
-        //
+    public boolean checkPassword(String password){
+        return this.getPassword().equals(password);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + id + '\'' +
+                "idU='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", status=" + status +
