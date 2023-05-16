@@ -23,63 +23,79 @@
                   </ImageView>
                </children>
             </Pane>
-            <HBox prefHeight="9.0" prefWidth="153.0">
+            <VBox translateY="100.0">
                <children>
-                  <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label prefHeight="29.0" prefWidth="114.0" text="Dashboard">
-                     <font>
-                        <Font name="Myanmar MN" size="12.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="9.0" prefWidth="153.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="29.0" prefWidth="114.0" text="Dashboard" textFill="#f0f2ff">
+                           <font>
+                              <Font name="Myanmar MN" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="9.0" prefWidth="153.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="29.0" prefWidth="114.0" text="User Management" textFill="#f0f2ff">
+                           <font>
+                              <Font name="Myanmar MN" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="9.0" prefWidth="153.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="29.0" prefWidth="114.0" text="Fleet Management" textFill="#f0f2ff">
+                           <font>
+                              <Font name="Myanmar MN" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="9.0" prefWidth="153.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="29.0" prefWidth="114.0" text="Reservations" textFill="#f0f2ff">
+                           <font>
+                              <Font name="Myanmar MN" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="9.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label prefHeight="29.0" prefWidth="114.0" text="Fleet Management">
-                     <font>
-                        <Font name="Myanmar MN" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="9.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label prefHeight="29.0" prefWidth="114.0" text="User Management">
-                     <font>
-                        <Font name="Myanmar MN" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="9.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label prefHeight="29.0" prefWidth="114.0" text="Reservations">
-                     <font>
-                        <Font name="Myanmar MN" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" snapToPixel="false" text="Copyright © UIR Project 2022-2023" textFill="#353535">
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="153.0" snapToPixel="false" text="© UIR Project 2022-2023" textFill="#f0f2ff" translateY="490.0">
                <font>
                   <Font name="Myanmar MN" size="12.0" />
                </font>
