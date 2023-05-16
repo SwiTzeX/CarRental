@@ -24,7 +24,7 @@
                   </Label>
                </children>
             </HBox>
-            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="342.0" style="-fx-background-color: A390F0;">
+            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="222.0" style="-fx-background-color: A390F0;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="109.0" prefWidth="255.0" text="LOGO">
                      <font>
@@ -104,5 +104,6 @@
             <Insets />
          </opaqueInsets>
       </Pane>
+      <AnchorPane layoutX="217.0" layoutY="2.0" prefHeight="811.0" prefWidth="1183.0" />
          </children>
       </AnchorPane>
