@@ -1,6 +1,7 @@
 package com.carrental;
 
 import com.carrental.customnodes.MyTextField;
+import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,11 @@ import javafx.scene.text.Text;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
+
 
 
 public class HomeController implements Initializable {
@@ -102,9 +107,10 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        User u = new User(null,null,null,false,null,null,null,false);
-        System.out.println(User.addToDatabase(u));
-        System.out.println(User.deleteFromDatabase(User.getUserById(3)));
+        Date test1 = new Date(2023-1900, Calendar.MAY,16);
+        Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
+                new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
+                test1, test1,true);
 
         MyTextField test = new MyTextField("test");
         searchBox.getChildren().add(test);
@@ -135,16 +141,6 @@ public class HomeController implements Initializable {
             Text theText = new Text(brandsDropList.getValue());
             double width = (int)theText.getBoundsInLocal().getWidth()+63;
             brandsDropList.setPrefWidth(width);
-            /*RadioMenuItem item = new RadioMenuItem(brand);
-            brandsDropList.getItems().add(item);
-            item.setOnAction(event ->{
-                        brandsDropList.setP(brand);
-                        Text theText = new Text(brandsDropList.getText());
-                        theText.setFont(brandsDropList.getFont());
-                        double width = (int)theText.getBoundsInLocal().getWidth()+53;
-                        brandsDropList.setPrefWidth(width);
-                    }
-                    );*/
     }
     @FXML
     public void nextPageDisplay(){
