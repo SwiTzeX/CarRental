@@ -107,11 +107,12 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Date test1 = new Date(2023-1900, Calendar.MAY,16);
+       /* Date test1 = new Date(2023-1900, Calendar.MAY,16);
         Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
                 new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
                 test1, test1,true);
-
+        User user = User.create("sssdgds@ssss",null,false,null,null,null,false);
+        System.out.println(user);*/
         MyTextField test = new MyTextField("test");
         searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
