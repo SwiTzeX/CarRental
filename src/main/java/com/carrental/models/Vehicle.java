@@ -267,10 +267,10 @@ public class Vehicle {
         return null;
     }
 
-    public static boolean addToDatabase(Vehicle v){
+    public static boolean create(Vehicle v){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null," + v.getId() + "," + v.getModelName() + "," + v.getColor()
+            String req = "INSERT INTO Vehicles VALUES(null," + v.getId() + "," + v.getModelName() + "," + v.getColor()
                     + "," + v.getDisponibility() + "," + v.getBrandName() + "," + v.getVehicleState() + "," + v.getPrice()
                     + "," + v.getType() + "," + v.getPassengers() + "," + v.getFuelType() + "," + v.getGearType()
                     + "," + v.getDeposit() + "," + v.getTrunkCapacity() + "," + v.getMaxSpeed() + "," + v.getHorsePower() + ")";
@@ -278,13 +278,10 @@ public class Vehicle {
             int rs = stmt.executeUpdate(req);
             stmt.close();
             return rs > 0;
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 
     public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
         ArrayList<Vehicle> vehicles = new ArrayList<>();

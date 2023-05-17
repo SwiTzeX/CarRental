@@ -32,7 +32,7 @@ public class RegisterController {
             Parent login = loader.load();
 
             // Create a new stage and set the second view as the root
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow() ;
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(login));
             stage.show();
         } catch (IOException e) {
