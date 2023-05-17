@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-14.0" layoutY="-7.0" prefHeight="811.0" prefWidth="457.0" style="-fx-background-color: #6279FF;" />
@@ -28,7 +27,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </PasswordField>
-            <Button layoutX="447.0" layoutY="554.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="button_signin" layoutX="447.0" layoutY="554.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -38,7 +37,7 @@
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="583.0" layoutY="612.0" text="Login" textFill="#353550">
+            <Label fx:id="label_login" layoutX="583.0" layoutY="612.0" text="Login" textFill="#353550">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
