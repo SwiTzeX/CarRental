@@ -4,106 +4,116 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
+   <children>
+      <Label alignment="CENTER" prefHeight="155.0" prefWidth="1250.0" text="Dashboard" textFill="#a390f0">
+         <font>
+            <Font name="Myanmar Text Bold" size="48.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="140.0" prefWidth="1233.0">
          <children>
-            <HBox alignment="CENTER" layoutX="247.0" layoutY="2.0" prefHeight="105.0" prefWidth="1154.0">
+            <HBox prefHeight="140.0" prefWidth="320.0" spacing="80.0" style="-fx-background-radius: 40; -fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="TEXT_ONLY" prefHeight="105.0" prefWidth="1057.0" text="Dashboard" textAlignment="CENTER" wrapText="true">
+                  <Label prefHeight="92.0" prefWidth="150.0" text="Customers">
                      <font>
-                        <Font name="Myanmar MN" size="40.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </Label>
+                  <ImageView fitHeight="35.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/clients.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </ImageView>
                </children>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
             </HBox>
-            <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="222.0" style="-fx-background-color: A390F0;">
+            <HBox prefHeight="141.0" prefWidth="322.0" spacing="70.0" style="-fx-background-radius: 30; -fx-background-color: white;">
                <children>
-                  <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="109.0" prefWidth="255.0" text="LOGO">
+                  <Label prefHeight="92.0" prefWidth="170.0" text="Available cars">
                      <font>
-                        <Font name="Myanmar MN" size="53.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </Label>
-                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Hyperlink>
-                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="251.0" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Hyperlink>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="343.0" style="-fx-border-width: 20;" text="Dashboard" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="328.0" style="-fx-border-width: 20;" text="Fleet Management" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="346.0" style="-fx-border-width: 20;" text="User Management" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="342.0" style="-fx-border-width: 20;" text="Rental Management" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </HBox>
+                  <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/voitures.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </ImageView>
                </children>
-            </VBox>
-            <Pane layoutX="342.0" layoutY="208.0" prefHeight="331.0" prefWidth="1058.0">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox prefHeight="142.0" prefWidth="322.0" spacing="65.0" style="-fx-background-radius: 30; -fx-background-color: white;">
+               <children>
+                  <Label prefHeight="92.0" prefWidth="184.0" text="Total sales">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/dollar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+      <Label alignment="CENTER" prefHeight="78.0" prefWidth="1250.0" text="Sales per month" textFill="#a390f0">
+         <font>
+            <Font name="Myanmar Text" size="36.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="358.0" prefWidth="1250.0">
          <children>
-            <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="537.0" layoutY="20.0" legendVisible="false" prefHeight="320.0" prefWidth="490.0" title="Sales per month" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
+            <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="358.0" prefWidth="1250.0" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </LineChart>
-                  <PieChart fx:id="piechart" layoutX="7.0" layoutY="-3.0" prefHeight="338.0" prefWidth="490.0" />
          </children>
-            </Pane>
-      <Pane layoutX="457.0" layoutY="598.0" prefHeight="67.0" prefWidth="558.0">
-         <children>
-            <Label prefHeight="74.0" prefWidth="216.0" text="Sales per year">
-               <font>
-                  <Font name="Myanmar Text Bold" size="31.0" />
-               </font>
-            </Label>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Pane>
-      <AnchorPane layoutX="217.0" layoutY="2.0" prefHeight="811.0" prefWidth="1183.0" />
-         </children>
-      </AnchorPane>
+      </HBox>
+   </children>
+</VBox>
