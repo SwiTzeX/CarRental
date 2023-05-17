@@ -44,7 +44,7 @@ public class User {
     public void setId(Integer id) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET idU = " + id + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET idU = " + id + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -60,7 +60,7 @@ public class User {
     public void setEmail(String email) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET email = '" + email + "' WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET email = '" + email + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -76,7 +76,7 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET phoneNumber = " + phoneNumber + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET phoneNumber = " + phoneNumber + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -92,7 +92,7 @@ public class User {
     public void setStatus(boolean status) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET status = " + status + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET status = " + status + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -108,7 +108,7 @@ public class User {
     public void setAge(Integer age) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET age = " + age + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET age = " + age + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -124,7 +124,7 @@ public class User {
     public void setFullName(String fullName) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET fullName = " + fullName + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET fullName = " + fullName + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -140,7 +140,7 @@ public class User {
     public void setPassword(String password) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET password = " + password + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET password = " + password + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -156,7 +156,7 @@ public class User {
     public void setIsAdmin(boolean isAdmin) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET isAdmin = " + isAdmin + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET isAdmin = " + isAdmin + " WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -243,13 +243,12 @@ public class User {
             Connection conn = SingletonConnection.getConnection();
             String req = "INSERT INTO Users VALUES(null,'" + email + "'," + phoneNumber + "," + status + "," +age + "," + fullName+ "," + password + "," + isAdmin + ")";
             Statement stmt = conn.createStatement();
-            int rs1 = stmt.executeUpdate(req);
-            req = "SELECT * FROM Users WHERE email = '"+email+"'";
+            stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
-            ResultSet rs2 = stmt.executeQuery(req);
-            if(rs2.next()){
-                id = rs2.getInt(1);}
-            rs2.close();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
             stmt.close();
             return new User(id,email,phoneNumber,status,age,fullName,password,isAdmin);
         } catch (SQLException e) {
