@@ -27,6 +27,6 @@ public class DashboardController implements Initializable {
         series.getData().add(new XYChart.Data("May",312));
         lineChart.getData().addAll(series);
         lineChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
-        series.getNode().setStyle("-fx-stroke:#6279FF");
+        series.getNode().setStyle("-fx-stroke:#A390F0");
     }
 }
