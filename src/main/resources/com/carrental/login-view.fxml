@@ -17,27 +17,27 @@
                   <Font name="Arial Black" size="43.0" />
                </font>
             </Label>
-            <TextField layoutX="323.0" layoutY="276.0" prefHeight="41.0" prefWidth="447.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
+            <TextField fx:id="usernamefield" layoutX="323.0" layoutY="276.0" prefHeight="41.0" prefWidth="447.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="323.0" layoutY="402.0" prefHeight="41.0" prefWidth="447.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
+            <PasswordField fx:id="passwordfield" layoutX="323.0" layoutY="402.0" prefHeight="41.0" prefWidth="447.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="button_signin" layoutX="447.0" layoutY="554.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="button_signin" layoutX="447.0" layoutY="554.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="388.0" layoutY="612.0" text="Already have an account?" textAlignment="CENTER" textFill="#353550">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="388.0" layoutY="612.0" text="You dont have an account ?" textAlignment="CENTER" textFill="#353550">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="label_login" layoutX="583.0" layoutY="612.0" text="Login" textFill="#353550">
+            <Label fx:id="label_login" layoutX="596.0" layoutY="612.0" text="Create an account !" textFill="#353550">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>

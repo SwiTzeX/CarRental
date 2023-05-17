@@ -79,12 +79,12 @@
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>
-         <Button contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
+         <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
             <font>
                <Font name="Arial Bold" size="15.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
+         <Button mnemonicParsing="false" onAction="#goToRegister" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
             <font>
                <Font name="Arial Bold" size="15.0" />
             </font>

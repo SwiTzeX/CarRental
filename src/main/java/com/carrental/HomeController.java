@@ -6,11 +6,16 @@ import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -169,4 +174,38 @@ public class HomeController implements Initializable {
             nextPageButton.setVisible(true);
         }
     }
+    @FXML
+    void goToLogin(javafx.event.ActionEvent event) {
+
+        try {
+            // Load the FXML file for the second view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+            Parent login = loader.load();
+
+            // Create a new stage and set the second view as the root
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(login));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void goToRegister(javafx.event.ActionEvent event) {
+
+        try {
+            // Load the FXML file for the second view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+            Parent register = loader.load();
+
+            // Create a new stage and set the second view as the root
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(register));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

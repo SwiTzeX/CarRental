@@ -13,13 +13,14 @@ import java.sql.*;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         stage.setTitle("Hello test!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
     }
+
 
     public static void main(String[] args) {
         launch();
