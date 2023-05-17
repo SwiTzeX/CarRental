@@ -60,7 +60,7 @@ public class User {
     public void setEmail(String email) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE User SET email = " + email + " WHERE idU = " + this.getId();
+            String req = "UPDATE User SET email = '" + email + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -74,6 +74,14 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET phoneNumber = " + phoneNumber + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.phoneNumber = phoneNumber;
     }
 
@@ -82,6 +90,14 @@ public class User {
     }
 
     public void setStatus(boolean status) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET status = " + status + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.status = status;
     }
 
@@ -90,6 +106,14 @@ public class User {
     }
 
     public void setAge(Integer age) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET age = " + age + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.age = age;
     }
 
@@ -98,6 +122,14 @@ public class User {
     }
 
     public void setFullName(String fullName) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET fullName = " + fullName + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.fullName = fullName;
     }
 
@@ -106,6 +138,14 @@ public class User {
     }
 
     public void setPassword(String password) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET password = " + password + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.password = password;
     }
 
@@ -114,6 +154,14 @@ public class User {
     }
 
     public void setIsAdmin(boolean isAdmin) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE User SET isAdmin = " + isAdmin + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.isAdmin = isAdmin;
     }
 
@@ -170,7 +218,7 @@ public class User {
     public static User getUserByEmail(String email){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Users WHERE email="+email;
+            String req = "SELECT * FROM Users WHERE email='"+email+"'";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
@@ -190,15 +238,20 @@ public class User {
         }
         return null;
     }
-    public static boolean create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
+    public static User create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null," + email + "," + phoneNumber + "," + status + "," +age + "," + fullName+ "," + password + "," + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null,'" + email + "'," + phoneNumber + "," + status + "," +age + "," + fullName+ "," + password + "," + isAdmin + ")";
             Statement stmt = conn.createStatement();
-            int rs = stmt.executeUpdate(req);
+            int rs1 = stmt.executeUpdate(req);
+            req = "SELECT * FROM Users WHERE email = '"+email+"'";
+            int id=-1;
+            ResultSet rs2 = stmt.executeQuery(req);
+            if(rs2.next()){
+                id = rs2.getInt(1);}
+            rs2.close();
             stmt.close();
-            return rs > 0;
-
+            return new User(id,email,phoneNumber,status,age,fullName,password,isAdmin);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -216,6 +269,7 @@ public class User {
             throw new RuntimeException(e);
         }
     }
+
 
     public boolean checkPassword(String password){
         return this.getPassword().equals(password);
