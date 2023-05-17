@@ -407,7 +407,7 @@ public class Vehicle {
             throw new RuntimeException(e);
         }
     }
-
+//
 
 
     public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
