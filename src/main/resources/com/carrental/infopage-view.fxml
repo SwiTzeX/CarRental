@@ -2,8 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -284,19 +285,19 @@
                               </HBox>
                               <HBox prefHeight="445.0" prefWidth="1327.0">
                                  <children>
-                                    <Pane prefHeight="606.0" prefWidth="835.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30;">
+                                    <VBox alignment="TOP_CENTER" prefHeight="425.0" prefWidth="823.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30;">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="769.0" text="Comments">
+                                          <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="519.0" text="Comments">
                                              <font>
                                                 <Font name="Myanmar MN" size="24.0" />
                                              </font>
                                           </Label>
-                                          <AnchorPane layoutX="58.0" layoutY="58.0" prefHeight="116.0" prefWidth="700.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30;">
+                                          <AnchorPane prefHeight="116.0" prefWidth="700.0" style="-fx-border-radius: 30;">
                                              <children>
-                                                <HBox prefHeight="132.0" prefWidth="700.0" style="-fx-background-radius: 30;">
+                                                <HBox layoutX="53.0" prefHeight="132.0" prefWidth="698.0" style="-fx-border-radius: 30; -fx-border-color: #F6F8FF;">
                                                    <children>
                                                       <VBox prefHeight="163.0" prefWidth="108.0">
                                                          <children>
@@ -317,16 +318,19 @@
                                                                   <Insets top="12.0" />
                                                                </VBox.margin>
                                                                <children>
-                                                                  <Label prefHeight="25.0" prefWidth="1134.0" text="Username" textFill="#353550">
+                                                                  <Label fx:id="username" prefHeight="25.0" prefWidth="664.0" text="Username" textFill="#353550">
                                                                      <font>
                                                                         <Font name="Myanmar MN" size="13.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <ChoiceBox prefWidth="150.0">
+                                                                  <MenuButton mnemonicParsing="false">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="Supprimer" />
+                                                                     </items>
                                                                      <HBox.margin>
                                                                         <Insets right="10.0" />
                                                                      </HBox.margin>
-                                                                  </ChoiceBox>
+                                                                  </MenuButton>
                                                                </children>
                                                             </HBox>
                                                             <Label prefHeight="11.0" prefWidth="309.0" text="May 18th, 2023 at 4:00 pm" textFill="#0000007b">
@@ -334,19 +338,19 @@
                                                                   <Font name="Myanmar MN" size="8.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
+                                                            <Label fx:id="comment" prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </HBox>
                                              </children>
+                                             <VBox.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </VBox.margin>
                                           </AnchorPane>
                                        </children>
-                                    </Pane>
+                                    </VBox>
                                     <VBox alignment="CENTER" style="-fx-border-color: E1E1E1; -fx-border-radius: 30;">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
                                        <children>
                                           <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="519.0" text="Reservation Details: ">
                                              <font>
