@@ -66,13 +66,10 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vehicleCardsBox;
 
-
-
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
     public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
-
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
@@ -139,14 +136,18 @@ public class HomeController implements Initializable {
         }
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
+            System.out.println(brandsDropList.getItems());
             brandsDropList.getItems().add(brand);
         }
     }
     @FXML
     public void filterVehicles(javafx.event.ActionEvent event) {
-            Text theText = new Text(brandsDropList.getValue());
-            double width = (int)theText.getBoundsInLocal().getWidth()+63;
-            brandsDropList.setPrefWidth(width);
+        Text theText = new Text(brandsDropList.getValue());
+        double width = (int)theText.getBoundsInLocal().getWidth()+63;
+        brandsDropList.setPrefWidth(width);
+        filterSettings.set(2, brandsDropList.getValue());
+        vehiclesHolder = HomeController.split(Vehicle.filterVehicles(filterSettings),4);
+        loadCardsByPage(1);
     }
     @FXML
     public void nextPageDisplay(){

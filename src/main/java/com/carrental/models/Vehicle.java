@@ -407,14 +407,74 @@ public class Vehicle {
             throw new RuntimeException(e);
         }
     }
-//
-
-
-    public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+//(family, null, tonobil, red, null)
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<String> filterSettings) {
+        try{
+            boolean and = false;
+            ArrayList<Vehicle> vehicles = new ArrayList<>();
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Vehicles WHERE ";
+            if(filterSettings.get(0) != null){
+                req += "gearType = '" + filterSettings.get(0) + "' ";
+                and = true;
+            }
+            if(filterSettings.get(1) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "fuelType = '" + filterSettings.get(1) + "' ";
+            }
+            if(filterSettings.get(2) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "brandName = '" + filterSettings.get(2) + "' ";
+            }
+            if(filterSettings.get(3) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "color = '" + filterSettings.get(3) + "' ";
+            }
+            if(filterSettings.get(4) != null) {
+                if (and) {
+                    req += "AND ";
+                }
+                req += "type = '" + filterSettings.get(4) + "' ";
+            }
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                Integer idV = rs.getInt(1);
+                String modelName = rs.getString(2);
+                String color = rs.getString(3);
+                Boolean disponibility = rs.getBoolean(4);
+                String brandName = rs.getString(5);
+                Boolean vehicleState = rs.getBoolean(6);
+                float price = rs.getFloat(7);
+                String type = rs.getString(8);
+                Integer passengers = rs.getInt(9);
+                String fuelType = rs.getString(10);
+                String gearType = rs.getString(11);
+                float deposit = rs.getFloat(12);
+                Integer trunkCapacity = rs.getInt(13);
+                Integer maxSpeed = rs.getInt(14);
+                Integer horsePower = rs.getInt(15);
+                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower));
+            }
+            rs.close();
+            stmt.close();
+            return vehicles;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
     @Override
     public String toString() {
         return "Vehicle{" +
