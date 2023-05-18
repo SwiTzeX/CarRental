@@ -124,7 +124,7 @@ public class User {
     public void setFullName(String fullName) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET fullName = " + fullName + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET fullName = '" + fullName + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -140,7 +140,7 @@ public class User {
     public void setPassword(String password) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET password = " + password + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET password = '" + password + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -238,7 +238,9 @@ public class User {
         }
         return null;
     }
-    public static User create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
+    public static User create(String email, String phoneNumber, Integer age, String fullName, String password){
+        boolean status = true;
+        boolean isAdmin = false;
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "INSERT INTO Users VALUES(null,'" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
