@@ -27,7 +27,7 @@ public abstract class LoginController implements Initializable{
     public Button button_signin;
 
     @FXML
-     Label label_login;
+    public Label label_login;
     @FXML
     public TextField usernamefield;
 

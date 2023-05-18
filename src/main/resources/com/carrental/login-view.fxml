@@ -19,12 +19,12 @@
             </Label>
             <TextField fx:id="usernamefield" layoutX="265.0" layoutY="286.0" prefHeight="41.0" prefWidth="447.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
             <PasswordField fx:id="passwordfield" layoutX="265.0" layoutY="410.0" prefHeight="41.0" prefWidth="447.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </PasswordField>
             <Button fx:id="button_signin" layoutX="388.0" layoutY="553.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
