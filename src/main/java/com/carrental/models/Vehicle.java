@@ -53,6 +53,14 @@ public class Vehicle {
     }
 
     public void setColor(String color) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET color = '" + color + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.color = color;
     }
 
@@ -61,6 +69,14 @@ public class Vehicle {
     }
 
     public void setType(String type) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET type = '" + type + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.type = type;
     }
 
@@ -69,6 +85,14 @@ public class Vehicle {
     }
 
     public void setGearType(String gearType) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET gearType = '" + gearType + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.gearType = gearType;
     }
 
@@ -77,6 +101,14 @@ public class Vehicle {
     }
 
     public void setPassengers(Integer passengers) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET passengers = " + passengers + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.passengers = passengers;
     }
 
@@ -85,6 +117,14 @@ public class Vehicle {
     }
 
     public void setFuelType(String fuelType) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET fuelType = '" + fuelType + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.fuelType = fuelType;
     }
 
@@ -93,6 +133,14 @@ public class Vehicle {
     }
 
     public void setDeposit(float deposit) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET deposit = " + deposit + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.deposit = deposit;
     }
 
@@ -101,6 +149,14 @@ public class Vehicle {
     }
 
     public void setMaxSpeed(Integer maxSpeed) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET maxSpeed = " + maxSpeed + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.maxSpeed = maxSpeed;
     }
 
@@ -109,6 +165,14 @@ public class Vehicle {
     }
 
     public void setHorsePower(Integer horsePower) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET horsePower = " + horsePower + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.horsePower = horsePower;
     }
 
@@ -117,6 +181,14 @@ public class Vehicle {
     }
 
     public void setPrice(float price) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET price = " + price + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.price = price;
     }
 
@@ -141,6 +213,14 @@ public class Vehicle {
     }
 
     public void setBrandName(String brandName) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET brandName = '" + brandName + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.brandName = brandName;
     }
 
@@ -149,6 +229,14 @@ public class Vehicle {
     }
 
     public void setModelName(String modelName) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET modelName = '" + modelName + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.modelName = modelName;
     }
 
@@ -157,6 +245,14 @@ public class Vehicle {
     }
 
     public void setId(Integer id) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET idV = " + id + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.id = id;
     }
 
@@ -165,6 +261,14 @@ public class Vehicle {
     }
 
     public void setDisponibility(Boolean disponibility) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET disponibility = " + disponibility + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.disponibility = disponibility;
     }
 
@@ -173,6 +277,14 @@ public class Vehicle {
     }
 
     public void setVehicleState(Boolean vehicleState) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET vehicleState = " + vehicleState + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.vehicleState = vehicleState;
     }
 
@@ -181,6 +293,14 @@ public class Vehicle {
     }
 
     public void setTrunkCapacity(Integer trunkCapacity) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET trunkCapacity = " + trunkCapacity + " WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.trunkCapacity = trunkCapacity;
     }
 
@@ -267,30 +387,94 @@ public class Vehicle {
         return null;
     }
 
-    public static boolean addToDatabase(Vehicle v){
+    public static Vehicle create(String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null," + v.getId() + "," + v.getModelName() + "," + v.getColor()
-                    + "," + v.getDisponibility() + "," + v.getBrandName() + "," + v.getVehicleState() + "," + v.getPrice()
-                    + "," + v.getType() + "," + v.getPassengers() + "," + v.getFuelType() + "," + v.getGearType()
-                    + "," + v.getDeposit() + "," + v.getTrunkCapacity() + "," + v.getMaxSpeed() + "," + v.getHorsePower() + ")";
+            String req = "INSERT INTO Vehicles VALUES(null,'" + modelName + "','" + color
+                    + "'," + disponibility + ",'" + brandName + "'," + vehicleState + "," + price
+                    + ",'" + type + "'," + passengers + ",'" + fuelType + "','" +gearType
+                    + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower + ")";
             Statement stmt = conn.createStatement();
-            int rs = stmt.executeUpdate(req);
+            stmt.executeUpdate(req);
+            int id=-1;
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
             stmt.close();
-            return rs > 0;
-
+            return new Vehicle(id,brandName,modelName,color,disponibility,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
-    public static ArrayList<Vehicle> filterVehicles(ArrayList<Object> filterSettings) {
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+//(family, null, tonobil, red, null)
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<String> filterSettings) {
+        try{
+            boolean and = false;
+            ArrayList<Vehicle> vehicles = new ArrayList<>();
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Vehicles WHERE ";
+            if(filterSettings.get(0) != null){
+                req += "gearType = '" + filterSettings.get(0) + "' ";
+                and = true;
+            }
+            if(filterSettings.get(1) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "fuelType = '" + filterSettings.get(1) + "' ";
+            }
+            if(filterSettings.get(2) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "brandName = '" + filterSettings.get(2) + "' ";
+            }
+            if(filterSettings.get(3) != null){
+                if(and){
+                    req += "AND ";
+                }else{
+                    and = true;
+                }
+                req += "color = '" + filterSettings.get(3) + "' ";
+            }
+            if(filterSettings.get(4) != null) {
+                if (and) {
+                    req += "AND ";
+                }
+                req += "type = '" + filterSettings.get(4) + "' ";
+            }
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                Integer idV = rs.getInt(1);
+                String modelName = rs.getString(2);
+                String color = rs.getString(3);
+                Boolean disponibility = rs.getBoolean(4);
+                String brandName = rs.getString(5);
+                Boolean vehicleState = rs.getBoolean(6);
+                float price = rs.getFloat(7);
+                String type = rs.getString(8);
+                Integer passengers = rs.getInt(9);
+                String fuelType = rs.getString(10);
+                String gearType = rs.getString(11);
+                float deposit = rs.getFloat(12);
+                Integer trunkCapacity = rs.getInt(13);
+                Integer maxSpeed = rs.getInt(14);
+                Integer horsePower = rs.getInt(15);
+                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower));
+            }
+            rs.close();
+            stmt.close();
+            return vehicles;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
     @Override
     public String toString() {
         return "Vehicle{" +

@@ -2,11 +2,9 @@ package com.carrental.models;
 
 import com.carrental.SingletonConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 
 public class Reservation {
@@ -141,6 +139,71 @@ public class Reservation {
         }
     }
 
+    /*public static Reservation getReservationById(int idU, int idV, Date startDate){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE idU="+idU+" AND idV="+idV+" AND startDate="+startDate;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                Date startDate1 = rs.getDate(3);
+                Date endDate = rs.getDate(4);
+                Boolean status = rs.getBoolean(5);
+                return new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate1, endDate, status);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }*/
+
+    public static ArrayList<Reservation> getAllReservationsByStatus(Boolean status){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE status = " + status;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getDate(3);
+                Date endDate = rs.getDate(4);
+                boolean stat = rs.getBoolean(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
+    }
+
+    public static ArrayList<Reservation> getAllReservations(){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getDate(3);
+                Date endDate = rs.getDate(4);
+                boolean stat = rs.getBoolean(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
+    }
     @Override
     public String toString() {
         return "Reservation{" +
