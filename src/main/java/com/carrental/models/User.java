@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class User {
     public Integer id;
+    public String nId;
     public String email;
     public String phoneNumber;
     public boolean status;
@@ -27,6 +28,22 @@ public class User {
         this.fullName = fullName;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    public String getnId() {
+        return nId;
+    }
+
+    public void setnId(String nId) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Users SET nid = " + nId + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        this.nId = nId;
     }
 
     public String getEmail(int i) {
@@ -124,7 +141,7 @@ public class User {
     public void setFullName(String fullName) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET fullName = " + fullName + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET fullName = '" + fullName + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -140,7 +157,7 @@ public class User {
     public void setPassword(String password) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET password = " + password + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET password = '" + password + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -238,10 +255,12 @@ public class User {
         }
         return null;
     }
-    public static User create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
+    public static User create(String nid,String email, String phoneNumber, Integer age, String fullName, String password){
+        boolean status = true;
+        boolean isAdmin = false;
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null,'" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null,'" + email + "', '" + nid + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
