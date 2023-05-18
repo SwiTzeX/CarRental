@@ -241,7 +241,7 @@ public class User {
     public static User create(String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null,'" + email + "'," + phoneNumber + "," + status + "," +age + "," + fullName+ "," + password + "," + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null,'" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
