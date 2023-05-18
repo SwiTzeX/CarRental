@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="116.0" prefWidth="700.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentView">
+   <children>
+      <HBox prefHeight="132.0" prefWidth="700.0">
+         <children>
+            <VBox prefHeight="163.0" prefWidth="108.0">
+               <children>
+                  <Pane prefHeight="41.0" prefWidth="0.0" style="-fx-background-color: #6279FF; -fx-background-radius: 70;">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox prefHeight="163.0" prefWidth="641.0">
+               <children>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="1134.0" text="Username" textFill="#353550">
+                           <font>
+                              <Font name="Myanmar MN" size="13.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <Label prefHeight="11.0" prefWidth="309.0" text="May 18th, 2023 at 4:00 pm" textFill="#0000007b">
+                     <font>
+                        <Font name="Myanmar MN" size="8.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

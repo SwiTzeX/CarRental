@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -12,26 +13,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.InfoPageController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="1403.0" style="-fx-background-color: #6279FF;">
+      <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1402.0" style="-fx-background-color: #6279FF;">
          <children>
             <Pane>
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
                <children>
-                  <ImageView fitHeight="78.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo/Car%20Rental%20by%20UIR%20(3).png" />
-                     </image>
-                  </ImageView>
+                  <Label prefHeight="55.0" prefWidth="124.0" text="LOGO" textFill="WHITE">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="973.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1046.0">
                <HBox.margin>
-                  <Insets left="30.0" right="20.0" />
+                  <Insets left="30.0" />
                </HBox.margin>
                <children>
                   <Label prefHeight="27.0" prefWidth="85.0" text="Home" textFill="WHITE">
@@ -44,14 +44,14 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="97.0" text="Contact Us" textFill="WHITE">
+                  <Label layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="90.0" text="Contact Us" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="292.0" spacing="8.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -82,7 +82,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </HBox.margin>
                      <content>
-                        <VBox prefHeight="1269.0" prefWidth="1327.0" style="-fx-background-color: #FFFFFF;">
+                        <VBox prefHeight="965.0" prefWidth="1327.0" style="-fx-background-color: #FFFFFF;">
                            <children>
                               <HBox prefHeight="507.0" prefWidth="1327.0">
                                  <children>
@@ -282,7 +282,7 @@
                                     </Pane>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="626.0" prefWidth="1327.0">
+                              <HBox prefHeight="445.0" prefWidth="1327.0">
                                  <children>
                                     <Pane prefHeight="606.0" prefWidth="835.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30;">
                                        <HBox.margin>
@@ -294,20 +294,122 @@
                                                 <Font name="Myanmar MN" size="24.0" />
                                              </font>
                                           </Label>
+                                          <AnchorPane layoutX="58.0" layoutY="58.0" prefHeight="116.0" prefWidth="700.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30;">
+                                             <children>
+                                                <HBox prefHeight="132.0" prefWidth="700.0" style="-fx-background-radius: 30;">
+                                                   <children>
+                                                      <VBox prefHeight="163.0" prefWidth="108.0">
+                                                         <children>
+                                                            <Pane prefHeight="41.0" prefWidth="0.0" style="-fx-background-color: #6279FF; -fx-background-radius: 70;">
+                                                               <VBox.margin>
+                                                                  <Insets left="20.0" right="20.0" top="10.0" />
+                                                               </VBox.margin>
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                            </Pane>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox prefHeight="163.0" prefWidth="641.0">
+                                                         <children>
+                                                            <HBox>
+                                                               <VBox.margin>
+                                                                  <Insets top="12.0" />
+                                                               </VBox.margin>
+                                                               <children>
+                                                                  <Label prefHeight="25.0" prefWidth="1134.0" text="Username" textFill="#353550">
+                                                                     <font>
+                                                                        <Font name="Myanmar MN" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <ChoiceBox prefWidth="150.0">
+                                                                     <HBox.margin>
+                                                                        <Insets right="10.0" />
+                                                                     </HBox.margin>
+                                                                  </ChoiceBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <Label prefHeight="11.0" prefWidth="309.0" text="May 18th, 2023 at 4:00 pm" textFill="#0000007b">
+                                                               <font>
+                                                                  <Font name="Myanmar MN" size="8.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
                                        </children>
                                     </Pane>
-                                    <Pane prefHeight="626.0" prefWidth="527.0" style="-fx-border-radius: 30; -fx-border-color: #E1E1E1;">
+                                    <VBox alignment="CENTER" style="-fx-border-color: E1E1E1; -fx-border-radius: 30;">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="519.0" text="Reservation Details: ">
+                                          <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="519.0" text="Reservation Details: ">
                                              <font>
                                                 <Font name="Myanmar MN" size="24.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
                                           </Label>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="453.0" text="From : Start Date" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="453.0" text="To : End Date" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="453.0" text="Duration : 8 days" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="453.0" text="Price per Day" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="453.0" text="Total Price: Price per day * Duration" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" left="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-border-radius: 50; -fx-background-radius: 50;" text="Book Now" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="18.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Button>
                                        </children>
-                                    </Pane>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children>
