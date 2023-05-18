@@ -7,37 +7,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.LoginController">
    <children>
-      <AnchorPane layoutX="-14.0" layoutY="-7.0" prefHeight="811.0" prefWidth="457.0" style="-fx-background-color: #6279FF;" />
-      <AnchorPane layoutX="443.0" prefHeight="819.0" prefWidth="968.0">
+      <AnchorPane layoutX="-14.0" layoutY="-7.0" prefHeight="811.0" prefWidth="528.0" style="-fx-background-color: #6279FF;" />
+      <AnchorPane layoutX="513.0" prefHeight="800.0" prefWidth="891.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="470.0" layoutY="79.0" text="LOGIN">
+            <Label layoutX="412.0" layoutY="82.0" text="LOGIN">
                <font>
-                  <Font name="Arial Black" size="43.0" />
+                  <Font name="Arial Bold" size="43.0" />
                </font>
             </Label>
-            <TextField fx:id="usernamefield" layoutX="323.0" layoutY="276.0" prefHeight="41.0" prefWidth="447.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
+            <TextField fx:id="usernamefield" layoutX="265.0" layoutY="286.0" prefHeight="41.0" prefWidth="447.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordfield" layoutX="323.0" layoutY="402.0" prefHeight="41.0" prefWidth="447.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
+            <PasswordField fx:id="passwordfield" layoutX="265.0" layoutY="410.0" prefHeight="41.0" prefWidth="447.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="button_signin" layoutX="447.0" layoutY="554.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="button_signin" layoutX="388.0" layoutY="553.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="388.0" layoutY="612.0" text="You dont have an account ?" textAlignment="CENTER" textFill="#353550">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="612.0" text="You dont have an account ?" textAlignment="CENTER" textFill="#353550">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="label_login" layoutX="596.0" layoutY="612.0" text="Create an account !" textFill="#353550">
+            <Label fx:id="label_login" layoutX="548.0" layoutY="612.0" onMouseClicked="#handle" text="Create an account !" textFill="#6279ff">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
