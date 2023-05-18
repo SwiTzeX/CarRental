@@ -82,7 +82,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </HBox.margin>
                      <content>
-                        <VBox prefHeight="1269.0" prefWidth="1327.0" style="-fx-background-color: #FFFFFF;">
+                        <VBox prefHeight="965.0" prefWidth="1327.0" style="-fx-background-color: #FFFFFF;">
                            <children>
                               <HBox prefHeight="507.0" prefWidth="1327.0">
                                  <children>
