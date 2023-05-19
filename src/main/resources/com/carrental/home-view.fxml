@@ -32,20 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <Label prefHeight="55.0" prefWidth="124.0" text="LOGO" textFill="WHITE">
          <font>
@@ -227,28 +220,28 @@
       <children>
          <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
-               <ComboBox fx:id="gearDropList" prefHeight="35.0" prefWidth="109.0" promptText="Gear Type" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="gearDropList" onAction="#filterVehicles" prefHeight="37.0" prefWidth="116.0" promptText="Gear Type" styleClass="menu" stylesheets="@style/menu.css">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
                </ComboBox>
-               <ComboBox fx:id="fuelDropList" layoutX="40.0" layoutY="25.0" prefHeight="35.0" prefWidth="109.0" promptText="Fuel Type" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="fuelDropList" layoutX="40.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="113.0" promptText="Fuel Type" styleClass="menu" stylesheets="@style/menu.css">
                   <items>
                   </items>
                </ComboBox>
-               <ComboBox fx:id="brandsDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="35.0" prefWidth="98.0" promptText="Brands" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="brandsDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="99.0" promptText="Brands" styleClass="menu" stylesheets="@style/menu.css">
                   <items>
                   </items>
                </ComboBox>
-               <ComboBox fx:id="colorsDropList" layoutX="289.0" layoutY="25.0" prefHeight="37.0" prefWidth="86.0" promptText="Colors" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="colorsDropList" layoutX="289.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="97.0" promptText="Colors" styleClass="menu" stylesheets="@style/menu.css">
                   <items>
                   </items>
                </ComboBox>
-               <ComboBox fx:id="typeDropList" layoutX="159.0" layoutY="25.0" prefHeight="37.0" prefWidth="81.0" promptText="Class" styleClass="menu" stylesheets="@style/menu.css">
+               <ComboBox fx:id="typeDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="89.0" promptText="Class" styleClass="menu" stylesheets="@style/menu.css">
                   <items>
                   </items>
                </ComboBox>
-               <Button fx:id="clearFilterButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
+               <Button fx:id="clearFilterButton" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
             </children>
             <padding>
                <Insets left="30.0" right="30.0" top="15.0" />

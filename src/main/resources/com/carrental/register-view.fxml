@@ -84,7 +84,7 @@
                   </PasswordField>
                   <VBox alignment="CENTER" prefHeight="30.0" prefWidth="891.0" spacing="5.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#register" onMouseClicked="#goToLogin" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
