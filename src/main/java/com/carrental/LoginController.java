@@ -57,8 +57,20 @@ public class LoginController implements Initializable {
         if ( u != null){
 
             boolean o = u.checkPassword(password);
-               if ( o == false){
-
+               if (o){
+                   try {
+                       FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                       Parent Home = loader.load();
+                       Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                       stage.setScene(new Scene(Home));
+                       stage.show();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+               }
+               if (!o){
+                   a.setVisible(true);
+                   a.setText("your password is not correct !");
                }
         }
 
@@ -67,7 +79,6 @@ public class LoginController implements Initializable {
 
     @FXML
     void transfertoregister(MouseEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Register-view.fxml"));
             Parent Register = loader.load();
