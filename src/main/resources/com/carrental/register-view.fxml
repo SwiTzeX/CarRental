@@ -15,7 +15,10 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1435.0">
          <children>
-            <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;" />
+            <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;">
+               <children>
+                  <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
+               </children></Pane>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="25.0" style="-fx-background-radius: 30 0 0 30; -fx-background-color: #ffffff;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER" textFill="#353550">
@@ -23,7 +26,7 @@
                         <Font name="Arial Bold" size="43.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="503.0" promptText="Full Name" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="fullnameid" prefHeight="25.0" prefWidth="503.0" promptText="Full Name" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -31,7 +34,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField prefWidth="500.0" promptText="Age" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="ageid" prefWidth="500.0" promptText="Age" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -39,7 +42,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField prefWidth="500.0" promptText="Phone Number" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="phonenumid" prefWidth="500.0" promptText="Phone Number" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -47,7 +50,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField prefWidth="500.0" promptText="National ID" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="Nid" prefWidth="500.0" promptText="National ID" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -55,7 +58,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField prefWidth="500.0" promptText="Email Address" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
+                  <TextField fx:id="mailid" prefWidth="500.0" promptText="Email Address" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -63,7 +66,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField prefWidth="500.0" promptText="Comfirm Your Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
+                  <PasswordField fx:id="passwordid" prefWidth="500.0" promptText="Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -71,7 +74,7 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <PasswordField prefWidth="500.0" promptText="Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
+                  <PasswordField fx:id="Vpasswordid" prefWidth="500.0" promptText="Comfirm Your Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -81,7 +84,7 @@
                   </PasswordField>
                   <VBox alignment="CENTER" prefHeight="30.0" prefWidth="891.0" spacing="5.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -96,7 +99,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="loginbtn" onMouseClicked="#goToLogin" text="Login" textFill="#353550">
+                              <Label fx:id="loginbtn" onMouseClicked="#goToLogin" text="Login" textFill="#6279ff">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -111,6 +114,11 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </VBox>
+                  <Label fx:id="errorid" text="Label">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </children>

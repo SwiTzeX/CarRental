@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
+   <children>
+      <VBox layoutX="67.0" layoutY="191.0" prefHeight="592.0" prefWidth="1131.0" />
+      <HBox layoutY="-1.0" prefHeight="55.0" prefWidth="1256.0">
+         <children>
+            <Pane prefHeight="70.0" prefWidth="197.0">
+               <opaqueInsets>
+                  <Insets left="18.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="68.0" />
+               </HBox.margin>
+               <children>
+                  <HBox layoutX="-2.0" prefHeight="70.0" prefWidth="254.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/RestaurantMgtSampleUI-master/src/images/icons8_Search_52px.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="-40.0" top="19.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField prefHeight="35.0" prefWidth="259.0">
+                           <HBox.margin>
+                              <Insets left="12.0" right="3.0" top="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children></Pane>
+            <Label prefHeight="49.0" prefWidth="120.0" text="ADMIN NAME" textFill="#3a3541">
+               <HBox.margin>
+                  <Insets left="774.0" right="11.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Desktop/RestaurantMgtSampleUI-master/src/images/jimmy-fallon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="-1.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="82.0" mouseTransparent="true" prefHeight="42.0" prefWidth="1119.0">
+         <children>
+            <Label prefHeight="53.0" prefWidth="209.0" text="Search Filters" textFill="#3a3541">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox layoutX="67.0" layoutY="126.0" prefHeight="51.0" prefWidth="1185.0">
+         <children>
+            <ChoiceBox prefHeight="40.0" prefWidth="330.0" />
+            <Label prefHeight="42.0" prefWidth="70.0" style="-fx-background-color: #ffffff; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;" />
+            <ChoiceBox prefHeight="43.0" prefWidth="330.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ChoiceBox>
+            <Label prefHeight="46.0" prefWidth="70.0" />
+            <ChoiceBox prefHeight="43.0" prefWidth="330.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

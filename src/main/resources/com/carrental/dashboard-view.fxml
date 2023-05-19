@@ -14,14 +14,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
    <children>
-      <Label alignment="CENTER" prefHeight="128.0" prefWidth="1250.0" text="Dashboard" textFill="#a390f0">
+      <Label alignment="CENTER" prefHeight="128.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
          <font>
             <Font name="Myanmar Text Bold" size="48.0" />
          </font>
       </Label>
-      <HBox prefHeight="58.0" prefWidth="1250.0">
+      <HBox prefHeight="71.0" prefWidth="1250.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: A390F0;" text="Generate report" textFill="WHITE">
+            <Button fx:id="reportButton" mnemonicParsing="false" style="-fx-background-color: #6279ff;" text="Generate report" textFill="WHITE">
                <HBox.margin>
                   <Insets left="1060.0" />
                </HBox.margin>
@@ -30,117 +30,130 @@
                </font>
             </Button>
          </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
       </HBox>
-      <HBox prefHeight="130.0" prefWidth="1250.0">
+      <HBox prefHeight="113.0" prefWidth="1250.0">
          <children>
-            <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: white; -fx-background-radius: 40;">
+            <HBox prefHeight="172.0" prefWidth="1218.0" style="-fx-background-radius: 40;">
                <children>
-                  <HBox prefHeight="74.0" prefWidth="301.0">
+                  <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: F0F2FF; -fx-background-radius: 40;">
                      <children>
-                        <Label prefHeight="54.0" prefWidth="227.0" text="Customers">
+                        <HBox prefHeight="74.0" prefWidth="301.0">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="227.0" text="Customers">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/clients.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="countCust" alignment="CENTER" prefHeight="35.0" prefWidth="326.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/clients.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <Label alignment="CENTER" prefHeight="79.0" prefWidth="313.0" text="000 000">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="60.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox prefHeight="154.0" prefWidth="320.0" style="-fx-background-radius: 40; -fx-background-color: white;">
-               <children>
-                  <HBox prefHeight="73.0" prefWidth="438.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="154.0" prefWidth="320.0" style="-fx-background-radius: 40; -fx-background-color: F0F2FF;">
                      <children>
-                        <Label prefHeight="54.0" prefWidth="242.0" text="Available cars">
+                        <HBox prefHeight="73.0" prefWidth="438.0">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="242.0" text="Available cars">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/voitures.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="countCars" alignment="CENTER" prefHeight="79.0" prefWidth="321.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/voitures.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <Label alignment="CENTER" prefHeight="79.0" prefWidth="321.0" text="000 000">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <HBox.margin>
-                  <Insets left="100.0" />
-               </HBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </VBox>
-            <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: white; -fx-background-radius: 40;">
-               <children>
-                  <HBox prefHeight="74.0" prefWidth="301.0">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: F0F2FF; -fx-background-radius: 40;">
                      <children>
-                        <Label prefHeight="54.0" prefWidth="227.0" text="Total Sales">
+                        <HBox prefHeight="74.0" prefWidth="301.0">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="227.0" text="Total Sales">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/dollar.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label fx:id="countTotalSales" alignment="CENTER" prefHeight="79.0" prefWidth="321.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/dollar.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
-                  </HBox>
-                  <Label alignment="CENTER" prefHeight="79.0" prefWidth="321.0" text="000 000">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
                </children>
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </padding>
-            </VBox>
+            </HBox>
          </children>
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </HBox>
-      <Label alignment="CENTER" prefHeight="78.0" prefWidth="1250.0" text="Sales per month" textFill="#a390f0">
+      <Label alignment="CENTER" prefHeight="78.0" prefWidth="1250.0" text="Sales per month" textFill="#6b82ff">
          <font>
             <Font name="Myanmar Text" size="36.0" />
          </font>

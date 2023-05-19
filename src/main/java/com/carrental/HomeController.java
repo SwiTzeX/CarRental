@@ -90,21 +90,37 @@ public class HomeController implements Initializable {
 
     public void loadCardsByPage(int pageNumber){
         cardLayout.getChildren().clear();
-        pageNumber--;
-        try {
-            for (int i = 0; i < vehiclesHolder.get(pageNumber).size(); i++) { // vehiclesHolder.get(0) = first 4 items in vehicles // first page
-                Vehicle vehicle = vehiclesHolder.get(pageNumber).get(i);
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
-                VBox vehicleCard = fxmlLoader.load();
-                VehicleCardController vehicleCardController = fxmlLoader.getController();
-                vehicleCardController.setData(vehicle);
-                cardLayout.getChildren().add(vehicleCard);
-                vehicleCardController.loadIn();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        nextPageButton.setVisible(false);
+        previousPageButton.setVisible(false);
+        pageNumberLabel.setText(String.valueOf(pageNumber));
+        if (maxPages > pageNumber){
+            nextPageButton.setVisible(true);
         }
+        if (pageNumber > 1){
+            previousPageButton.setVisible(true);
+        }
+        if(vehicles.size()> 0) {
+            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
+            pageNumber--;
+            try {
+                for (int i = 0; i < vehiclesHolder.get(pageNumber).size(); i++) { // vehiclesHolder.get(0) = first 4 items in vehicles // first page
+                    Vehicle vehicle = vehiclesHolder.get(pageNumber).get(i);
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
+                    VBox vehicleCard = fxmlLoader.load();
+                    VehicleCardController vehicleCardController = fxmlLoader.getController();
+                    vehicleCardController.setData(vehicle);
+                    cardLayout.getChildren().add(vehicleCard);
+                    vehicleCardController.loadIn();
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            totalVeh.setText("0 Vehicle found");
+        }
+
     }
 
     @Override
@@ -119,71 +135,72 @@ public class HomeController implements Initializable {
         searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
+
+        /*for(int i=0; i<5; i++) {
+            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        }
+        vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        */
+        //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
+
         vehicles = Vehicle.getAllVehicles();
-        for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        }
-        vehicles.add(new Vehicle(2, "Test", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        if(vehicles.size()> 1) {
-            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
-        }else{
-            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicle found");
-        }
+        /*for(int i=0; i<2; i++) {
+            vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
+        }*/
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
-        if (maxPages > 1){
-            nextPageButton.setVisible(true);
-        }
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
-            System.out.println(brandsDropList.getItems());
             brandsDropList.getItems().add(brand);
         }
+        gearDropList.getItems().addAll("Manual","Automated");
+        fuelDropList.getItems().addAll("Diesel","Petrol","Electric");
+        colorsDropList.getItems().addAll("Red","Brown","Blue","Yellow","Green","White");
+        typeDropList.getItems().addAll("Sedan","Wagon","SUV","Hatchback","Coupe","Sport","Pickup","Micro");
+
     }
     @FXML
     public void filterVehicles(javafx.event.ActionEvent event) {
-        Text theText = new Text(brandsDropList.getValue());
+        ComboBox<String> dropList = (ComboBox<String>) event.getSource();
+        Text theText = new Text(dropList.getValue());
         double width = (int)theText.getBoundsInLocal().getWidth()+63;
-        brandsDropList.setPrefWidth(width);
-        filterSettings.set(2, brandsDropList.getValue());
-        vehiclesHolder = HomeController.split(Vehicle.filterVehicles(filterSettings),4);
-        loadCardsByPage(1);
+        dropList.setPrefWidth(width);
+        if (dropList == gearDropList) filterSettings.set(0, dropList.getValue());
+        else if (dropList == fuelDropList) filterSettings.set(1, dropList.getValue());
+        else if (dropList == brandsDropList) filterSettings.set(2, dropList.getValue());
+        else if (dropList == colorsDropList) filterSettings.set(3, dropList.getValue());
+        else if (dropList == typeDropList) filterSettings.set(4, dropList.getValue());
+        vehicles = Vehicle.filterVehicles(filterSettings);
+        vehiclesHolder = HomeController.split(vehicles,4);
+        maxPages = vehiclesHolder.size();
+        this.loadCardsByPage(1);
+    }
+
+    @FXML
+    public void clearAllFilters(javafx.event.ActionEvent event) {
+        filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+        vehicles = Vehicle.getAllVehicles();
+        vehiclesHolder = HomeController.split(vehicles,4);
+        maxPages = vehiclesHolder.size();
+        this.loadCardsByPage(1);
     }
     @FXML
     public void nextPageDisplay(){
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber++;
         this.loadCardsByPage(pageNumber);
-        pageNumberLabel.setText(String.valueOf(pageNumber));
-        if(!previousPageButton.isVisible()) {
-            previousPageButton.setVisible(true);
-        }
-        if(pageNumber == maxPages){
-            nextPageButton.setVisible(false);
-        }
     }
     @FXML
     public void previousPageDisplay(){
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber--;
         this.loadCardsByPage(pageNumber);
-        pageNumberLabel.setText(String.valueOf(pageNumber));
-        if (pageNumber == 1) {
-            previousPageButton.setVisible(false);
-        }
-        if(pageNumber < maxPages){
-            nextPageButton.setVisible(true);
-        }
     }
     @FXML
     void goToLogin(javafx.event.ActionEvent event) {
-
         try {
-            // Load the FXML file for the second view
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
             Parent login = loader.load();
-
-            // Create a new stage and set the second view as the root
             Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(login));
             stage.show();
@@ -195,11 +212,9 @@ public class HomeController implements Initializable {
     void goToRegister(javafx.event.ActionEvent event) {
 
         try {
-            // Load the FXML file for the second view
             FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
             Parent register = loader.load();
 
-            // Create a new stage and set the second view as the root
             Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(register));
             stage.show();
