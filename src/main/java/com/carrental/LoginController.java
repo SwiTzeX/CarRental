@@ -68,11 +68,9 @@ public class LoginController implements Initializable {
 
     void transfertoregister(MouseEvent event) {
         try {
-            // Load the FXML file for the second view
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
             Parent register = loader.load();
-
-            // Create a new stage and set the second view as the root
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(register));
             stage.show();
