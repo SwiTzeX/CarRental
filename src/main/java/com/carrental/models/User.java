@@ -19,8 +19,9 @@ public class User {
     public String password;
     public boolean isAdmin;
 
-    public User(Integer id, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin) {
+    public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin) {
         this.id = id;
+        this.nId = nId;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.status = status;
@@ -193,14 +194,15 @@ public class User {
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
                 int id = rs.getInt(1);
-                String email = rs.getString(2);
-                String phoneNumber = rs.getString(3);
-                boolean status = rs.getBoolean(4);
-                int age = rs.getInt(5);
-                String fullName = rs.getString(6);
-                String password = rs.getString(7);
-                boolean isAdmin = rs.getBoolean(8);
-                users.add(new User(id,email,phoneNumber,status,age,fullName,password,isAdmin));
+                String nid = rs.getString(2);
+                String email = rs.getString(3);
+                String phoneNumber = rs.getString(4);
+                boolean status = rs.getBoolean(5);
+                int age = rs.getInt(6);
+                String fullName = rs.getString(7);
+                String password = rs.getString(8);
+                boolean isAdmin = rs.getBoolean(9);
+                users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin));
             }
             rs.close();
             stmt.close();
@@ -216,14 +218,15 @@ public class User {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
-                String email = rs.getString(2);
-                String phoneNumber = rs.getString(3);
-                boolean status = rs.getBoolean(4);
-                int age = rs.getInt(5);
-                String fullName = rs.getString(6);
-                String password = rs.getString(7);
-                boolean isAdmin = rs.getBoolean(8);
-                return new User(id,email,phoneNumber,status,age,fullName,password,isAdmin);
+                String nid = rs.getString(2);
+                String email = rs.getString(3);
+                String phoneNumber = rs.getString(4);
+                boolean status = rs.getBoolean(5);
+                int age = rs.getInt(6);
+                String fullName = rs.getString(7);
+                String password = rs.getString(8);
+                boolean isAdmin = rs.getBoolean(9);
+                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
             }
             rs.close();
             stmt.close();
@@ -240,13 +243,14 @@ public class User {
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
                 int id = rs.getInt(1);
-                String phoneNumber = rs.getString(3);
-                boolean status = rs.getBoolean(4);
-                int age = rs.getInt(5);
-                String fullName = rs.getString(6);
-                String password = rs.getString(7);
-                boolean isAdmin = rs.getBoolean(8);
-                return new User(id,email,phoneNumber,status,age,fullName,password,isAdmin);
+                String nid = rs.getString(2);
+                String phoneNumber = rs.getString(4);
+                boolean status = rs.getBoolean(5);
+                int age = rs.getInt(6);
+                String fullName = rs.getString(7);
+                String password = rs.getString(8);
+                boolean isAdmin = rs.getBoolean(9);
+                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
             }
             rs.close();
             stmt.close();
@@ -269,7 +273,7 @@ public class User {
                 id = rs.getInt(1);
             }
             stmt.close();
-            return new User(id,email,phoneNumber,status,age,fullName,password,isAdmin);
+            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
