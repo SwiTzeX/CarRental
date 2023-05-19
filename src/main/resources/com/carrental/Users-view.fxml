@@ -107,7 +107,7 @@
          <children>
             <HBox layoutY="12.0" prefHeight="70.0" prefWidth="1131.0">
                <children>
-                  <TextField opacity="0.7" prefHeight="45.0" prefWidth="194.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #fffffff;" text="            Search Invoice">
+                  <TextField opacity="0.7" prefHeight="45.0" prefWidth="194.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #fffffff; -fx-border-color: black;" text="            Search Invoice">
                      <HBox.margin>
                         <Insets left="769.0" />
                      </HBox.margin>
