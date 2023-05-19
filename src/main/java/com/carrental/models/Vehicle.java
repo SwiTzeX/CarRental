@@ -43,8 +43,8 @@ public class Vehicle {
         this.trunkCapacity = trunkCapacity;
         this.maxSpeed = maxSpeed;
         this.horsePower = horsePower;
-        this.brandImage = "brands/volkswagen.png";
-        this.image = "vehicles/volkswagen-touareg.png";
+        this.brandImage = "brands/"+brandName+".png";
+        this.image = "vehicles/"+brandName+"/"+modelName+"/"+color+".png";
     }
 
 
@@ -395,7 +395,7 @@ public class Vehicle {
                     + ",'" + type + "'," + passengers + ",'" + fuelType + "','" +gearType
                     + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower + ")";
             Statement stmt = conn.createStatement();
-            stmt.executeUpdate(req);
+            stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
             ResultSet rs = stmt.getGeneratedKeys();
             if(rs.next()) {

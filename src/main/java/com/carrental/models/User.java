@@ -264,7 +264,7 @@ public class User {
         boolean isAdmin = false;
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null,'" + email + "', '" + nid + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null,'" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;

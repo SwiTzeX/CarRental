@@ -55,6 +55,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="a" text="Label" textFill="RED" />
                </children>
                <padding>
                   <Insets left="200.0" right="200.0" />

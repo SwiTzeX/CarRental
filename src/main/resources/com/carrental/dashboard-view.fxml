@@ -60,9 +60,9 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <Label fx:id="countCust" alignment="CENTER" prefHeight="79.0" prefWidth="313.0">
+                        <Label fx:id="countCust" alignment="CENTER" prefHeight="35.0" prefWidth="326.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                      </children>
@@ -97,7 +97,7 @@
                         </HBox>
                         <Label fx:id="countCars" alignment="CENTER" prefHeight="79.0" prefWidth="321.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                      </children>
@@ -129,7 +129,7 @@
                         </HBox>
                         <Label fx:id="countTotalSales" alignment="CENTER" prefHeight="79.0" prefWidth="321.0">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                      </children>
