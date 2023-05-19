@@ -1,4 +1,4 @@
-package com.carrental.models;
+package com.carrental;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
