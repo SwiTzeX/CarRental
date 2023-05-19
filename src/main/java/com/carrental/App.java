@@ -10,10 +10,10 @@ import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 import java.io.IOException;
 import java.sql.*;
 
-public class HelloApplication extends Application {
+public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         stage.setTitle("Hello test!");
         stage.setScene(scene);
