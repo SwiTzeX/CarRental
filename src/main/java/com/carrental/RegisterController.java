@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -56,6 +57,38 @@ public class RegisterController implements Initializable {
     private Label errorid;
 
 
+    private boolean validatePassword(String password) {
+        // Define regular expressions for different character types
+        String lowercaseRegex = ".*[a-z].*";
+        String uppercaseRegex = ".*[A-Z].*";
+        String numberRegex = ".*\\d.*";
+        String specialCharRegex = ".*[!@#$%^&*()_+\\-=[\\\\]{};':\"\\\\|,.<>/?].*";
+
+        // Check if the password meets the required criteria
+        if (password.matches(lowercaseRegex) && password.matches(uppercaseRegex) &&
+                password.matches(numberRegex) && password.matches(specialCharRegex)) {
+            return true; // Password contains multiple character types
+        } else {
+            return false; // Password does not meet the criteria
+        }
+    }
+
+
+    private boolean validatePhoneNum(String phonen) {
+        // Define regular expressions for different character types
+
+        String numberRegex = ".*\\d.*";
+
+
+        // Check if the password meets the required criteria
+        if (phonen.matches(numberRegex)) {
+            return true; // Password contains multiple character types
+        } else {
+            return false; // Password does not meet the criteria
+        }
+    }
+
+
     @FXML
     void register(ActionEvent event) {
         String name = fullnameid.getText();
@@ -79,8 +112,19 @@ public class RegisterController implements Initializable {
             return;
         }
         if (password.length()<8) {
-            //errorid.setVisible(true);
+            errorid.setVisible(true);
             errorid.setText("Your password should contain at least 8 characters !");
+
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            errorid.setVisible(true);
+            errorid.setText("Your password must contain:\n" +
+                    "\t•Upper case\n" +
+                    "\t•Lower case\n" +
+                    "\t•At least one number\n" +
+                    "\t•At least one special character");
 
             return;
         }
@@ -95,6 +139,11 @@ public class RegisterController implements Initializable {
             errorid.setText("Your email doesn't have @ !");
 
             return;
+        }
+        //String numberRegex = ".*\\d.*";
+        if(!phone.matches("\\d*")){
+            errorid.setVisible(true);
+            errorid.setText("needs to contain only numbers");
         }
 
 
