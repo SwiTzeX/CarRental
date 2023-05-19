@@ -3,62 +3,29 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersView">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
    <children>
-      <VBox layoutX="67.0" layoutY="189.0" prefHeight="592.0" prefWidth="1119.0" />
+      <VBox layoutX="41.0" layoutY="209.0" prefHeight="592.0" prefWidth="1119.0" />
       <HBox layoutY="-1.0" prefHeight="55.0" prefWidth="1256.0">
          <children>
-            <HBox maxHeight="-Infinity" prefHeight="51.0" prefWidth="278.0" spacing="20.0">
-               <children>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../Desktop/RestaurantMgtSampleUI-master/src/images/icons8_Search_52px.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="34.0" top="19.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <TextField opacity="0.7" prefHeight="51.0" prefWidth="238.0" promptText="Search">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="-3.0" top="11.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                     <effect>
-                        <Lighting>
-                           <bumpInput>
-                              <Shadow />
-                           </bumpInput>
-                           <light>
-                              <Light.Distant>
-                                 <color>
-                                    <Color red="0.22745098173618317" green="0.2078431397676468" blue="0.2549019753932953" />
-                                 </color>
-                              </Light.Distant>
-                           </light>
-                        </Lighting>
-                     </effect>
-                  </TextField>
-               </children>
-            </HBox>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="70.0" prefWidth="197.0">
+               <opaqueInsets>
+                  <Insets left="18.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="68.0" />
+               </HBox.margin></Pane>
             <Label prefHeight="49.0" prefWidth="120.0" text="ADMIN NAME" textFill="#3a3541">
                <HBox.margin>
-                  <Insets left="563.0" right="11.0" top="15.0" />
+                  <Insets left="510.0" right="11.0" top="15.0" />
                </HBox.margin>
                <font>
                   <Font name="Berlin Sans FB" size="17.0" />
@@ -74,7 +41,7 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox layoutX="67.0" layoutY="82.0" prefHeight="42.0" prefWidth="1119.0">
+      <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="82.0" mouseTransparent="true" prefHeight="42.0" prefWidth="1119.0">
          <children>
             <Label prefHeight="53.0" prefWidth="209.0" text="Search Filters" textFill="#3a3541">
                <font>

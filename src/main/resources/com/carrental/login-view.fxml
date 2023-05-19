@@ -27,17 +27,17 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="button_signin" layoutX="388.0" layoutY="553.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="button_signin" layoutX="388.0" layoutY="553.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="612.0" text="You dont have an account ?" textAlignment="CENTER" textFill="#353550">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="612.0" text="You dont have an account ?" textAlignment="CENTER" textFill="#353550">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="label_login" layoutX="548.0" layoutY="612.0" onMouseClicked="#handle" text="Create an account !" textFill="#6279ff">
+            <Label fx:id="label_login" layoutX="534.0" layoutY="612.0" onMouseClicked="#transfertoregister" text="Create an account !" textFill="#6279ff">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
