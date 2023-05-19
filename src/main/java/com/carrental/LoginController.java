@@ -39,7 +39,7 @@ public class LoginController implements Initializable {
     public PasswordField passwordfield;
 
     @FXML
-    private javafx.scene.control.Label a;
+    private Label a;
 
     @FXML
     void login(ActionEvent event) {
@@ -48,34 +48,17 @@ public class LoginController implements Initializable {
 
 
         User u = User.getUserByEmail(username);
+        System.out.println(u);
         if ( u == null){
-
             a.setVisible(true);
-            a.setText("sadly we didnt find this username on our data base");
-
+            a.setText("Account not found!");
+            return;
         }
-        if ( u != null){
 
-            boolean o = u.checkPassword(password);
-               if (o){
-                   try {
-                       FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
-                       Parent Home = loader.load();
-                       Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-                       stage.setScene(new Scene(Home));
-                       stage.show();
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                   }
-               }
-               if (!o){
-                   a.setVisible(true);
-                   a.setText("your password is not correct !");
-               }
+        //boolean o = u.checkPassword(password);
         }
 
 
-    }
 
     @FXML
     void transfertoregister(MouseEvent event) {
@@ -93,7 +76,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        a.setVisible(false);
     }
 }
 

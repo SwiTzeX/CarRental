@@ -159,7 +159,6 @@ public class RegisterController implements Initializable {
 
 
         User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password);
-        System.out.println(user);
         errorid.setVisible(false);
         try {
             // Load the FXML file for the second view

@@ -92,7 +92,7 @@ public class HomeController implements Initializable {
         cardLayout.getChildren().clear();
         nextPageButton.setVisible(false);
         previousPageButton.setVisible(false);
-
+        pageNumberLabel.setText(String.valueOf(pageNumber));
         if (maxPages > pageNumber){
             nextPageButton.setVisible(true);
         }
@@ -135,22 +135,28 @@ public class HomeController implements Initializable {
         searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        vehicles = Vehicle.getAllVehicles();
-        for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+
+        /*for(int i=0; i<5; i++) {
+            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         }
-        vehicles.add(new Vehicle(2, "Test", "Touareg", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        */
+        //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
+
+        vehicles = Vehicle.getAllVehicles();
+        /*for(int i=0; i<2; i++) {
+            vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
+        }*/
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
-            System.out.println(brandsDropList.getItems());
             brandsDropList.getItems().add(brand);
         }
         gearDropList.getItems().addAll("Manual","Automated");
         fuelDropList.getItems().addAll("Diesel","Petrol","Electric");
-        colorsDropList.getItems().addAll("Red","Brown","Blue","Yellow","Green");
-        typeDropList.getItems().addAll("Sedan","Wagon","SUV","HatchBack","Coupe","Sport","Pickup","4WD","Micro");
+        colorsDropList.getItems().addAll("Red","Brown","Blue","Yellow","Green","White");
+        typeDropList.getItems().addAll("Sedan","Wagon","SUV","Hatchback","Coupe","Sport","Pickup","Micro");
 
     }
     @FXML
@@ -183,14 +189,12 @@ public class HomeController implements Initializable {
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber++;
         this.loadCardsByPage(pageNumber);
-        pageNumberLabel.setText(String.valueOf(pageNumber));
     }
     @FXML
     public void previousPageDisplay(){
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber--;
         this.loadCardsByPage(pageNumber);
-        pageNumberLabel.setText(String.valueOf(pageNumber));
     }
     @FXML
     void goToLogin(javafx.event.ActionEvent event) {
