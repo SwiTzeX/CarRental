@@ -46,7 +46,7 @@
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../Desktop/RestaurantMgtSampleUI-master/src/images/icons8_Search_52px.png" />
+                              <Image url="@icons/icons8_Search_52px.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="-16.0" top="27.0" />
@@ -84,7 +84,7 @@
             </Label>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Desktop/RestaurantMgtSampleUI-master/src/images/jimmy-fallon.png" />
+                  <Image url="@icons/jimmy-fallon.png" />
                </image>
                <HBox.margin>
                   <Insets left="-1.0" top="19.0" />
