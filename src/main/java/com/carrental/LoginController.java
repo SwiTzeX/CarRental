@@ -50,16 +50,34 @@ public class LoginController implements Initializable {
         User u = User.getUserByEmail(username);
         System.out.println(u);
         if ( u == null){
+            // if u is null user is not found
             a.setVisible(true);
             a.setText("Account not found!");
-            return;
+
         }
-
-        //boolean o = u.checkPassword(password);
+        if ( u != null){
+            boolean o = u.checkPassword(password);
+            if (o){
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                    Parent Home = loader.load();
+                    Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(Home));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!o){
+                a.setVisible(true);
+                a.setText("password is not working");
+            }
         }
-
-
-
+        else {
+            a.setVisible(true);
+            a.setText("error");
+        }
+        }
     @FXML
     void transfertoregister(MouseEvent event) {
         try {
