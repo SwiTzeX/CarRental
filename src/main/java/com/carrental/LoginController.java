@@ -58,21 +58,21 @@ public class LoginController implements Initializable {
 
             boolean o = u.checkPassword(password);
                if ( o == false){
-                   a.setVisible(true);
-                   a.setText("there is something wrong with your password");
+
                }
         }
 
 
     }
 
+    @FXML
     void transfertoregister(MouseEvent event) {
-        try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
-            Parent register = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(register));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register-view.fxml"));
+            Parent Register = loader.load();
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(Register));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
