@@ -1,19 +1,23 @@
 package com.carrental;
 
 import com.carrental.models.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.print.DocFlavor;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
+
 import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +25,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public abstract class LoginController implements Initializable{
+public class LoginController implements Initializable{
+
 
     @FXML
     public Button button_signin;
@@ -38,60 +43,49 @@ public abstract class LoginController implements Initializable{
     private javafx.scene.control.Label a;
 
     @FXML
-    void login(ActionEvent ev){
+
+    void transfertoregister(MouseEvent event){
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+            Parent register = loader.load();
+
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(register));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void login(ActionEvent event) {
     String username = usernamefield.getText();
     String password = passwordfield.getText();
 
+      User u =  User.getUserByEmail(username);
+        if( u == null){
+         a.setVisible(true);
+         a.setText("sadly , we didnt find ur username in our data base");
+        }
 
-    User u = User.create(NULL,username,NULL,NULL,NULL,password);
-
-    ArrayList<User> users;
-    if (u.equals(NULL)) {
-        a.setVisible(true);
-        a.setText("it looks like something is wrong , please double check ur inputs.");
-    }
-    if ( u != NULL){
-        a.setVisible(false);
-        users = new ArrayList<User>.getAllUsers();
-         for (int i = 0; i <= users.size(); i++){
-            if (u.username == users.email(i)){
-                if (u.password == users.password(i)){
-                    try{}
-                    catch{}
-                }
-                if(u.password != users.password(i)){
-                    a.setVisible(true);
-                    a.setText("password is not correct");
-                }
-            }
-            if(u.username != users.email(i)){}
-
-
-
-         }
-    }
-    }
-
-
-    public void initialize(URL location, ResourceBundle resources){
-
-        label_login.setOnAction(new EventHandler<ActionEvent>()){
-           @Override
-            public void handle(ActionEvent action){
+        if (u != null) {
+            boolean o = u.checkPassword(password);
+            if ( o == true){
 
             }
-
         }
 
 
     }
 
 
-
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+}
 
 
 
