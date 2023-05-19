@@ -76,15 +76,25 @@ public class RegisterController implements Initializable {
 
     private boolean validatePhoneNum(String phonen) {
         // Define regular expressions for different character types
-
-        String numberRegex = ".*\\d.*";
-
+        String lowercaseRegex = ".*[a-z].*";
+        String uppercaseRegex = ".*[A-Z].*";
+        String specialCharRegex = ".*[!@#$%^&*()_+\\-=[\\\\]{};':\"\\\\|,.<>/?].*";
 
         // Check if the password meets the required criteria
-        if (phonen.matches(numberRegex)) {
+        if (phonen.matches(lowercaseRegex) || phonen.matches(uppercaseRegex) ||
+                phonen.matches(specialCharRegex)) {
             return true; // Password contains multiple character types
         } else {
             return false; // Password does not meet the criteria
+        }
+    }
+
+    private boolean ValidateEmail(String mail) {
+        String emailRegex=".+@.+\\..+";
+        if (mail.matches(emailRegex)){
+            return true; // Password contains multiple character types
+        } else {
+        return false; // Password does not meet the criteria
         }
     }
 
@@ -134,16 +144,17 @@ public class RegisterController implements Initializable {
 
             return;
         }
-        if (!email.contains(""+"@"+"")) {
+        if (!ValidateEmail(email)) {
             errorid.setVisible(true);
-            errorid.setText("Your email doesn't have @ !");
+            errorid.setText("Invalid email");
 
             return;
         }
         //String numberRegex = ".*\\d.*";
-        if(!phone.matches("\\d*")){
+        if(validatePhoneNum(phone)){
             errorid.setVisible(true);
             errorid.setText("needs to contain only numbers");
+            return;
         }
 
 
