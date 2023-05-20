@@ -18,9 +18,9 @@
 
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1199.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
    <children>
-      <VBox layoutX="74.0" layoutY="223.0" prefHeight="503.0" prefWidth="1270.0">
+      <VBox layoutX="54.0" layoutY="223.0" prefHeight="503.0" prefWidth="1290.0">
          <children>
-            <TableView prefHeight="503.0" prefWidth="1270.0">
+            <TableView prefHeight="505.0" prefWidth="1290.0">
               <columns>
                 <TableColumn prefWidth="128.0" text="Full name" />
                 <TableColumn minWidth="0.0" prefWidth="105.0" text="NID" />
