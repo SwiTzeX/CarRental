@@ -1,4 +1,6 @@
 package com.carrental;
 
-public class UsersController {
+public class UsersController{
+
+
 }
