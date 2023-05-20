@@ -1,6 +1,8 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
 import com.carrental.models.User;
+import com.carrental.models.Vehicle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +22,6 @@ public class App extends Application {
         stage.setResizable(false);
         stage.show();
     }
-//
 
     public static void main(String[] args) {
         launch();

@@ -3,9 +3,12 @@ package com.carrental.models;
 import com.carrental.SingletonConnection;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
 
 public class Reservation {
     public User user;
@@ -203,6 +206,51 @@ public class Reservation {
             throw new RuntimeException(e);
         }
         return reservations;
+    }
+
+    public static ArrayList<Reservation> getAllReservationsByMonth(int month){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE MONTH(startDate) = " + month ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getDate(3);
+                Date endDate = rs.getDate(4);
+                boolean stat = rs.getBoolean(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
+    }
+
+    public float totalPrice(){
+        long durationInMillis = this.endDate.getTime() - this.startDate.getTime();
+        long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
+        return this.vehicle.getPrice() * daysBetween;
+    }
+    public static float totalSales(){
+        ArrayList<Reservation> list = getAllReservationsByStatus(true);
+        float total = 0;
+        for(Reservation res : list){
+            total += res.totalPrice();
+        }
+        return total;
+    }
+    public static float totalSaleInMonth(int month){
+        ArrayList<Reservation> list = getAllReservationsByMonth(month);
+        float total = 0;
+        for(Reservation res : list){
+            total += res.totalPrice();
+        }
+        return total;
     }
     @Override
     public String toString() {
