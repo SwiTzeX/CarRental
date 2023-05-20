@@ -66,7 +66,7 @@
                      </children>
                   </HBox>
                </children></Pane>
-            <Label alignment="CENTER" prefHeight="38.0" prefWidth="355.0" text="Gestion des comptes" textFill="#a390f0">
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="355.0" text="Gestion des comptes" textFill="#6279ff">
                <HBox.margin>
                   <Insets left="205.0" right="8.0" top="15.0" />
                </HBox.margin>
@@ -76,7 +76,7 @@
             </Label>
             <Label prefHeight="31.0" prefWidth="113.0" text="ADMIN NAME" textFill="#00000095">
                <HBox.margin>
-                  <Insets left="248.0" top="20.0" />
+                  <Insets left="235.0" top="18.0" />
                </HBox.margin>
                <font>
                   <Font name="Arial" size="17.0" />
@@ -94,7 +94,7 @@
       </HBox>
       <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="82.0" mouseTransparent="true" prefHeight="42.0" prefWidth="1119.0">
          <children>
-            <Label prefHeight="53.0" prefWidth="209.0" text="Search Filters" textFill="#a390f0">
+            <Label prefHeight="53.0" prefWidth="209.0" text="Search Filters" textFill="#6279ff">
                <font>
                   <Font size="20.0" />
                </font>
@@ -117,7 +117,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: ff #; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="975.0" right="12.0" top="-4.0" />
+                        <Insets left="975.0" right="12.0" top="13.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="14.0" />
