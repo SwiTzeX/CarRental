@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1199.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="503.0" prefWidth="1290.0">
          <children>
@@ -28,7 +28,7 @@
                   <TableColumn prefWidth="195.0" text="E-MAIL" />
                   <TableColumn prefWidth="249.0" text="Age" />
                   <TableColumn prefWidth="207.0" text="Status" />
-                  <TableColumn prefWidth="184.0" text="Action" />
+                  <TableColumn prefWidth="204.0" text="Action" />
               </columns>
             </TableView>
          </children></VBox>
