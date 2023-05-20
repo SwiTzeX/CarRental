@@ -387,7 +387,6 @@ public class Vehicle {
         }
         return null;
     }
-
     public static Vehicle create(String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower){
         try {
             Connection conn = SingletonConnection.getConnection();
