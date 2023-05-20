@@ -126,22 +126,22 @@
       </Pane>
       <HBox layoutX="106.0" layoutY="142.0" prefHeight="70.0" prefWidth="1270.0" spacing="10.0">
          <children>
-            <ComboBox fx:id="gearDropList" onAction="#filterVehicles" prefHeight="45.0" prefWidth="141.0" promptText="Select Role" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox prefHeight="45.0" prefWidth="150.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="gearDropList1" onAction="#filterVehicles" prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="gearDropList2" onAction="#filterVehicles" prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="clearFilterButton" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
                <HBox.margin>
                   <Insets top="21.0" />
                </HBox.margin>
