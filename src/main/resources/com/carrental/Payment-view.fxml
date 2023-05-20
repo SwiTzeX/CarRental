@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,18 +14,18 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
    <children>
-      <Label layoutX="264.0" layoutY="84.0" prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
+      <Label layoutX="176.0" layoutY="96.0" prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <HBox prefHeight="55.0" prefWidth="1400.0" />
-      <Button layoutX="951.0" layoutY="553.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" text="Checkout" textFill="WHITE">
+      <HBox prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #000;" />
+      <Button layoutX="1011.0" layoutY="605.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" text="Checkout" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <VBox layoutX="204.0" layoutY="485.0" prefHeight="135.0" prefWidth="619.0" spacing="18.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 2%; -fx-background-radius: 2%;">
+      <VBox layoutX="112.0" layoutY="528.0" prefHeight="135.0" prefWidth="714.0" spacing="18.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 2%; -fx-background-radius: 2%;">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Payment methods :" textFill="#353550">
                <font>
@@ -40,7 +42,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="180.0" />
+                        <Insets right="500.0" />
                      </VBox.margin>
                   </RadioButton>
                   <RadioButton mnemonicParsing="false" text="On-site">
@@ -48,14 +50,14 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="176.0" />
+                        <Insets right="494.0" />
                      </VBox.margin>
                   </RadioButton>
                </children>
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="857.0" layoutY="141.0" prefHeight="154.0" prefWidth="352.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;">
+      <VBox layoutX="887.0" layoutY="152.0" prefHeight="155.0" prefWidth="401.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.rightAnchor="112.0">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Rental fee details" textFill="#353550">
                <font>
@@ -112,7 +114,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="857.0" layoutY="317.0" prefHeight="216.0" prefWidth="352.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;">
+      <VBox layoutX="888.0" layoutY="348.0" prefHeight="201.0" prefWidth="399.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.rightAnchor="113.0">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Excellent choice !" textFill="#353550">
                <font>
@@ -157,6 +159,182 @@
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="204.0" layoutY="141.0" prefHeight="315.0" prefWidth="617.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" />
+      <VBox layoutX="112.0" layoutY="152.0" prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.leftAnchor="112.0">
+         <children>
+            <HBox prefHeight="334.0" prefWidth="712.0">
+               <children>
+                  <VBox prefHeight="171.0" prefWidth="299.0" spacing="5.0">
+                     <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="42.0" prefWidth="283.0">
+                           <VBox.margin>
+                              <Insets left="9.0" top="9.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="43.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@brands/Ferrari.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="41.0" prefWidth="161.0" text="CarBrandVar">
+                                 <font>
+                                    <Font name="Arial" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <ImageView fitHeight="281.0" fitWidth="298.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@vehicles/Ferrari/F430/red.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="70.0" />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="316.0" prefWidth="394.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="185.0" text="Model : ModelVar" textFill="#353535">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/paint-bucket.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="201.0" text="Color - ColorVar" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/gear-shift.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="201.0" text="Gear Type : GearVar" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/fuel.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="218.0" text="Fuel Type : FuelTypeVAR" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="274.0" text="Number of Passengers : NbrVar" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/piston.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="201.0" text="Horse Power : HPVar" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="47.0" prefWidth="372.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/boot%20(1).png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="290.0" text="Trunk Capacity - TrunkCapVar m³" textFill="#353535">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="18.0" left="60.0" top="18.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children></VBox>
    </children>
 </AnchorPane>
