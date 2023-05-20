@@ -74,7 +74,7 @@
                   <Font name="Arial Bold" size="35.0" />
                </font>
             </Label>
-            <Label prefHeight="31.0" prefWidth="113.0" text="ADMIN NAME" textFill="#00000095">
+            <Label prefHeight="31.0" prefWidth="113.0" text="ADMIN NAME" textFill="#00000094">
                <HBox.margin>
                   <Insets left="272.0" top="18.0" />
                </HBox.margin>
