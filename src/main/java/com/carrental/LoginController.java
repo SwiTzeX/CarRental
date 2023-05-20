@@ -75,7 +75,7 @@ public class LoginController implements Initializable {
         }
         else {
             a.setVisible(true);
-            a.setText("error");
+            a.setText("account not found");
         }
         }
     @FXML
