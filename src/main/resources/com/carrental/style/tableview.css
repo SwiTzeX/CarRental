@@ -1,19 +1,16 @@
-.table{
-    -fx-background-color: #6279FF;
-    /*-fx-background-insets: 0 0 478 0;*/
-    /*-fx-background-radius:14 14 0 0 ;*/
-
+/*.table{
+    -fx-padding: -2;
 }
+
 .table .column-header-background{
     -fx-background-color:  #6279FF;
-    -fx-background-insets: 0 0 10 0;
-
+    -fx-background-insets: 0 0 0 0;
 }
 
 .table .column-header, .table .filler{
     -fx-background-color: transparent;
-    -fx-size:50px;
-    -fx-border-width: 0 0 10 0;
+}
 
-
+.table .column-header .label{
+    -fx-text-fill: white;
 }
