@@ -45,15 +45,12 @@ public class LoginController implements Initializable {
     void login(ActionEvent event) {
         String username = usernamefield.getText();
         String password = passwordfield.getText();
-
-
         User u = User.getUserByEmail(username);
         System.out.println(u);
         if ( u == null){
             // if u is null user is not found
             a.setVisible(true);
             a.setText("Account not found!");
-
         }
         if ( u != null){
             boolean o = u.checkPassword(password);
@@ -70,13 +67,13 @@ public class LoginController implements Initializable {
             }
             if (!o){
                 a.setVisible(true);
-                a.setText("password is not working");
+                a.setText("Password is not working");
             }
         }
-        //else {
-           // a.setVisible(true);
-         //   a.setText("error");
-        //}
+        else {
+            a.setVisible(true);
+            a.setText("Account not found");
+        }
         }
     @FXML
     void transfertoregister(MouseEvent event) {
