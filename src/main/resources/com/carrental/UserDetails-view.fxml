@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetails">
+<AnchorPane prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetails">
    <children>
       <Pane prefHeight="70.0" prefWidth="1250.0">
          <children>
@@ -26,7 +26,7 @@
                         <Insets left="21.0" top="23.0" />
                      </HBox.margin>
                   </ImageView>
-                  <TextField prefHeight="35.0" prefWidth="244.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
+                  <TextField prefHeight="38.0" prefWidth="244.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -34,7 +34,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="8.0" top="23.0" />
+                        <Insets left="8.0" top="21.0" />
                      </HBox.margin>
                   </TextField>
                   <Label prefHeight="56.0" prefWidth="116.0" text="ADMIN NAME" textFill="#00000092">
@@ -57,9 +57,9 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutX="70.0" layoutY="95.0" prefHeight="549.0" prefWidth="394.0">
+      <Pane layoutX="65.0" layoutY="125.0" prefHeight="580.0" prefWidth="394.0">
          <children>
-            <VBox layoutY="-1.0" prefHeight="550.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-background-color: #F0F0F0; -fx-border-radius: 30;">
+            <VBox layoutY="-1.0" prefHeight="580.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
                <children>
                   <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
@@ -100,42 +100,43 @@
                   </Label>
                   <Label prefHeight="18.0" prefWidth="80.0" text="Details">
                      <VBox.margin>
-                        <Insets left="27.0" top="16.0" />
+                        <Insets left="34.0" top="28.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="20.0" prefWidth="168.0" text="Username : @Dnaya">
+                     <VBox.margin>
+                        <Insets left="55.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Label">
+                  <Label prefHeight="20.0" prefWidth="288.0" text="Email: lidrebna****@mayhemnasda3o.com">
                      <VBox.margin>
-                        <Insets left="55.0" />
+                        <Insets left="55.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Label">
+                  <Label text="Role: Designer">
                      <VBox.margin>
-                        <Insets left="55.0" />
+                        <Insets left="55.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Label">
+                  <Label prefHeight="20.0" prefWidth="190.0" text="Age :   21">
                      <VBox.margin>
-                        <Insets left="55.0" />
+                        <Insets left="55.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Label">
+                  <Label prefHeight="20.0" prefWidth="124.0" text="Nid :  XA***********">
                      <VBox.margin>
-                        <Insets left="55.0" />
+                        <Insets left="55.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Label">
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Edit" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets left="55.0" top="2.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Label">
-                     <VBox.margin>
-                        <Insets left="55.0" top="22.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" text="Button">
-                     <VBox.margin>
-                        <Insets left="162.0" top="75.0" />
+                        <Insets left="133.0" top="22.0" />
                      </VBox.margin>
                   </Button>
                </children>
