@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class UsersController implements Initializable {
+public class UsersController{}/*implements Initializable {
 
     // admin - client
     @FXML
@@ -63,6 +63,6 @@ public class UsersController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a.setVisible(false);
     }
+*/
 
 
-}
