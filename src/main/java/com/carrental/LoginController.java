@@ -73,10 +73,10 @@ public class LoginController implements Initializable {
                 a.setText("password is not working");
             }
         }
-        //else {
-           // a.setVisible(true);
-         //   a.setText("error");
-        //}
+        else {
+            a.setVisible(true);
+            a.setText("error");
+        }
         }
     @FXML
     void transfertoregister(MouseEvent event) {
