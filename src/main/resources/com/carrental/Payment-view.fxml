@@ -77,7 +77,7 @@
                         <Insets left="30.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" text="Pay/DayVar">
+                  <Label fx:id="PricePerDay" alignment="CENTER_RIGHT" text="Pay/DayVar">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -102,7 +102,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" text="TotalVar">
+                  <Label fx:id="TotalPrice" alignment="CENTER_RIGHT" text="TotalVar">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>

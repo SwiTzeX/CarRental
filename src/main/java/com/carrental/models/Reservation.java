@@ -252,6 +252,7 @@ public class Reservation {
         }
         return total;
     }
+
     @Override
     public String toString() {
         return "Reservation{" +

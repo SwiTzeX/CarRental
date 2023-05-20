@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Vehicle {
     public Integer id;
@@ -386,7 +387,6 @@ public class Vehicle {
         }
         return null;
     }
-
     public static Vehicle create(String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower){
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -474,6 +474,28 @@ public class Vehicle {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public ArrayList<Reservation> getAllReservations(){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getDate(3);
+                Date endDate = rs.getDate(4);
+                boolean stat = rs.getBoolean(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
     }
     @Override
     public String toString() {
