@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.fxml.FXML;
@@ -33,7 +34,7 @@ public class DashboardController implements Initializable {
         iniLineChart();
         getCountCust();
         getCountCars();
-        //getCountTotalSales();
+        getCountTotalSales();
     }
 
 
@@ -41,11 +42,18 @@ public class DashboardController implements Initializable {
         xAxis.setLabel("Month");
         yAxis.setLabel("Value");
         XYChart.Series<Number,Number> series = new XYChart.Series();
-        series.getData().add(new XYChart.Data("January",210));
-        series.getData().add(new XYChart.Data("February",183));
-        series.getData().add(new XYChart.Data("March",322));
-        series.getData().add(new XYChart.Data("April",288));
-        series.getData().add(new XYChart.Data("May",312));
+        series.getData().add(new XYChart.Data("January",Reservation.totalSaleInMonth(1)));
+        series.getData().add(new XYChart.Data("February",Reservation.totalSaleInMonth(2)));
+        series.getData().add(new XYChart.Data("March",Reservation.totalSaleInMonth(3)));
+        series.getData().add(new XYChart.Data("April",Reservation.totalSaleInMonth(4)));
+        series.getData().add(new XYChart.Data("May",Reservation.totalSaleInMonth(5)));
+        series.getData().add(new XYChart.Data("June",Reservation.totalSaleInMonth(6)));
+        series.getData().add(new XYChart.Data("July",Reservation.totalSaleInMonth(7)));
+        series.getData().add(new XYChart.Data("August",Reservation.totalSaleInMonth(8)));
+        series.getData().add(new XYChart.Data("September",Reservation.totalSaleInMonth(9)));
+        series.getData().add(new XYChart.Data("October",Reservation.totalSaleInMonth(10)));
+        series.getData().add(new XYChart.Data("November",Reservation.totalSaleInMonth(11)));
+        series.getData().add(new XYChart.Data("December",Reservation.totalSaleInMonth(12)));
         lineChart.getData().addAll(series);
         lineChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
         series.getNode().setStyle("-fx-stroke:#6279FF");
@@ -61,9 +69,10 @@ public class DashboardController implements Initializable {
         countCars.setText(String.valueOf(countCar));
     }
 
-    /* public void getCountTotalSales() {
-
-    } */
+    public void getCountTotalSales() {
+        float countTotalS = Reservation.totalSales();
+        countTotalSales.setText(String.valueOf(countTotalS));
+    }
     public void reportButton(){
 
     }
