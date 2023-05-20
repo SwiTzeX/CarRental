@@ -44,7 +44,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.FleetController">
-      <VBox fx:id="vehicleCardsBox" layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="200.0">
+      <VBox fx:id="vehicleCardsBox" layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="200.0">
             <children>
                   <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
                         <children>
@@ -77,12 +77,12 @@
                </Button>
                         </children>
                         <padding>
-                              <Insets left="30.0" right="30.0" top="15.0" />
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                         </padding>
                   </HBox>
          <VBox prefHeight="512.0" prefWidth="1156.0">
             <children>
-               <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1156.0" style="-fx-border-width: 2; -fx-border-color: black;" styleClass="table" stylesheets="@style/tableview.css">
+               <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1156.0" style="-fx-border-width: 2; -fx-border-color: #6B82FF;" styleClass="table" stylesheets="@style/tableview.css">
                  <columns>
                    <TableColumn prefWidth="231.5" text="Brand Name" />
                    <TableColumn prefWidth="231.5" text="Model Name" />
