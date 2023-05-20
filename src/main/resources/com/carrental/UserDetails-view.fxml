@@ -56,28 +56,45 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutX="70.0" layoutY="95.0" prefHeight="549.0" prefWidth="420.0">
+      <Pane layoutX="70.0" layoutY="95.0" prefHeight="549.0" prefWidth="394.0">
          <children>
-            <VBox layoutY="-1.0" prefHeight="550.0" prefWidth="420.0">
+            <VBox layoutY="-1.0" prefHeight="550.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-background-color: #F0F0F0; -fx-border-radius: 30;">
                <children>
                   <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="100.0" top="29.0" />
+                        <Insets left="125.0" top="29.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@icons/WhatsApp%20Image%202023-05-21%20à%2001.31.07.jpg" />
+                     </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="154.0" text="            UserName">
+                  <Label prefHeight="18.0" prefWidth="154.0" text="            ALPHA">
                      <VBox.margin>
-                        <Insets left="114.0" top="17.0" />
+                        <Insets left="111.0" top="6.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
                   </Label>
                   <ImageView fitHeight="60.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="97.0" top="13.0" />
+                        <Insets left="80.0" top="33.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@icons/Icon.png" />
+                     </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="114.0" text="Label">
+                  <Label prefHeight="35.0" prefWidth="63.0" text="1.23k">
                      <VBox.margin>
-                        <Insets left="187.0" top="-39.0" />
+                        <Insets left="149.0" top="-60.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="20.0" prefWidth="72.0" text="Task Done">
+                     <VBox.margin>
+                        <Insets left="149.0" top="-3.0" />
                      </VBox.margin>
                   </Label>
                </children>
