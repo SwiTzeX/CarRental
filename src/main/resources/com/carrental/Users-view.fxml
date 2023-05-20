@@ -115,7 +115,7 @@
          <children>
             <HBox prefHeight="64.0" prefWidth="1177.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: ff #; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="975.0" right="12.0" top="13.0" />
                      </HBox.margin>
