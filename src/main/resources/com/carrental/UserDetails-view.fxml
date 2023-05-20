@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetails">
    <children>
@@ -54,6 +54,34 @@
                   </ImageView>
                </children>
             </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="70.0" layoutY="95.0" prefHeight="549.0" prefWidth="420.0">
+         <children>
+            <VBox layoutY="-1.0" prefHeight="550.0" prefWidth="420.0">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="100.0" top="29.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label prefHeight="18.0" prefWidth="154.0" text="            UserName">
+                     <VBox.margin>
+                        <Insets left="114.0" top="17.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="97.0" top="13.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label prefHeight="18.0" prefWidth="114.0" text="Label">
+                     <VBox.margin>
+                        <Insets left="187.0" top="-39.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>
