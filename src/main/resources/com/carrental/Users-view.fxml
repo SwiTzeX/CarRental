@@ -115,20 +115,9 @@
          <children>
             <HBox prefHeight="64.0" prefWidth="1177.0">
                <children>
-                  <TextField prefHeight="45.0" prefWidth="194.0" promptText="          Search Invoice" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #fffffff; -fx-border-color: #a390f0;">
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: ff #; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="809.0" top="-4.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #A390F0; -fx-border-radius: 30;" text="Add User" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets left="44.0" right="12.0" top="-4.0" />
+                        <Insets left="975.0" right="12.0" top="-4.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="14.0" />
