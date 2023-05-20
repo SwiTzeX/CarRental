@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.FleetController">
+      <VBox fx:id="vehicleCardsBox" layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="200.0">
+            <children>
+                  <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
+                        <children>
+                              <ComboBox fx:id="gearDropList" onAction="#filterVehicles" prefHeight="37.0" prefWidth="116.0" promptText="Brand Name" styleClass="menu" stylesheets="@style/menu.css">
+                                    <HBox.margin>
+                                          <Insets />
+                                    </HBox.margin>
+                              </ComboBox>
+                              <ComboBox fx:id="fuelDropList" layoutX="40.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="113.0" promptText="Model Name" styleClass="menu" stylesheets="@style/menu.css">
+                                    <items>
+                                    </items>
+                              </ComboBox>
+                              <ComboBox fx:id="brandsDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="99.0" promptText="Number Of Reservations" styleClass="menu" stylesheets="@style/menu.css">
+                                    <items>
+                                    </items>
+                              </ComboBox>
+                              <ComboBox fx:id="colorsDropList" layoutX="289.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="97.0" promptText="Plate Number" styleClass="menu" stylesheets="@style/menu.css">
+                                    <items>
+                                    </items>
+                              </ComboBox>
+                              <ComboBox fx:id="typeDropList" layoutX="159.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="89.0" promptText="Status" styleClass="menu" stylesheets="@style/menu.css">
+                                    <items>
+                                    </items>
+                              </ComboBox>
+                              <Button fx:id="clearFilterButton" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
+               <Button fx:id="clearFilterButton1" layoutX="654.0" layoutY="25.0" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Add Vehicule">
+                  <HBox.margin>
+                     <Insets left="250.0" />
+                  </HBox.margin>
+               </Button>
+                        </children>
+                        <padding>
+                              <Insets left="30.0" right="30.0" top="15.0" />
+                        </padding>
+                  </HBox>
+         <VBox prefHeight="512.0" prefWidth="1156.0">
+            <children>
+               <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1156.0" style="-fx-border-width: 2; -fx-border-color: black;" styleClass="table" stylesheets="@style/tableview.css">
+                 <columns>
+                   <TableColumn prefWidth="231.5" text="Brand Name" />
+                   <TableColumn prefWidth="231.5" text="Model Name" />
+                     <TableColumn prefWidth="231.5" text="Number of reservations" />
+                     <TableColumn prefWidth="231.5" text="Plate Number" />
+                     <TableColumn prefWidth="231.5" text="Status" />
+                 </columns>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </TableView>
+            </children>
+         </VBox>
+            </children>
+      </VBox>
+      <Label alignment="BOTTOM_CENTER" layoutX="575.0" layoutY="771.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="568.0" AnchorPane.topAnchor="771.0">
+            <font>
+                  <Font name="Arial" size="16.0" />
+            </font>
+            <padding>
+                  <Insets top="5.0" />
+            </padding>
+      </Label>
+</AnchorPane>
