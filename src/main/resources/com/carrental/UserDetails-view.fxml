@@ -208,7 +208,7 @@
       </Separator>
       <Pane layoutX="60.0" layoutY="767.0" prefHeight="28.0" prefWidth="1274.0">
          <children>
-            <Label layoutX="1036.0" layoutY="10.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" />
+            <Label layoutX="1036.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" />
          </children>
       </Pane>
    </children>
