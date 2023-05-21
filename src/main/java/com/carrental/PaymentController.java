@@ -8,20 +8,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
-
 public class PaymentController implements Initializable{
 
-        @FXML
-        private ImageView BrandLogo;
 
         @FXML
-        private Label Brandname;
+        private ImageView BrandLogoVar;
 
         @FXML
-        private ImageView CarImage;
+        private Label BrandNameVar;
 
         @FXML
-        private Label CarModel;
+        private ImageView CarImageVar;
 
         @FXML
         private Label ColorVar;
@@ -36,22 +33,26 @@ public class PaymentController implements Initializable{
         private Label HpVar;
 
         @FXML
+        private Label ModelNameVar;
+
+        @FXML
         private Label NumPVar;
 
         @FXML
         private Label PricePerDay;
 
         @FXML
-        private RadioButton RadioOnSite;
+        private RadioButton RadioBOnSite;
 
         @FXML
-        private RadioButton RadioPaypal;
+        private RadioButton RadioBPaypal;
 
         @FXML
         private Label TotalPrice;
 
         @FXML
         private Label TrunkCapVar;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

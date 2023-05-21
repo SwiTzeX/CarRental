@@ -18,17 +18,17 @@
 
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
    <children>
-      <VBox layoutX="54.0" layoutY="223.0" prefHeight="503.0" prefWidth="1290.0">
+      <VBox layoutX="54.0" layoutY="223.0" prefHeight="553.0" prefWidth="1290.0">
          <children>
-            <TableView prefHeight="505.0" prefWidth="1290.0">
+            <TableView prefHeight="551.0" prefWidth="1290.0">
               <columns>
-                <TableColumn prefWidth="128.0" text="Full name" />
-                <TableColumn minWidth="0.0" prefWidth="105.0" text="NID" />
-                  <TableColumn prefWidth="201.0" text="Phone Number" />
-                  <TableColumn prefWidth="195.0" text="E-MAIL" />
-                  <TableColumn prefWidth="249.0" text="Age" />
-                  <TableColumn prefWidth="207.0" text="Status" />
-                  <TableColumn prefWidth="204.0" text="Action" />
+                <TableColumn editable="false" prefWidth="128.0" resizable="false" text="Full name" />
+                <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="NID" />
+                  <TableColumn editable="false" prefWidth="201.0" resizable="false" text="Phone Number" />
+                  <TableColumn editable="false" prefWidth="195.0" resizable="false" text="E-MAIL" />
+                  <TableColumn editable="false" prefWidth="249.0" resizable="false" text="Age" />
+                  <TableColumn editable="false" prefWidth="207.0" resizable="false" text="Status" />
+                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="Action" />
               </columns>
             </TableView>
          </children></VBox>
@@ -102,7 +102,7 @@
                   <Insets />
                </HBox.margin>
                <padding>
-                  <Insets left="39.0" top="13.0" />
+                  <Insets left="-12.0" top="13.0" />
                </padding>
             </Label>
          </children>
@@ -121,37 +121,40 @@
       </Pane>
       <Pane layoutX="83.0" layoutY="741.0" prefHeight="20.0" prefWidth="1270.0">
          <children>
-            <Label layoutX="1036.0" prefHeight="20.0" prefWidth="243.0" text="Copyright © UIR Project 2022-2023 " />
+            <Label layoutX="1036.0" layoutY="35.0" prefHeight="20.0" prefWidth="243.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff">
+               <padding>
+                  <Insets top="2.0" />
+               </padding></Label>
          </children>
       </Pane>
-      <HBox layoutX="106.0" layoutY="142.0" prefHeight="70.0" prefWidth="1270.0" spacing="10.0">
+      <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1324.0" spacing="10.0">
          <children>
-            <ComboBox prefHeight="45.0" prefWidth="150.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="roles" onAction="#filters" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicedate" onAction="#filters" prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicestatue" onAction="#filters" prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
+            <Button fx:id="clearAllFilter" mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
                <HBox.margin>
                   <Insets top="21.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+            <Button fx:id="addUser" mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="482.0" top="19.0" />
+                  <Insets left="515.0" top="19.0" />
                </HBox.margin>
             </Button>
          </children>

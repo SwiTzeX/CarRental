@@ -131,8 +131,6 @@ public class HomeController implements Initializable {
                 test1, test1,true);
         User user = User.create("sssdgds@ssss",null,false,null,null,null,false);
         System.out.println(user);*/
-        MyTextField test = new MyTextField("test");
-        searchBox.getChildren().add(test);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
 

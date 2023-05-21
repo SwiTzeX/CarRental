@@ -37,6 +37,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import com.carrental.customnodes.MyTextField?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -136,16 +137,7 @@
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <VBox layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Time" textFill="#353550">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField styleClass="textField" stylesheets="@style/textfield.css" />
-               </children>
-            </VBox>
+            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -214,8 +206,8 @@
          <Image fx:id="btnImage" url="@icons/search.png" />
       </fx:define>
 
-                        
-                           </HBox>
+
+   </HBox>
    <VBox fx:id="vehicleCardsBox" layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="200.0">
       <children>
          <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
