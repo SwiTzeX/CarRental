@@ -16,7 +16,7 @@
    <children>
       <Label layoutX="176.0" layoutY="96.0" prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
          <font>
-            <Font name="Arial Bold" size="24.0" />
+            <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
       <HBox prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #000;" />
@@ -25,7 +25,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <VBox layoutX="112.0" layoutY="528.0" prefHeight="135.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 2%; -fx-background-radius: 2%;">
+      <VBox layoutX="112.0" layoutY="528.0" prefHeight="135.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30; -fx-background-radius: 30 30 30 30;">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Payment methods :" textFill="#353550">
                <font>
@@ -80,7 +80,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="887.0" layoutY="152.0" prefHeight="155.0" prefWidth="401.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.rightAnchor="112.0">
+      <VBox layoutX="887.0" layoutY="152.0" prefHeight="155.0" prefWidth="401.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;" AnchorPane.rightAnchor="112.0">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Rental fee details" textFill="#353550">
                <font>
@@ -137,7 +137,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="888.0" layoutY="348.0" prefHeight="201.0" prefWidth="399.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.rightAnchor="113.0">
+      <VBox layoutX="888.0" layoutY="348.0" prefHeight="201.0" prefWidth="399.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;" AnchorPane.rightAnchor="113.0">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Excellent choice !" textFill="#353550">
                <font>
@@ -182,7 +182,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="112.0" layoutY="152.0" prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.leftAnchor="112.0">
+      <VBox layoutX="112.0" layoutY="152.0" prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;" AnchorPane.leftAnchor="112.0">
          <children>
             <HBox prefHeight="334.0" prefWidth="712.0">
                <children>
