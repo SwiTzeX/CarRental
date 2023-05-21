@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ReservationController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1250.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="1220.0" spacing="200.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="268.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Search_52px.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="41.0" prefWidth="210.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label prefHeight="36.0" prefWidth="364.0" text="Gestion des reservations" textAlignment="CENTER" textFill="#353550">
+                     <font>
+                        <Font name="Arial" size="30.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="271.0" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="121.0" text="Admin Name" textFill="#353550">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/jimmy-fallon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Separator prefHeight="70.0" prefWidth="1150.0">
+               <VBox.margin>
+                  <Insets left="20.0" right="50.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#353550">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="mark" />
+                        <String fx:value="check-box" />
+                     </styleClass>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#353550">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="mark" />
+                        <String fx:value="check-box" />
+                     </styleClass>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 3" textFill="#353550">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="mark" />
+                        <String fx:value="check-box" />
+                     </styleClass>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 4" textFill="#353550">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="mark" />
+                        <String fx:value="check-box" />
+                     </styleClass>
+                  </CheckBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="708.0">
+                     <children>
+                        <Button fx:id="addReservation" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="ADD RESERVATION" textFill="#6279ff">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1190.0" stylesheets="@style/table.css">
+              <columns>
+                <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="FullName" />
+                <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="Phone Number" />
+                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Brand Name" />
+                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Model Name" />
+                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Price" />
+                  <TableColumn prefWidth="130.0" style="-fx-background-color: #ebeeff;" text="Start Date " />
+                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="End Date" />
+                  <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="Status" />
+                  <TableColumn prefWidth="130.0" style="-fx-background-color: #ebeeff;" />
+              </columns>
+               <VBox.margin>
+                  <Insets right="30.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+         <padding>
+            <Insets left="30.0" top="20.0" />
+         </padding>
+      </VBox>
+      <Label alignment="TOP_CENTER" layoutX="525.0" layoutY="770.0" prefHeight="30.0" prefWidth="257.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </Label>
+   </children>
+</AnchorPane>
