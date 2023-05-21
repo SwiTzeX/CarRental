@@ -16,7 +16,7 @@
    <children>
       <Label layoutX="176.0" layoutY="96.0" prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
          <font>
-            <Font name="Arial Bold" size="26.0" />
+            <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
       <HBox prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #000;" />
