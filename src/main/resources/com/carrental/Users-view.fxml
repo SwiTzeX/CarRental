@@ -129,27 +129,27 @@
       </Pane>
       <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1324.0" spacing="10.0">
          <children>
-            <ComboBox prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
+            <Button fx:id="clearAllFilter" mnemonicParsing="false" prefHeight="37.0" prefWidth="111.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter">
                <HBox.margin>
                   <Insets top="21.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+            <Button fx:id="addUser" mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,11 +15,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class UsersController{}/*implements Initializable {
+public class UsersController implements Initializable {
 
     // admin - client
     @FXML
-     private ComboBox<String> rules;
+     private ComboBox<String> roles;
 
     // ordre croissante et ordre decroissante
 
@@ -44,7 +45,8 @@ public class UsersController{}/*implements Initializable {
     private Label a;
 
 
-
+   // @FXML
+    //public ArrayList<String> roles = new ArrayList<>(Arrays.asList(true,false));
 
     //@FXML
    // public ArrayList<String> fillterSettings = ArrayList<String>(Arrays.asList(null,null,null,null,null));
@@ -63,6 +65,7 @@ public class UsersController{}/*implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a.setVisible(false);
     }
-*/
+}
+
 
 
