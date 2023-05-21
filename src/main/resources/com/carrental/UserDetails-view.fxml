@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetails">
+<AnchorPane prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetails">
    <children>
       <Pane prefHeight="70.0" prefWidth="1250.0">
          <children>
