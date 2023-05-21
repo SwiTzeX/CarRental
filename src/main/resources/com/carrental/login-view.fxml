@@ -64,7 +64,7 @@
                   <Insets left="200.0" right="200.0" />
                </padding>
             </VBox>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="198.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Home " textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="button_home" mnemonicParsing="false" onMouseClicked="#btngotologine" prefHeight="45.0" prefWidth="198.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Home " textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>

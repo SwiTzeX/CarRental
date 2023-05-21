@@ -1,6 +1,7 @@
 package com.carrental;
 
 import com.carrental.models.User;
+import com.carrental.models.Vehicle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
@@ -34,22 +36,22 @@ public class UsersController implements Initializable {
     @FXML
     private Button addUser;
 
-
     // clearALLfilters
     @FXML
     private Button clearAllFilter;
-
 
     // label for errors
     @FXML
     private Label a;
 
-
-   // @FXML
-    //public ArrayList<String> roles = new ArrayList<>(Arrays.asList(true,false));
-
     //@FXML
-   // public ArrayList<String> fillterSettings = ArrayList<String>(Arrays.asList(null,null,null,null,null));
+    //public ArrayList<String> roles = new ArrayList<>(Arrays.asList(null,null));
+
+
+    @FXML
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+
+
 
 
 
@@ -61,9 +63,26 @@ public class UsersController implements Initializable {
 
     }
 
+
+    @FXML
+    public void filters(ActionEvent event) {
+        ComboBox<String> lists = (ComboBox<String>) event.getSource();
+        Text theText = new Text(lists.getValue());
+        double width = (int)theText.getBoundsInLocal().getWidth()+63;
+        lists.setPrefWidth(width);
+        if (lists == roles) filterSettings.set(0, lists.getValue());
+        else if (lists == invoicedate) filterSettings.set(1, lists.getValue());
+        else if (lists == invoicestatue) filterSettings.set(2, lists.getValue());
+
+       // roles = User.filt(filterSettings);
+       // invoicedate =
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        // a.setVisible(false);
+        roles.getItems().addAll("admin","client");
+        invoicestatue.getItems().addAll("active","blocked","suspended");
     }
 }
 
