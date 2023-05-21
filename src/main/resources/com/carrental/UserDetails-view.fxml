@@ -111,27 +111,27 @@
                   </Label>
                   <Label prefHeight="20.0" prefWidth="168.0" text="Username : @Alpha">
                      <VBox.margin>
-                        <Insets left="55.0" top="27.0" />
+                        <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
                   <Label prefHeight="20.0" prefWidth="288.0" text="Email: lidrebna****@mayhemnasda3o.com">
                      <VBox.margin>
-                        <Insets left="55.0" top="15.0" />
+                        <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="Role: Designer">
                      <VBox.margin>
-                        <Insets left="55.0" top="15.0" />
+                        <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
                   <Label prefHeight="20.0" prefWidth="190.0" text="Age :   21">
                      <VBox.margin>
-                        <Insets left="55.0" top="15.0" />
+                        <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
                   <Label prefHeight="20.0" prefWidth="124.0" text="Nid :  XA***********">
                      <VBox.margin>
-                        <Insets left="55.0" top="15.0" />
+                        <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
                   <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Edit" textAlignment="RIGHT" textFill="WHITE">
@@ -139,7 +139,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="133.0" top="31.0" />
+                        <Insets left="127.0" top="39.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -180,7 +180,7 @@
                   <Image url="@icons/TimelineDot.png" />
                </image>
             </ImageView>
-            <Label layoutX="66.0" layoutY="50.0" prefHeight="20.0" prefWidth="236.0" text="Mercedes-Benz Gt63 AMG Brabus" />
+            <Label layoutX="66.0" layoutY="50.0" prefHeight="20.0" prefWidth="236.0" text="Mercedes-Benz GT 63 AMG Brabus" />
             <Separator layoutX="43.0" layoutY="70.0" orientation="VERTICAL" prefHeight="56.0" prefWidth="6.0" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -195,7 +195,7 @@
                </image>
             </ImageView>
             <Label layoutX="114.0" layoutY="101.0" prefHeight="20.0" prefWidth="80.0" text="Invoices.pdf" />
-            <Label layoutX="69.0" layoutY="151.0" prefHeight="20.0" prefWidth="273.0" text="Project meeting with john @10:15am" textFill="#00000085" />
+            <Label layoutX="69.0" layoutY="151.0" prefHeight="20.0" prefWidth="273.0" text="Project meeting with Habibi @10:15am" textFill="#00000085" />
             <Separator layoutX="43.0" layoutY="149.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="6.0" />
             <Label layoutX="755.0" layoutY="130.0" text="45 min ago" textFill="#0000008a" />
             <Label layoutX="751.0" layoutY="42.0" text="12 min ago" textFill="#0000008a" />
@@ -208,7 +208,7 @@
       </Separator>
       <Pane layoutX="60.0" layoutY="767.0" prefHeight="28.0" prefWidth="1274.0">
          <children>
-            <Label layoutX="1036.0" layoutY="-3.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" />
+            <Label layoutX="1036.0" layoutY="10.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" />
          </children>
       </Pane>
    </children>
