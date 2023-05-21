@@ -129,17 +129,17 @@
       </Pane>
       <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1324.0" spacing="10.0">
          <children>
-            <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="roles" onAction="#filters" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicedate" onAction="#filters" prefHeight="44.0" prefWidth="153.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicestatue" onAction="#filters" prefHeight="44.0" prefWidth="166.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>

@@ -15,7 +15,7 @@ import java.sql.*;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Users-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         stage.setTitle("Hello test!");
         stage.setScene(scene);

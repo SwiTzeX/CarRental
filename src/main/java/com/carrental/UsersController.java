@@ -49,42 +49,43 @@ public class UsersController implements Initializable {
 
 
     @FXML
-    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
-
-
-
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null));
 
 
     @FXML
-    public void clearAllfilter(ActionEvent event){
+    public ArrayList<User> Users = User.getAllUsers();
+
+
+    @FXML
+    //public void clearAllfilter(ActionEvent event){
 
 
 
 
+   // }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // a.setVisible(false);
+        roles.getItems().addAll("admin","client");
+        invoicestatue.getItems().addAll("active","blocked","suspended");
     }
 
-
     @FXML
-    public void filters(ActionEvent event) {
+     public void filters(javafx.event.ActionEvent event) {
         ComboBox<String> lists = (ComboBox<String>) event.getSource();
         Text theText = new Text(lists.getValue());
         double width = (int)theText.getBoundsInLocal().getWidth()+63;
         lists.setPrefWidth(width);
         if (lists == roles) filterSettings.set(0, lists.getValue());
         else if (lists == invoicedate) filterSettings.set(1, lists.getValue());
-        else if (lists == invoicestatue) filterSettings.set(2, lists.getValue());
+        else if (lists == invoicestatue) filterSettings.set(3, lists.getValue());
+        else if (lists == invoicedate) filterSettings.set(2, lists.getValue());
 
-      // roles = User.filters(filterSettings);
-       //invoicestatue = User.filters(filterSettings);
-
+        //roles = Users.filters(filterSettings);
+        //invoicestatue = Users.filters(filterSettings);
+        //invoicedate = Users.filters(filterSettings);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-       // a.setVisible(false);
-        roles.getItems().addAll("admin","client");
-        invoicestatue.getItems().addAll("active","blocked","suspended");
-    }
 }
 
 
