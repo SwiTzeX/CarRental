@@ -74,8 +74,9 @@ public class UsersController implements Initializable {
         else if (lists == invoicedate) filterSettings.set(1, lists.getValue());
         else if (lists == invoicestatue) filterSettings.set(2, lists.getValue());
 
-       // roles = User.filt(filterSettings);
-       // invoicedate =
+       roles = User.filters(filterSettings);
+       invoicestatue = User.filters(filterSettings);
+
     }
 
     @Override
