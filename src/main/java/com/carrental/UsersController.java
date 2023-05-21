@@ -63,7 +63,7 @@ public class UsersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        a.setVisible(false);
+       // a.setVisible(false);
     }
 }
 
