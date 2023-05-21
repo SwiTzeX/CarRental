@@ -25,36 +25,59 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <VBox layoutX="112.0" layoutY="528.0" prefHeight="135.0" prefWidth="714.0" spacing="18.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 2%; -fx-background-radius: 2%;">
+      <VBox layoutX="112.0" layoutY="528.0" prefHeight="135.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 2%; -fx-background-radius: 2%;">
          <children>
             <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Payment methods :" textFill="#353550">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </Label>
-            <VBox alignment="TOP_CENTER" prefHeight="57.0" prefWidth="572.0" spacing="15.0" style="-fx-background-color: #FFFFFF;">
+            <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="711.0">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Paypal">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="500.0" />
-                     </VBox.margin>
+                  <RadioButton fx:id="RadioBPaypal" mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0">
+                     <HBox.margin>
+                        <Insets left="50.0" top="15.0" />
+                     </HBox.margin>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="On-site">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="494.0" />
-                     </VBox.margin>
-                  </RadioButton>
+                  <ImageView fitHeight="31.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@icons/Paypal.png" />
+                     </image>
+                  </ImageView>
                </children>
-            </VBox>
+            </HBox>
+            <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <RadioButton fx:id="RadioBOnSite" mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="50.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </RadioButton>
+                  <Label prefHeight="40.0" prefWidth="58.0" text="On-Site">
+                     <HBox.margin>
+                        <Insets bottom="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <VBox layoutX="887.0" layoutY="152.0" prefHeight="155.0" prefWidth="401.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2%; -fx-border-color: #f0f2ff; -fx-border-radius: 2%;" AnchorPane.rightAnchor="112.0">
@@ -173,12 +196,12 @@
                               <Insets left="9.0" top="9.0" />
                            </VBox.margin>
                            <children>
-                              <ImageView fitHeight="43.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="BrandLogoVar" fitHeight="43.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@brands/Ferrari.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="41.0" prefWidth="161.0" text="CarBrandVar">
+                              <Label fx:id="BrandNameVar" prefHeight="41.0" prefWidth="161.0" text="CarBrandVar">
                                  <font>
                                     <Font name="Arial" size="24.0" />
                                  </font>
@@ -188,7 +211,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <ImageView fitHeight="281.0" fitWidth="298.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CarImageVar" fitHeight="281.0" fitWidth="298.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@vehicles/Ferrari/F430/red.png" />
                            </image>
@@ -200,7 +223,7 @@
                   </VBox>
                   <VBox prefHeight="316.0" prefWidth="394.0" spacing="5.0">
                      <children>
-                        <Label prefHeight="35.0" prefWidth="185.0" text="Model : ModelVar" textFill="#353535">
+                        <Label fx:id="ModelNameVar" prefHeight="35.0" prefWidth="185.0" text="Model : ModelVar" textFill="#353535">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -215,7 +238,7 @@
                                     <Image url="@icons/paint-bucket.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="201.0" text="Color - ColorVar" textFill="#353535">
+                              <Label prefHeight="34.0" prefWidth="36.0" text="Color :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -223,6 +246,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="ColorVar" prefHeight="132.0" prefWidth="152.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
@@ -235,7 +259,7 @@
                                     <Image url="@icons/gear-shift.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="201.0" text="Gear Type : GearVar" textFill="#353535">
+                              <Label prefHeight="35.0" prefWidth="64.0" text="Gear Type :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -243,6 +267,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="GearTypeVar" prefHeight="111.0" prefWidth="156.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
@@ -255,7 +280,7 @@
                                     <Image url="@icons/fuel.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="218.0" text="Fuel Type : FuelTypeVAR" textFill="#353535">
+                              <Label prefHeight="35.0" prefWidth="61.0" text="Fuel Type :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -263,6 +288,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="FuelTypeVar" prefHeight="105.0" prefWidth="165.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
@@ -275,7 +301,7 @@
                                     <Image url="@icons/user.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="274.0" text="Number of Passengers : NbrVar" textFill="#353535">
+                              <Label prefHeight="35.0" prefWidth="130.0" text="Number of Passengers :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -283,6 +309,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="NumPVar" prefHeight="73.0" prefWidth="127.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
@@ -295,7 +322,7 @@
                                     <Image url="@icons/piston.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="201.0" text="Horse Power : HPVar" textFill="#353535">
+                              <Label prefHeight="35.0" prefWidth="77.0" text="Horse Power :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -303,6 +330,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="HpVar" prefHeight="113.0" prefWidth="165.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
@@ -315,7 +343,7 @@
                                     <Image url="@icons/boot%20(1).png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="35.0" prefWidth="290.0" text="Trunk Capacity - TrunkCapVar m³" textFill="#353535">
+                              <Label prefHeight="35.0" prefWidth="88.0" text="Trunk Capacity :" textFill="#353535">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -323,6 +351,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </Label>
+                              <Label fx:id="TrunkCapVar" prefHeight="95.0" prefWidth="152.0" text="Var" />
                            </children>
                            <padding>
                               <Insets left="10.0" top="5.0" />
