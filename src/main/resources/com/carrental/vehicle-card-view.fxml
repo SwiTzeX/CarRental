@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <!--ss-->
+
 <VBox fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseInAnimation" onMouseExited="#mouseOutAnimation" prefHeight="430.0" prefWidth="300.0" spacing="8.0" style="-fx-background-color: #F6F8FF; -fx-border-color: #f0f2ff; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.VehicleCardController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: transparent;">
@@ -21,7 +23,11 @@
                </font></Label>
          </children>
       </HBox>
-      <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox alignment="CENTER" prefHeight="175.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="vehImage" fitHeight="161.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="278.0" spacing="10.0">
          <children>
             <Label fx:id="vehType" alignment="CENTER" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30;" text="TYPE" textFill="WHITE">
@@ -69,14 +75,14 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="76.0" spacing="5.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="103.0" spacing="5.0">
                <children>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/manuel.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="vehGearType" prefHeight="18.0" prefWidth="55.0" text="Manuel" textFill="#353550">
+                  <Label fx:id="vehGearType" prefHeight="18.0" prefWidth="80.0" text="Manuel" textFill="#353550">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>

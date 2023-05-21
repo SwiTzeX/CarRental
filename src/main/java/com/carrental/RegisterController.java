@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,7 +34,7 @@ public class RegisterController implements Initializable {
     private TextField Nid;
 
     @FXML
-    private TextField ageid;
+    private MyTextField ageid;
 
     @FXML
     private TextField mailid;
@@ -108,6 +109,9 @@ public class RegisterController implements Initializable {
         String phone = phonenumid.getText();
         String password = passwordid.getText();
 
+
+
+
         User u1 = User.getUserByEmail(email);
         if(u1 != null){
             errorid.setVisible(true);
@@ -138,12 +142,7 @@ public class RegisterController implements Initializable {
 
             return;
         }
-        if (Integer.parseInt(age)<18) {
-            errorid.setVisible(true);
-            errorid.setText("Your age is under 18 !");
 
-            return;
-        }
         if (!ValidateEmail(email)) {
             errorid.setVisible(true);
             errorid.setText("Invalid email");
@@ -197,6 +196,15 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorid.setVisible(false);
         errorid.setStyle("-fx-text-fill: red");
-
+        ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (Integer.parseInt(ageid.getText()) < 18) {
+                    errorid.setVisible(true);
+                    errorid.setText("Your age is under 18 !");
+                    ageid.error("Mok");
+                    return;
+                }
+            }
+        });
     }
 }
