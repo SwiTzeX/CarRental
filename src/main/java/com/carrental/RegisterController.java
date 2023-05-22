@@ -206,6 +206,7 @@ public class RegisterController implements Initializable {
                     }
                 }catch(Exception ignored){
                     ageid.hideError();
+                    //
                 }
             }
         });
