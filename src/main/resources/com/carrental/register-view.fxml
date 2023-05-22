@@ -11,6 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyTextField?>
+<?import com.carrental.customnodes.MyPasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.RegisterController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1400.0">
@@ -34,14 +36,11 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="ageid" prefWidth="500.0" promptText="Age" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <MyTextField fx:id="ageid" prefWidth="500.0" promptText="Age">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </TextField>
+                  </MyTextField>
                   <TextField fx:id="phonenumid" prefWidth="500.0" promptText="Phone Number" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
@@ -74,14 +73,11 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <PasswordField fx:id="Vpasswordid" prefWidth="500.0" promptText="Comfirm Your Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <MyPasswordField fx:id="Vpasswordid" prefWidth="500.0" promptText="Comfirm Your Password" >
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </PasswordField>
+                  </MyPasswordField>
                   <VBox alignment="CENTER" prefHeight="30.0" prefWidth="891.0" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">

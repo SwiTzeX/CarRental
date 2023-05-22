@@ -26,21 +26,18 @@ import java.util.ResourceBundle;
 
 
 public class LoginController implements Initializable {
-
+    @FXML
+    public Button button_home;
     @FXML
     public Button button_signin;
-
     @FXML
     public Label label_login;
     @FXML
     public TextField usernamefield;
-
     @FXML
     public PasswordField passwordfield;
-
     @FXML
     private Label a;
-
     @FXML
     void login(ActionEvent event) {
         String username = usernamefield.getText();
@@ -88,7 +85,18 @@ public class LoginController implements Initializable {
         }
     }
 
-
+    @FXML
+    void btngotologine(MouseEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+            Parent Home = loader.load();
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(Home));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a.setVisible(false);

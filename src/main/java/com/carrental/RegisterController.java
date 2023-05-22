@@ -198,7 +198,5 @@ public class RegisterController implements Initializable {
         errorid.setVisible(false);
         errorid.setStyle("-fx-text-fill: red");
 
-
     }
-
 }
