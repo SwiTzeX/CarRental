@@ -111,8 +111,8 @@ public class InfoPageController implements Initializable{
     }
 
 
-    /*
-    void onClickBookNow(){
+    @FXML
+    void onClickBookNow(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment-view.fxml"));
             Parent login = loader.load();
@@ -124,5 +124,5 @@ public class InfoPageController implements Initializable{
         }
     }
 
-     */
+
 }
