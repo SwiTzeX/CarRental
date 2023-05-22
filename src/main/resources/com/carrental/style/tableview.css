@@ -1,4 +1,4 @@
-/*.table{
+.table{
     -fx-padding: -2;
 }
 
@@ -14,3 +14,5 @@
 .table .column-header .label{
     -fx-text-fill: white;
 }
+
+

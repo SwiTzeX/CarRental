@@ -6,13 +6,14 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: F0F2FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
    <children>
       <Label alignment="CENTER" prefHeight="128.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
          <font>
@@ -36,16 +37,19 @@
       </HBox>
       <HBox prefHeight="113.0" prefWidth="1250.0">
          <children>
-            <HBox prefHeight="172.0" prefWidth="1218.0" style="-fx-background-radius: 40;">
+            <HBox prefHeight="172.0" prefWidth="1218.0" style="-fx-border-radius: 30; -fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30;">
                <children>
-                  <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: F0F2FF; -fx-background-radius: 40;">
+                  <VBox prefHeight="94.0" prefWidth="359.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <children>
                         <HBox prefHeight="74.0" prefWidth="301.0">
                            <children>
-                              <Label prefHeight="54.0" prefWidth="227.0" text="Customers">
+                              <Label prefHeight="42.0" prefWidth="243.0" text="Customers">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </Label>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -60,24 +64,32 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <Label fx:id="countCust" alignment="CENTER" prefHeight="35.0" prefWidth="326.0">
+                        <Label fx:id="countCust" alignment="CENTER" prefHeight="54.0" prefWidth="301.0">
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets right="20.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets left="45.0" />
+                        <Insets left="25.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox prefHeight="154.0" prefWidth="320.0" style="-fx-background-radius: 40; -fx-background-color: F0F2FF;">
+                  <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="10.0">
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Separator>
+                  <VBox prefHeight="94.0" prefWidth="397.0" style="-fx-border-radius: 30;">
                      <children>
-                        <HBox prefHeight="73.0" prefWidth="438.0">
+                        <HBox prefHeight="41.0" prefWidth="345.0">
                            <children>
-                              <Label prefHeight="54.0" prefWidth="242.0" text="Available cars">
+                              <Label prefHeight="41.0" prefWidth="311.0" text="Available cars">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -95,24 +107,32 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <Label fx:id="countCars" alignment="CENTER" prefHeight="79.0" prefWidth="321.0">
+                        <Label fx:id="countCars" alignment="CENTER" prefHeight="79.0" prefWidth="330.0">
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets right="20.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="50.0" />
                      </HBox.margin>
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="154.0" prefWidth="305.0" style="-fx-background-color: F0F2FF; -fx-background-radius: 40;">
+                  <Separator orientation="VERTICAL" prefHeight="200.0">
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Separator>
+                  <VBox prefHeight="94.0" prefWidth="362.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                      <children>
                         <HBox prefHeight="74.0" prefWidth="301.0">
                            <children>
-                              <Label prefHeight="54.0" prefWidth="227.0" text="Total Sales">
+                              <Label prefHeight="41.0" prefWidth="210.0" text="Total Sales">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -131,18 +151,21 @@
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets right="20.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="50.0" />
                      </HBox.margin>
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets left="10.0" />
                      </padding>
                   </VBox>
                </children>
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="15.0" />
                </HBox.margin>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -153,28 +176,32 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <Label alignment="CENTER" prefHeight="78.0" prefWidth="1250.0" text="Sales per month" textFill="#6b82ff">
-         <font>
-            <Font name="Myanmar Text" size="36.0" />
-         </font>
+      <VBox style="-fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30; -fx-border-radius: 30;">
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
-      </Label>
-      <HBox prefHeight="358.0" prefWidth="1250.0">
          <children>
-            <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="358.0" prefWidth="1250.0" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" />
-               </yAxis>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </LineChart>
+            <Label alignment="CENTER" prefHeight="78.0" prefWidth="1250.0" text="Revenue per month" textFill="#6b82ff">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="358.0" prefWidth="1218.0" style="-fx-background-color: white;">
+               <children>
+                  <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="358.0" prefWidth="1250.0" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </LineChart>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </VBox>

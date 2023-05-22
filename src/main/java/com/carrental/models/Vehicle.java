@@ -47,6 +47,7 @@ public class Vehicle {
         this.brandImage = "brands/"+brandName+".png";
         this.image = "vehicles/"+brandName+"/"+modelName+"/"+color+".png";
     }
+    public Vehicle(){}
 
 
     public String getColor() {
