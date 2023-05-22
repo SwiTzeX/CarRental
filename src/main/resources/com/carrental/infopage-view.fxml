@@ -73,7 +73,7 @@
       </HBox>
       <VBox alignment="CENTER" layoutX="24.0" layoutY="55.0" prefHeight="745.0" prefWidth="1354.0">
          <children>
-            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="615.0" prefWidth="1327.0" style="-fx-background-color: #F6F8FF;">
+            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="698.0" prefWidth="1354.0" style="-fx-background-color: #F6F8FF;">
                <content>
                   <AnchorPane prefWidth="1327.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30;">
                      <children>
@@ -508,7 +508,7 @@
                </content></ScrollPane>
             <Label maxHeight="-Infinity" maxWidth="-Infinity" snapToPixel="false" text="Copyright © UIR Project 2022-2023" textFill="#6279ff">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="5.0" />
                </VBox.margin></Label>
          </children>
       </VBox>
