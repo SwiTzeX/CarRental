@@ -82,13 +82,14 @@
                   </HBox>
          <VBox prefHeight="512.0" prefWidth="1156.0">
             <children>
-               <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1156.0" style="-fx-border-width: 2; -fx-border-color: #6B82FF;" styleClass="table" stylesheets="@style/tableview.css">
+               <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1156.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
                  <columns>
-                   <TableColumn prefWidth="231.5" text="Brand Name" />
-                   <TableColumn prefWidth="231.5" text="Model Name" />
-                     <TableColumn prefWidth="231.5" text="Number of reservations" />
-                     <TableColumn prefWidth="231.5" text="Plate Number" />
-                     <TableColumn prefWidth="231.5" text="Status" />
+                   <TableColumn fx:id="Brand" prefWidth="192.6" text="Brand Name" />
+                   <TableColumn fx:id="ModelN" prefWidth="192.6" text="Model Name" />
+                     <TableColumn fx:id="NumberRes" prefWidth="192.6" text="Number of reservations" />
+                     <TableColumn fx:id="PlateNum" prefWidth="192.6" text="Plate Number" />
+                     <TableColumn fx:id="Status" prefWidth="192.6" text="Status" />
+                     <TableColumn fx:id="Actions" prefWidth="192.6" text="Actions" />
                  </columns>
                   <opaqueInsets>
                      <Insets />

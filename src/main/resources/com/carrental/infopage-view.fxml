@@ -486,7 +486,7 @@
                                                 <Insets bottom="15.0" top="7.0" />
                                              </VBox.margin>
                                           </VBox>
-                                          <Button fx:id="btnBookNow" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-border-radius: 50; -fx-background-radius: 50;" text="Book Now" textAlignment="CENTER" textFill="WHITE" translateX="145.0">
+                                          <Button fx:id="btnBookNow" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onMouseClicked="#onClickBookNow" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-border-radius: 50; -fx-background-radius: 50;" text="Book Now" textAlignment="CENTER" textFill="WHITE" translateX="145.0">
                                              <font>
                                                 <Font name="Arial" size="18.0" />
                                              </font>
