@@ -22,12 +22,12 @@
       </Label>
       <HBox prefHeight="71.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" style="-fx-background-color: #6279ff;" text="Generate report" textFill="WHITE">
+            <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #6279ff;" text="Generate report" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="1060.0" />
                </HBox.margin>
                <font>
-                  <Font size="14.0" />
+                  <Font name="Arial" size="13.0" />
                </font>
             </Button>
          </children>
@@ -82,10 +82,10 @@
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="10.0">
                      <HBox.margin>
-                        <Insets left="60.0" />
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Separator>
-                  <VBox prefHeight="94.0" prefWidth="397.0" style="-fx-border-radius: 30;">
+                  <VBox prefHeight="118.0" prefWidth="359.0" style="-fx-border-radius: 30;">
                      <children>
                         <HBox prefHeight="41.0" prefWidth="345.0">
                            <children>
@@ -125,21 +125,21 @@
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0">
                      <HBox.margin>
-                        <Insets left="60.0" />
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Separator>
-                  <VBox prefHeight="94.0" prefWidth="362.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+                  <VBox prefHeight="118.0" prefWidth="370.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                      <children>
                         <HBox prefHeight="74.0" prefWidth="301.0">
                            <children>
-                              <Label prefHeight="41.0" prefWidth="210.0" text="Total Sales">
+                              <Label prefHeight="41.0" prefWidth="242.0" text="Total Revenue">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/dollar.png" />
+                                    <Image url="@icons/coins.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="10.0" />
