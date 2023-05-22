@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
 import javafx.fxml.FXMLLoader;
@@ -7,22 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -49,7 +46,7 @@ public class RegisterController implements Initializable {
     private PasswordField passwordid;
 
     @FXML
-    private PasswordField Vpasswordid;
+    private MyPasswordField Vpasswordid;
 
     @FXML
     private Label loginbtnid;
@@ -198,11 +195,17 @@ public class RegisterController implements Initializable {
         errorid.setStyle("-fx-text-fill: red");
         ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if (Integer.parseInt(ageid.getText()) < 18) {
-                    errorid.setVisible(true);
-                    errorid.setText("Your age is under 18 !");
-                    ageid.error("Mok");
-                    return;
+                try {
+                    int age = Integer.parseInt(ageid.getText());
+                    if (age < 18) {
+                        errorid.setVisible(true);
+                        errorid.setText("Your age is under 18 !");
+                        ageid.showError("Your age is under 18 !");
+                    } else {
+                        ageid.hideError();
+                    }
+                }catch(Exception ignored){
+                    ageid.hideError();
                 }
             }
         });
