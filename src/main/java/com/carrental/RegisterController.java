@@ -106,7 +106,7 @@ public class RegisterController implements Initializable {
         String phone = phonenumid.getText();
         String password = passwordid.getText();
 
-
+        System.out.println(password);
 
 
         User u1 = User.getUserByEmail(email);
