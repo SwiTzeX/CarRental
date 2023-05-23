@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 public class PaymentController implements Initializable{
 
@@ -56,6 +57,8 @@ public class PaymentController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+                // NEED TO ADD A BACK BUTTON TO RESERVATION PAGE
 
     }
+
 }
