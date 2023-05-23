@@ -31,6 +31,8 @@ public class HomeController implements Initializable {
     @FXML
     public ComboBox<String> typeDropList;
     @FXML
+    public HBox paginationBox;
+    @FXML
     private ComboBox<String> brandsDropList;
 
     @FXML
@@ -89,6 +91,42 @@ public class HomeController implements Initializable {
     }
 
     public void loadCardsByPage(int pageNumber){
+        paginationBox.getChildren().clear();
+        paginationBox.getChildren().add(previousPageButton);
+       /* for(int i = 0; i<maxPages;i++){
+            Label numberLbl = new Label(String.valueOf(i+1));
+            numberLbl.setFont(pageNumberLabel.getFont());
+            paginationBox.getChildren().add(numberLbl);
+        }*/
+        // Update page numbers
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(startPage + 4 - 1, maxPages);
+        if (startPage > 1) {
+
+            Label numberLbl = new Label("1");
+            numberLbl.setFont(pageNumberLabel.getFont());
+            Label separatorLabel = new Label("...");
+            paginationBox.getChildren().addAll(numberLbl,separatorLabel);
+        }
+
+        for (int i = startPage; i <= endPage; i++) {
+            Label numberLbl = new Label(String.valueOf(i));
+            numberLbl.setFont(pageNumberLabel.getFont());
+            if(i==pageNumber){
+                numberLbl.setStyle("-fx-text-fill: #6279ff");
+            }
+           // int pageNumber = i; // To capture the current value of 'i' in the lambda expression
+            /*pageButton.setOnAction(event -> goToPage(pageNumber));*/
+            paginationBox.getChildren().add(numberLbl);
+        }
+
+        if (endPage < maxPages) {
+            Label numberLbl = new Label(String.valueOf(maxPages));
+            numberLbl.setFont(pageNumberLabel.getFont());
+            Label separatorLabel = new Label("...");
+            paginationBox.getChildren().addAll(separatorLabel,numberLbl);
+        }
+        paginationBox.getChildren().add(nextPageButton);
         cardLayout.getChildren().clear();
         nextPageButton.setVisible(false);
         previousPageButton.setVisible(false);
@@ -134,14 +172,14 @@ public class HomeController implements Initializable {
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
 
-        /*for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        }
-        vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        */
+        //vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        //*/
         //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
 
         vehicles = Vehicle.getAllVehicles();
+        for(int i=0; i<20; i++) {
+            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        }
         /*for(int i=0; i<2; i++) {
             vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
         }*/
