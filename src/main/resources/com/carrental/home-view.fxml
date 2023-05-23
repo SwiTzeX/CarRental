@@ -254,7 +254,7 @@
                   </children>
                </HBox>
                <HBox fx:id="cardLayout" prefHeight="430.0" prefWidth="1244.0" spacing="15.0" />
-               <HBox alignment="CENTER" prefHeight="5.0" prefWidth="1244.0" spacing="5.0">
+               <HBox fx:id="paginationBox" alignment="CENTER" prefHeight="5.0" prefWidth="1244.0" spacing="5.0">
                   <children>
                      <Button fx:id="previousPageButton" mnemonicParsing="false" onAction="#previousPageDisplay" style="-fx-background-color: #ebeeff; -fx-background-radius: 5; -fx-border-color: #6279ff; -fx-border-radius: 5;" text="&lt;" textFill="#6279ff">
                         <font>
