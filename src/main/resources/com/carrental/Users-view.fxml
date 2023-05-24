@@ -22,13 +22,13 @@
          <children>
             <TableView fx:id="tableview" prefHeight="553.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn editable="false" prefWidth="128.0" resizable="false" text="Full name" />
-                <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="NID" />
-                  <TableColumn editable="false" prefWidth="201.0" resizable="false" text="Phone Number" />
-                  <TableColumn editable="false" prefWidth="195.0" resizable="false" text="E-MAIL" />
-                  <TableColumn editable="false" prefWidth="249.0" resizable="false" text="Age" />
-                  <TableColumn editable="false" prefWidth="207.0" resizable="false" text="Status" />
-                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="Action" />
+                <TableColumn editable="false" prefWidth="128.0" resizable="false" text="idU" />
+                <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="nid" />
+                  <TableColumn editable="false" prefWidth="201.0" resizable="false" text="email" />
+                  <TableColumn editable="false" prefWidth="195.0" resizable="false" text="phoneNumber" />
+                  <TableColumn editable="false" prefWidth="249.0" resizable="false" text="fullname" />
+                  <TableColumn editable="false" prefWidth="207.0" resizable="false" text="password" />
+                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="isAdmin" />
               </columns>
             </TableView>
          </children></VBox>
