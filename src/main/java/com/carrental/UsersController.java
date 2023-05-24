@@ -1,23 +1,21 @@
 package com.carrental;
 
 import com.carrental.models.User;
-import com.carrental.models.Vehicle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UsersController implements Initializable {
+
+    @FXML
+    private TableView<User> tableview;
 
     // admin - client
     @FXML
@@ -48,15 +46,20 @@ public class UsersController implements Initializable {
     //public ArrayList<String> roles = new ArrayList<>(Arrays.asList(null,null));
 
 
-    @FXML
-    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null));
+   // @FXML
+   // public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null));
 
 
     @FXML
-    public ArrayList<User> Users = User.getAllUsers();
+   // private ArrayList<User> userlist = new ArrayList<User>();
+    private ObservableList<User> userList = FXCollections.observableArrayList();
 
 
-    @FXML
+    //@FXML
+  //  public ArrayList<User> Users = User.getAllUsers();
+
+
+    //@FXML
     //public void clearAllfilter(ActionEvent event){
 
 
@@ -65,8 +68,27 @@ public class UsersController implements Initializable {
    // }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    ArrayList<User> users = User.getAllUsers();
+    userList.addAll(users);
+    tableview.setItems(userList);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // a.setVisible(false);
-        roles.getItems().addAll("admin","client");
+      /*  roles.getItems().addAll("admin","client");
         invoicestatue.getItems().addAll("active","blocked","suspended");
     }
 
@@ -85,7 +107,8 @@ public class UsersController implements Initializable {
         //invoicestatue = Users.filters(filterSettings);
         //invoicedate = Users.filters(filterSettings);
     }
-
+*/
+}
 }
 
 

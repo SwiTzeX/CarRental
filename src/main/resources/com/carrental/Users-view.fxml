@@ -20,7 +20,7 @@
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="553.0" prefWidth="1250.0">
          <children>
-            <TableView prefHeight="553.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" prefHeight="553.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn editable="false" prefWidth="128.0" resizable="false" text="Full name" />
                 <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="NID" />
@@ -104,17 +104,17 @@
       </Pane>
       <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1250.0" spacing="10.0">
          <children>
-            <ComboBox fx:id="roles" onAction="#filters" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="invoicedate" onAction="#filters" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="invoicestatue" onAction="#filters" prefHeight="44.0" prefWidth="169.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
+            <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="169.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
                   <Insets top="17.0" />
                </HBox.margin>
