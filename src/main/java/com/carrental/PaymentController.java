@@ -1,5 +1,7 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
+import com.carrental.models.Vehicle;
 import javafx.fxml.FXMLLoader;
 import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
@@ -15,9 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class PaymentController implements Initializable {
 
@@ -75,15 +81,10 @@ public class PaymentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Payment-view.fxml"));
-            Parent payview = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
+    @FXML
     public void onClickBack(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("infopage-view.fxml"));
@@ -96,6 +97,7 @@ public class PaymentController implements Initializable {
         }
     }
 
+@FXML
     public String getRadioValue() {
         String method = null;
         if (RadioBPaypal.isSelected()) {
@@ -105,5 +107,40 @@ public class PaymentController implements Initializable {
         }
         return method;
     }
+
+    public void setData(Vehicle vehicle, Reservation reservation){
+        BrandNameVar.setText(vehicle.getBrandName());
+        PricePerDay.setText(String.valueOf(vehicle.getPrice())+" DH");
+        NumPVar.setText(String.valueOf(vehicle.getPassengers()));
+        FuelTypeVar.setText(vehicle.getFuelType());
+        GearTypeVar.setText(vehicle.getGearType());
+        HpVar.setText(String.valueOf(vehicle.getHorsePower()));
+        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
+        CarImageVar.setImage(image);
+        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
+        BrandLogoVar.setImage(brandImage);
+        TrunkCapVar.setText(String.valueOf(vehicle.getTrunkCapacity()));
+        TotalPrice.setText(String.valueOf(reservation.totalPrice()));
+    }
+
+    @FXML
+    public void EndCheckout(ActionEvent e) {
+        //Payment Method Paypal
+        if(this.getRadioValue()=="Paypal"){
+        // Define the URL to redirect to
+        String url = "https://www.paypal.com/fr/webapps/mpp/home";
+
+        // Open the web page in the default browser
+        try {
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (java.io.IOException ex) {
+            // Display an error message if the web page cannot be opened
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to open web page");
+            alert.setContentText("Please check your internet connection.");
+            alert.showAndWait();
+        }
+    }}
 
 }

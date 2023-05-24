@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
    <children>
-      <Button id="BackBtn" fx:id="BackBtn" mnemonicParsing="false" onAction="#OnClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
+      <Button id="BackBtn" fx:id="BackBtn" mnemonicParsing="false" onAction="#onClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
@@ -392,7 +392,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <Button id="CheckoutBtn" fx:id="CheckoutB" mnemonicParsing="false" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
+            <Button id="CheckoutBtn" fx:id="CheckoutB" mnemonicParsing="false" onAction="#EndCheckout" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
