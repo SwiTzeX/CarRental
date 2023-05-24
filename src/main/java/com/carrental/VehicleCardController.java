@@ -77,8 +77,11 @@ public class VehicleCardController {
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
         Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
         vehImage.setImage(image);
-        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
+        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()),40,40,true,true);
         vehBrandImage.setImage(brandImage);
+        vehBrandImage.setPreserveRatio(true);
+        vehBrandImage.setFitWidth(40);
+        vehBrandImage.setFitHeight(40);
         vehTrunkCapacityLabel.setText(String.valueOf(vehicle.getTrunkCapacity()));
     }
     @FXML
