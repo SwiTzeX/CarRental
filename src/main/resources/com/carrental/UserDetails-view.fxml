@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,32 +16,13 @@
 
 <AnchorPane prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UserDetailsController">
    <children>
-      <Pane prefHeight="70.0" prefWidth="1353.0">
+      <Pane prefHeight="70.0" prefWidth="1250.0">
          <children>
             <HBox layoutY="-6.0" prefHeight="80.0" prefWidth="1349.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/icons8_Search_52px.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="37.0" top="23.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <TextField prefHeight="38.0" prefWidth="244.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="12.0" top="19.0" />
-                     </HBox.margin>
-                  </TextField>
                   <Label prefHeight="56.0" prefWidth="127.0" text="ABDOU CHEF" textFill="#00000092">
                      <HBox.margin>
-                        <Insets left="831.0" top="8.0" />
+                        <Insets left="1148.0" top="8.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="17.0" />
@@ -146,7 +126,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="473.0" layoutY="125.0" prefHeight="415.0" prefWidth="864.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;">
+      <Pane layoutX="473.0" layoutY="125.0" prefHeight="622.0" prefWidth="864.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;">
          <children>
             <Label layoutX="7.0" layoutY="4.0" prefHeight="30.0" prefWidth="190.0" text=" Rental Activities" textFill="#6279ff">
                <padding>
@@ -156,49 +136,16 @@
                   <Font name="Arial" size="19.0" />
                </font>
             </Label>
-            <TableView layoutX="16.0" layoutY="45.0" prefHeight="358.0" prefWidth="827.0">
+            <TableView layoutX="16.0" layoutY="45.0" prefHeight="569.0" prefWidth="827.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn prefWidth="82.0" resizable="false" text="Rental" />
-                <TableColumn prefWidth="148.0" resizable="false" text="Car Model" />
-                  <TableColumn prefWidth="160.0" resizable="false" text="STATUT" />
-                  <TableColumn prefWidth="151.0" resizable="false" text="Duree" />
-                  <TableColumn prefWidth="142.0" resizable="false" text="x" />
+                <TableColumn prefWidth="114.0" resizable="false" text="Rental" />
+                <TableColumn prefWidth="146.0" resizable="false" text="Car Model" />
+                  <TableColumn prefWidth="164.0" resizable="false" text="STATUT" />
+                  <TableColumn prefWidth="144.0" resizable="false" text="Duree" />
+                  <TableColumn prefWidth="115.0" resizable="false" text="x" />
                   <TableColumn prefWidth="143.0" resizable="false" text="TOTAL TASK" />
               </columns>
             </TableView>
-         </children>
-      </Pane>
-      <Pane layoutX="478.0" layoutY="554.0" prefHeight="200.0" prefWidth="864.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;">
-         <children>
-            <Label layoutX="28.0" prefHeight="45.0" prefWidth="205.0" text="User Activity History" textFill="#6279ff">
-               <font>
-                  <Font name="Arial" size="19.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/TimelineDot.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="66.0" layoutY="50.0" prefHeight="20.0" prefWidth="236.0" text="Mercedes-Benz GT 63 AMG Brabus" />
-            <Separator layoutX="43.0" layoutY="70.0" orientation="VERTICAL" prefHeight="56.0" prefWidth="6.0" />
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/wwwwww.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="66.0" layoutY="131.0" prefHeight="20.0" prefWidth="218.0" text="Meeting with Adam Habibi" />
-            <Label layoutX="72.0" layoutY="71.0" prefHeight="20.0" prefWidth="288.0" text="Invoices have been paid to the company" textFill="#00000084" />
-            <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="85.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/PDF.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="114.0" layoutY="101.0" prefHeight="20.0" prefWidth="80.0" text="Invoices.pdf" />
-            <Label layoutX="69.0" layoutY="151.0" prefHeight="20.0" prefWidth="273.0" text="Project meeting with Habibi @10:15am" textFill="#00000085" />
-            <Separator layoutX="43.0" layoutY="149.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="6.0" />
-            <Label layoutX="755.0" layoutY="130.0" text="45 min ago" textFill="#0000008a" />
-            <Label layoutX="751.0" layoutY="42.0" text="12 min ago" textFill="#0000008a" />
          </children>
       </Pane>
       <Separator layoutX="33.0" layoutY="76.0" prefHeight="7.0" prefWidth="1327.0">
@@ -208,7 +155,10 @@
       </Separator>
       <Pane layoutX="60.0" layoutY="767.0" prefHeight="28.0" prefWidth="1274.0">
          <children>
-            <Label layoutX="1036.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" />
+            <Label layoutX="1036.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff">
+               <padding>
+                  <Insets left="-500.0" top="1.0" />
+               </padding></Label>
          </children>
       </Pane>
    </children>
