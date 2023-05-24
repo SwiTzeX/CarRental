@@ -54,7 +54,7 @@
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
       </VBox>
-      <Button id="PopUp" fx:id="PopUp" mnemonicParsing="false" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #16A300; -fx-background-radius: 10; -fx-border-radius: 10;" text="OK" textFill="WHITE">
+      <Button id="PopUp" fx:id="PopUp" mnemonicParsing="false" onAction="#onClickBackPV" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #16A300; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
