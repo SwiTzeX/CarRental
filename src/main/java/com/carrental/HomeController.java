@@ -93,18 +93,15 @@ public class HomeController implements Initializable {
     public void loadCardsByPage(int pageNumber){
         paginationBox.getChildren().clear();
         paginationBox.getChildren().add(previousPageButton);
-       /* for(int i = 0; i<maxPages;i++){
-            Label numberLbl = new Label(String.valueOf(i+1));
-            numberLbl.setFont(pageNumberLabel.getFont());
-            paginationBox.getChildren().add(numberLbl);
-        }*/
-        // Update page numbers
         int startPage = Math.max(1, pageNumber - 2);
         int endPage = Math.min(startPage + 4 - 1, maxPages);
         if (startPage > 1) {
 
             Label numberLbl = new Label("1");
             numberLbl.setFont(pageNumberLabel.getFont());
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
             Label separatorLabel = new Label("...");
             paginationBox.getChildren().addAll(numberLbl,separatorLabel);
         }
@@ -115,14 +112,18 @@ public class HomeController implements Initializable {
             if(i==pageNumber){
                 numberLbl.setStyle("-fx-text-fill: #6279ff");
             }
-           // int pageNumber = i; // To capture the current value of 'i' in the lambda expression
-            /*pageButton.setOnAction(event -> goToPage(pageNumber));*/
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
             paginationBox.getChildren().add(numberLbl);
         }
 
         if (endPage < maxPages) {
             Label numberLbl = new Label(String.valueOf(maxPages));
             numberLbl.setFont(pageNumberLabel.getFont());
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
             Label separatorLabel = new Label("...");
             paginationBox.getChildren().addAll(separatorLabel,numberLbl);
         }
@@ -231,32 +232,6 @@ public class HomeController implements Initializable {
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber--;
         this.loadCardsByPage(pageNumber);
-    }
-    @FXML
-    void goToLogin(javafx.event.ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    void goToRegister(javafx.event.ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
-            Parent register = loader.load();
-
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(register));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

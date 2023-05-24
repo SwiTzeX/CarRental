@@ -23,7 +23,6 @@ public class MyPasswordField extends StackPane {
     private Image closeEye = new Image(new File("src/main/resources/com/carrental/icons/eye-crossed.png").toURI().toString());
     private ImageView eyeView = new ImageView(closeEye);
     private TextField textField = new TextField();
-    private PasswordField passwordField = new PasswordField();
     private Label errorLabel = new Label();
     private Line backLine = new Line();
     private Line frontLine = new Line();
@@ -211,7 +210,7 @@ public class MyPasswordField extends StackPane {
     private void addLine(){
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(frontLine.startXProperty(), 0)),
-                new KeyFrame(Duration.seconds(0.2), new KeyValue(frontLine.startXProperty(), this.getWidth()-2))
+                new KeyFrame(Duration.seconds(0.5), new KeyValue(frontLine.startXProperty(), this.getWidth()-2))
         );
         timeline.setCycleCount(1);
         timeline.play();
@@ -219,7 +218,7 @@ public class MyPasswordField extends StackPane {
     private void removeLine(){
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(frontLine.startXProperty(), this.getWidth())),
-                new KeyFrame(Duration.seconds(0.2), new KeyValue(frontLine.startXProperty(), 0))
+                new KeyFrame(Duration.seconds(0.5), new KeyValue(frontLine.startXProperty(), 0))
         );
         timeline.setCycleCount(1);
         timeline.play();
