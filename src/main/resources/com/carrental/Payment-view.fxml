@@ -14,22 +14,25 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button id="BackBtn" fx:id="BackBtn" mnemonicParsing="false" onAction="#GoBacKInfoView" prefHeight="38.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
+      <Button id="BackBtn" fx:id="BackBtn" mnemonicParsing="false" onAction="#OnClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
          <HBox.margin>
-            <Insets bottom="10.0" left="25.0" right="10.0" top="30.0" />
+            <Insets bottom="10.0" left="15.0" right="10.0" top="30.0" />
          </HBox.margin>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
       </Button>
       <VBox prefHeight="745.0" prefWidth="721.0" spacing="30.0">
          <children>
             <Label prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
                <font>
-                  <Font name="Arial Bold" size="27.0" />
+                  <Font name="Arial Bold" size="29.0" />
                </font>
                <VBox.margin>
-                  <Insets left="180.0" top="15.0" />
+                  <Insets left="10.0" top="5.0" />
                </VBox.margin>
             </Label>
             <VBox prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
@@ -213,6 +216,9 @@
                            </HBox.margin>
                         </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -231,7 +237,7 @@
                   </Label>
                   <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="711.0">
                      <children>
-                        <RadioButton fx:id="RadioBPaypal" mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" selected="true">
+                        <RadioButton fx:id="RadioBPaypal" mnemonicParsing="false" onAction="#getRadioValue" prefHeight="50.0" prefWidth="42.0" selected="true">
                            <HBox.margin>
                               <Insets left="50.0" top="15.0" />
                            </HBox.margin>
@@ -251,7 +257,7 @@
                   </HBox>
                   <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="RadioBOnSite" mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" toggleGroup="$RadioGrp">
+                        <RadioButton fx:id="RadioBOnSite" mnemonicParsing="false" onAction="#getRadioValue" prefHeight="50.0" prefWidth="42.0" toggleGroup="$RadioGrp">
                            <HBox.margin>
                               <Insets bottom="15.0" left="50.0" />
                            </HBox.margin>
@@ -386,7 +392,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <Button id="CheckoutBtn" mnemonicParsing="false" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
+            <Button id="CheckoutBtn" fx:id="CheckoutB" mnemonicParsing="false" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -396,7 +402,7 @@
             </Button>
          </children>
          <HBox.margin>
-            <Insets top="110.0" />
+            <Insets top="100.0" />
          </HBox.margin>
          <padding>
             <Insets left="15.0" />
