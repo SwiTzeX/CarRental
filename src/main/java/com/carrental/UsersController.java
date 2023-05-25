@@ -1,5 +1,9 @@
 package com.carrental;
 
+
+
+
+
 import com.carrental.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,15 +11,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+
+
 public class UsersController implements Initializable {
 
     @FXML
     private TableView<User> tableview;
+
+
 
     // admin - client
     @FXML
@@ -49,10 +59,28 @@ public class UsersController implements Initializable {
    // @FXML
    // public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null));
 
+    // private ArrayList<User> userlist = new ArrayList<User>();
+    @FXML
+    private ObservableList<User> userList = FXCollections.observableArrayList();
 
     @FXML
-   // private ArrayList<User> userlist = new ArrayList<User>();
-    private ObservableList<User> userList = FXCollections.observableArrayList();
+    private TableColumn<User, Integer> IdColumn;
+
+    @FXML
+    private TableColumn<User, String> nIdColumn;
+
+    @FXML
+    private TableColumn<User, String> emailColumn;
+
+    @FXML
+    private TableColumn<User, String> phoneColumn;
+
+    @FXML
+    private TableColumn<User, String> fullnameColumn;
+
+    @FXML
+    private TableColumn<User, String> passwordColumn;
+   //private TableColumn<User, boolean> columnisadmine;
 
 
     //@FXML
@@ -65,24 +93,25 @@ public class UsersController implements Initializable {
 
 
 
+
+
+
    // }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     ArrayList<User> users = User.getAllUsers();
-    userList.addAll(users);
-    tableview.setItems(userList);
+        userList.addAll(users);
+        IdColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        nIdColumn.setCellValueFactory(new PropertyValueFactory<User, String>("nId"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<User, String>("phoneNumber"));
+        fullnameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("fullName"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
+       // columnisadmine.setCellValueFactory(new PropertyValueFactory<User, boolean>("isAdmin"));
 
-
-
-
-
-
-
-
-
-
-
+        tableview.setVisible(true);
+        tableview.setItems(userList);
 
 
 

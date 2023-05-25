@@ -16,19 +16,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="553.0" prefWidth="1250.0">
          <children>
             <TableView fx:id="tableview" prefHeight="553.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn editable="false" prefWidth="128.0" resizable="false" text="idU" />
-                <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="nid" />
-                  <TableColumn editable="false" prefWidth="201.0" resizable="false" text="email" />
-                  <TableColumn editable="false" prefWidth="195.0" resizable="false" text="phoneNumber" />
-                  <TableColumn editable="false" prefWidth="249.0" resizable="false" text="fullname" />
-                  <TableColumn editable="false" prefWidth="207.0" resizable="false" text="password" />
-                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="isAdmin" />
+                <TableColumn editable="false" prefWidth="128.0" resizable="false" text="idU" fx:id="IdColumn" >
+
+                </TableColumn>
+                <TableColumn editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" text="nid" fx:id="nIdColumn" >
+
+
+
+                </TableColumn>
+                  <TableColumn editable="false" prefWidth="201.0" resizable="false" text="email" fx:id="emailColumn" >
+
+
+
+                  </TableColumn>
+                  <TableColumn editable="false" prefWidth="195.0" resizable="false" text="phoneNumber" fx:id="phoneColumn" >
+
+
+
+                  </TableColumn>
+                  <TableColumn editable="false" prefWidth="249.0" resizable="false" text="fullname" fx:id="fullnameColumn" >
+
+
+
+                  </TableColumn>
+                  <TableColumn editable="false" prefWidth="207.0" resizable="false" text="password" fx:id="passwordColumn" >
+
+
+
+                  </TableColumn>
+                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="isAdmin" fx:id="isadminColumn">
+
+
+
+
+                  </TableColumn>
               </columns>
             </TableView>
          </children></VBox>

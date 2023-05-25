@@ -1,5 +1,6 @@
 package com.carrental.models;
 
+
 import com.carrental.SingletonConnection;
 
 import java.sql.Connection;
@@ -7,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+
 
 public class User {
     public Integer id;
@@ -18,6 +21,9 @@ public class User {
     public String fullName;
     public String password;
     public boolean isAdmin;
+
+
+
 
     public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin) {
         this.id = id;
@@ -58,6 +64,7 @@ public class User {
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         try {
