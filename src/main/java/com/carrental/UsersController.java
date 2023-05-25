@@ -68,17 +68,21 @@ public class UsersController implements Initializable {
                     showEditDialog(user);
                 });
                 modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     // logique
                 });
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     // logique
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
             }
 
