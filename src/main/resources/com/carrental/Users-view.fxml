@@ -51,12 +51,14 @@
 
 
                   </TableColumn>
-                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="isAdmin" fx:id="isadminColumn">
+                  <TableColumn editable="false" prefWidth="204.0" resizable="false" text="action" fx:id="actionColumn">
 
 
 
 
                   </TableColumn>
+
+
               </columns>
             </TableView>
          </children></VBox>
