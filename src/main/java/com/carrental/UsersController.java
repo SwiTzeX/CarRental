@@ -120,11 +120,11 @@ public class UsersController implements Initializable {
         grid.add(nIdField, 1, 1);
         grid.add(new Label("Email:"), 0, 2);
         grid.add(emailField, 1, 2);
-        grid.add(new Label("Téléphone:"), 0, 3);
+        grid.add(new Label("phone number:"), 0, 3);
         grid.add(phoneField, 1, 3);
-        grid.add(new Label("Nom complet:"), 0, 4);
+        grid.add(new Label("full name:"), 0, 4);
         grid.add(fullnameField, 1, 4);
-        grid.add(new Label("Mot de passe:"), 0, 5);
+        grid.add(new Label("password:"), 0, 5);
         grid.add(passwordField, 1, 5);
 
         dialog.getDialogPane().setContent(grid);
