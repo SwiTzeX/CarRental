@@ -67,16 +67,19 @@ public class UsersController implements Initializable {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
                 });
-
+                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     // logique
                 });
+                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     // logique
                 });
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+
             }
 
             @Override
