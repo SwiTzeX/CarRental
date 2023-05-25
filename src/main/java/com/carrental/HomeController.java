@@ -71,7 +71,7 @@ public class HomeController implements Initializable {
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
-    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
@@ -215,7 +215,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void clearAllFilters(javafx.event.ActionEvent event) {
-        filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+        filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
         vehicles = Vehicle.getAllVehicles();
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();

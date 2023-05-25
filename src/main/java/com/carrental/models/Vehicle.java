@@ -449,6 +449,18 @@ public class Vehicle {
                 }
                 req += "type = '" + filterSettings.get(4) + "' ";
             }
+            if(filterSettings.get(5) != null){
+                if (and) {
+                    req += "AND ";
+                }
+                req += "modelName = '" + filterSettings.get(5) + "' ";
+            }
+            if(filterSettings.get(6) != null){
+                if (and) {
+                    req += "AND ";
+                }
+                req += "disponibility = '" + filterSettings.get(6) + "' ";
+            }
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
