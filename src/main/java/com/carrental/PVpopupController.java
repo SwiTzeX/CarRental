@@ -37,14 +37,6 @@ public class PVpopupController implements Initializable{
 
     @FXML
     public void onClickBackPV(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("home-view.fxml"));
-            Parent back = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(back));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
+               Stage stage = PaymentController.getPopupStage();
+               stage.close();
+}}

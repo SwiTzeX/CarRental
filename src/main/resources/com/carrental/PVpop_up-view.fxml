@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="347.0" style="-fx-background-radius: 30 30 30 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30 30 30 30; -fx-border-color: #f0f2ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="347.0" style="-fx-background-radius: 30 30 30 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30 30 30 30; -fx-border-color: #f0f2ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PVpopupController">
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="316.0" spacing="20.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #16A300; -fx-background-color: #DCFFD6;">
          <VBox.margin>
@@ -67,7 +66,7 @@
             <Insets left="30.0" right="30.0" top="15.0" />
          </VBox.margin>
       </Separator>
-      <Label alignment="CENTER" text="Thanks for choosing RentEZ." textAlignment="CENTER" textFill="#353550">
+      <Label alignment="CENTER" text="Thank you for choosing RentEZ." textAlignment="CENTER" textFill="#353550">
          <font>
             <Font name="Arial" size="14.0" />
          </font>

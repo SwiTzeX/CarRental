@@ -17,15 +17,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
 
 public class PaymentController implements Initializable {
+
 
     @FXML
     private Button CheckoutB;
@@ -84,6 +88,7 @@ public class PaymentController implements Initializable {
 
     }
 
+    static Stage popupStage = new Stage();
     @FXML
     public void onClickBack(ActionEvent event) {
         try {
@@ -141,6 +146,29 @@ public class PaymentController implements Initializable {
             alert.setContentText("Please check your internet connection.");
             alert.showAndWait();
         }
-    }}
+    }
+        try {
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("home-view.fxml"));
+            Parent back = loader1.load();
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            BoxBlur blur = new BoxBlur(5, 5, 3); // Adjust the blur radius as desired
+            stage.setScene(new Scene(back));
+            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PVpop_up-view.fxml"));
+            popupStage.setScene(new Scene(loader.load()));
+            popupStage.setTitle("Pop-up Panel");
+            popupStage.initModality(Modality.APPLICATION_MODAL); // Set modality to block main window
+            popupStage.initStyle(StageStyle.UNDECORATED);
+            popupStage.show();
+        }
+        catch (IOException b) {
+        b.printStackTrace();
+    }
+    }
+
+@FXML
+    public static Stage getPopupStage(){
+        return popupStage;
+    }
 
 }
