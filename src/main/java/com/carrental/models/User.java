@@ -37,11 +37,11 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public String getnId() {
+    public String getNId() {
         return nId;
     }
 
-    public void setnId(String nId) {
+    public void setNId(String nId) {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Users SET nid = " + nId + " WHERE idU = " + this.getId();
