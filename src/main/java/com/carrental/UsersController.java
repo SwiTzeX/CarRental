@@ -99,21 +99,21 @@ public class UsersController implements Initializable {
                 }
             }
         });
+
         statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
             @Override
-            protected void updateItem(Boolean isAdmin, boolean empty) {
-                super.updateItem(isAdmin, empty);
-                if (empty || isAdmin == null) {
+            protected void updateItem(Boolean isBlocked, boolean empty) {
+                super.updateItem(isBlocked, empty);
+                if (empty || isBlocked == null) {
                     setText(null);
                 } else {
-                    if (isAdmin) {
-                        setText("Active");
-                        setTextFill(javafx.scene.paint.Color.GREEN);
-                    } else {
-                        setText("Inactive");
+                    if (isBlocked) {
+                        setText("Bloqué");
                         setTextFill(javafx.scene.paint.Color.RED);
+                    } else {
+                        setText("Actif");
+                        setTextFill(javafx.scene.paint.Color.GREEN);
                     }
-
                 }
             }
         });
@@ -135,25 +135,25 @@ public class UsersController implements Initializable {
 
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    boolean isBlocked = Boolean.parseBoolean("bloqué");
+                    boolean isBlocked = user.getStatus(); // Obtient l'état actuel de l'utilisateur
 
-                    if (user.getStatus() == isBlocked) {
+                    if (isBlocked) {
                         // Si l'utilisateur est déjà bloqué, on le débloque
-
-                        user.setStatus(!isBlocked);
+                        user.setStatus(false);
                         modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30;");
                         modifyButton.setTextFill(javafx.scene.paint.Color.BLACK);
-                        blockButton.setText("Block");
+                        blockButton.setText("Débloquer");
                     } else {
                         // Si l'utilisateur est déjà débloqué, on le bloque
-                        user.setStatus(isBlocked);
+                        user.setStatus(true);
                         modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;");
                         modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
-                        blockButton.setText("Unblock");
+                        blockButton.setText("Bloquer");
                     }
 
                     tableview.refresh();
                 });
+
 
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
@@ -161,36 +161,7 @@ public class UsersController implements Initializable {
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-
-                    // Prompt the user for confirmation
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation");
-                    alert.setHeaderText("Supprimer l'utilisateur");
-                    alert.setContentText("are u sure u want to delete this user?");
-
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.isPresent() && result.get() == ButtonType.OK) {
-
-                        tableview.getItems().remove(user);
-
-
-                        boolean alpha = user.delete();
-                        if (alpha) {
-
-                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                            successAlert.setTitle("Suppression réussie");
-                            successAlert.setHeaderText(null);
-                            successAlert.setContentText("this user is no longer on the database .");
-                            successAlert.showAndWait();
-                        } else {
-
-                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                            errorAlert.setTitle("Erreur alpha");
-                            errorAlert.setHeaderText(null);
-                            errorAlert.setContentText("erreur alpha.");
-                            errorAlert.showAndWait();
-                        }
-                    }
+                    // logique
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
