@@ -23,8 +23,7 @@ public class User {
     public String password;
     public Date creationDate;
     public boolean isAdmin;
-
-
+    private SingletonConnection DatabaseManager;
 
 
     public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
@@ -316,7 +315,7 @@ public class User {
         try {
             Connection conn = SingletonConnection.getConnection();
             System.out.println(this.getId());
-            String req = "DELETE FROM Users WHERE idU="+this.getId()+" OR email="+this.getEmail();
+            String req = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             return rs > 0;
@@ -324,6 +323,7 @@ public class User {
             throw new RuntimeException(e);
         }
     }
+
 
 
     public boolean checkPassword(String password){

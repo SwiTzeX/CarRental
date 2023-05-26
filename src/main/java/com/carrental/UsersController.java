@@ -139,6 +139,7 @@ public class UsersController implements Initializable {
 
                     if (user.getStatus() == isBlocked) {
                         // Si l'utilisateur est déjà bloqué, on le débloque
+
                         user.setStatus(!isBlocked);
                         modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30;");
                         modifyButton.setTextFill(javafx.scene.paint.Color.BLACK);
@@ -160,7 +161,36 @@ public class UsersController implements Initializable {
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    // logique
+
+                    // Prompt the user for confirmation
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Supprimer l'utilisateur");
+                    alert.setContentText("are u sure u want to delete this user?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                        tableview.getItems().remove(user);
+
+
+                        boolean alpha = user.delete();
+                        if (alpha) {
+
+                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                            successAlert.setTitle("Suppression réussie");
+                            successAlert.setHeaderText(null);
+                            successAlert.setContentText("this user is no longer on the database .");
+                            successAlert.showAndWait();
+                        } else {
+
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                            errorAlert.setTitle("Erreur alpha");
+                            errorAlert.setHeaderText(null);
+                            errorAlert.setContentText("erreur alpha.");
+                            errorAlert.showAndWait();
+                        }
+                    }
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
