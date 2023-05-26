@@ -89,7 +89,13 @@ public class UsersController implements Initializable {
                 if (empty || isAdmin == null) {
                     setText(null);
                 } else {
-                    setText(isAdmin ? "admin" : "client");
+                    if (isAdmin) {
+                        setText("Admin");
+                        setTextFill(javafx.scene.paint.Color.GREEN);
+                    } else {
+                        setText("Client");
+                        setTextFill(javafx.scene.paint.Color.RED);
+                    }
                 }
             }
         });
@@ -101,6 +107,7 @@ public class UsersController implements Initializable {
                     setText(null);
                 } else {
                     setText(isAdmin ? "active" : "inactive");
+
                 }
             }
         });
