@@ -64,7 +64,7 @@ public class User {
     public void setNId(String nId) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET nid = " + nId + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET nid = '" + nId + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
