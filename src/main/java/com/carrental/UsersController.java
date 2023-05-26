@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -59,15 +60,43 @@ public class UsersController implements Initializable {
     private ComboBox<String> roles;
 
     @FXML
+    private Button clearallfilters;
+    @FXML
+    private String selectedInvoiceStatus;
+
+    @FXML
+    private String selectedInvoiceDate;
+
+    @FXML
+    private String selectedRole;
+
+    @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedRole = newValue;
+            applyFilters();
+        });
+
+        invoicestatue.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceStatus = newValue;
+            applyFilters();
+        });
+
+        invoicedate.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceDate = newValue;
+            applyFilters();
+        });
+
      roles.getItems().addAll("admin", "client");
-     invoicestatue.getItems().addAll("bloqué", "active", "susp");
+     invoicestatue.getItems().addAll("bloqué", "active");
      invoicedate.getItems().addAll("newest", "oldest");
 
+        applyFilters();
 
         ArrayList<User> users = User.getAllUsers();
         userList.addAll(users);
@@ -273,5 +302,58 @@ public class UsersController implements Initializable {
                 userList.set(index, updatedUser);
             }
         });
+    }
+    private void applyFilters() {
+        tableview.setItems(userList.filtered(user -> {
+            boolean statusFilter = selectedInvoiceStatus == null || selectedInvoiceStatus.isEmpty() ||
+                    (selectedInvoiceStatus.equals("bloqué") && user.getStatus()) ||
+                    (selectedInvoiceStatus.equals("active") && !user.getStatus());
+
+            boolean dateFilter = selectedInvoiceDate == null || selectedInvoiceDate.isEmpty() ||
+                    (selectedInvoiceDate.equals("newest") && user.getCreationDate().equals(getNewestInvoiceDate())) ||
+                    (selectedInvoiceDate.equals("oldest") && user.getCreationDate().equals(getOldestInvoiceDate()));
+
+            boolean roleFilter = selectedRole == null || selectedRole.isEmpty() ||
+                    (selectedRole.equals("admin") && user.getIsAdmin()) ||
+                    (selectedRole.equals("client") && !user.getIsAdmin());
+
+            return statusFilter && dateFilter && roleFilter;
+        }));
+    }
+    private Date getNewestInvoiceDate() {
+        Date newestDate = null;
+
+        for (User user : userList) {
+            Date invoiceDate = user.getCreationDate();
+
+            if (invoiceDate != null && (newestDate == null || invoiceDate.compareTo(newestDate) > 0)) {
+                newestDate = invoiceDate;
+            }
+        }
+
+        return newestDate;
+    }
+
+    private Date getOldestInvoiceDate() {
+
+        Date oldestDate = null;
+
+        for (User user : userList) {
+            Date invoiceDate = user.getCreationDate();
+
+            if (invoiceDate != null && (oldestDate == null || invoiceDate.compareTo(oldestDate) < 0)) {
+                oldestDate = invoiceDate;
+            }
+        }
+
+        return oldestDate;
+    }
+    @FXML
+    private void clearAllFilters(ActionEvent event) {
+        invoicestatue.getSelectionModel().clearSelection();
+        invoicedate.getSelectionModel().clearSelection();
+        roles.getSelectionModel().clearSelection();
+
+        tableview.setItems(userList);
     }
 }
