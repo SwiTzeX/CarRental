@@ -1,6 +1,7 @@
 package com.carrental;
 
 import com.carrental.models.User;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,12 @@ public class UsersController implements Initializable {
     private TableColumn<User, Integer> IdColumn;
 
     @FXML
+    private TableColumn<User, Boolean> isadmincolumn;
+
+    @FXML
+    private TableColumn<User, Boolean> statuecolumn;
+
+    @FXML
     private TableColumn<User, String> nIdColumn;
 
     @FXML
@@ -43,10 +50,25 @@ public class UsersController implements Initializable {
     private TableColumn<User, Void> actionColumn;
 
     @FXML
+    private ComboBox<String> invoicestatue;
+
+    @FXML
+    private ComboBox<String> invoicedate;
+
+    @FXML
+    private ComboBox<String> roles;
+
+    @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+     roles.getItems().addAll("admin", "client");
+     invoicestatue.getItems().addAll("bloqué", "active", "susp");
+     invoicedate.getItems().addAll("newest", "oldest");
+
+
         ArrayList<User> users = User.getAllUsers();
         userList.addAll(users);
 
@@ -56,6 +78,34 @@ public class UsersController implements Initializable {
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        isadmincolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getIsAdmin()));
+        statuecolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getStatus()));
+
+
+        isadmincolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
+            @Override
+            protected void updateItem(Boolean isAdmin, boolean empty) {
+                super.updateItem(isAdmin, empty);
+                if (empty || isAdmin == null) {
+                    setText(null);
+                } else {
+                    setText(isAdmin ? "admin" : "client");
+                }
+            }
+        });
+        statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
+            @Override
+            protected void updateItem(Boolean isAdmin, boolean empty) {
+                super.updateItem(isAdmin, empty);
+                if (empty || isAdmin == null) {
+                    setText(null);
+                } else {
+                    setText(isAdmin ? "active" : "inactive");
+                }
+            }
+        });
+
+
 
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modifier");
@@ -99,7 +149,7 @@ public class UsersController implements Initializable {
         });
 
         tableview.setItems(userList);
-        tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, actionColumn);
+        tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, isadmincolumn, statuecolumn, actionColumn);
     }
 
     private void showEditDialog(User user) {

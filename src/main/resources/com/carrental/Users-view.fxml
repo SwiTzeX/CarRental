@@ -50,8 +50,8 @@
 
 
                   </TableColumn>
-                  <TableColumn prefWidth="106.0" text="isAdmin" />
-                  <TableColumn prefWidth="106.0" text="status" />
+                  <TableColumn fx:id="isadmincolumn" prefWidth="106.0" text="isAdmin" />
+                  <TableColumn fx:id="statuecolumn" prefWidth="106.0" text="status" />
                   <TableColumn fx:id="actionColumn" editable="false" prefWidth="233.0" resizable="false" text="action" />
 
 

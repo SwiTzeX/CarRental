@@ -182,7 +182,7 @@ public class HomeController implements Initializable {
 
         vehicles = Vehicle.getAllVehicles();
         for(int i=0; i<20; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+           // vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         }
         /*for(int i=0; i<2; i++) {
             vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
