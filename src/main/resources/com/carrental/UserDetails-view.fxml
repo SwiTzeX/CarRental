@@ -89,27 +89,27 @@
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="168.0" text="Username : @Alpha">
+                  <Label fx:id="usernamelabel" prefHeight="20.0" prefWidth="168.0">
                      <VBox.margin>
                         <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="288.0" text="Email: lidrebna****@mayhemnasda3o.com">
+                  <Label fx:id="emaillabel" prefHeight="20.0" prefWidth="288.0">
                      <VBox.margin>
                         <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Role: Designer">
+                  <Label fx:id="rolelabel">
                      <VBox.margin>
                         <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="190.0" text="Age :   21">
+                  <Label fx:id="agelabel" prefHeight="20.0" prefWidth="190.0">
                      <VBox.margin>
                         <Insets left="55.0" top="18.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="124.0" text="Nid :  XA***********">
+                  <Label fx:id="nidlabel" prefHeight="20.0" prefWidth="124.0">
                      <VBox.margin>
                         <Insets left="55.0" top="18.0" />
                      </VBox.margin>
