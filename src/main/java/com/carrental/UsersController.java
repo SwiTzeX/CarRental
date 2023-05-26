@@ -6,12 +6,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +25,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UsersController implements Initializable {
+    @FXML
+    private UserDetailsController userDetailsController;
 
     @FXML
     private TableView<User> tableview;
@@ -140,13 +148,24 @@ public class UsersController implements Initializable {
                         setText("Bloqué");
                         setTextFill(javafx.scene.paint.Color.RED);
                     } else {
-                        setText("Actif");
+                        setText("Active");
                         setTextFill(javafx.scene.paint.Color.GREEN);
                     }
                 }
             }
         });
 
+        tableview.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+
+                User selectedUser = tableview.getSelectionModel().getSelectedItem();
+
+                if (selectedUser != null) {
+
+                    userDetailsController.displayUserDetails(selectedUser);
+                }
+            }
+        });
 
 
         actionColumn.setCellFactory(param -> new TableCell<>() {
@@ -194,8 +213,8 @@ public class UsersController implements Initializable {
                     // Prompt the user for confirmation
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmation");
-                    alert.setHeaderText("Supprimer l'utilisateur");
-                    alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+                    alert.setHeaderText("delete this user");
+                    alert.setContentText("are u sure?");
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -241,6 +260,9 @@ public class UsersController implements Initializable {
 
         tableview.setItems(userList);
         tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, isadmincolumn, statuecolumn, actionColumn);
+
+
+
     }
 
     private void showEditDialog(User user) {
@@ -353,7 +375,27 @@ public class UsersController implements Initializable {
         invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
-
         tableview.setItems(userList);
     }
+
+    @FXML
+    private void handleTableRowClick(MouseEvent event) {
+        User selectedUser = tableview.getSelectionModel().getSelectedItem();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
+            Parent userDetailsRoot = loader.load();
+            UserDetailsController userDetailsController = loader.getController();
+
+            userDetailsController.displayUserDetails(selectedUser);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(userDetailsRoot));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
