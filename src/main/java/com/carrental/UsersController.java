@@ -161,7 +161,37 @@ public class UsersController implements Initializable {
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    // logique
+
+                    // Prompt the user for confirmation
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Supprimer l'utilisateur");
+                    alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                        tableview.getItems().remove(user);
+
+
+                        boolean alphacool = user.delete();
+                        if (alphacool) {
+
+                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                            successAlert.setTitle("delete");
+                            successAlert.setHeaderText(null);
+                            successAlert.setContentText("user is no longer in the data base.");
+                            successAlert.showAndWait();
+                        } else {
+
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                            errorAlert.setTitle("Erreur alpha");
+                            errorAlert.setHeaderText(null);
+                            errorAlert.setContentText("erreur alpha.");
+                            errorAlert.showAndWait();
+                        }
+                    }
+
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
