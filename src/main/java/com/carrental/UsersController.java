@@ -106,7 +106,13 @@ public class UsersController implements Initializable {
                 if (empty || isAdmin == null) {
                     setText(null);
                 } else {
-                    setText(isAdmin ? "active" : "inactive");
+                    if (isAdmin) {
+                        setText("Active");
+                        setTextFill(javafx.scene.paint.Color.GREEN);
+                    } else {
+                        setText("Inactive");
+                        setTextFill(javafx.scene.paint.Color.RED);
+                    }
 
                 }
             }
@@ -128,7 +134,8 @@ public class UsersController implements Initializable {
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    // logique
+                    user.setStatus(Boolean.parseBoolean("bloqué"));
+                    tableview.refresh();
                 });
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
