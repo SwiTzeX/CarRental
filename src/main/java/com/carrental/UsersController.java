@@ -99,21 +99,21 @@ public class UsersController implements Initializable {
                 }
             }
         });
-
         statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
             @Override
-            protected void updateItem(Boolean isBlocked, boolean empty) {
-                super.updateItem(isBlocked, empty);
-                if (empty || isBlocked == null) {
+            protected void updateItem(Boolean isAdmin, boolean empty) {
+                super.updateItem(isAdmin, empty);
+                if (empty || isAdmin == null) {
                     setText(null);
                 } else {
-                    if (isBlocked) {
-                        setText("Bloqué");
-                        setTextFill(javafx.scene.paint.Color.RED);
-                    } else {
-                        setText("Actif");
+                    if (isAdmin) {
+                        setText("Active");
                         setTextFill(javafx.scene.paint.Color.GREEN);
+                    } else {
+                        setText("Inactive");
+                        setTextFill(javafx.scene.paint.Color.RED);
                     }
+
                 }
             }
         });
@@ -135,25 +135,24 @@ public class UsersController implements Initializable {
 
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    boolean isBlocked = user.getStatus(); // Obtient l'état actuel de l'utilisateur
+                    boolean isBlocked = Boolean.parseBoolean("bloqué");
 
-                    if (isBlocked) {
+                    if (user.getStatus() == isBlocked) {
                         // Si l'utilisateur est déjà bloqué, on le débloque
-                        user.setStatus(false);
+                        user.setStatus(!isBlocked);
                         modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30;");
                         modifyButton.setTextFill(javafx.scene.paint.Color.BLACK);
-                        blockButton.setText("Débloquer");
+                        blockButton.setText("Bloquer");
                     } else {
                         // Si l'utilisateur est déjà débloqué, on le bloque
-                        user.setStatus(true);
+                        user.setStatus(isBlocked);
                         modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;");
                         modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
-                        blockButton.setText("Bloquer");
+                        blockButton.setText("Débloquer");
                     }
 
                     tableview.refresh();
                 });
-
 
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
