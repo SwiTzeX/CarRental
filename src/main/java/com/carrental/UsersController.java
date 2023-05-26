@@ -132,11 +132,26 @@ public class UsersController implements Initializable {
                 });
                 modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    user.setStatus(Boolean.parseBoolean("bloqué"));
+                    boolean isBlocked = Boolean.parseBoolean("bloqué");
+
+                    if (user.getStatus() == isBlocked) {
+                        // Si l'utilisateur est déjà bloqué, on le débloque
+                        user.setStatus(!isBlocked);
+                        modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30;");
+                        modifyButton.setTextFill(javafx.scene.paint.Color.BLACK);
+                    } else {
+                        // Sinon, on le bloque
+                        user.setStatus(isBlocked);
+                        modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                        modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+                    }
+
                     tableview.refresh();
                 });
+
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
