@@ -138,12 +138,12 @@
             </Label>
             <TableView layoutX="16.0" layoutY="45.0" prefHeight="569.0" prefWidth="827.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn prefWidth="114.0" resizable="false" text="Rental" />
-                <TableColumn prefWidth="146.0" resizable="false" text="Car Model" />
-                  <TableColumn prefWidth="164.0" resizable="false" text="STATUT" />
-                  <TableColumn prefWidth="144.0" resizable="false" text="Duree" />
-                  <TableColumn prefWidth="115.0" resizable="false" text="x" />
-                  <TableColumn prefWidth="143.0" resizable="false" text="TOTAL TASK" />
+                <TableColumn prefWidth="114.0" resizable="false" text="nid" />
+                <TableColumn prefWidth="146.0" resizable="false" text="brandName" />
+                  <TableColumn prefWidth="164.0" resizable="false" text="modelName" />
+                  <TableColumn prefWidth="144.0" resizable="false" text="startDate" />
+                  <TableColumn prefWidth="143.0" resizable="false" text="endDate" />
+                  <TableColumn prefWidth="117.0" text="price" />
               </columns>
             </TableView>
          </children>
