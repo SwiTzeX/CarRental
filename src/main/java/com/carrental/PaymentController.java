@@ -163,7 +163,7 @@ public class PaymentController implements Initializable {
         }
         catch (IOException b) {
         b.printStackTrace();
-    }
+        }
     }
 
 @FXML

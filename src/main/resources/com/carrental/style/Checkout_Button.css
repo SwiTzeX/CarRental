@@ -12,11 +12,12 @@
 
 #BackBtn{
     -fx-text-fill: #353550;
-    -fx-background-color: #F6F8FF;
+    -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s;
 }
 
 #BackBtn:hover{
     -fx-cursor: hand;
-    -fx-background-color: #000;
-    -fx-text-fill: #fff;
+    -fx-text-fill: #353550;
+    -fx-scale-x: 1.3;
+    -fx-scale-y: 1.3;
 }
