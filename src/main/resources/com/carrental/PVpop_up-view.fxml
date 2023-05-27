@@ -68,7 +68,7 @@
       </Separator>
       <Label alignment="CENTER" text="Thank you for choosing RentEZ." textAlignment="CENTER" textFill="#353550">
          <font>
-            <Font name="Arial" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
          <VBox.margin>
             <Insets top="15.0" />
