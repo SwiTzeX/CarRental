@@ -27,13 +27,16 @@
       </Button>
       <VBox minWidth="-Infinity" prefHeight="745.0" prefWidth="721.0" spacing="30.0">
          <children>
-            <Label alignment="BASELINE_CENTER" prefHeight="36.0" prefWidth="221.0" text="Payment" textFill="#353550">
+            <Label alignment="BOTTOM_LEFT" prefHeight="36.0" prefWidth="221.0" text="Payment" textFill="#353550">
                <font>
                   <Font name="Arial Bold" size="29.0" />
                </font>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </Label>
             <VBox prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
                <children>
@@ -224,7 +227,7 @@
             </VBox>
             <VBox prefHeight="135.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30; -fx-background-radius: 30 30 30 30;">
                <children>
-                  <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Payment methods :" textFill="#353550">
+                  <Label prefHeight="35.0" prefWidth="232.0" text="Payment methods :" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -232,7 +235,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                      <padding>
-                        <Insets top="5.0" />
+                        <Insets left="30.0" top="5.0" />
                      </padding>
                   </Label>
                   <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="711.0">
