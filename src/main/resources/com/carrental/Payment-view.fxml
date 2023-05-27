@@ -14,25 +14,25 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
    <children>
-      <Button id="BackBtn" fx:id="BackBtn" mnemonicParsing="false" onAction="#onClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
+      <Button id="BackBtn" fx:id="BackBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
          <font>
-            <Font name="Arial Bold" size="12.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
          <HBox.margin>
-            <Insets bottom="10.0" left="15.0" right="10.0" top="30.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
          </HBox.margin>
          <padding>
             <Insets top="15.0" />
          </padding>
       </Button>
-      <VBox prefHeight="745.0" prefWidth="721.0" spacing="30.0">
+      <VBox minWidth="-Infinity" prefHeight="745.0" prefWidth="721.0" spacing="30.0">
          <children>
-            <Label prefHeight="36.0" prefWidth="140.0" text="Payment" textFill="#353550">
+            <Label alignment="BASELINE_CENTER" prefHeight="36.0" prefWidth="221.0" text="Payment" textFill="#353550">
                <font>
                   <Font name="Arial Bold" size="29.0" />
                </font>
                <VBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
             </Label>
             <VBox prefHeight="336.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
@@ -282,12 +282,12 @@
             </VBox>
          </children>
          <HBox.margin>
-            <Insets bottom="30.0" right="30.0" top="30.0" />
+            <Insets bottom="30.0" top="45.0" />
          </HBox.margin>
       </VBox>
-      <VBox prefHeight="635.0" prefWidth="372.0" spacing="30.0">
+      <VBox minWidth="-Infinity" prefHeight="0.0" prefWidth="372.0" spacing="30.0">
          <children>
-            <VBox prefHeight="155.0" prefWidth="401.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
+            <VBox minWidth="-Infinity" prefHeight="155.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Rental fee details" textFill="#353550">
                      <font>
@@ -296,6 +296,9 @@
                      <padding>
                         <Insets left="-30.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </Label>
                   <HBox prefHeight="33.0" prefWidth="357.0">
                      <children>
@@ -343,6 +346,9 @@
                      </children>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </VBox>
             <VBox prefHeight="201.0" prefWidth="399.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
                <children>
@@ -353,6 +359,9 @@
                      <padding>
                         <Insets left="-30.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </Label>
                   <VBox prefHeight="148.0" prefWidth="322.0" spacing="13.0">
                      <children>
@@ -392,20 +401,23 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <Button id="CheckoutBtn" fx:id="CheckoutB" mnemonicParsing="false" onAction="#EndCheckout" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
+            <Button id="CheckoutBtn" fx:id="CheckoutB" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#EndCheckout" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Checkout" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="100.0" top="30.0" />
+                  <Insets left="109.0" right="109.0" top="30.0" />
                </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Button>
          </children>
          <HBox.margin>
-            <Insets top="100.0" />
+            <Insets bottom="30.0" left="50.0" top="116.0" />
          </HBox.margin>
          <padding>
-            <Insets left="15.0" />
+            <Insets />
          </padding>
       </VBox>
    </children>

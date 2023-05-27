@@ -18,9 +18,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Hyperlink;
@@ -81,6 +83,8 @@ public class PaymentController implements Initializable {
 
     @FXML
     private ToggleGroup RadioGrp;
+
+    static VBox mainvbox;
 
 
     @Override
@@ -150,8 +154,11 @@ public class PaymentController implements Initializable {
         try {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("home-view.fxml"));
             Parent back = loader1.load();
+            HomeController homecontroller = loader1.getController();
+            mainvbox = homecontroller.getMainBox();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            BoxBlur blur = new BoxBlur(5, 5, 3); // Adjust the blur radius as desired
+            GaussianBlur blurEffect = new GaussianBlur(15);
+            mainvbox.setEffect(blurEffect);
             stage.setScene(new Scene(back));
             stage.show();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PVpop_up-view.fxml"));

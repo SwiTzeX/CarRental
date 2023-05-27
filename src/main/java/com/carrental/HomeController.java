@@ -71,6 +71,10 @@ public class HomeController implements Initializable {
     @FXML
     private VBox mainBox;
 
+    public VBox getMainBox() {
+        return mainBox;
+    }
+
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
