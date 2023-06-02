@@ -33,6 +33,10 @@ public class MainController implements Initializable {
     @FXML
     HBox userBox;
 
+    public VBox getMainBox() {
+        return mainBox;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         signupBtn.setVisible(false);

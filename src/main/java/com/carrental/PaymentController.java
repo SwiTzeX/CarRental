@@ -152,10 +152,10 @@ public class PaymentController implements Initializable {
         }
     }
         try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("home-view.fxml"));
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Main-view.fxml"));
             Parent back = loader1.load();
-            HomeController homecontroller = loader1.getController();
-            mainvbox = homecontroller.getMainBox();
+            MainController maincontroller = loader1.getController();
+            mainvbox = maincontroller.getMainBox();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             GaussianBlur blurEffect = new GaussianBlur(15);
             mainvbox.setEffect(blurEffect);
