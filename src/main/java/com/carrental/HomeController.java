@@ -31,6 +31,8 @@ public class HomeController implements Initializable {
     @FXML
     public ComboBox<String> typeDropList;
     @FXML
+    public HBox paginationBox;
+    @FXML
     private ComboBox<String> brandsDropList;
 
     @FXML
@@ -66,10 +68,14 @@ public class HomeController implements Initializable {
     @FXML
     private VBox vehicleCardsBox;
 
+    @FXML
+    private VBox mainBox;
+
+
     public ArrayList<Vehicle> vehicles =  new ArrayList<Vehicle>();
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
-    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
 
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
@@ -89,6 +95,43 @@ public class HomeController implements Initializable {
     }
 
     public void loadCardsByPage(int pageNumber){
+        paginationBox.getChildren().clear();
+        paginationBox.getChildren().add(previousPageButton);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(startPage + 4 - 1, maxPages);
+        if (startPage > 1) {
+
+            Label numberLbl = new Label("1");
+            numberLbl.setFont(pageNumberLabel.getFont());
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            Label separatorLabel = new Label("...");
+            paginationBox.getChildren().addAll(numberLbl,separatorLabel);
+        }
+
+        for (int i = startPage; i <= endPage; i++) {
+            Label numberLbl = new Label(String.valueOf(i));
+            numberLbl.setFont(pageNumberLabel.getFont());
+            if(i==pageNumber){
+                numberLbl.setStyle("-fx-text-fill: #6279ff");
+            }
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            paginationBox.getChildren().add(numberLbl);
+        }
+
+        if (endPage < maxPages) {
+            Label numberLbl = new Label(String.valueOf(maxPages));
+            numberLbl.setFont(pageNumberLabel.getFont());
+            numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
+            numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
+            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            Label separatorLabel = new Label("...");
+            paginationBox.getChildren().addAll(separatorLabel,numberLbl);
+        }
+        paginationBox.getChildren().add(nextPageButton);
         cardLayout.getChildren().clear();
         nextPageButton.setVisible(false);
         previousPageButton.setVisible(false);
@@ -134,14 +177,14 @@ public class HomeController implements Initializable {
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
 
-        /*for(int i=0; i<5; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        }
-        vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        */
+        //vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        //*/
         //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
 
         vehicles = Vehicle.getAllVehicles();
+        for(int i=0; i<20; i++) {
+           // vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
+        }
         /*for(int i=0; i<2; i++) {
             vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
         }*/
@@ -176,7 +219,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void clearAllFilters(javafx.event.ActionEvent event) {
-        filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null));
+        filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
         vehicles = Vehicle.getAllVehicles();
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
@@ -193,32 +236,6 @@ public class HomeController implements Initializable {
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber--;
         this.loadCardsByPage(pageNumber);
-    }
-    @FXML
-    void goToLogin(javafx.event.ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    void goToRegister(javafx.event.ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
-            Parent register = loader.load();
-
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(register));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

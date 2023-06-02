@@ -1,0 +1,23 @@
+#CheckoutBtn{
+    -fx-cursor: hand;
+    -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+#CheckoutBtn:hover{
+    -fx-cursor: hand;
+    -fx-border-color: #000;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#BackBtn{
+    -fx-text-fill: #353550;
+    -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+#BackBtn:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #353550;
+    -fx-scale-x: 1.3;
+    -fx-scale-y: 1.3;
+}

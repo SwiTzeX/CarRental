@@ -1,92 +1,359 @@
 package com.carrental;
 
 import com.carrental.models.User;
-import com.carrental.models.Vehicle;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UsersController implements Initializable {
 
-    // admin - client
     @FXML
-     private ComboBox<String> roles;
+    private TableView<User> tableview;
 
-    // ordre croissante et ordre decroissante
+    @FXML
+    private TableColumn<User, Integer> IdColumn;
+
+    @FXML
+    private TableColumn<User, Boolean> isadmincolumn;
+
+    @FXML
+    private TableColumn<User, Boolean> statuecolumn;
+
+    @FXML
+    private TableColumn<User, String> nIdColumn;
+
+    @FXML
+    private TableColumn<User, String> emailColumn;
+
+    @FXML
+    private TableColumn<User, String> phoneColumn;
+
+    @FXML
+    private TableColumn<User, String> fullnameColumn;
+
+    @FXML
+    private TableColumn<User, String> passwordColumn;
+
+    @FXML
+    private TableColumn<User, Void> actionColumn;
+
+    @FXML
+    private ComboBox<String> invoicestatue;
 
     @FXML
     private ComboBox<String> invoicedate;
 
-    // active - suspende - bloqueee
     @FXML
-    private ComboBox<String> invoicestatue;
-
-    // add user
-    @FXML
-    private Button addUser;
-
-    // clearALLfilters
-    @FXML
-    private Button clearAllFilter;
-
-    // label for errors
-    @FXML
-    private Label a;
-
-    //@FXML
-    //public ArrayList<String> roles = new ArrayList<>(Arrays.asList(null,null));
-
+    private ComboBox<String> roles;
 
     @FXML
-    public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null));
-
+    private Button clearallfilters;
+    @FXML
+    private String selectedInvoiceStatus;
 
     @FXML
-    public ArrayList<User> Users = User.getAllUsers();
-
+    private String selectedInvoiceDate;
 
     @FXML
-    //public void clearAllfilter(ActionEvent event){
+    private String selectedRole;
+
+    @FXML
+    private ObservableList<User> userList = FXCollections.observableArrayList();
 
 
-
-
-   // }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // a.setVisible(false);
-        roles.getItems().addAll("admin","client");
-        invoicestatue.getItems().addAll("active","blocked","suspended");
+
+        roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedRole = newValue;
+            applyFilters();
+        });
+
+        invoicestatue.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceStatus = newValue;
+            applyFilters();
+        });
+
+        invoicedate.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceDate = newValue;
+            applyFilters();
+        });
+
+     roles.getItems().addAll("admin", "client");
+     invoicestatue.getItems().addAll("bloqué", "active");
+     invoicedate.getItems().addAll("newest", "oldest");
+
+        applyFilters();
+
+        ArrayList<User> users = User.getAllUsers();
+        userList.addAll(users);
+
+        IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nIdColumn.setCellValueFactory(new PropertyValueFactory<>("nId"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        isadmincolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getIsAdmin()));
+        statuecolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getStatus()));
+
+
+        isadmincolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
+            @Override
+            protected void updateItem(Boolean isAdmin, boolean empty) {
+                super.updateItem(isAdmin, empty);
+                if (empty || isAdmin == null) {
+                    setText(null);
+                } else {
+                    if (isAdmin) {
+                        setText("Admin");
+                        setTextFill(javafx.scene.paint.Color.GREEN);
+                    } else {
+                        setText("Client");
+                        setTextFill(javafx.scene.paint.Color.RED);
+                    }
+                }
+            }
+        });
+
+        statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
+            @Override
+            protected void updateItem(Boolean isBlocked, boolean empty) {
+                super.updateItem(isBlocked, empty);
+                if (empty || isBlocked == null) {
+                    setText(null);
+                } else {
+                    if (isBlocked) {
+                        setText("Bloqué");
+                        setTextFill(javafx.scene.paint.Color.RED);
+                    } else {
+                        setText("Actif");
+                        setTextFill(javafx.scene.paint.Color.GREEN);
+                    }
+                }
+            }
+        });
+
+
+
+        actionColumn.setCellFactory(param -> new TableCell<>() {
+            private final Button modifyButton = new Button("Modifier");
+            private final Button blockButton = new Button("Bloquer");
+            private final Button deleteButton = new Button("Supprimer");
+
+            {
+                modifyButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    showEditDialog(user);
+                });
+                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+                blockButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    boolean isBlocked = user.getStatus(); // Obtient l'état actuel de l'utilisateur
+
+                    if (isBlocked) {
+                        // Si l'utilisateur est déjà bloqué, on le débloque
+                        user.setStatus(false);
+                        modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FFFFFF; -fx-border-radius: 30;");
+                        modifyButton.setTextFill(javafx.scene.paint.Color.BLACK);
+                        blockButton.setText("Débloquer");
+                    } else {
+                        // Si l'utilisateur est déjà débloqué, on le bloque
+                        user.setStatus(true);
+                        modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;");
+                        modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+                        blockButton.setText("Bloquer");
+                    }
+
+                    tableview.refresh();
+                });
+
+
+                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+
+                deleteButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+
+                    // Prompt the user for confirmation
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Supprimer l'utilisateur");
+                    alert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                        tableview.getItems().remove(user);
+
+
+                        boolean alphacool = user.delete();
+                        if (alphacool) {
+
+                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                            successAlert.setTitle("delete");
+                            successAlert.setHeaderText(null);
+                            successAlert.setContentText("user is no longer in the data base.");
+                            successAlert.showAndWait();
+                        } else {
+
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                            errorAlert.setTitle("Erreur alpha");
+                            errorAlert.setHeaderText(null);
+                            errorAlert.setContentText("erreur alpha.");
+                            errorAlert.showAndWait();
+                        }
+                    }
+
+                });
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox buttonBox = new HBox(modifyButton, blockButton, deleteButton);
+                    setGraphic(buttonBox);
+                }
+            }
+        });
+
+        tableview.setItems(userList);
+        tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, isadmincolumn, statuecolumn, actionColumn);
     }
 
+    private void showEditDialog(User user) {
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Modifier l'utilisateur");
+        dialog.setHeaderText(null);
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        TextField idField = new TextField(String.valueOf(user.getId()));
+        TextField nIdField = new TextField(user.getNId());
+        TextField emailField = new TextField(user.getEmail());
+        TextField phoneField = new TextField(user.getPhoneNumber());
+        TextField fullnameField = new TextField(user.getFullName());
+        TextField passwordField = new TextField(user.getPassword());
+
+        grid.add(new Label("ID:"), 0, 0);
+        grid.add(idField, 1, 0);
+        grid.add(new Label("NID:"), 0, 1);
+        grid.add(nIdField, 1, 1);
+        grid.add(new Label("Email:"), 0, 2);
+        grid.add(emailField, 1, 2);
+        grid.add(new Label("phone number:"), 0, 3);
+        grid.add(phoneField, 1, 3);
+        grid.add(new Label("full name:"), 0, 4);
+        grid.add(fullnameField, 1, 4);
+        grid.add(new Label("password:"), 0, 5);
+        grid.add(passwordField, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == buttonTypeOk) {
+                int newId = Integer.parseInt(idField.getText());
+                String newNId = nIdField.getText();
+                String newEmail = emailField.getText();
+                String newPhone = phoneField.getText();
+                String newFullName = fullnameField.getText();
+                String newPassword = passwordField.getText();
+
+                user.setId(newId);
+                user.setNId(newNId);
+                user.setEmail(newEmail);
+                user.setPhoneNumber(newPhone);
+                user.setFullName(newFullName);
+                user.setPassword(newPassword);
+
+                return user;
+            }
+            return null;
+        });
+
+        Optional<User> result = dialog.showAndWait();
+        result.ifPresent(updatedUser -> {
+            int index = tableview.getItems().indexOf(updatedUser);
+            if (index != -1) {
+                userList.set(index, updatedUser);
+            }
+        });
+    }
+    private void applyFilters() {
+        tableview.setItems(userList.filtered(user -> {
+            boolean statusFilter = selectedInvoiceStatus == null || selectedInvoiceStatus.isEmpty() ||
+                    (selectedInvoiceStatus.equals("bloqué") && user.getStatus()) ||
+                    (selectedInvoiceStatus.equals("active") && !user.getStatus());
+
+            boolean dateFilter = selectedInvoiceDate == null || selectedInvoiceDate.isEmpty() ||
+                    (selectedInvoiceDate.equals("newest") && user.getCreationDate().equals(getNewestInvoiceDate())) ||
+                    (selectedInvoiceDate.equals("oldest") && user.getCreationDate().equals(getOldestInvoiceDate()));
+
+            boolean roleFilter = selectedRole == null || selectedRole.isEmpty() ||
+                    (selectedRole.equals("admin") && user.getIsAdmin()) ||
+                    (selectedRole.equals("client") && !user.getIsAdmin());
+
+            return statusFilter && dateFilter && roleFilter;
+        }));
+    }
+    private Date getNewestInvoiceDate() {
+        Date newestDate = null;
+
+        for (User user : userList) {
+            Date invoiceDate = user.getCreationDate();
+
+            if (invoiceDate != null && (newestDate == null || invoiceDate.compareTo(newestDate) > 0)) {
+                newestDate = invoiceDate;
+            }
+        }
+
+        return newestDate;
+    }
+
+    private Date getOldestInvoiceDate() {
+
+        Date oldestDate = null;
+
+        for (User user : userList) {
+            Date invoiceDate = user.getCreationDate();
+
+            if (invoiceDate != null && (oldestDate == null || invoiceDate.compareTo(oldestDate) < 0)) {
+                oldestDate = invoiceDate;
+            }
+        }
+
+        return oldestDate;
+    }
     @FXML
-     public void filters(javafx.event.ActionEvent event) {
-        ComboBox<String> lists = (ComboBox<String>) event.getSource();
-        Text theText = new Text(lists.getValue());
-        double width = (int)theText.getBoundsInLocal().getWidth()+63;
-        lists.setPrefWidth(width);
-        if (lists == roles) filterSettings.set(0, lists.getValue());
-        else if (lists == invoicedate) filterSettings.set(1, lists.getValue());
-        else if (lists == invoicestatue) filterSettings.set(3, lists.getValue());
-        else if (lists == invoicedate) filterSettings.set(2, lists.getValue());
+    private void clearAllFilters(ActionEvent event) {
+        invoicestatue.getSelectionModel().clearSelection();
+        invoicedate.getSelectionModel().clearSelection();
+        roles.getSelectionModel().clearSelection();
 
-        //roles = Users.filters(filterSettings);
-        //invoicestatue = Users.filters(filterSettings);
-        //invoicedate = Users.filters(filterSettings);
+        tableview.setItems(userList);
     }
-
 }
-
-
-

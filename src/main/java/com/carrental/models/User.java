@@ -1,12 +1,16 @@
 package com.carrental.models;
 
+
 import com.carrental.SingletonConnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.time.LocalDate;
+
 
 public class User {
     public Integer id;
@@ -17,9 +21,12 @@ public class User {
     public Integer age;
     public String fullName;
     public String password;
+    public Date creationDate;
     public boolean isAdmin;
+    private SingletonConnection DatabaseManager;
 
-    public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin) {
+
+    public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
         this.id = id;
         this.nId = nId;
         this.email = email;
@@ -29,16 +36,34 @@ public class User {
         this.fullName = fullName;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.creationDate = creationDate;
     }
 
-    public String getnId() {
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Users SET creationDate = " + new java.sql.Date(creationDate.getTime()) + " WHERE idU = " + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        this.creationDate = creationDate;
+    }
+
+    public String getNId() {
         return nId;
     }
 
-    public void setnId(String nId) {
+    public void setNId(String nId) {
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Users SET nid = " + nId + " WHERE idU = " + this.getId();
+            String req = "UPDATE Users SET nid = '" + nId + "' WHERE idU = " + this.getId();
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -58,6 +83,7 @@ public class User {
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         try {
@@ -201,8 +227,9 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                boolean isAdmin = rs.getBoolean(9);
-                users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin));
+                Date creationDate = rs.getDate(9);
+                boolean isAdmin = rs.getBoolean(10);
+                users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate));
             }
             rs.close();
             stmt.close();
@@ -225,8 +252,9 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                boolean isAdmin = rs.getBoolean(9);
-                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
+                Date creationDate = rs.getDate(9);
+                boolean isAdmin = rs.getBoolean(10);
+                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
             rs.close();
             stmt.close();
@@ -249,8 +277,9 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                boolean isAdmin = rs.getBoolean(9);
-                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
+                Date creationDate = rs.getDate(9);
+                boolean isAdmin = rs.getBoolean(10);
+                return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
             rs.close();
             stmt.close();
@@ -264,7 +293,10 @@ public class User {
         boolean isAdmin = false;
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users VALUES(null,'" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', " + isAdmin + ")";
+            Date c = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String currentDateTime = format.format(c);
+            String req = "INSERT INTO Users VALUES(null,'" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', '" +currentDateTime + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
@@ -273,7 +305,7 @@ public class User {
                 id = rs.getInt(1);
             }
             stmt.close();
-            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin);
+            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,new Date());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -283,7 +315,7 @@ public class User {
         try {
             Connection conn = SingletonConnection.getConnection();
             System.out.println(this.getId());
-            String req = "DELETE FROM Users WHERE idU="+this.getId()+" OR email="+this.getEmail();
+            String req = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             return rs > 0;
@@ -291,6 +323,7 @@ public class User {
             throw new RuntimeException(e);
         }
     }
+
 
 
     public boolean checkPassword(String password){

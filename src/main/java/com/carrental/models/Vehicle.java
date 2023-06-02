@@ -27,8 +27,8 @@ public class Vehicle {
     public Integer horsePower;
     public String image;
     public String brandImage;
-
-    public Vehicle(Integer id, String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower) {
+    public String plate;
+    public Vehicle(Integer id, String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower,String plate) {
         this.id = id;
         this.modelName = modelName;
         this.color = color;
@@ -46,8 +46,26 @@ public class Vehicle {
         this.horsePower = horsePower;
         this.brandImage = "brands/"+brandName+".png";
         this.image = "vehicles/"+brandName+"/"+modelName+"/"+color+".png";
+        this.plate = plate;
+    }
+    public Vehicle(){}
+
+
+    public String getPlate() {
+        return plate;
     }
 
+    public void setPlate(String plate) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Vehicles SET plate = '" + plate + "' WHERE idV = " + this.getId();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        this.plate = plate;
+    }
 
     public String getColor() {
         return color;
@@ -347,7 +365,8 @@ public class Vehicle {
                 Integer trunkCapacity = rs.getInt(13);
                 Integer maxSpeed = rs.getInt(14);
                 Integer horsePower = rs.getInt(15);
-                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower));
+                String plate = rs.getString(16);
+                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower,plate));
             }
             rs.close();
             stmt.close();
@@ -378,7 +397,8 @@ public class Vehicle {
                 Integer trunkCapacity = rs.getInt(13);
                 Integer maxSpeed = rs.getInt(14);
                 Integer horsePower = rs.getInt(15);
-                return new Vehicle(id, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+                String plate = rs.getString(16);
+                return new Vehicle(id, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower,plate);
             }
             rs.close();
             stmt.close();
@@ -387,7 +407,7 @@ public class Vehicle {
         }
         return null;
     }
-    public static Vehicle create(String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower){
+    public static Vehicle create(String brandName, String modelName, String color, Boolean disponibility, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower,String plate){
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "INSERT INTO Vehicles VALUES(null,'" + modelName + "','" + color
@@ -402,7 +422,7 @@ public class Vehicle {
                 id = rs.getInt(1);
             }
             stmt.close();
-            return new Vehicle(id,brandName,modelName,color,disponibility,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower);
+            return new Vehicle(id,brandName,modelName,color,disponibility,vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower,plate);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -448,6 +468,18 @@ public class Vehicle {
                 }
                 req += "type = '" + filterSettings.get(4) + "' ";
             }
+            if(filterSettings.get(5) != null){
+                if (and) {
+                    req += "AND ";
+                }
+                req += "modelName = '" + filterSettings.get(5) + "' ";
+            }
+            if(filterSettings.get(6) != null){
+                if (and) {
+                    req += "AND ";
+                }
+                req += "disponibility = '" + filterSettings.get(6) + "' ";
+            }
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
@@ -466,7 +498,8 @@ public class Vehicle {
                 Integer trunkCapacity = rs.getInt(13);
                 Integer maxSpeed = rs.getInt(14);
                 Integer horsePower = rs.getInt(15);
-                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower));
+                String plate = rs.getString(16);
+                vehicles.add(new Vehicle(idV, brandName, modelName,color,disponibility, vehicleState,price,type,passengers,fuelType,gearType,deposit,trunkCapacity,maxSpeed,horsePower,plate));
             }
             rs.close();
             stmt.close();

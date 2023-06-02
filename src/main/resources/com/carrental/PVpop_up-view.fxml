@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="347.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-radius: 0; -fx-border-color: #f0f2ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PVpopupController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="316.0" spacing="20.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #16A300; -fx-background-color: #DCFFD6;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <Label text="Awesome !" textAlignment="CENTER" textFill="#158a01">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" text="Your booking has been confirmed." textAlignment="CENTER" textFill="#353550">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="-8.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Check your Email for details." textFill="#353550">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <ImageView fitHeight="63.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/approval-symbol-in-badge.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+      <Button id="PopUp" fx:id="PopUp" mnemonicParsing="false" onAction="#onClickBackPV" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #16A300; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </Button>
+      <Separator prefHeight="0.0" prefWidth="228.0">
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" top="15.0" />
+         </VBox.margin>
+      </Separator>
+      <Label alignment="CENTER" text="Thank you for choosing RentEZ." textAlignment="CENTER" textFill="#353550">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</VBox>
