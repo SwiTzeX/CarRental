@@ -20,7 +20,7 @@ public class App extends Application {
         //user = User.getUserById(22);
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Payment-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        stage.setTitle("Hello test!");
+        stage.setTitle("RENT●EZ");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

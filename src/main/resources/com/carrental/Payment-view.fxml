@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
+<HBox fx:id="mainHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
    <children>
       <Button id="BackBtn" fx:id="BackBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onClickBack" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #F6F8FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Back" textFill="#353550">
          <font>
@@ -285,7 +285,7 @@
             </VBox>
          </children>
          <HBox.margin>
-            <Insets bottom="30.0" top="45.0" />
+            <Insets bottom="30.0" top="55.0" />
          </HBox.margin>
       </VBox>
       <VBox minWidth="-Infinity" prefHeight="0.0" prefWidth="372.0" spacing="30.0">
@@ -417,7 +417,7 @@
             </Button>
          </children>
          <HBox.margin>
-            <Insets bottom="30.0" left="50.0" top="116.0" />
+            <Insets bottom="30.0" left="50.0" top="126.0" />
          </HBox.margin>
          <padding>
             <Insets />

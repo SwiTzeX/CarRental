@@ -2,6 +2,7 @@ package com.carrental;
 
 import com.carrental.models.Reservation;
 import com.carrental.models.Vehicle;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
@@ -22,6 +23,8 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -29,6 +32,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class PaymentController implements Initializable {
 
@@ -84,8 +88,10 @@ public class PaymentController implements Initializable {
     @FXML
     private ToggleGroup RadioGrp;
 
-    static VBox mainvbox;
+    @FXML
+    private HBox mainHBox;
 
+    static VBox mainvbox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,6 +138,14 @@ public class PaymentController implements Initializable {
         TotalPrice.setText(String.valueOf(reservation.totalPrice()));
     }
 
+    private void performTransition(ActionEvent e) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1),this.mainHBox);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(event -> RedirectCheckout(e));
+        fadeTransition.play();
+    }
+
     @FXML
     public void EndCheckout(ActionEvent e) {
         //Payment Method Paypal
@@ -151,6 +165,10 @@ public class PaymentController implements Initializable {
             alert.showAndWait();
         }
     }
+       performTransition(e);
+    }
+
+    public void RedirectCheckout(ActionEvent e){
         try {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Main-view.fxml"));
             Parent back = loader1.load();
@@ -161,6 +179,10 @@ public class PaymentController implements Initializable {
             mainvbox.setEffect(blurEffect);
             stage.setScene(new Scene(back));
             stage.show();
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), mainvbox);
+            fadeTransition.setFromValue(0.0);
+            fadeTransition.setToValue(1.0);
+            fadeTransition.play();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PVpop_up-view.fxml"));
             popupStage.setScene(new Scene(loader.load()));
             popupStage.setTitle("Pop-up Panel");
@@ -169,7 +191,7 @@ public class PaymentController implements Initializable {
             popupStage.show();
         }
         catch (IOException b) {
-        b.printStackTrace();
+            b.printStackTrace();
         }
     }
 
