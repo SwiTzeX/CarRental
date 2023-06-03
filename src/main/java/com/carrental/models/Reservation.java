@@ -33,7 +33,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET idU = " + user.getId() + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + "AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -50,7 +50,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET idV = " + vehicle.getId() + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + "AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET startDate = " + this.startDate + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + "AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -84,7 +84,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET endDate = " + this.endDate + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + "AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -101,7 +101,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET status = " + this.status + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + "AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
         } catch (SQLException e) {
@@ -131,8 +131,8 @@ public class Reservation {
     public boolean delete(){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "DELETE FROM Reservations WHERE idU = " + this.user.getId() + "AND idV = " + this.vehicle.getId()
-                    + "AND startDate = " + startDate;
+            String req = "DELETE FROM Reservations WHERE idU = " + this.user.getId() + " AND idV = " + this.vehicle.getId()
+                    + " AND startDate = " + startDate;
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             stmt.close();

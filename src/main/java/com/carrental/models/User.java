@@ -5,11 +5,8 @@ import com.carrental.SingletonConnection;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.time.LocalDate;
 
 
 public class User {
@@ -293,9 +290,9 @@ public class User {
         boolean isAdmin = false;
         try {
             Connection conn = SingletonConnection.getConnection();
-            Date c = new Date();
+            Date date = new Date();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
-            String currentDateTime = format.format(c);
+            String currentDateTime = format.format(date);
             String req = "INSERT INTO Users VALUES(null,'" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', '" +currentDateTime + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
@@ -305,7 +302,7 @@ public class User {
                 id = rs.getInt(1);
             }
             stmt.close();
-            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,new Date());
+            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,date);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -322,6 +319,10 @@ public class User {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Notification> getAllNotifications(){
+        return Notification.getNotificationsForUser(this);
     }
 
 
