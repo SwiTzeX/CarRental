@@ -89,6 +89,18 @@ public class PaymentController implements Initializable {
     private ToggleGroup RadioGrp;
 
     @FXML
+    private Label StarsVar;
+
+    @FXML
+    private Label DepositVar;
+
+    @FXML
+    private Label startDateVar;
+
+    @FXML
+    private Label endDateVar;
+
+    @FXML
     private HBox mainHBox;
 
     static VBox mainvbox;

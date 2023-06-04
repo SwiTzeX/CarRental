@@ -49,7 +49,7 @@
                            <children>
                               <HBox prefHeight="42.0" prefWidth="283.0">
                                  <VBox.margin>
-                                    <Insets left="9.0" top="9.0" />
+                                    <Insets top="9.0" />
                                  </VBox.margin>
                                  <children>
                                     <ImageView fx:id="BrandLogoVar" fitHeight="43.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -72,9 +72,42 @@
                                     <Image url="@vehicles/Ferrari/F430/red.png" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets top="70.0" />
+                                    <Insets bottom="43.0" top="70.0" />
                                  </VBox.margin>
                               </ImageView>
+                              <HBox prefHeight="35.0" prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets bottom="18.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Label prefHeight="35.0" prefWidth="47.0" text="Pick-up :">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="startDateVar" prefHeight="35.0" prefWidth="97.0" text="StartDate">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="41.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="35.0" prefWidth="44.0" text="Return :">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="endDateVar" prefHeight="35.0" prefWidth="59.0" text="EndDate">
+                                       <font>
+                                          <Font name="Arial Bold" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                         <VBox prefHeight="316.0" prefWidth="394.0" spacing="5.0">
@@ -283,6 +316,14 @@
                   </HBox>
                </children>
             </VBox>
+            <Label prefHeight="15.0" prefWidth="508.0" text="⚠ Please note that once the reservation is validated, the booking fee becomes non-refundable.">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
          </children>
          <HBox.margin>
             <Insets bottom="30.0" top="55.0" />
@@ -290,7 +331,7 @@
       </VBox>
       <VBox minWidth="-Infinity" prefHeight="0.0" prefWidth="372.0" spacing="30.0">
          <children>
-            <VBox minWidth="-Infinity" prefHeight="155.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Rental fee details" textFill="#353550">
                      <font>
@@ -305,7 +346,7 @@
                   </Label>
                   <HBox prefHeight="33.0" prefWidth="357.0">
                      <children>
-                        <Label prefHeight="16.0" prefWidth="163.0" text="Rental price per day" textFill="#353550">
+                        <Label prefHeight="16.0" prefWidth="163.0" text="Rental price per day">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -328,24 +369,54 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                   </Separator>
-                  <HBox prefHeight="44.0" prefWidth="357.0">
+                  <HBox prefHeight="50.0" prefWidth="370.0">
                      <children>
-                        <Label alignment="TOP_CENTER" text="Price for DaysVar days :" textFill="#353550">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
+                        <VBox prefHeight="42.0" prefWidth="143.0">
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="141.0" text="Price for DaysVar days :">
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="154.0" text="Deposit :">
+                                 <VBox.margin>
+                                    <Insets top="17.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
-                        </Label>
-                        <Label fx:id="TotalPrice" alignment="CENTER_RIGHT" text="TotalVar">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
+                        </VBox>
+                        <VBox prefHeight="77.0" prefWidth="76.0">
+                           <children>
+                              <Label fx:id="TotalPrice" prefHeight="16.0" prefWidth="59.0" text="TotalVar">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="DepositVar" text="DepositVar">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="17.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
                            <HBox.margin>
-                              <Insets left="75.0" />
+                              <Insets left="72.0" />
                            </HBox.margin>
-                        </Label>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
@@ -353,7 +424,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <VBox prefHeight="201.0" prefWidth="399.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
+            <VBox prefHeight="196.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Excellent choice !" textFill="#353550">
                      <font>
@@ -366,37 +437,78 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <VBox prefHeight="148.0" prefWidth="322.0" spacing="13.0">
+                  <VBox prefHeight="103.0" prefWidth="340.0" spacing="13.0">
                      <children>
-                        <Label fx:id="AvisId" text="Customer reviews : VARAVIS">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="Easy-to-find counter">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="Good customer services">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Free cancellation">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
+                        <HBox prefHeight="16.0" prefWidth="320.0" spacing="20.0">
+                           <children>
+                              <Label fx:id="AvisId" text="Customer reviews :">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="StarsVar" text="StarsVar">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="16.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/Green_tick.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Easy-to-find counter">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="16.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/Green_tick.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Great customer services">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox minHeight="-Infinity" prefHeight="16.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/Red_cross.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Free cancellation">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
                      </children>
                      <VBox.margin>
-                        <Insets left="50.0" top="7.0" />
+                        <Insets bottom="30.0" left="30.0" top="7.0" />
                      </VBox.margin>
                   </VBox>
                </children>
@@ -409,7 +521,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="109.0" right="109.0" top="30.0" />
+                  <Insets left="109.0" right="109.0" top="5.0" />
                </VBox.margin>
                <opaqueInsets>
                   <Insets />
