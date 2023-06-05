@@ -25,14 +25,14 @@
             <Insets top="15.0" />
          </padding>
       </Button>
-      <VBox minWidth="-Infinity" prefHeight="745.0" prefWidth="721.0" spacing="30.0">
+      <VBox minWidth="-Infinity" prefHeight="745.0" prefWidth="721.0">
          <children>
             <Label alignment="BOTTOM_LEFT" prefHeight="36.0" prefWidth="221.0" text="Payment" textFill="#353550">
                <font>
                   <Font name="Arial Bold" size="29.0" />
                </font>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="30.0" top="5.0" />
                </VBox.margin>
                <padding>
                   <Insets left="30.0" />
@@ -257,6 +257,9 @@
                      </VBox.margin>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
             </VBox>
             <VBox prefHeight="135.0" prefWidth="714.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30 30 30 30; -fx-background-radius: 30 30 30 30;">
                <children>
@@ -315,6 +318,9 @@
                      </children>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </VBox>
             <Label prefHeight="15.0" prefWidth="508.0" text="⚠ Please note that once the reservation is validated, the booking fee becomes non-refundable.">
                <VBox.margin>
