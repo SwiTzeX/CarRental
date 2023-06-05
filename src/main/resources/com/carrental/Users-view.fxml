@@ -94,7 +94,7 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="96.0" mouseTransparent="true" prefHeight="32.0" prefWidth="1119.0">
+      <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="96.0" mouseTransparent="true" prefHeight="49.0" prefWidth="142.0">
          <children>
             <Label prefHeight="46.0" prefWidth="301.0" text="Search Filters" textFill="#6279ff">
                <font>
@@ -172,7 +172,7 @@
             </Button>
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="788.0" prefHeight="20.0" prefWidth="142.0" text="Label">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="788.0" prefHeight="20.0" prefWidth="205.0" text="© UIR Project 2022-2023">
          <padding>
             <Insets left="12.0" />
          </padding>
