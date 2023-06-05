@@ -208,7 +208,7 @@ public class UsersController implements Initializable {
                     } else {
                         // If the user is currently unblocked, block them
                         user.setStatus(true);
-                        blockButton.setText("Unblock");
+                        blockButton.setText("unblock");
                         blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
                     }
 
@@ -272,7 +272,7 @@ public class UsersController implements Initializable {
         });
 
         tableview.setItems(userList);
-
+        tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, isadmincolumn, statuecolumn, actionColumn);
 
 
 
@@ -384,29 +384,11 @@ public class UsersController implements Initializable {
         return oldestDate;
     }
     @FXML
-    private void clearallfilters(ActionEvent event) {
+    private void clearAllFilters(ActionEvent event) {
         invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
-        find.clear();
         tableview.setItems(userList);
-    }
-
-    private void applySearchFilter(String searchKeyword) {
-        tableview.setItems(userList.filtered(user -> {
-            if (searchKeyword.isEmpty()) {
-                return true;
-            } else {
-                String lowerCaseSearchTerm = searchKeyword.toLowerCase();
-                String phoneNumber = user.getPhoneNumber();
-                phoneNumber = phoneNumber != null ? phoneNumber.toLowerCase() : "";
-                return user.getFullName().toLowerCase().contains(lowerCaseSearchTerm) ||
-                        user.getEmail().toLowerCase().contains(lowerCaseSearchTerm) ||
-                        user.getNId().contains(lowerCaseSearchTerm) ||
-                        phoneNumber.contains(lowerCaseSearchTerm);
-
-            }
-        }));
     }
 
     @FXML
@@ -424,11 +406,24 @@ public class UsersController implements Initializable {
             stage.setScene(new Scene(userDetailsRoot));
             stage.show();
         } catch (IOException e) {
-
             e.printStackTrace();
-
         }
+    }
+    private void applySearchFilter(String searchKeyword) {
+        tableview.setItems(userList.filtered(user -> {
+            if (searchKeyword.isEmpty()) {
+                return true;
+            } else {
+                String lowerCaseSearchTerm = searchKeyword.toLowerCase();
+                String phoneNumber = user.getPhoneNumber();
+                phoneNumber = phoneNumber != null ? phoneNumber.toLowerCase() : "";
+                return user.getFullName().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        user.getEmail().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        user.getNId().contains(lowerCaseSearchTerm) ||
+                        phoneNumber.contains(lowerCaseSearchTerm);
 
+            }
+        }));
     }
 
 
