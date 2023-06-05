@@ -20,7 +20,7 @@
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="561.0" prefWidth="1250.0">
          <children>
-            <TableView fx:id="tableview" prefHeight="559.0" prefWidth="1250.0" onMouseClicked="#handleTableRowClick" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" onMouseClicked="#handleTableRowClick" prefHeight="559.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="52.0" resizable="false" text="idU">
 
@@ -30,29 +30,30 @@
 
 
                 </TableColumn>
-                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="201.0" resizable="false" text="email">
+                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="139.0" resizable="false" text="email">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="161.0" resizable="false" text="phoneNumber">
+                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="129.0" resizable="false" text="phoneNumber">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="148.0" resizable="false" text="fullname">
+                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="144.0" resizable="false" text="fullname">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="148.0" resizable="false" text="password">
+                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="150.0" resizable="false" text="password">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="isadmincolumn" prefWidth="106.0" text="isAdmin" />
-                  <TableColumn fx:id="statuecolumn" prefWidth="106.0" text="status" />
-                  <TableColumn fx:id="actionColumn" editable="false" prefWidth="233.0" resizable="false" text="action" />
+                  <TableColumn fx:id="isadmincolumn" prefWidth="110.0" text="isAdmin" />
+                  <TableColumn fx:id="statuecolumn" prefWidth="104.0" text="status" />
+                  <TableColumn fx:id="actionColumn" editable="false" prefWidth="125.0" resizable="false" text="creationDate" />
+                  <TableColumn fx:id="actionColumn" prefWidth="202.0" text="action" />
 
 
               </columns>
@@ -137,7 +138,7 @@
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="clearallfilters" mnemonicParsing="false" prefHeight="37.0" prefWidth="120.0" onAction="#clearAllFilters" style="-fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
+            <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="120.0" style="-fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
                   <Insets top="21.0" />
                </HBox.margin>
