@@ -169,15 +169,15 @@
                                              <children>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/brand-image.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="117.0" text="Brand - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="117.0" text="Brand :" textFill="#353535">
                                                          <HBox.margin>
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
@@ -194,7 +194,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@icons/voiture-musclee%20(2).png" />
                                                          </image>
@@ -202,7 +202,7 @@
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="110.0" text="Model - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="110.0" text="Model :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -222,15 +222,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/fill.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="102.0" text="Color - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="102.0" text="Color :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -247,15 +247,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/gear-shift%20(1).png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="154.0" text="Gear Type - " textFill="#353535">
+                                                      <Label prefHeight="31.0" prefWidth="141.0" text="Gear Type :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -284,15 +284,15 @@
                                              <children>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/trunk.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="159.0" text="Trunk Capacity -" textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="159.0" text="Trunk Capacity :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -309,15 +309,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/gas-pump-alt.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="106.0" text="Fuel Type - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="106.0" text="Fuel Type :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -334,15 +334,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/users-alt.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="231.0" text="Number of Passengers -" textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="231.0" text="Number of Passengers :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -359,15 +359,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                            <Image url="@icons/horse-head-with-messy-mane-side-view.png" />
                                                          </image>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="140.0" text="Horse Power -" textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="140.0" text="Horse Power :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
