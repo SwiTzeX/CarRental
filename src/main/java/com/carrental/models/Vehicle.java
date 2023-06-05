@@ -530,6 +530,22 @@ public class Vehicle {
         }
         return reservations;
     }
+    public static ArrayList<Integer> getAllVehicleId(){
+        ArrayList<Integer> listIdVehicle = new ArrayList<>();
+        try{
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT idV FROM Vehicles";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                listIdVehicle.add(id);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listIdVehicle;
+    }
     @Override
     public String toString() {
         return "Vehicle{" +
