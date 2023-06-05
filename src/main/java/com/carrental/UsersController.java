@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ import java.util.ResourceBundle;
 public class UsersController implements Initializable {
     @FXML
     private UserDetailsController userDetailsController;
+
+    @FXML
+    private VBox  userDetailsPane;
 
     @FXML
     private TableColumn<User, Date> creationDate;
@@ -85,6 +89,7 @@ public class UsersController implements Initializable {
 
     @FXML
     private String selectedRole;
+
 
     @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
@@ -273,9 +278,6 @@ public class UsersController implements Initializable {
 
         tableview.setItems(userList);
 
-
-
-
     }
 
     private void showEditDialog(User user) {
@@ -392,22 +394,20 @@ public class UsersController implements Initializable {
     }
 
     @FXML
-    private void handleTableRowClick(MouseEvent event) {
+    public User handleTableRowClick(MouseEvent event) {
         User selectedUser = tableview.getSelectionModel().getSelectedItem();
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
-            Parent userDetailsRoot = loader.load();
-            UserDetailsController userDetailsController = loader.getController();
-
-            userDetailsController.displayUserDetails(selectedUser);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(userDetailsRoot));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (selectedUser != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails.fxml"));
+            try {
+                Parent userDetailsParent = loader.load();
+                UserDetailsController userDetailsController = loader.getController();
+                userDetailsController.displayUserDetails(selectedUser);
+                userDetailsPane.getChildren().setAll(userDetailsParent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return selectedUser;
     }
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {

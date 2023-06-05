@@ -24,7 +24,7 @@ public class App extends Application {
         //user = User.getUserById(15);
         Reservation test = Reservation.getAllReservations().get(0);
         System.out.println(test.getTimeLeft());
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("userdetails-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         stage.setTitle("Hello test!");
         stage.setScene(scene);
