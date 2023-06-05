@@ -182,7 +182,7 @@ public class UsersController implements Initializable {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 blockButton.setOnAction(event -> {
@@ -193,19 +193,19 @@ public class UsersController implements Initializable {
                         // If the user is already blocked, unblock them
                         user.setStatus(false);
                         blockButton.setText("Block");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                     } else {
                         // If the user is currently unblocked, block them
                         user.setStatus(true);
                         blockButton.setText("unblock");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;");
+                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
                     }
 
                     tableview.refresh();
                 });
 
 
-                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
 
@@ -243,7 +243,7 @@ public class UsersController implements Initializable {
                     }
 
                 });
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
             }
