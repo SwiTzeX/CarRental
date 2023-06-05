@@ -29,6 +29,9 @@ public class UsersController implements Initializable {
     private UserDetailsController userDetailsController;
 
     @FXML
+    private TableColumn<User, Date> creationDate;
+
+    @FXML
     private TableView<User> tableview;
 
     @FXML
@@ -117,6 +120,7 @@ public class UsersController implements Initializable {
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         isadmincolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getIsAdmin()));
         statuecolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getStatus()));
+        creationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
 
 
         isadmincolumn.setCellFactory(column -> new TableCell<User, Boolean>() {

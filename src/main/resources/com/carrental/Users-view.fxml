@@ -52,7 +52,7 @@
                   </TableColumn>
                   <TableColumn fx:id="isadmincolumn" prefWidth="110.0" text="isAdmin" />
                   <TableColumn fx:id="statuecolumn" prefWidth="104.0" text="status" />
-                  <TableColumn fx:id="actionColumn" editable="false" prefWidth="125.0" resizable="false" text="creationDate" />
+                  <TableColumn fx:id="creationDate" editable="false" prefWidth="125.0" resizable="false" text="creationDate" />
                   <TableColumn fx:id="actionColumn" prefWidth="202.0" text="action" />
 
 
