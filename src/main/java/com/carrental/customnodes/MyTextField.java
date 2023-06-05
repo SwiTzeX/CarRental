@@ -17,10 +17,12 @@ public class MyTextField extends StackPane {
     private Line backLine = new Line();
     private Line frontLine = new Line();
 
-    private  String promptText;
+    private String promptText;
     private Label promptTextLabel = new Label();
     private boolean isPromptTextShowing = true;
     private double FontSize = 16;
+    private Boolean error = false;
+
     public MyTextField() {
         super();
         setupTexts();
@@ -152,12 +154,14 @@ public class MyTextField extends StackPane {
         translateTransition.setCycleCount(6);
         translateTransition.setAutoReverse(true);
         translateTransition.play();
+        this.error = true;
     }
 
     public void hideError(){
         errorLabel.setVisible(false);
         promptTextLabel.setStyle("-fx-text-fill: #353535;");
         backLine.setStyle("-fx-stroke: #353535;");
+        this.error = false;
     }
 
     public String getText() {
@@ -184,6 +188,10 @@ public class MyTextField extends StackPane {
 
     public void setErrorLabel(Label errorLabel) {
         this.errorLabel = errorLabel;
+    }
+
+    public Boolean isError(){
+        return error;
     }
 
     public ReadOnlyBooleanProperty myFocusedProperty(){

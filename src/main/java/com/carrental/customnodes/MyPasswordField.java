@@ -37,6 +37,8 @@ public class MyPasswordField extends StackPane {
 
     private boolean showPassword = false;
 
+    private Boolean error = false;
+
     public MyPasswordField() {
         super();
         setupTexts();
@@ -235,12 +237,14 @@ public class MyPasswordField extends StackPane {
         translateTransition.setCycleCount(6);
         translateTransition.setAutoReverse(true);
         translateTransition.play();
+        this.error = true;
     }
 
     public void hideError(){
         errorLabel.setVisible(false);
         promptTextLabel.setStyle("-fx-text-fill: #353535;");
         backLine.setStyle("-fx-stroke: #353535;");
+        this.error = false;
     }
 
     public String getText() {
@@ -268,6 +272,11 @@ public class MyPasswordField extends StackPane {
     public void setErrorLabel(Label errorLabel) {
         this.errorLabel = errorLabel;
     }
+
+    public Boolean isError(){
+        return error;
+    }
+
 
     public ReadOnlyBooleanProperty myFocusedProperty(){
         return textField.focusedProperty();

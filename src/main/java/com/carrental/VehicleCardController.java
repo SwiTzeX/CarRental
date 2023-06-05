@@ -75,7 +75,7 @@ public class VehicleCardController {
         vehFuelType.setText(vehicle.getFuelType());
         vehGearType.setText(vehicle.getGearType());
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
-        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
+        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900,800,true,true);
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()),40,40,true,true);
         vehBrandImage.setImage(brandImage);
