@@ -224,7 +224,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate));
             }
@@ -249,7 +249,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
@@ -274,7 +274,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
@@ -322,9 +322,17 @@ public class User {
     }
 
     public ArrayList<Notification> getAllNotifications(){
-        return Notification.getNotificationsForUser(this);
+        return Notification.getAllNotificationsForUser(this);
     }
-
+    public ArrayList<Notification> getAllUnreadNotifications(){
+        return Notification.getAllUnreadNotificationsForUser(this);
+    }
+    public ArrayList<Reservation> getReservations(){
+        return Reservation.getUserReservations(this);
+    }
+    public void sendNotification(String title,String content){
+         Notification.create(this,title,content);
+    }
 
 
     public boolean checkPassword(String password){

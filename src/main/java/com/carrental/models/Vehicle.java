@@ -520,7 +520,7 @@ public class Vehicle {
                 int idV = rs.getInt(2);
                 Date startDate = rs.getDate(3);
                 Date endDate = rs.getDate(4);
-                boolean stat = rs.getBoolean(5);
+                int stat = rs.getInt(5);
                 reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
             }
             rs.close();
