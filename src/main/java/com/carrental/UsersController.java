@@ -17,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -77,6 +78,9 @@ public class UsersController implements Initializable {
 
     @FXML
     private Button clearallfilters;
+
+    @FXML
+    private Button addUser;
     @FXML
     private String selectedInvoiceStatus;
 
@@ -89,6 +93,13 @@ public class UsersController implements Initializable {
     @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
 
+    public void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -98,6 +109,65 @@ public class UsersController implements Initializable {
             applySearchFilter(searchKeyword);
         });
 
+        addUser.setOnAction(event -> {
+            // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
+            Dialog<User> dialog = new Dialog<>();
+            dialog.setTitle("Add User");
+            dialog.setHeaderText(null);
+
+            ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+
+            GridPane grid = new GridPane();
+            TextField idField = new TextField();
+            TextField nIdField = new TextField();
+            TextField emailField = new TextField();
+            TextField phoneField = new TextField();
+            TextField fullnameField = new TextField();
+            TextField passwordField = new TextField();
+
+            grid.add(new Label("ID:"), 0, 0);
+            grid.add(idField, 1, 0);
+            grid.add(new Label("NID:"), 0, 1);
+            grid.add(nIdField, 1, 1);
+            grid.add(new Label("Email:"), 0, 2);
+            grid.add(emailField, 1, 2);
+            grid.add(new Label("Phone number:"), 0, 3);
+            grid.add(phoneField, 1, 3);
+            grid.add(new Label("Full name:"), 0, 4);
+            grid.add(fullnameField, 1, 4);
+            grid.add(new Label("Password:"), 0, 5);
+            grid.add(passwordField, 1, 5);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == buttonTypeOk) {
+                    try {
+                        int newId = Integer.parseInt(idField.getText());
+                        String newNId = nIdField.getText();
+                        String newEmail = emailField.getText();
+                        String newPhone = phoneField.getText();
+                        String newFullName = fullnameField.getText();
+                        String newPassword = passwordField.getText();
+
+
+                        User newUser = new User(newId, newNId, newEmail, newPhone, true, 0, newFullName, newPassword, false, new Date());
+
+                        // Ajouter le nouvel utilisateur à la liste des utilisateurs
+                        userList.add(newUser);
+
+                        return newUser;
+                    } catch (NumberFormatException e) {
+                        // Gérer l'erreur si l'ID n'est pas un nombre valide
+                        showAlert("Error", "Invalid ID. Please enter a valid number.");
+                    }
+                }
+                return null;
+            });
+
+            dialog.showAndWait();
+        });
 
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedRole = newValue;
@@ -409,6 +479,8 @@ public class UsersController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {
             if (searchKeyword.isEmpty()) {
