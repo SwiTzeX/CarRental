@@ -15,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,9 +27,6 @@ import java.util.ResourceBundle;
 public class UsersController implements Initializable {
     @FXML
     private UserDetailsController userDetailsController;
-
-    @FXML
-    private VBox  userDetailsPane;
 
     @FXML
     private TableColumn<User, Date> creationDate;
@@ -81,6 +77,10 @@ public class UsersController implements Initializable {
 
     @FXML
     private Button clearallfilters;
+
+    @FXML
+    private Button addUser;
+
     @FXML
     private String selectedInvoiceStatus;
 
@@ -90,10 +90,16 @@ public class UsersController implements Initializable {
     @FXML
     private String selectedRole;
 
-
     @FXML
     private ObservableList<User> userList = FXCollections.observableArrayList();
 
+    public void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -101,6 +107,72 @@ public class UsersController implements Initializable {
         find.setOnAction(event -> {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);
+        });
+        addUser.setOnAction(event -> {
+            // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
+            Dialog<User> dialog = new Dialog<>();
+            dialog.setTitle("Add User");
+            dialog.setHeaderText(null);
+
+            ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+
+            GridPane grid = new GridPane();
+            TextField idField = new TextField();
+            TextField nIdField = new TextField();
+            TextField emailField = new TextField();
+            TextField phoneField = new TextField();
+            TextField fullnameField = new TextField();
+            TextField passwordField = new TextField();
+
+            grid.add(new Label("ID:"), 0, 0);
+            grid.add(idField, 1, 0);
+            grid.add(new Label("NID:"), 0, 1);
+            grid.add(nIdField, 1, 1);
+            grid.add(new Label("Email:"), 0, 2);
+            grid.add(emailField, 1, 2);
+            grid.add(new Label("Phone number:"), 0, 3);
+            grid.add(phoneField, 1, 3);
+            grid.add(new Label("Full name:"), 0, 4);
+            grid.add(fullnameField, 1, 4);
+            grid.add(new Label("Password:"), 0, 5);
+            grid.add(passwordField, 1, 5);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == buttonTypeOk) {
+                    try {
+                        int newId = Integer.parseInt(idField.getText());
+                        String newNId = nIdField.getText();
+                        String newEmail = emailField.getText();
+                        String newPhone = phoneField.getText();
+                        String newFullName = fullnameField.getText();
+                        String newPassword = passwordField.getText();
+
+                        User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
+
+                        if (newUser != null) {
+                            // Ajouter le nouvel utilisateur à la liste des utilisateurs
+                            userList.add(newUser);
+                            // Mettre à jour la tableview
+                            tableview.setItems(userList);
+                        } else {
+                            // Gérer l'erreur si la création de l'utilisateur échoue
+                            showAlert("Error", "Failed to create user. Please check the input fields.");
+                        }
+
+                        return newUser;
+                    } catch (NumberFormatException e) {
+                        // Gérer l'erreur si l'ID n'est pas un nombre valide
+                        showAlert("Error", "Invalid ID. Please enter a valid number.");
+                    }
+                }
+                return null;
+            });
+
+            dialog.showAndWait();
+            tableview.refresh();
         });
 
 
@@ -278,6 +350,8 @@ public class UsersController implements Initializable {
 
         tableview.setItems(userList);
 
+
+
     }
 
     private void showEditDialog(User user) {
@@ -394,20 +468,22 @@ public class UsersController implements Initializable {
     }
 
     @FXML
-    public User handleTableRowClick(MouseEvent event) {
+    private void handleTableRowClick(MouseEvent event) {
         User selectedUser = tableview.getSelectionModel().getSelectedItem();
-        if (selectedUser != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails.fxml"));
-            try {
-                Parent userDetailsParent = loader.load();
-                UserDetailsController userDetailsController = loader.getController();
-                userDetailsController.displayUserDetails(selectedUser);
-                userDetailsPane.getChildren().setAll(userDetailsParent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
+            Parent userDetailsRoot = loader.load();
+            UserDetailsController userDetailsController = loader.getController();
+
+            userDetailsController.displayUserDetails(selectedUser);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(userDetailsRoot));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return selectedUser;
     }
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {

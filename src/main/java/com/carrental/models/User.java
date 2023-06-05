@@ -352,4 +352,32 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 '}';
     }
+    public static User createUser(String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin, Date creationDate) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "INSERT INTO Users (nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, nId);
+            stmt.setString(2, email);
+            stmt.setString(3, phoneNumber);
+            stmt.setBoolean(4, status);
+            stmt.setInt(5, age);
+            stmt.setString(6, fullName);
+            stmt.setString(7, password);
+            stmt.setBoolean(8, isAdmin);
+            stmt.setDate(9, new java.sql.Date(creationDate.getTime()));
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                return new User(id, nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
 }
