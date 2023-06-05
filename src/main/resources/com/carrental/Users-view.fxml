@@ -94,9 +94,9 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Pane layoutX="56.0" layoutY="47.0" prefHeight="35.0" prefWidth="1243.0">
+      <Pane layoutX="56.0" layoutY="47.0" prefHeight="35.0" prefWidth="1250.0">
          <children>
-            <Separator layoutX="-39.0" layoutY="30.0" prefHeight="4.0" prefWidth="1250.0">
+            <Separator layoutX="-39.0" layoutY="32.0" prefHeight="2.0" prefWidth="1282.0">
                <padding>
                   <Insets top="-37.0" />
                </padding>
