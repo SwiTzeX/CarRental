@@ -272,7 +272,7 @@ public class UsersController implements Initializable {
         });
 
         tableview.setItems(userList);
-        tableview.getColumns().addAll(IdColumn, nIdColumn, emailColumn, phoneColumn, fullnameColumn, passwordColumn, isadmincolumn, statuecolumn, actionColumn);
+
 
 
 
