@@ -39,7 +39,7 @@ public class LoginController implements Initializable {
     @FXML
     private Label a;
     @FXML
-    void login(ActionEvent event) {
+   void login(ActionEvent event) {
         String username = usernamefield.getText();
         String password = passwordfield.getText();
         User u = User.getUserByEmail(username);
@@ -88,7 +88,7 @@ public class LoginController implements Initializable {
     @FXML
     void btngotologine(MouseEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
             Parent Home = loader.load();
             Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(Home));
@@ -100,8 +100,50 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a.setVisible(false);
-    }
-}
+       /* usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (!newValue) {
+
+                //void login (ActionEvent event){
+                    String username = usernamefield.getText();
+                    String password = passwordfield.getText();
+                    User u = User.getUserByEmail(username);
+                    System.out.println(u);
+                    if (u == null) {
+                        // if u is null user is not found
+                        usernamefield.showError("Your age is under 18 !");
+                    }
+                    if (u != null) {
+                        boolean o = u.checkPassword(password);
+                        if (o) {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                                Parent Home = loader.load();
+                                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                stage.setScene(new Scene(Home));
+                                stage.show();
+                            } catch (IOException e) {
+                                passwordfield.hideError();
+                            }
+                        }
+                        if (!o) {
+                            //a.setVisible(true);
+                            //a.setText("Password is not working");
+                            passwordfield.showError("Your password is not correct");
+                        }
+                    }
+                    else {
+                        a.setVisible(true);
+                        a.setText("Account not found");
+                    }
+
+                }
+
+           // }
+        });
+
+    }*/
+}}
 
 
 
