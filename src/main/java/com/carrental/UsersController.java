@@ -341,14 +341,12 @@ public class UsersController implements Initializable {
 
                         boolean alphacool = user.delete();
                         if (alphacool) {
-
                             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                             successAlert.setTitle("delete");
                             successAlert.setHeaderText(null);
                             successAlert.setContentText("user is no longer in the data base.");
                             successAlert.showAndWait();
                         } else {
-
                             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                             errorAlert.setTitle("Erreur alpha");
                             errorAlert.setHeaderText(null);
