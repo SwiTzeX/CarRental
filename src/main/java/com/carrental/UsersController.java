@@ -35,6 +35,9 @@ public class UsersController implements Initializable {
     private TableView<User> tableview;
 
     @FXML
+    private TextField find;
+
+    @FXML
     private TableColumn<User, Integer> IdColumn;
 
     @FXML
@@ -57,6 +60,8 @@ public class UsersController implements Initializable {
 
     @FXML
     private TableColumn<User, String> passwordColumn;
+
+    public String searchKeyword ;
 
     @FXML
     private TableColumn<User, Void> actionColumn;
@@ -87,6 +92,12 @@ public class UsersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        find.setOnAction(event -> {
+            searchKeyword = find.getText();
+            applySearchFilter(searchKeyword);
+        });
+
 
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedRole = newValue;
@@ -397,6 +408,20 @@ public class UsersController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void applySearchFilter(String searchKeyword) {
+        tableview.setItems(userList.filtered(user -> {
+            if (searchKeyword.isEmpty()) {
+                return true;
+            } else {
+                String lowerCaseSearchTerm = searchKeyword.toLowerCase();
+                String phoneNumber = user.getPhoneNumber();
+                phoneNumber = phoneNumber != null ? phoneNumber.toLowerCase() : "";
+                return user.getFullName().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        user.getEmail().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        phoneNumber.contains(lowerCaseSearchTerm);
+            }
+        }));
     }
 
 
