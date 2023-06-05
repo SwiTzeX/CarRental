@@ -3,9 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,100 +12,161 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.InfoPageController">
+<AnchorPane prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.InfoPageController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;">
+      <VBox alignment="CENTER" layoutX="-2.0" layoutY="-1.0" prefHeight="745.0" prefWidth="1401.0">
          <children>
-            <Pane>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
+            <AnchorPane prefHeight="681.0" prefWidth="1324.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30;">
                <children>
-                  <Label prefHeight="55.0" prefWidth="124.0" text="LOGO" textFill="WHITE">
-                     <font>
-                        <Font size="38.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1046.0">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-               <children>
-                  <Label prefHeight="27.0" prefWidth="85.0" text="Home" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="85.0" text="About" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="90.0" text="Contact Us" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Button contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER" layoutX="24.0" layoutY="55.0" prefHeight="745.0" prefWidth="1354.0">
-         <children>
-            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="698.0" prefWidth="1354.0" style="-fx-background-color: #F6F8FF;">
-               <content>
-                  <AnchorPane prefWidth="1327.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30;">
+                  <VBox prefHeight="680.0" prefWidth="1327.0">
                      <children>
-                        <VBox prefHeight="965.0" prefWidth="1327.0" style="-fx-background-color: #FFFFFF;">
+                        <HBox prefHeight="421.0" prefWidth="1327.0" style="-fx-background-color: #F6F8FF;">
                            <children>
-                              <HBox prefHeight="507.0" prefWidth="1327.0" style="-fx-background-color: #F6F8FF;">
+                              <Pane prefHeight="487.0" prefWidth="860.0" style="-fx-border-radius: 30; -fx-border-color: #E1E1E1; -fx-background-color: white; -fx-background-radius: 30;">
                                  <children>
-                                    <Pane prefHeight="487.0" prefWidth="860.0" style="-fx-border-radius: 30; -fx-border-color: #E1E1E1; -fx-background-color: white; -fx-background-radius: 30;">
+                                    <ImageView fx:id="carpic" fitHeight="441.0" fitWidth="799.0" focusTraversable="true" layoutX="18.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@vehicles/volkswagen-touareg.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Pane>
+                              <VBox prefWidth="527.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30; -fx-background-color: white; -fx-background-radius: 30;">
+                                 <children>
+                                    <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="52.0" prefWidth="475.0" text="Reservation Details">
+                                       <font>
+                                          <Font name="Myanmar MN" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="15.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fx:id="carpic" fitHeight="441.0" fitWidth="799.0" focusTraversable="true" layoutX="18.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@vehicles/volkswagen-touareg.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </Pane>
-                                    <Pane prefHeight="430.0" prefWidth="527.0" style="-fx-border-color: #E1E1E1; -fx-border-radius: 30; -fx-background-color: white; -fx-background-radius: 30;">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <VBox layoutX="13.0" layoutY="13.0" prefHeight="414.0" prefWidth="493.0">
+                                          <HBox>
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" left="15.0" />
+                                             </VBox.margin>
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="430.0" text="Car Specifications" textFill="#353550">
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="30.0" />
-                                                   </VBox.margin>
+                                                <Label prefHeight="31.0" prefWidth="65.0" text="From : " textFill="#353535">
                                                    <font>
-                                                      <Font name="Myanmar MN" size="24.0" />
+                                                      <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
+                                                <Label fx:id="infoStartDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="31.0" prefWidth="235.0">
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" left="15.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Label prefHeight="31.0" prefWidth="39.0" text="To : " textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="infoEndDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" left="15.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Label prefHeight="31.0" prefWidth="156.0" text="Duration (days): " textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="infoDuration" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" left="15.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Label prefHeight="31.0" prefWidth="142.0" text="Price per Day: " textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="infoPpd" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <VBox.margin>
+                                                <Insets bottom="15.0" left="15.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Label prefHeight="31.0" prefWidth="117.0" text="Total Price: " textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="infoTotP" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                   <font>
+                                                      <Font name="Myanmar MN" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" top="7.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                    <Button fx:id="btnBookNow" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#onClickBookNow" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-border-radius: 50; -fx-background-radius: 50;" text="Book Now" textAlignment="CENTER" textFill="WHITE" translateX="145.0">
+                                       <font>
+                                          <Font name="Arial" size="18.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="243.0" prefWidth="1327.0" style="-fx-background-color: #F6F8FF;">
+                           <children>
+                              <VBox prefHeight="232.0" prefWidth="1317.0" style="-fx-background-color: white; -fx-border-color: E1E1E1; -fx-border-radius: 30; -fx-background-radius: 30;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="222.0" text="Car Specifications" textFill="#353550">
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" left="30.0" top="15.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Myanmar MN" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox prefHeight="145.0" prefWidth="650.0">
+                                             <children>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
                                                       <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -118,7 +177,7 @@
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="73.0" text="Brand - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="117.0" text="Brand - " textFill="#353535">
                                                          <HBox.margin>
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
@@ -126,7 +185,7 @@
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="infoBrand" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoBrand1" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -143,7 +202,7 @@
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="76.0" text="Model - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="110.0" text="Model - " textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -151,7 +210,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoModel" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoModel1" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -171,7 +230,7 @@
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="73.0" text="Color - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="102.0" text="Color - " textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -179,7 +238,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoColor" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoColor1" prefHeight="38.0" prefWidth="514.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -196,7 +255,7 @@
                                                             <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="115.0" text="Gear Type - " textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="154.0" text="Gear Type - " textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -204,7 +263,44 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoGear" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoGear1" prefHeight="38.0" prefWidth="471.0" textFill="#353535">
+                                                         <font>
+                                                            <Font name="Myanmar MN" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox layoutX="10.0" layoutY="10.0" prefHeight="145.0" prefWidth="75.0">
+                                             <children>
+                                                <Separator orientation="VERTICAL" prefHeight="145.0" prefWidth="87.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="110.0" layoutY="10.0" prefHeight="22.0" prefWidth="650.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
+                                                   <children>
+                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@icons/voiture-musclee%20(2).png" />
+                                                         </image>
+                                                         <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </HBox.margin>
+                                                      </ImageView>
+                                                      <Label prefHeight="35.0" prefWidth="159.0" text="Trunk Capacity -" textFill="#353535">
+                                                         <font>
+                                                            <Font name="Myanmar MN" size="20.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Label fx:id="infoTrunk1" prefHeight="38.0" prefWidth="190.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -229,7 +325,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoFuel" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoFuel1" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -254,7 +350,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoPsngr" prefHeight="38.0" prefWidth="179.0" textFill="#353535">
+                                                      <Label fx:id="infoPsngr1" prefHeight="38.0" prefWidth="179.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -279,32 +375,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoHp" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="333.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
-                                                   <children>
-                                                      <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@icons/voiture-musclee%20(2).png" />
-                                                         </image>
-                                                         <HBox.margin>
-                                                            <Insets left="5.0" />
-                                                         </HBox.margin>
-                                                      </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="159.0" text="Trunk Capacity -" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                         <HBox.margin>
-                                                            <Insets left="15.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <Label fx:id="infoTrunk" prefHeight="38.0" prefWidth="190.0" textFill="#353535">
+                                                      <Label fx:id="infoHp1" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -312,200 +383,29 @@
                                                    </children>
                                                 </HBox>
                                              </children>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
                                           </VBox>
                                        </children>
-                                    </Pane>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
-                              </HBox>
-                              <HBox prefHeight="445.0" prefWidth="1327.0" style="-fx-background-color: #F6F8FF;">
-                                 <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="425.0" prefWidth="860.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30; -fx-background-color: white; -fx-background-radius: 30;">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="519.0" text="Comments">
-                                             <font>
-                                                <Font name="Myanmar MN" size="24.0" />
-                                             </font>
-                                          </Label>
-                                          <AnchorPane prefHeight="116.0" prefWidth="700.0" style="-fx-border-radius: 30;">
-                                             <children>
-                                                <HBox layoutX="53.0" prefHeight="132.0" prefWidth="698.0" style="-fx-border-radius: 30; -fx-border-color: #F6F8FF;">
-                                                   <children>
-                                                      <VBox prefHeight="163.0" prefWidth="108.0">
-                                                         <children>
-                                                            <Pane prefHeight="41.0" prefWidth="0.0" style="-fx-background-color: #6279FF; -fx-background-radius: 70;">
-                                                               <VBox.margin>
-                                                                  <Insets left="20.0" right="20.0" top="10.0" />
-                                                               </VBox.margin>
-                                                               <opaqueInsets>
-                                                                  <Insets />
-                                                               </opaqueInsets>
-                                                            </Pane>
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox prefHeight="163.0" prefWidth="641.0">
-                                                         <children>
-                                                            <HBox>
-                                                               <VBox.margin>
-                                                                  <Insets top="12.0" />
-                                                               </VBox.margin>
-                                                               <children>
-                                                                  <Label fx:id="username" prefHeight="25.0" prefWidth="664.0" text="Username" textFill="#353550">
-                                                                     <font>
-                                                                        <Font name="Myanmar MN" size="13.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <MenuButton mnemonicParsing="false">
-                                                                     <items>
-                                                                        <MenuItem mnemonicParsing="false" text="Supprimer" />
-                                                                     </items>
-                                                                     <HBox.margin>
-                                                                        <Insets right="10.0" />
-                                                                     </HBox.margin>
-                                                                  </MenuButton>
-                                                               </children>
-                                                            </HBox>
-                                                            <Label prefHeight="11.0" prefWidth="309.0" text="May 18th, 2023 at 4:00 pm" textFill="#0000007b">
-                                                               <font>
-                                                                  <Font name="Myanmar MN" size="8.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="comment" prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" />
-                                             </VBox.margin>
-                                          </AnchorPane>
-                                       </children>
-                                    </VBox>
-                                    <VBox prefWidth="527.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30; -fx-background-color: white; -fx-background-radius: 30;">
-                                       <children>
-                                          <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="475.0" text="Reservation Details: ">
-                                             <font>
-                                                <Font name="Myanmar MN" size="24.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Label>
-                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                                             <children>
-                                                <HBox>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="15.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <Label prefHeight="31.0" prefWidth="65.0" text="From : " textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="infoStartDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="31.0" prefWidth="235.0">
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="15.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <Label prefHeight="31.0" prefWidth="39.0" text="To : " textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="infoEndDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                                <HBox>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="15.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <Label prefHeight="31.0" prefWidth="156.0" text="Duration (days): " textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="infoDuration" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                                <HBox>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="15.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <Label prefHeight="31.0" prefWidth="142.0" text="Price per Day: " textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="infoPpd" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                                <HBox>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" left="15.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <Label prefHeight="31.0" prefWidth="117.0" text="Total Price: " textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="infoTotP" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
-                                                         <font>
-                                                            <Font name="Myanmar MN" size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets bottom="15.0" top="7.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                          <Button fx:id="btnBookNow" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#onClickBookNow" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #6279FF; -fx-border-radius: 50; -fx-background-radius: 50;" text="Book Now" textAlignment="CENTER" textFill="WHITE" translateX="145.0">
-                                             <font>
-                                                <Font name="Arial" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                 </children>
-                              </HBox>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </AnchorPane>
-               </content></ScrollPane>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </AnchorPane>
             <Label maxHeight="-Infinity" maxWidth="-Infinity" snapToPixel="false" text="Copyright © UIR Project 2022-2023" textFill="#6279ff">
                <VBox.margin>
                   <Insets top="5.0" />
