@@ -68,6 +68,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(App.getUser() != null){
         userBox.getChildren().clear();
         ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
         Circle avatarCircle = new Circle();
@@ -126,10 +127,9 @@ public class MainController implements Initializable {
         reservationsBtn.setOnMouseClicked(event ->{
             showReservations();
         });
-        if (App.getUser() == null){
+            logIn();
+        }else{
             logOut();
-        } else{
-           logIn();
         }
         try {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -141,6 +141,7 @@ public class MainController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     private void showProfileMenu(){
@@ -371,8 +372,8 @@ public class MainController implements Initializable {
             notificationBtn.setRotate(0);
         });
         bellTimeline = new Timeline(
-                new javafx.animation.KeyFrame(Duration.ZERO, e -> rotateTransition.play()),
-                new javafx.animation.KeyFrame(Duration.seconds(1), e -> rotateTransition.stop())
+                new KeyFrame(Duration.ZERO, e -> rotateTransition.play()),
+                new KeyFrame(Duration.seconds(1), e -> rotateTransition.stop())
         );
         bellTimeline.setCycleCount(Timeline.INDEFINITE);
         bellTimeline.play();
