@@ -133,7 +133,7 @@
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
+            <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
                   <Insets left="8.0" top="21.0" />
                </HBox.margin>
