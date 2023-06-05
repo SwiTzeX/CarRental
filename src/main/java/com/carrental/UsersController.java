@@ -419,7 +419,9 @@ public class UsersController implements Initializable {
                 phoneNumber = phoneNumber != null ? phoneNumber.toLowerCase() : "";
                 return user.getFullName().toLowerCase().contains(lowerCaseSearchTerm) ||
                         user.getEmail().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        user.getNId().contains(lowerCaseSearchTerm) ||
                         phoneNumber.contains(lowerCaseSearchTerm);
+
             }
         }));
     }
