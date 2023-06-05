@@ -380,4 +380,21 @@ public class User {
         return null;
     }
 
+    public static ArrayList<Integer> getAllUsersId(){
+        ArrayList<Integer> listIdUser = new ArrayList<>();
+        try{
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT idU FROM Users";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                listIdUser.add(id);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listIdUser;
+    }
+
 }
