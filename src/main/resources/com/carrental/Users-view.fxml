@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,13 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
 
    <children>
-      <VBox layoutX="54.0" layoutY="223.0" prefHeight="561.0" prefWidth="1250.0">
+      <VBox layoutX="54.0" layoutY="223.0" prefHeight="547.0" prefWidth="1250.0">
          <children>
-            <TableView  fx:id="tableview" onMouseClicked="#handleTableRowClick" prefHeight="559.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" onMouseClicked="#handleTableRowClick" prefHeight="543.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="59.0" resizable="false" text="idU">
 
@@ -96,15 +94,6 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Pane layoutX="56.0" layoutY="47.0" prefHeight="35.0" prefWidth="1250.0">
-         <children>
-            <Separator layoutX="-39.0" layoutY="32.0" prefHeight="2.0" prefWidth="1282.0">
-               <padding>
-                  <Insets top="-37.0" />
-               </padding>
-            </Separator>
-         </children>
-      </Pane>
       <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1250.0" spacing="10.0">
          <children>
             <TextField fx:id="find" prefHeight="44.0" prefWidth="234.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
@@ -115,7 +104,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets top="18.0" />
+                  <Insets left="4.0" top="18.0" />
                </HBox.margin>
             </TextField>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
@@ -138,7 +127,7 @@
                   <Insets left="8.0" top="21.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addUser" styleClass="button-hover-effect" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+            <Button fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -149,7 +138,7 @@
 
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="788.0" prefHeight="20.0" prefWidth="205.0" text="© UIR Project 2022-2023" textFill="#6279ff">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="778.0" prefHeight="20.0" prefWidth="205.0" text="© UIR Project 2022-2023" textFill="#6279ff">
          <padding>
             <Insets left="12.0" />
          </padding>
