@@ -150,11 +150,17 @@ public class UsersController implements Initializable {
                         String newFullName = fullnameField.getText();
                         String newPassword = passwordField.getText();
 
+                        User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
 
-                        User newUser = new User(newId, newNId, newEmail, newPhone, true, 0, newFullName, newPassword, false, new Date());
-
-                        // Ajouter le nouvel utilisateur à la liste des utilisateurs
-                        userList.add(newUser);
+                        if (newUser != null) {
+                            // Ajouter le nouvel utilisateur à la liste des utilisateurs
+                            userList.add(newUser);
+                            // Mettre à jour la tableview
+                            tableview.setItems(userList);
+                        } else {
+                            // Gérer l'erreur si la création de l'utilisateur échoue
+                            showAlert("Error", "Failed to create user. Please check the input fields.");
+                        }
 
                         return newUser;
                     } catch (NumberFormatException e) {
@@ -166,7 +172,9 @@ public class UsersController implements Initializable {
             });
 
             dialog.showAndWait();
+            tableview.refresh();
         });
+
 
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedRole = newValue;
@@ -341,7 +349,6 @@ public class UsersController implements Initializable {
         });
 
         tableview.setItems(userList);
-
 
 
 
