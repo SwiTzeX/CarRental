@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
+import java.util.regex.Pattern;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -108,6 +108,7 @@ public class UsersController implements Initializable {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);
         });
+
         addUser.setOnAction(event -> {
             // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
             Dialog<User> dialog = new Dialog<>();
@@ -150,19 +151,44 @@ public class UsersController implements Initializable {
                         String newFullName = fullnameField.getText();
                         String newPassword = passwordField.getText();
 
-                        User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
+                        // Vérifier si l'ID, le NID ou le numéro existent déjà
+                        boolean idExists = userList.stream().anyMatch(user -> user.getId() == newId);
+                        boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
+                        boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
 
-                        if (newUser != null) {
-                            // Ajouter le nouvel utilisateur à la liste des utilisateurs
-                            userList.add(newUser);
-                            // Mettre à jour la tableview
-                            tableview.setItems(userList);
+                        if (idExists || nidExists || phoneNumberExists) {
+                            // Afficher un message d'erreur si l'un des identifiants existe déjà
+                            showAlert("Error", "Cannot add user. ID, NID, or phone number already exists.");
                         } else {
-                            // Gérer l'erreur si la création de l'utilisateur échoue
-                            showAlert("Error", "Failed to create user. Please check the input fields.");
-                        }
+                            // Vérifier si l'e-mail est au format valide
+                            String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
+                            boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
 
-                        return newUser;
+                            // Vérifier si le numéro de téléphone est au format valide
+                            String phoneRegex = "^06\\d{8}$";
+                            boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
+
+                            if (!isEmailValid) {
+                                // Afficher un message d'erreur si l'e-mail n'est pas au format valide
+                                showAlert("Error", "Invalid email format. Please enter a valid email address.");
+                            } else if (!isPhoneValid) {
+                                // Afficher un message d'erreur si le numéro de téléphone n'est pas au format valide
+                                showAlert("Error", "Invalid phone number format. Please enter a valid phone number starting with '06' and having 10 digits.");
+                            } else {
+                                // Créer le nouvel utilisateur
+                                User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
+
+                                if (newUser != null) {
+                                    // Ajouter le nouvel utilisateur à la liste des utilisateurs
+                                    userList.add(newUser);
+                                    // Mettre à jour la tableview
+                                    tableview.setItems(userList);
+                                } else {
+                                    // Gérer l'erreur si la création de l'utilisateur échoue
+                                    showAlert("Error", "Failed to create user. Please check the input fields.");
+                                }
+                            }
+                        }
                     } catch (NumberFormatException e) {
                         // Gérer l'erreur si l'ID n'est pas un nombre valide
                         showAlert("Error", "Invalid ID. Please enter a valid number.");
@@ -174,6 +200,8 @@ public class UsersController implements Initializable {
             dialog.showAndWait();
             tableview.refresh();
         });
+
+
 
 
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -492,15 +520,17 @@ public class UsersController implements Initializable {
             } else {
                 String lowerCaseSearchTerm = searchKeyword.toLowerCase();
                 String phoneNumber = user.getPhoneNumber();
-                phoneNumber = phoneNumber != null ? phoneNumber.toLowerCase() : "";
-                return user.getFullName().toLowerCase().contains(lowerCaseSearchTerm) ||
-                        user.getEmail().toLowerCase().contains(lowerCaseSearchTerm) ||
-                        user.getNId().contains(lowerCaseSearchTerm) ||
+                phoneNumber = phoneNumber != null ? phoneNumber : "";
+                String nId = user.getNId().toLowerCase();
+                return user.getFullName().contains(lowerCaseSearchTerm) ||
+                        user.getEmail().contains(lowerCaseSearchTerm) ||
+                        nId.contains(lowerCaseSearchTerm) ||
                         phoneNumber.contains(lowerCaseSearchTerm);
-
             }
         }));
     }
+
+
 
 
 }
