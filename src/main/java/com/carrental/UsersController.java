@@ -492,6 +492,10 @@ public class UsersController implements Initializable {
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
         tableview.setItems(userList);
+        find.setPromptText("Search");
+        roles.setPromptText("Select Roles");
+        invoicedate.setPromptText("Invoice Date");
+        invoicestatue.setPromptText("Invoice Status");
     }
 
     @FXML
