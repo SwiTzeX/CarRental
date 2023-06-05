@@ -384,7 +384,7 @@ public class UsersController implements Initializable {
         return oldestDate;
     }
     @FXML
-    private void clearAllFilters(ActionEvent event) {
+    private void clearallfilters(ActionEvent event) {
         invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
