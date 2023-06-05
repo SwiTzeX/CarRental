@@ -20,7 +20,7 @@
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="561.0" prefWidth="1250.0">
          <children>
-            <TableView fx:id="tableview" prefHeight="559.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" prefHeight="559.0" prefWidth="1250.0" onMouseClicked="#handleTableRowClick" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="52.0" resizable="false" text="idU">
 
