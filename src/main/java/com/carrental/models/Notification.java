@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class Notification {
     public int idN;
     public int idU;
@@ -46,6 +48,14 @@ public class Notification {
     }
 
     public void setTitle(String title) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Notifications SET title = '" + title + "' WHERE idN = " + this.getIdN();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.title = title;
     }
 
@@ -54,6 +64,14 @@ public class Notification {
     }
 
     public void setContent(String content) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Notifications SET content = '" + content + "' WHERE idN = " + this.getIdN();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.content = content;
     }
 
@@ -62,6 +80,14 @@ public class Notification {
     }
 
     public void setRead(boolean read) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "UPDATE Notifications SET `read` = " + read + " WHERE idN = " + this.getIdN();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.read = read;
     }
 
@@ -94,7 +120,7 @@ public class Notification {
             throw new RuntimeException(e);
         }
     }
-    public static ArrayList<Notification> getNotificationsForUser(User user){
+    public static ArrayList<Notification> getAllNotificationsForUser(User user){
         ArrayList<Notification> notifications = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -106,7 +132,7 @@ public class Notification {
                 String title = rs.getString(3);
                 String content = rs.getString(4);
                 boolean read = rs.getBoolean(5);
-                Date date = rs.getDate(6);
+                Date date = rs.getTimestamp(6);
                 notifications.add(new Notification(id, user.getId(), title,content,read,date));
             }
             rs.close();
@@ -116,4 +142,59 @@ public class Notification {
         }
         return notifications;
     }
+    public static ArrayList<Notification> getAllUnreadNotificationsForUser(User user){
+        ArrayList<Notification> notifications = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Notifications WHERE idU = " + user.getId()+" AND `read`=0" ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                String title = rs.getString(3);
+                String content = rs.getString(4);
+                boolean read = rs.getBoolean(5);
+                Date date = rs.getTimestamp(6);
+                notifications.add(new Notification(id, user.getId(), title,content,read,date));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return notifications;
+    }
+
+    public String getTime() {
+        long inputTimeMillis = this.getDate().getTime();
+        long currentTimeMillis = System.currentTimeMillis();
+        long timeDifferenceMillis = currentTimeMillis - inputTimeMillis;
+
+        boolean isFuture = inputTimeMillis > currentTimeMillis;
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(timeDifferenceMillis);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(timeDifferenceMillis);
+        long hours = TimeUnit.MILLISECONDS.toHours(timeDifferenceMillis);
+        long days = TimeUnit.MILLISECONDS.toDays(timeDifferenceMillis);
+        long weeks = days / 7L;
+
+        String result = "";
+
+        if (weeks > 0) {
+            result += weeks + ("w");
+        } else if (days > 0) {
+            result += days + ("d");
+        } else if (hours > 0) {
+            result += hours + ("h");
+        } else if (minutes > 0) {
+            result += minutes + ("m");
+        } else {
+            result += seconds + ("s");
+        }
+
+        result += isFuture ? " left" : " ago";
+
+        return result;
+    }
+
 }

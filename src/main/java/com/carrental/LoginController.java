@@ -43,7 +43,6 @@ public class LoginController implements Initializable {
         String username = usernamefield.getText();
         String password = passwordfield.getText();
         User u = User.getUserByEmail(username);
-        System.out.println(u);
         if ( u == null){
             // if u is null user is not found
             a.setVisible(true);
@@ -53,7 +52,8 @@ public class LoginController implements Initializable {
             boolean o = u.checkPassword(password);
             if (o){
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                    App.setUser(u);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
                     Parent Home = loader.load();
                     Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(new Scene(Home));

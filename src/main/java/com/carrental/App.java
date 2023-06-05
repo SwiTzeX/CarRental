@@ -11,16 +11,22 @@ import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class App extends Application {
     public User user;
     private static App app;
     @Override
     public void start(Stage stage) throws IOException {
-        //user = User.getUserById(22);
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
+        //user = User.getUserById(15);
+        Reservation test = Reservation.getAllReservations().get(0);
+        System.out.println(test.getTimeLeft());
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        stage.setTitle("RENT●EZ");
+        stage.setTitle("Hello test!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
