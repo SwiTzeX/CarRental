@@ -8,8 +8,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -76,22 +74,6 @@
                   <Font name="Arial Bold" size="35.0" />
                </font>
             </Label>
-            <Label prefHeight="31.0" prefWidth="113.0" text="ADMIN NAME" textFill="#00000094">
-               <HBox.margin>
-                  <Insets left="330.0" top="12.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="Arial" size="17.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/jimmy-fallon.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="6.0" top="7.0" />
-               </HBox.margin>
-            </ImageView>
          </children>
       </HBox>
       <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="96.0" mouseTransparent="true" prefHeight="49.0" prefWidth="142.0">
@@ -116,7 +98,7 @@
          <children>
             <Separator layoutX="-39.0" layoutY="30.0" prefHeight="4.0" prefWidth="1250.0">
                <padding>
-                  <Insets top="-9.0" />
+                  <Insets top="-37.0" />
                </padding>
             </Separator>
          </children>
@@ -143,14 +125,6 @@
                   <Insets top="21.0" />
                </HBox.margin>
             </Button>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/icons8_Search_52px.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="192.0" top="32.0" />
-               </HBox.margin>
-            </ImageView>
             <TextField prefHeight="41.0" prefWidth="244.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
                <opaqueInsets>
                   <Insets />
@@ -159,7 +133,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets top="23.0" />
+                  <Insets left="199.0" top="24.0" />
                </HBox.margin>
             </TextField>
             <Button fx:id="addUser" mnemonicParsing="false" prefHeight="40.0" prefWidth="145.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" text="Add User" textAlignment="RIGHT" textFill="WHITE">
