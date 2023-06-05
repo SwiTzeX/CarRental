@@ -14,11 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.UserDetailsController?>
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
+
    <children>
       <VBox layoutX="54.0" layoutY="223.0" prefHeight="561.0" prefWidth="1250.0">
          <children>
-            <TableView fx:id="tableview" onMouseClicked="#handleTableRowClick" prefHeight="559.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView  fx:id="tableview" onMouseClicked="#handleTableRowClick" prefHeight="559.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="59.0" resizable="false" text="idU">
 
@@ -131,7 +133,7 @@
                   <Insets top="17.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearAllFilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
+            <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
                   <Insets left="8.0" top="21.0" />
                </HBox.margin>
