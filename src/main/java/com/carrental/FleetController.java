@@ -92,9 +92,7 @@ public class FleetController implements Initializable {
             brandDropList.getItems().add(brand);
         }
 
-        for(String model:Vehicle.getAllModelsFromAvailableVehicles(vehicles)) {
-            modelDropList.getItems().add(model);
-        }
+
         statusDropList.getItems().addAll("Disponible","indisponible");
 
 
