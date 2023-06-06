@@ -112,7 +112,6 @@ public class LoginController implements Initializable {
             }
         });
        passwordfield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-
            if (!newValue && u != null) {
 
                //String password = passwordfield.getText();
