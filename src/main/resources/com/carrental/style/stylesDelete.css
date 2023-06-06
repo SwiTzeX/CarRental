@@ -1,0 +1,33 @@
+.custom-alert {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #f0f2ff;
+    -fx-font-size: 14px;
+}
+
+.custom-alert .header-panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #6279ff;
+    -fx-border-width: 0 0 1 0;
+}
+
+.custom-alert .content-label {
+    -fx-text-fill: #f0f2ff;
+}
+
+.custom-alert .graphic-container {
+    -fx-padding: 10px;
+}
+
+.custom-alert .button-bar {
+    -fx-background-color: #ffffff;
+}
+
+.custom-alert .button-bar .button {
+    -fx-background-color: #6279ff;
+    -fx-text-fill: #f0f2ff;
+    -fx-font-size: 12px;
+}
+
+.custom-alert .button-bar .button:hover {
+    -fx-background-color: #4459ff;
+}

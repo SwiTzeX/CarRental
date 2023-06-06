@@ -71,7 +71,7 @@
                   <Insets left="155.0" right="8.0" top="-3.0" />
                </HBox.margin>
                <font>
-                  <Font name="Arial Bold" size="35.0" />
+                  <Font name="Arial" size="35.0" />
                </font>
             </Label>
          </children>

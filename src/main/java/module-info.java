@@ -14,6 +14,7 @@ module com.carrental.carrental {
 
 
     opens com.carrental.models to javafx.base;
+    opens com.carrental.tables to javafx.base;
     opens com.carrental to javafx.fxml;
     exports com.carrental;
     exports com.carrental.customnodes;
