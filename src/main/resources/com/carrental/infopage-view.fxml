@@ -406,7 +406,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </AnchorPane>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" snapToPixel="false" text="Copyright © UIR Project 2022-2023" textFill="#6279ff">
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" snapToPixel="false" text="Copyright©Grp9 Project 2022-2023" textFill="#6279ff">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin></Label>

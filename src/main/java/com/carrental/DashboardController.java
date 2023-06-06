@@ -74,6 +74,7 @@ public class DashboardController implements Initializable {
         countTotalSales.setText(String.valueOf(countTotalS));
     }
     public void reportButton(){
-
+        CsvExport exporter = new CsvExport();
+        exporter.export("Reservations");
     }
 }
