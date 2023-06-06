@@ -11,7 +11,7 @@ module com.carrental.carrental {
     requires java.desktop;
     requires java.sql;
     requires mysql.connector.j;
-
+   // requires java.mail;
 
 
     opens com.carrental.models to javafx.base;
