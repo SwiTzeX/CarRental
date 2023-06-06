@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
@@ -35,6 +37,7 @@ public class HomeController implements Initializable {
     public HBox paginationBox;
     public Button searchBtn;
     public HBox filtersBox;
+    public ImageView locIcon;
     @FXML
     private ComboBox<String> brandsDropList;
 
@@ -170,6 +173,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),64,64,true,true));
        /* Date test1 = new Date(2023-1900, Calendar.MAY,16);
         Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
                 new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),

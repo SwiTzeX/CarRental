@@ -132,7 +132,7 @@ public class MyPasswordField extends StackPane {
         errorLabel.setVisible(false);
         backLine.setStrokeWidth(1.2);
         frontLine.setStrokeWidth(1.2);
-        frontLine.setStyle("-fx-stroke: #a390f0;");
+        frontLine.setStyle("-fx-stroke: #6279ff;");
         getChildren().addAll(backLine,frontLine, errorLabel);
         promptTextLabel.widthProperty().addListener((obs, oldWidth, newWidth) -> {
             promptTextLabel.setTranslateX(-(this.getWidth()-promptTextLabel.getWidth()) / 2);

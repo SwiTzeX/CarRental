@@ -26,7 +26,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        mainController = fxmlLoader.getController();
+        //mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
