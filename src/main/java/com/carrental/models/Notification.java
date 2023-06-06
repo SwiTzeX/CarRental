@@ -120,11 +120,22 @@ public class Notification {
             throw new RuntimeException(e);
         }
     }
+    public boolean delete() {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "DELETE FROM Notifications WHERE idN=" + this.getIdN();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+            return rs > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static ArrayList<Notification> getAllNotificationsForUser(User user){
         ArrayList<Notification> notifications = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Notifications WHERE idU = " + user.getId() ;
+            String req = "SELECT * FROM Notifications WHERE idU = " + user.getId()+" ORDER BY date desc" ;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){

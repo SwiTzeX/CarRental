@@ -3,6 +3,7 @@ package com.carrental;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
+//import com.carrental.tables.DataReservation;
 import com.carrental.tables.DataReservation;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
@@ -96,9 +97,10 @@ public class ReservationController implements Initializable {
         resList = Reservation.getAllReservations();
         for(Reservation i:resList) {
             DataReservation res = new DataReservation(i.getUser().getFullName(), i.getUser().getPhoneNumber(), i.getVehicle().getBrandName(), i.getVehicle().getModelName(), i.getVehicle().getPrice(), i.getStartDate(), i.getEndDate(), String.valueOf(i.getStatus()));
+            System.out.println(res);
             dataResList.add(res);
         }
-        col_fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        //col_fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         col_phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         col_brandName.setCellValueFactory(new PropertyValueFactory<>("brandName"));
         col_modelName.setCellValueFactory(new PropertyValueFactory<>("modelName"));

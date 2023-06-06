@@ -3,6 +3,7 @@ package com.carrental;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,12 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +36,9 @@ public class DashboardController implements Initializable {
     Label countCars;
     @FXML
     Button reportButton;
+
+    @FXML
+    static VBox dashvbox;
     @FXML
     final NumberAxis xAxis = new NumberAxis();
     @FXML
@@ -42,8 +51,10 @@ public class DashboardController implements Initializable {
         getCountCust();
         getCountCars();
         getCountTotalSales();
-    }
 
+    }
+    @FXML
+    static Stage csvpopupStage = new Stage();
 
     public void iniLineChart(){
         xAxis.setLabel("Month");
@@ -80,9 +91,32 @@ public class DashboardController implements Initializable {
         float countTotalS = Reservation.totalSales();
         countTotalSales.setText(String.valueOf(countTotalS));
     }
-    public void onClickReportButton(){
+    @FXML
+    public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
         exporter.export("Reservations");
+        onClickCsvReport(e);
+    }
+
+    public static Stage getCsvpopupStage() {
+        return csvpopupStage;
+    }
+
+    @FXML
+    public void onClickCsvReport(ActionEvent e){
+        try {
+            //GaussianBlur blurEffect = new GaussianBlur(15);
+            //dashvbox.setEffect(blurEffect);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
+            csvpopupStage.setScene(new Scene(loader.load()));
+            csvpopupStage.setTitle("Csv Pop Up");
+            csvpopupStage.initModality(Modality.APPLICATION_MODAL); // Set modality to block main window
+            csvpopupStage.initStyle(StageStyle.UNDECORATED);
+            csvpopupStage.show();
+        }
+        catch (IOException b) {
+            b.printStackTrace();
+        }
     }
 
 }

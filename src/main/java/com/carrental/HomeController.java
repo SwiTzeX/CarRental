@@ -179,7 +179,6 @@ public class HomeController implements Initializable {
                 new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
                 test1, test1,true);
         User user = User.create("sssdgds@ssss",null,false,null,null,null,false);
-        System.out.println(user);*/
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
         Platform.runLater(() -> cardLayout.requestFocus());
@@ -248,7 +247,6 @@ public class HomeController implements Initializable {
         typeDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
         typeDropList.setPromptText("Class");
         typeDropList.setPrefWidth(89);
-        //System.out.println((new Text("Class")).getBoundsInLocal().getWidth()+63);
         typeDropList.setOnAction(event -> {
                     filterVehicles(event);
                 }
@@ -274,8 +272,7 @@ public class HomeController implements Initializable {
         else if (dropList == brandsDropList) filterSettings.set(2, dropList.getValue());
         else if (dropList == colorsDropList) filterSettings.set(3, dropList.getValue());
         else if (dropList == typeDropList) filterSettings.set(4, dropList.getValue());
-        System.out.println(filterSettings);
-        vehicles = Vehicle.filterVehicles(filterSettings);
+        vehicles = Vehicle.filterVehicles(filterSettings,null,null);
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
@@ -288,11 +285,9 @@ public class HomeController implements Initializable {
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
-        System.out.println(gearDropList.getPromptText());
         gearDropList.getSelectionModel().clearSelection();
         gearDropList.setValue(null);
         //gearDropList.setPromptText("Gear Type");
-        System.out.println(gearDropList.getPromptText());
         refreshComboBoxes();
     }
     @FXML
