@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<?import com.carrental.customnodes.MyTextField?>
-<?import com.carrental.customnodes.MyPasswordField?>
+<?import com.carrental.customnodes.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #6279FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.RegisterController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1400.0">
@@ -21,66 +13,62 @@
                <children>
                   <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
                </children></Pane>
-            <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="25.0" style="-fx-background-radius: 30 0 0 30; -fx-background-color: #ffffff;">
+            <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="40.0" style="-fx-background-radius: 30 0 0 30; -fx-background-color: #ffffff;">
                <children>
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#gotohome" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Home">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="600.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="43.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="-20.0" />
+                     </VBox.margin>
                   </Label>
-                  <TextField fx:id="fullnameid" prefHeight="25.0" prefWidth="500.0" promptText="Full Name" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <MyTextField fx:id="fullnameid" prefHeight="25.0" prefWidth="500.0" promptText="Full Name">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </TextField>
+                  </MyTextField>
                   <MyTextField fx:id="ageid" prefWidth="500.0" promptText="Age">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </MyTextField>
-                  <TextField fx:id="phonenumid" prefWidth="500.0" promptText="Phone Number" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <MyTextField fx:id="phonenumid" prefWidth="500.0" promptText="Phone Number">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="Nid" prefWidth="500.0" promptText="National ID" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  </MyTextField>
+                  <MyTextField fx:id="Nid" prefWidth="500.0" promptText="National ID">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="mailid" prefWidth="500.0" promptText="Email Address" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  </MyTextField>
+                  <MyTextField fx:id="mailid" prefWidth="500.0" promptText="Email Address">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </TextField>
-                  <PasswordField fx:id="passwordid" prefWidth="500.0" promptText="Password" style="-fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF; -fx-background-color: #FFFFFF">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  </MyTextField>
+                  <MyPasswordField fx:id="passwordid" prefWidth="500.0" promptText="Password">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
-                  </PasswordField>
-                  <MyPasswordField fx:id="Vpasswordid" prefWidth="500.0" promptText="Comfirm Your Password" >
+                  </MyPasswordField>
+                  <MyPasswordField fx:id="Vpasswordid" prefWidth="500.0" promptText="Comfirm Your Password">
                      <VBox.margin>
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </MyPasswordField>
                   <VBox alignment="CENTER" prefHeight="30.0" prefWidth="891.0" spacing="5.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
+                        <Button fx:id="register" stylesheets="@style/animation-3alam-khor.css" mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
