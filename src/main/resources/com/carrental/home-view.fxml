@@ -58,7 +58,7 @@
          <HBox.margin>
             <Insets bottom="20.0" top="20.0" />
          </HBox.margin>
-         <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="locIcon" fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@icons/loc.png" />
          </ImageView>
          <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="292.0" promptText="Pickup Location" promptFontSize="15" inputFontSize="15"/>

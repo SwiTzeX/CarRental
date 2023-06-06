@@ -1,4 +1,4 @@
-package com.carrental.models;
+package com.carrental;
 import com.carrental.SingletonConnection;
 
 import java.io.*;
@@ -63,13 +63,13 @@ public class CsvExport {
 
     }
 
-    private String getFileName(String baseName) {
+    public String getFileName(String baseName) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         String dateTimeInfo = dateFormat.format(new Date());
         return baseName.concat(String.format("_%s.csv", dateTimeInfo));
     }
 
-    private int writeHeaderLine(ResultSet result) throws SQLException, IOException {
+    public int writeHeaderLine(ResultSet result) throws SQLException, IOException {
         // write header line containing column names
         ResultSetMetaData metaData = result.getMetaData();
         int numberOfColumns = metaData.getColumnCount();
@@ -86,7 +86,7 @@ public class CsvExport {
         return numberOfColumns;
     }
 
-    private String escapeDoubleQuotes(String value) {
+    public String escapeDoubleQuotes(String value) {
         return value.replaceAll("\"", "\"\"");
     }
 

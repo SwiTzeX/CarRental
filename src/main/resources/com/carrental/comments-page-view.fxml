@@ -12,15 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="745.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentsPageController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="13.0" prefHeight="722.0" prefWidth="1377.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="13.0">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="745.0" prefWidth="1400.0" vbarPolicy="ALWAYS">
          <content>
             <HBox prefHeight="697.0" prefWidth="1340.0">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" />
-                  <VBox prefHeight="697.0" prefWidth="1134.0" spacing="10.0">
+                  <VBox fx:id="commentsVbox" prefHeight="697.0" prefWidth="1134.0" spacing="10.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -48,7 +47,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username1" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -97,7 +96,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment1" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -130,7 +129,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username11" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -179,7 +178,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment11" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -215,7 +214,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username12" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -264,7 +263,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment12" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -297,7 +296,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username13" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -346,7 +345,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment13" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -379,7 +378,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username111" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -428,7 +427,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment111" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -461,7 +460,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username121" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -510,7 +509,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment121" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -543,7 +542,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username122" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -592,7 +591,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment122" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -625,7 +624,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username131" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -674,7 +673,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment131" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -707,7 +706,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username123" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -756,7 +755,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment123" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -789,7 +788,7 @@
                                                 <Insets top="12.0" />
                                              </VBox.margin>
                                              <children>
-                                                <Label fx:id="username124" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
+                                                <Label prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                                                    <font>
                                                       <Font name="Myanmar MN" size="13.0" />
                                                    </font>
@@ -838,7 +837,7 @@
                                                 </HBox>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="comment124" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
+                                          <Label alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -859,4 +858,4 @@
          </content>
       </ScrollPane>
    </children>
-</AnchorPane>
+</VBox>
