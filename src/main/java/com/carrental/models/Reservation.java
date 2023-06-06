@@ -118,7 +118,7 @@ public class Reservation {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
             String startDate = format.format(this.startDate);
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Reservations SET status = " + this.status + " WHERE idU = " + this.user.getId()
+            String req = "UPDATE Reservations SET status = " + status + " WHERE idU = " + this.user.getId()
                     + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + startDate + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
@@ -153,7 +153,7 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "DELETE FROM Reservations WHERE idU = " + this.user.getId() + " AND idV = " + this.vehicle.getId()
-                    + " AND startDate = " + startDate;
+                    + " AND startDate = '" + this.startDate + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
             stmt.close();
@@ -226,6 +226,7 @@ public class Reservation {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(reservations);
         return reservations;
     }
 
@@ -364,6 +365,7 @@ public class Reservation {
         return (double) percentage*100;
     }
 
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -374,4 +376,5 @@ public class Reservation {
                 ", status=" + status +
                 '}';
     }
+
 }
