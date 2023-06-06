@@ -90,12 +90,4 @@ public class CsvExport {
         return value.replaceAll("\"", "\"\"");
     }
 
-    /*
-    public static void main(String[] args) {
-        AdvancedDb2CsvExporter exporter = new AdvancedDb2CsvExporter();
-        exporter.export("review");
-        exporter.export("product");
-    }
-
-     */
 }
