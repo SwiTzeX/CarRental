@@ -24,6 +24,9 @@ public class App extends Application {
     private static App app;
     @Override
     public void start(Stage stage) throws IOException {
+        user = User.getUserById(48);
+        //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
+        //sApp.getUser().getAllNotifications().get(0).delete();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         //mainController = fxmlLoader.getController();

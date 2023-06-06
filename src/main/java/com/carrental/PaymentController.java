@@ -8,8 +8,12 @@ import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.event.*;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -160,6 +164,29 @@ public class PaymentController implements Initializable {
 
     @FXML
     public void EndCheckout(ActionEvent e) {
+
+        try {
+            int r, n;
+            Connection connection = SingletonConnection.getConnection();
+            String sql1 = "INSERT INTO Reservation(idU, idV, startDate, endDate, status) " +
+                    "values(?,?,?,?,?)";
+            PreparedStatement statement1 = connection.prepareStatement(sql1);
+            r = statement1.executeUpdate(sql1);
+            statement1.setInt(1, idU);
+            statement1.setInt(2,idV);
+            statement1.setDate(3,startDate);
+            statement1.setDate(4,endDate);
+            statement1.setInt(5,status);
+            String sql2 = "UPDATE Vehicles" +
+                    "SET disponibilty = false " +
+                    "Where idV = ? ";
+            PreparedStatement statement2 = connection.prepareStatement(sql2);
+            statement2.setInt(1, idV);
+            n = statement1.executeUpdate(sql1);
+        } catch (SQLException e3) {
+            System.out.println("Datababse error:");
+            e3.printStackTrace();
+        }
         //Payment Method Paypal
         if(this.getRadioValue()=="Paypal"){
         // Define the URL to redirect to

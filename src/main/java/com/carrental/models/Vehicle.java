@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -428,7 +429,7 @@ public class Vehicle {
         }
     }
 //(family, null, tonobil, red, null)
-    public static ArrayList<Vehicle> filterVehicles(ArrayList<String> filterSettings) {
+    public static ArrayList<Vehicle> filterVehicles(ArrayList<String> filterSettings,Date pickupDate,Date returnDate) {
         try{
             boolean and = false;
             ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -476,19 +477,35 @@ public class Vehicle {
             }
             if(filterSettings.get(5) != null){
                 if (and) {
-                    req += "WHERE ";
                     req += "AND ";
+                }else{
+                    req += "WHERE ";
+                    and = true;
                 }
                 req += "modelName = '" + filterSettings.get(5) + "' ";
             }
             if(filterSettings.get(6) != null){
                 if (and) {
-                    req += "WHERE ";
                     req += "AND ";
+                }else{
+                    req += "WHERE ";
+                    and = true;
                 }
                 req += "disponibility = '" + filterSettings.get(6) + "' ";
             }
-            System.out.println(req);
+            if(pickupDate != null){
+                if (and) {
+                    req += "AND ";
+                }else{
+                    req += "WHERE ";
+                    and = true;
+                }
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+                String pDate = format.format(pickupDate);
+                String rDate = format.format(returnDate);
+                req += " idV NOT IN ( SELECT idV FROM Reservations startDate <= '"+rDate+"' AND endDate >= '"+pDate+"' )";
+            }
+
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){

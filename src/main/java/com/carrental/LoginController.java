@@ -1,5 +1,7 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyPasswordField;
+import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,45 +35,36 @@ public class LoginController implements Initializable {
     @FXML
     public Label label_login;
     @FXML
-    public TextField usernamefield;
+    public MyTextField usernamefield;
     @FXML
-    public PasswordField passwordfield;
+    public MyPasswordField passwordfield;
     @FXML
     private Label a;
 
+   public User u = null;
+
+
    @FXML
     void login(ActionEvent event) {
-        String username = usernamefield.getText();
-        String password = passwordfield.getText();
-        User u = User.getUserByEmail(username);
-        if (u == null) {
+      //  String username = usernamefield.getText();
+      // String password = passwordfield.getText();
 
-            a.setVisible(true);
-            a.setText("Account not found!");
-        }
-        if (u != null) {
-            boolean o = u.checkPassword(password);
-            if (o) {
-                try {
-                    App.setUser(u);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-                    Parent Home = loader.load();
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(new Scene(Home));
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (!o) {
-                a.setVisible(true);
-                a.setText("Password is not working");
-            }
-        } else {
-            a.setVisible(true);
-            a.setText("Account not found");
-        }
-    }
+      // App.setUser(u);
+       if (u != null && !usernamefield.isError() && !passwordfield.isError()) {
+
+               try {
+                   App.setUser(u);
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
+                   Parent Home = loader.load();
+                   Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                   stage.setScene(new Scene(Home));
+                   stage.show();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+
+       }
 
     @FXML
     void transfertoregister(MouseEvent event) {
@@ -101,46 +94,47 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        a.setVisible(false);
-       /* usernamefield.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
+       usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+          // System.out.println("Account not found!");
             if (!newValue){
-                passwordfield.focusedProperty();
-            try {
-                void login (ActionEvent event){
-                    String username = usernamefield.getText();
-                    String password = passwordfield.getText();
-                    User u = User.getUserByEmail(username);
-                    if (u == null) {
-                        username.showError("Your account was not found");
-                    }
-                    if (u != null) {
-                        boolean o = u.checkPassword(password);
-                        if (o) {
-                            try {
-                                App.setUser(u);
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-                                Parent Home = loader.load();
-                                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                stage.setScene(new Scene(Home));
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if (!o) {
+                String username = usernamefield.getText();
+                //System.out.println(username);
+                 u = User.getUserByEmail(username);
+                 if (u == null){
+                     usernamefield.showError("Account not found!");
+                 }
+                 else{
 
-                            passwordfield.showError("Password is not working");
-                        }
-                    }
-                }
+                     usernamefield.hideError();
+
+                 }
             }
-            }
-        }
-        }*/
-    }
+        });
+       passwordfield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+           if (!newValue && u != null) {
+
+               //String password = passwordfield.getText();
+              /* System.out.println(u.getEmail());
+               System.out.println(u.getPassword());
+               System.out.println(password);*/
+               boolean o = u.checkPassword(passwordfield.getText());
+               if (!o) {
+                   passwordfield.showError("Password is not working");
+               }
+               else {
+
+                   passwordfield.hideError();
 
 
-}
+               }
+
+           }
+           });
+    }}
+
+
+
 
 
 
