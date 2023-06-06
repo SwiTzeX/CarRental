@@ -40,9 +40,9 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutX="65.0" layoutY="125.0" prefHeight="622.0" prefWidth="394.0">
+      <Pane layoutX="65.0" layoutY="125.0" prefHeight="622.0" prefWidth="383.0">
          <children>
-            <VBox layoutX="29.0" layoutY="-6.0" prefHeight="622.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
+            <VBox layoutX="29.0" layoutY="-6.0" prefHeight="622.0" prefWidth="348.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
                <children>
                   <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
@@ -126,7 +126,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="473.0" layoutY="125.0" prefHeight="622.0" prefWidth="864.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;">
+      <Pane layoutX="453.0" layoutY="125.0" prefHeight="622.0" prefWidth="884.0" style="-fx-background-color: #F6F8FF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;">
          <children>
             <Label layoutX="7.0" layoutY="4.0" prefHeight="30.0" prefWidth="190.0" text=" Rental Activities" textFill="#6279ff">
                <padding>
@@ -136,14 +136,15 @@
                   <Font name="Arial" size="19.0" />
                </font>
             </Label>
-            <TableView layoutX="16.0" layoutY="45.0" prefHeight="569.0" prefWidth="827.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView layoutX="16.0" layoutY="45.0" prefHeight="569.0" prefWidth="861.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn prefWidth="114.0" resizable="false" text="nid" />
-                <TableColumn prefWidth="146.0" resizable="false" text="brandName" />
-                  <TableColumn prefWidth="164.0" resizable="false" text="modelName" />
-                  <TableColumn prefWidth="144.0" resizable="false" text="startDate" />
-                  <TableColumn prefWidth="143.0" resizable="false" text="endDate" />
-                  <TableColumn prefWidth="117.0" text="price" />
+                <TableColumn prefWidth="120.0" resizable="false" text="Full Name" />
+                <TableColumn resizable="false" text="NID" />
+                  <TableColumn prefWidth="138.0" resizable="false" text="BrandName" />
+                  <TableColumn prefWidth="153.0" resizable="false" text="ModelName" />
+                  <TableColumn prefWidth="130.0" resizable="false" text="startDate" />
+                  <TableColumn prefWidth="139.0" text="endDate" />
+                  <TableColumn prefWidth="102.0" text="price" />
               </columns>
             </TableView>
          </children>
