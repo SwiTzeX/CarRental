@@ -317,7 +317,7 @@ public class FleetController implements Initializable {
             if (dropList == statusDropList) filterSettings.set(0, dropList.getValue());
             else if (dropList == brandDropList) filterSettings.set(2, dropList.getValue());
             System.out.println(filterSettings);
-            vehicles = Vehicle.filterVehicles(filterSettings);
+            vehicles = Vehicle.filterVehicles(filterSettings,null,null);
         }
 
 
