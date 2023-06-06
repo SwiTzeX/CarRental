@@ -38,46 +38,47 @@ public class LoginController implements Initializable {
     public PasswordField passwordfield;
     @FXML
     private Label a;
-    @FXML
-   void login(ActionEvent event) {
+
+   @FXML
+    void login(ActionEvent event) {
         String username = usernamefield.getText();
         String password = passwordfield.getText();
         User u = User.getUserByEmail(username);
-        if ( u == null){
-            // if u is null user is not found
+        if (u == null) {
+
             a.setVisible(true);
             a.setText("Account not found!");
         }
-        if ( u != null){
+        if (u != null) {
             boolean o = u.checkPassword(password);
-            if (o){
+            if (o) {
                 try {
                     App.setUser(u);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
                     Parent Home = loader.load();
-                    Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setScene(new Scene(Home));
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if (!o){
+            if (!o) {
                 a.setVisible(true);
                 a.setText("Password is not working");
             }
-        }
-        else {
+        } else {
             a.setVisible(true);
             a.setText("Account not found");
         }
-        }
+    }
+
     @FXML
     void transfertoregister(MouseEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Register-view.fxml"));
             Parent Register = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(Register));
             stage.show();
         } catch (IOException e) {
@@ -86,64 +87,60 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    void btngotologine(MouseEvent event){
+    void btngotologine(MouseEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
             Parent Home = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(Home));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a.setVisible(false);
-       /* usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-
-            if (!newValue) {
-
-                //void login (ActionEvent event){
+       /* usernamefield.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue){
+                passwordfield.focusedProperty();
+            try {
+                void login (ActionEvent event){
                     String username = usernamefield.getText();
                     String password = passwordfield.getText();
                     User u = User.getUserByEmail(username);
-                    System.out.println(u);
                     if (u == null) {
-                        // if u is null user is not found
-                        usernamefield.showError("Your age is under 18 !");
+                        username.showError("Your account was not found");
                     }
                     if (u != null) {
                         boolean o = u.checkPassword(password);
                         if (o) {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                                App.setUser(u);
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
                                 Parent Home = loader.load();
                                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 stage.setScene(new Scene(Home));
                                 stage.show();
                             } catch (IOException e) {
-                                passwordfield.hideError();
+                                e.printStackTrace();
                             }
                         }
                         if (!o) {
-                            //a.setVisible(true);
-                            //a.setText("Password is not working");
-                            passwordfield.showError("Your password is not correct");
+
+                            passwordfield.showError("Password is not working");
                         }
                     }
-                    else {
-                        a.setVisible(true);
-                        a.setText("Account not found");
-                    }
-
                 }
+            }
+            }
+        }
+        }*/
+    }
 
-           // }
-        });
 
-    }*/
-}}
+}
 
 
 
