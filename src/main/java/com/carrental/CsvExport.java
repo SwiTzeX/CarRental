@@ -10,13 +10,13 @@ import java.util.Date;
 public class CsvExport {
     private BufferedWriter fileWriter;
 
-    public void export(String table) {
-
+    public void export() {
+        String table = "Revenue";
         String csvFileName = getFileName(table.concat("_Export"));
 
         try {
             Connection connection = SingletonConnection.getConnection();
-            String sql = "SELECT * FROM ".concat(table);
+            String sql = "SELECT CONCAT(YEAR(startDate), '-', LPAD(MONTH(startDate), 2, '0')) AS month, SUM(DATEDIFF(endDate, startDate) * price) AS total_revenue FROM Reservations JOIN Vehicles ON Reservations.idV = Vehicles.idV GROUP BY YEAR(startDate), MONTH(startDate) ORDER BY YEAR(startDate), MONTH(startDate);";
 
             Statement statement = connection.createStatement();
 
@@ -29,7 +29,7 @@ public class CsvExport {
             while (result.next()) {
                 String line = "";
 
-                for (int i = 2; i <= columnCount; i++) {
+                for (int i = 1; i <= columnCount; i++) {
                     Object valueObject = result.getObject(i);
                     String valueString = "";
 
@@ -76,7 +76,7 @@ public class CsvExport {
         String headerLine = "";
 
         // exclude the first column which is the ID field
-        for (int i = 2; i <= numberOfColumns; i++) {
+        for (int i = 1; i <= numberOfColumns; i++) {
             String columnName = metaData.getColumnName(i);
             headerLine = headerLine.concat(columnName).concat(",");
         }

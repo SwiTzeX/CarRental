@@ -108,7 +108,7 @@ public class FleetController implements Initializable {
         else if (dropList == modelDropList) filterSettings.set(1, dropList.getValue());
         else if (dropList == statusDropList) filterSettings.set(2, dropList.getValue());
 
-        vehicles = Vehicle.filterVehicles(filterSettings);
+        //vehicles = Vehicle.filterVehicles(filterSettings);
     }
 
     public void clearAllFilter(javafx.event.ActionEvent event) {
