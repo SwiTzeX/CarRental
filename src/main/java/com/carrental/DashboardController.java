@@ -75,6 +75,9 @@ public class DashboardController implements Initializable {
         lineChart.getData().addAll(series);
         lineChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
         series.getNode().setStyle("-fx-stroke:#6279FF");
+        for(XYChart.Data<Number,Number> data : series.getData()){
+            data.setNode(null);
+        }
     }
 
     public void getCountCust() {
@@ -88,8 +91,12 @@ public class DashboardController implements Initializable {
     }
 
     public void getCountTotalSales() {
-        float countTotalS = Reservation.totalSales();
-        countTotalSales.setText(String.valueOf(countTotalS));
+        float s=0;
+
+        for(int i=1;i<=12;i++){
+         s = s+Reservation.totalSaleInMonth(i);
+        }
+        countTotalSales.setText(String.valueOf(s));
     }
     @FXML
     public void onClickReportButton(ActionEvent e){
