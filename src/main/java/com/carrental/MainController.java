@@ -369,13 +369,13 @@ public class MainController implements Initializable {
         }
     }
 
-    public void openVehicle(Vehicle vehicle, Reservation reservation){
+    public void openVehicle(Vehicle vehicle, Date startDate,Date endDate){
         try {
             FXMLLoader loader = new FXMLLoader(MainController.class.getResource("infopage-view.fxml"));
             AnchorPane infoPage = loader.load();
             Stage stage =(Stage)userBox.getScene().getWindow();
             InfoPageController infoPageController = loader.getController();
-            //infoPageController.setData(vehicle,reservation);
+            //infoPageController.setData(vehicle,);
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,infoPage);
             refreshUserBox();
