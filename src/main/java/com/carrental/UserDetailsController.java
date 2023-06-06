@@ -10,21 +10,21 @@ import java.util.ResourceBundle;
 
 public class UserDetailsController implements Initializable {
     @FXML
-    private static Label usernamelabel;
+    private  Label usernamelabel;
 
     @FXML
-    private static Label emaillabel;
+    private  Label emaillabel;
 
     @FXML
-    private static Label rolelabel;
+    private  Label rolelabel;
 
     @FXML
-    private static Label agelabel;
+    private  Label agelabel;
 
     @FXML
-    private static Label nidlabel;
+    private  Label nidlabel;
 
-    public static void displayUserDetails(User user) {
+    public  void displayUserDetails(User user) {
         usernamelabel.setText(user.getFullName());
         emaillabel.setText("Email: " + user.getEmail());
         rolelabel.setText("Role: " + (user.getIsAdmin() ? "Admin" : "Client"));

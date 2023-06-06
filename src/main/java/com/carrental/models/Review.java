@@ -1,16 +1,28 @@
 package com.carrental.models;
 
+import com.carrental.SingletonConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Review {
     public Integer idR;
     public Integer idU;
     public Integer stars;
     public String comment;
 
-    public Review(Integer idR, Integer idU, Integer stars, String comment) {
+    public Date creationDate;
+
+    public Review(Integer idR, Integer idU, Integer stars, String comment, Date creationDate) {
         this.idR = idR;
         this.idU = idU;
         this.stars = stars;
         this.comment = comment;
+        this.creationDate = creationDate;
     }
 
     public Integer getIdR() {
@@ -47,6 +59,39 @@ public class Review {
         this.comment = comment;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+
+    public ArrayList<Review> getComments(){
+        ArrayList<Review> reviews = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reviews ORDER BY creationDate DESC LIMIT 25";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idR = rs.getInt(1);
+                int idU = rs.getInt(2);
+                int stars = rs.getInt(3);
+                String comment = rs.getString(4);
+                Date creationDate = rs.getDate(5);
+                reviews.add(new Review(idR, idU, stars, comment, creationDate));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reviews;
+
+    }
+
     @Override
     public String toString() {
         return "Review{" +
@@ -54,6 +99,7 @@ public class Review {
                 ", idU=" + idU +
                 ", stars=" + stars +
                 ", comment='" + comment + '\'' +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }

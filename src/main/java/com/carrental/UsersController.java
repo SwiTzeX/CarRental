@@ -75,7 +75,7 @@ public class UsersController implements Initializable {
     private ComboBox<String> roles;
 
     @FXML
-    private Button clearallfilters;
+    private Button clearAllFilters;
 
     @FXML
     private Button addUser;
@@ -107,6 +107,7 @@ public class UsersController implements Initializable {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);
         });
+
 
         addUser.setOnAction(event -> {
             // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
@@ -217,7 +218,7 @@ public class UsersController implements Initializable {
 
      roles.getItems().addAll("admin", "client");
      invoicestatue.getItems().addAll("blocked", "active");
-     invoicedate.getItems().addAll("newest", "oldest");
+     invoicedate.getItems().addAll("newest", "oldest", "Price");
 
         applyFilters();
 
@@ -273,16 +274,20 @@ public class UsersController implements Initializable {
 
         tableview.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-
                 User selectedUser = tableview.getSelectionModel().getSelectedItem();
 
-                if (selectedUser != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
+                    Parent userDetailsRoot = loader.load();
 
-                    //userDetailsController.displayUserDetails(selectedUser);
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(userDetailsRoot));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
-
 
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modify");
@@ -487,13 +492,15 @@ public class UsersController implements Initializable {
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
         tableview.setItems(userList);
-        find.setPromptText("Search");
-        roles.setPromptText("Select Roles");
-        invoicedate.setPromptText("Invoice Date");
-        invoicestatue.setPromptText("Invoice Status");
+
+        // Réinitialiser les valeurs par défaut des JComboBox
+        invoicestatue.getSelectionModel().clearSelection();
+        invoicedate.getSelectionModel().clearSelection();
+        roles.getSelectionModel().clearSelection();
     }
 
-    @FXML
+
+    /* @FXML
     private void handleTableRowClick(MouseEvent event) {
         User selectedUser = tableview.getSelectionModel().getSelectedItem();
         try {
@@ -510,7 +517,7 @@ public class UsersController implements Initializable {
             e.printStackTrace();
         }
 
-    }
+    }*/
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {
             if (searchKeyword.isEmpty()) {
