@@ -1,5 +1,14 @@
 package com.carrental.models;
 
+import com.carrental.SingletonConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Review {
     public Integer idR;
     public Integer idU;
@@ -45,6 +54,30 @@ public class Review {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+//select top 100 * from myTable
+
+    public ArrayList<Review> getComments(){
+        ArrayList<Review> reviews = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reviews ORDER BY ? ASC LIMIT 25";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idR = rs.getInt(2);
+                int idU = rs.getInt(3);
+                int stars = rs.getInt(4);
+                String comment = rs.getString(5);
+                reviews.add(new Review(idR, idU, stars, comment));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reviews;
+
     }
 
     @Override

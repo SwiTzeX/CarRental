@@ -77,7 +77,7 @@ public class InfoPageController implements Initializable{
     @FXML
     private Label username;
 
-    public void setData(Vehicle vehicle, Reservation reservation){
+    public void setData(Vehicle vehicle, Reservation reservation){ //search
 
         Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
         carpic.setImage(image);
