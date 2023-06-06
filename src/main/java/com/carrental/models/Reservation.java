@@ -351,7 +351,7 @@ public class Reservation {
         }
 
         result += isFuture ? "" : " ago";
-
+        System.out.println(result);
         return result;
     }
 

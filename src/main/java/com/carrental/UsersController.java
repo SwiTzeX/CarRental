@@ -177,7 +177,7 @@ public class UsersController implements Initializable {
                             } else {
                                 // Créer le nouvel utilisateur
                                 User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
-
+                                //User newUser = User.create()
                                 if (newUser != null) {
                                     // Ajouter le nouvel utilisateur à la liste des utilisateurs
                                     userList.add(newUser);
