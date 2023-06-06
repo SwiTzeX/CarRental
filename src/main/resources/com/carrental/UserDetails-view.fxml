@@ -42,7 +42,7 @@
       </Pane>
       <Pane layoutX="65.0" layoutY="125.0" prefHeight="622.0" prefWidth="394.0">
          <children>
-            <VBox layoutY="-1.0" prefHeight="622.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
+            <VBox layoutX="29.0" layoutY="-6.0" prefHeight="622.0" prefWidth="391.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
                <children>
                   <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>

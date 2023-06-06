@@ -4,6 +4,7 @@ import com.carrental.customnodes.MyNotificationCard;
 import com.carrental.customnodes.MyReservationCard;
 import com.carrental.models.Notification;
 import com.carrental.models.Reservation;
+import com.carrental.models.Vehicle;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+    public HBox navBar;
     @FXML
     VBox mainBox;
     @FXML
@@ -61,6 +63,9 @@ public class MainController implements Initializable {
 
     Boolean showed = false;
     Timeline bellTimeline = null;
+    Circle notifCircle;
+    Circle reservationCircle;
+    Label notifsNumber;
 
     public VBox getMainBox() {
         return mainBox;
@@ -68,68 +73,68 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userBox.getChildren().clear();
-        ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
-        Circle avatarCircle = new Circle();
-        avatarCircle.setCenterX(40 / 2);
-        avatarCircle.setCenterY(40 / 2);
-        avatarCircle.setRadius(40 / 2);
-        avatarImage.setClip(avatarCircle);
-        ImageView arrow = new ImageView(new Image(getClass().getResourceAsStream("icons/arrow-down.png"),11,7,true,true));
-        avatar = new VBox(avatarImage,arrow);
-        avatar.setAlignment(Pos.CENTER);
-        avatar.setSpacing(1);
+        if(App.getUser() != null){
+            userBox.getChildren().clear();
+            ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
+            Circle avatarCircle = new Circle();
+            avatarCircle.setCenterX(40 / 2);
+            avatarCircle.setCenterY(40 / 2);
+            avatarCircle.setRadius(40 / 2);
+            avatarImage.setClip(avatarCircle);
+            ImageView arrow = new ImageView(new Image(getClass().getResourceAsStream("icons/arrow-down.png"),11,7,true,true));
+            avatar = new VBox(avatarImage,arrow);
+            avatar.setAlignment(Pos.CENTER);
+            avatar.setSpacing(1);
 
 
-        ImageView notifBellIcon = new ImageView(new Image(getClass().getResourceAsStream("icons/notification.png"),20,20,true,true));
+            ImageView notifBellIcon = new ImageView(new Image(getClass().getResourceAsStream("icons/notification.png"),20,20,true,true));
+            notifCircle = new Circle();
+            notifCircle.setRadius(6);
+            notifCircle.setStyle("-fx-fill: red");
+            notifsNumber = new Label(String.valueOf(App.getUser().getAllUnreadNotifications().size()));
+            notifsNumber.setFont(new Font(10));
+            notifsNumber.setStyle("-fx-text-fill: white");
+            notificationBtn = new StackPane();
+            notifCircle.setTranslateX(7);
+            notifCircle.setTranslateY(-7);
+            notifsNumber.setTranslateX(7);
+            notifsNumber.setTranslateY(-7);
 
-        Circle notifCircle = new Circle();
-        notifCircle.setRadius(6);
-        notifCircle.setStyle("-fx-fill: red");
-        Label notifsNumber = new Label(String.valueOf(App.getUser().getAllUnreadNotifications().size()));
-        notifsNumber.setFont(new Font(10));
-        notifsNumber.setStyle("-fx-text-fill: white");
-        notificationBtn = new StackPane();
-        notifCircle.setTranslateX(7);
-        notifCircle.setTranslateY(-7);
-        notifsNumber.setTranslateX(7);
-        notifsNumber.setTranslateY(-7);
-
-        notificationBtn.getChildren().add(notifBellIcon);
-        if(App.getUser().getAllUnreadNotifications().size()>0){
-            notificationBtn.getChildren().addAll(notifCircle,notifsNumber);
-            bellAnimation();
-        }
-        ImageView carsIcon = new ImageView(new Image(getClass().getResourceAsStream("icons/cars.png"),20,20,true,true));
-        reservationsBtn = new StackPane(carsIcon);
+            notificationBtn.getChildren().add(notifBellIcon);
+            reservationCircle = new Circle();
+            reservationCircle.setRadius(4);
+            reservationCircle.setTranslateX(7);
+            reservationCircle.setTranslateY(-7);
+            ImageView carsIcon = new ImageView(new Image(getClass().getResourceAsStream("icons/cars.png"),20,20,true,true));
+            reservationsBtn = new StackPane(carsIcon);
+            refreshUserBox();
 
 
-        Button signoutBtn = new Button("Sign out");
-        signoutBtn.getStyleClass().addAll(signinBtn.getStyleClass());
-        signoutBtn.setStyle(signinBtn.getStyle());
-        signoutBtn.setFont(signinBtn.getFont());
+            Button signoutBtn = new Button("Sign out");
+            signoutBtn.getStyleClass().addAll(signinBtn.getStyleClass());
+            signoutBtn.setStyle(signinBtn.getStyle());
+            signoutBtn.setFont(signinBtn.getFont());
 
-        avatar.setOnMouseClicked(event ->{
-            showProfileMenu();
-        });
-        notificationBtn.setOnMouseClicked(event ->{
-            showNotifications();
-            if (bellTimeline != null) {
-                bellTimeline.stop();
-            }
-            notificationBtn.getChildren().removeAll(notifCircle,notifsNumber);
-            for (Notification notification:App.getUser().getAllUnreadNotifications()){
-                notification.setRead(true);
-            }
-        });
+            avatar.setOnMouseClicked(event ->{
+                showProfileMenu();
+            });
+            notificationBtn.setOnMouseClicked(event ->{
+                showNotifications();
+                if (bellTimeline != null) {
+                    bellTimeline.stop();
+                }
+                notificationBtn.getChildren().removeAll(notifCircle,notifsNumber);
+                for (Notification notification:App.getUser().getAllUnreadNotifications()){
+                    notification.setRead(true);
+                }
+            });
 
-        reservationsBtn.setOnMouseClicked(event ->{
-            showReservations();
-        });
-        if (App.getUser() == null){
+            reservationsBtn.setOnMouseClicked(event ->{
+                showReservations();
+            });
+                logIn();
+        }else{
             logOut();
-        } else{
-           logIn();
         }
         try {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -141,6 +146,7 @@ public class MainController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     private void showProfileMenu(){
@@ -148,6 +154,7 @@ public class MainController implements Initializable {
             return;
         }
         profileMenu = new VBox();
+        profileMenu.setPadding(new Insets(1));
         profileMenu.setLayoutY(58);
         profileMenu.setLayoutX(1315);
         profileMenu.setStyle("-fx-background-color: white;-fx-background-radius: 10");
@@ -169,7 +176,7 @@ public class MainController implements Initializable {
         admin.setPadding(new Insets(0, 0, 0,4));
         admin.setOnMouseEntered(event -> admin.setStyle("-fx-background-color: #F6F8FF"));
         admin.setOnMouseExited(event -> admin.setStyle("-fx-background-color: white"));
-        admin.setOnMouseClicked(event -> logOut());
+        admin.setOnMouseClicked(event -> App.openAdmin(userBox));
         profileMenu.setPrefWidth(80);
         if (App.getUser().getIsAdmin()){
             profileMenu.getChildren().add(admin);
@@ -320,38 +327,76 @@ public class MainController implements Initializable {
     public void hideReservations(){
         mainPane.getChildren().remove(reservationPane);
     }
+
+    public void refreshUserBox(){
+        if(App.getUser().getAllUnreadNotifications().size()>0 && !notificationBtn.getChildren().contains(notifCircle)){
+            notifsNumber.setText(String.valueOf(App.getUser().getAllUnreadNotifications().size()));
+            notificationBtn.getChildren().addAll(notifCircle,notifsNumber);
+            bellAnimation();
+        }
+        boolean redCheck = false;
+        boolean orangeCheck = false;
+        for(Reservation reservation:App.getUser().getReservations()){
+            if (reservation.getPercentageOfTimeLeft() <10){
+                redCheck = true;
+                break;
+            } else if (reservation.getPercentageOfTimeLeft() <20) {
+                orangeCheck = true;
+            }
+        }
+        if(redCheck){
+            reservationCircle.setStyle("-fx-fill: red");
+            if (!reservationsBtn.getChildren().contains(reservationCircle)) reservationsBtn.getChildren().add(reservationCircle);
+        } else if (orangeCheck) {
+            reservationCircle.setStyle("-fx-fill: orange");
+            if (!reservationsBtn.getChildren().contains(reservationCircle)) reservationsBtn.getChildren().add(reservationCircle);
+        }
+    }
     @FXML
-    void goToLogin(javafx.event.ActionEvent event) {
+    public void openHome(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("home-view.fxml"));
+            VBox home = fxmlLoader.load();
+            HomeController homeController = fxmlLoader.getController();
+            //homeController.loadIn();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,home);
+            if(App.getUser()!=null){
+            refreshUserBox();}
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void openVehicle(Vehicle vehicle, Reservation reservation){
+        try {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("infopage-view.fxml"));
+            AnchorPane infoPage = loader.load();
+            Stage stage =(Stage)userBox.getScene().getWindow();
+            InfoPageController infoPageController = loader.getController();
+            //infoPageController.setData(vehicle,reservation);
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,infoPage);
+            refreshUserBox();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void goToLogin(javafx.event.ActionEvent event) {
+        App.openLogin((Node)event.getSource());
     }
     @FXML
     void goToRegister(javafx.event.ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
-            Parent register = loader.load();
-
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(register));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        App.openRegister((Node)event.getSource());
     }
 
     public void logOut(){
+        App.setUser(null);
         userBox.getChildren().clear();
         userBox.getChildren().addAll(signupBtn,signinBtn);
-        hideProfileMenu();
-        hideNotifications();
+        openHome();
     }
 
     public void logIn(){
@@ -371,12 +416,13 @@ public class MainController implements Initializable {
             notificationBtn.setRotate(0);
         });
         bellTimeline = new Timeline(
-                new javafx.animation.KeyFrame(Duration.ZERO, e -> rotateTransition.play()),
-                new javafx.animation.KeyFrame(Duration.seconds(1), e -> rotateTransition.stop())
+                new KeyFrame(Duration.ZERO, e -> rotateTransition.play()),
+                new KeyFrame(Duration.seconds(1), e -> rotateTransition.stop())
         );
         bellTimeline.setCycleCount(Timeline.INDEFINITE);
         bellTimeline.play();
     }
+
 
     @FXML
     void clear(MouseEvent event) {

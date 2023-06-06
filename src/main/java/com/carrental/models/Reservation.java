@@ -31,15 +31,19 @@ public class Reservation {
 
     public void setUser(User user) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String startDate = format.format(this.startDate);
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET idU = " + user.getId() + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + startDate + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
+            if(rs == 1){
+                this.user = user;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.user = user;
     }
 
     public Vehicle getVehicle() {
@@ -48,15 +52,19 @@ public class Reservation {
 
     public void setVehicle(Vehicle vehicle) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String startDate = format.format(this.startDate);
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET idV = " + vehicle.getId() + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + startDate + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
+            if (rs==1){
+                this.vehicle = vehicle;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.vehicle = vehicle;
     }
 
     public Date getStartDate() {
@@ -65,15 +73,19 @@ public class Reservation {
 
     public void setStartDate(Date startDate) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String dateStart = format.format(startDate);
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Reservations SET startDate = " + this.startDate + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
+            String req = "UPDATE Reservations SET startDate = '" + dateStart + "' WHERE idU = " + this.user.getId()
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + format.format(this.startDate) + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
+            if (rs==1){
+                this.startDate = startDate;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.startDate = startDate;
     }
 
     public Date getEndDate() {
@@ -82,15 +94,19 @@ public class Reservation {
 
     public void setEndDate(Date endDate) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String dateEnd = format.format(endDate);
             Connection conn = SingletonConnection.getConnection();
-            String req = "UPDATE Reservations SET endDate = " + this.endDate + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
+            String req = "UPDATE Reservations SET endDate = '" + dateEnd + "' WHERE idU = " + this.user.getId()
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + format.format(this.startDate) + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
+            if (rs==1){
+                this.endDate = endDate;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.endDate = endDate;
     }
 
     public int getStatus() {
@@ -99,15 +115,20 @@ public class Reservation {
 
     public void setStatus(int status) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            String startDate = format.format(this.startDate);
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Reservations SET status = " + this.status + " WHERE idU = " + this.user.getId()
-                    + " AND idV = " + this.vehicle.getId() + " AND startDate = " + this.startDate;
+                    + " AND idV = " + this.vehicle.getId() + " AND startDate = '" + startDate + "'";
             Statement stmt = conn.createStatement();
             int rs = stmt.executeUpdate(req);
+            if (rs==1){
+                this.status = status;
+                System.out.println(this.status);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.status = status;
     }
 
     public static Reservation create(User user, Vehicle vehicle, Date startDate, Date endDate, int status){
@@ -142,7 +163,7 @@ public class Reservation {
         }
     }
 
-    /*public static Reservation getReservationById(int idU, int idV, Date startDate){
+    public static Reservation getReservationById(int idU, int idV, Date startDate){
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "SELECT * FROM Reservations WHERE idU="+idU+" AND idV="+idV+" AND startDate="+startDate;
@@ -151,7 +172,7 @@ public class Reservation {
             if(rs.next()){
                 Date startDate1 = rs.getTimestamp(3);
                 Date endDate = rs.getTimestamp(4);
-                Boolean status = rs.getBoolean(5);
+                int status = rs.getInt(5);
                 return new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate1, endDate, status);
             }
             rs.close();
@@ -160,7 +181,7 @@ public class Reservation {
             throw new RuntimeException(e);
         }
         return null;
-    }*/
+    }
 
     public static ArrayList<Reservation> getAllReservationsByStatus(Boolean status){
         ArrayList<Reservation> reservations = new ArrayList<>();
@@ -254,6 +275,28 @@ public class Reservation {
         return reservations;
     }
 
+    public static ArrayList<Reservation> getVehicleReservations(Vehicle vehicle){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE idV = " + vehicle.getId();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getTimestamp(3);
+                Date endDate = rs.getTimestamp(4);
+                int stat = rs.getInt(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
+    }
 
     public float totalPrice(){
         long durationInMillis = this.endDate.getTime() - this.startDate.getTime();

@@ -30,7 +30,8 @@ public class MyPasswordField extends StackPane {
     private  String promptText;
     private Label promptTextLabel = new Label();
     private boolean isPromptTextShowing = true;
-    private double FontSize = 16;
+    private double promptFontSize = 16;
+    private double inputFontSize = 16;
     public static final char BULLET = '\u2022';
 
     private String text = "";
@@ -98,7 +99,7 @@ public class MyPasswordField extends StackPane {
     private void setupTextField() {
         textField.setStyle("-fx-background-color: transparent;");
         textField.setPadding(new Insets(0, 0, 0, -0.8));
-        textField.setFont(new Font(getFontSize()));
+        textField.setFont(new Font("Arial",getInputFontSize()));
         eyeView.fitWidthProperty().addListener((observable, oldValue, newValue) -> {
             textField.setMaxWidth(this.getWidth()-eyeView.getFitWidth());
             textField.setTranslateX(-eyeView.getFitWidth()/2);
@@ -123,16 +124,15 @@ public class MyPasswordField extends StackPane {
 
     private void setupTexts() {
         promptTextLabel.setText(promptText);
-        promptTextLabel.setFont(new Font(FontSize));
-        promptTextLabel.setFont(new Font(FontSize));
+        promptTextLabel.setFont(new Font(promptFontSize));
         getChildren().add(promptTextLabel);
-        promptTextLabel.setTranslateY(-1);
+        promptTextLabel.setTranslateY(-2);
         errorLabel.setText("test");
         errorLabel.setStyle("-fx-text-fill: red;");
         errorLabel.setVisible(false);
-        backLine.setStrokeWidth(1.5);
-        frontLine.setStrokeWidth(1.5);
-        frontLine.setStyle("-fx-stroke: #a390f0;");
+        backLine.setStrokeWidth(1.2);
+        frontLine.setStrokeWidth(1.2);
+        frontLine.setStyle("-fx-stroke: #6279ff;");
         getChildren().addAll(backLine,frontLine, errorLabel);
         promptTextLabel.widthProperty().addListener((obs, oldWidth, newWidth) -> {
             promptTextLabel.setTranslateX(-(this.getWidth()-promptTextLabel.getWidth()) / 2);
@@ -158,6 +158,7 @@ public class MyPasswordField extends StackPane {
         this.heightProperty().addListener((obs, oldWidth, newWidth) -> {
         eyeView.setFitHeight(this.getHeight());
         eyeView.setFitWidth(this.getHeight());
+        eyeView.setTranslateY(-3);
         eyeView.setTranslateX((int) (this.getWidth()/2 - eyeView.getFitWidth()/2));
         eyeView.setScaleX(0.9);
         eyeView.setScaleY(0.9);
@@ -192,10 +193,12 @@ public class MyPasswordField extends StackPane {
         Text test = new Text(getPromptText());
         test.setScaleX(0.9);
         test.setScaleY(0.9);
-        double X = (-(this.getWidth()-test.getBoundsInLocal().getWidth())/ 2);
-        translateTransition.setToX(X+(test.getBoundsInLocal().getWidth()-(test.getBoundsInLocal().getWidth()*0.9)));
+        test.setFont(new Font("Arial",promptFontSize));
+        double X = (-(this.getWidth()-test.getBoundsInLocal().getWidth()*0.9)/ 2);
+        translateTransition.setToX(X);
         translateTransition.play();
     }
+
 
     private void hidePromptText() {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.1), promptTextLabel);
@@ -205,7 +208,7 @@ public class MyPasswordField extends StackPane {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), promptTextLabel);
         double X = -(this.getWidth()-promptTextLabel.getWidth()) / 2;
         translateTransition.setToX(X);
-        translateTransition.setToY(-1);
+        translateTransition.setToY(-2);
         translateTransition.play();
     }
 
@@ -251,12 +254,22 @@ public class MyPasswordField extends StackPane {
         return text;
     }
 
-    public double getFontSize() {
-        return FontSize;
+    public double getPromptFontSize() {
+        return promptFontSize;
     }
 
-    public void setFontSize(double fontSize) {
-        FontSize = fontSize;
+    public void setPromptFontSize(double promptFontSize) {
+        this.promptFontSize = promptFontSize;
+        promptTextLabel.setFont(new Font("Arial",promptFontSize));
+    }
+
+    public double getInputFontSize() {
+        return inputFontSize;
+    }
+
+    public void setInputFontSize(double inputFontSize) {
+        this.inputFontSize = inputFontSize;
+        textField.setFont(new Font("Arial",inputFontSize));
     }
 
     public void setText(String text) {

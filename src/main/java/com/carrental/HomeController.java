@@ -3,6 +3,7 @@ package com.carrental;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
@@ -32,6 +35,9 @@ public class HomeController implements Initializable {
     public ComboBox<String> typeDropList;
     @FXML
     public HBox paginationBox;
+    public Button searchBtn;
+    public HBox filtersBox;
+    public ImageView locIcon;
     @FXML
     private ComboBox<String> brandsDropList;
 
@@ -167,6 +173,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),64,64,true,true));
        /* Date test1 = new Date(2023-1900, Calendar.MAY,16);
         Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
                 new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
@@ -175,7 +182,7 @@ public class HomeController implements Initializable {
         System.out.println(user);*/
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-
+        Platform.runLater(() -> cardLayout.requestFocus());
         //vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         //*/
         //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
@@ -190,6 +197,63 @@ public class HomeController implements Initializable {
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
+        refreshComboBoxes();
+    }
+
+
+    public void refreshComboBoxes(){
+        filtersBox.getChildren().clear();
+        brandsDropList = new ComboBox<>();
+        brandsDropList.getStyleClass().add("menu");
+        brandsDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        brandsDropList.setPromptText("Brands");
+        brandsDropList.setPrefWidth(99);
+        brandsDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+                );
+
+        gearDropList = new ComboBox<>();
+        gearDropList.getStyleClass().add("menu");
+        gearDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        gearDropList.setPromptText("Gear Type");
+        gearDropList.setPrefWidth(116);
+        gearDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+        );
+
+        fuelDropList = new ComboBox<>();
+        fuelDropList.getStyleClass().add("menu");
+        fuelDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        fuelDropList.setPromptText("Fuel Type");
+        fuelDropList.setPrefWidth(113);
+        fuelDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+        );
+
+        colorsDropList = new ComboBox<>();
+        colorsDropList.getStyleClass().add("menu");
+        colorsDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        colorsDropList.setPromptText("Colors");
+        colorsDropList.setPrefWidth(97);
+        colorsDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+        );
+
+        typeDropList = new ComboBox<>();
+        typeDropList.getStyleClass().add("menu");
+        typeDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        typeDropList.setPromptText("Class");
+        typeDropList.setPrefWidth(89);
+        //System.out.println((new Text("Class")).getBoundsInLocal().getWidth()+63);
+        typeDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+        );
+
         for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
             brandsDropList.getItems().add(brand);
         }
@@ -197,7 +261,7 @@ public class HomeController implements Initializable {
         fuelDropList.getItems().addAll("Diesel","Petrol","Electric");
         colorsDropList.getItems().addAll("Red","Brown","Blue","Yellow","Green","White");
         typeDropList.getItems().addAll("Sedan","Wagon","SUV","Hatchback","Coupe","Sport","Pickup","Micro");
-
+        filtersBox.getChildren().addAll(gearDropList,brandsDropList,fuelDropList,colorsDropList,typeDropList,clearFilterButton);
     }
     @FXML
     public void filterVehicles(javafx.event.ActionEvent event) {
@@ -210,6 +274,7 @@ public class HomeController implements Initializable {
         else if (dropList == brandsDropList) filterSettings.set(2, dropList.getValue());
         else if (dropList == colorsDropList) filterSettings.set(3, dropList.getValue());
         else if (dropList == typeDropList) filterSettings.set(4, dropList.getValue());
+        System.out.println(filterSettings);
         vehicles = Vehicle.filterVehicles(filterSettings);
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
@@ -223,6 +288,12 @@ public class HomeController implements Initializable {
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
+        System.out.println(gearDropList.getPromptText());
+        gearDropList.getSelectionModel().clearSelection();
+        gearDropList.setValue(null);
+        //gearDropList.setPromptText("Gear Type");
+        System.out.println(gearDropList.getPromptText());
+        refreshComboBoxes();
     }
     @FXML
     public void nextPageDisplay(){
