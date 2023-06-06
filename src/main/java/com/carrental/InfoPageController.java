@@ -24,7 +24,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class InfoPageController implements Initializable{
+public class InfoPageController{
 
     @FXML
     private Button btnBookNow;
@@ -77,26 +77,26 @@ public class InfoPageController implements Initializable{
     @FXML
     private Label username;
 
-    public void setData(Vehicle vehicle, Reservation reservation){ //search
-
-        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
+    public void setData(Vehicle vehicle, Date startDate, Date endDate ){ //search
+        Image image = new Image(vehicle.getBrandImage(),799, 441, true, true);
         carpic.setImage(image);
         infoBrand.setText(vehicle.getBrandName());
         infoModel.setText(vehicle.getModelName());
         infoColor.setText(vehicle.getColor());
+        infoFuel.setText(vehicle.getFuelType());
+        infoGear.setText(vehicle.getGearType());
         infoHp.setText(vehicle.getHorsePower().toString());
-        infoFuel.setText(vehicle.fuelType);
-        infoGear.setText(vehicle.gearType);
         infoTrunk.setText(vehicle.getTrunkCapacity().toString());
         infoPsngr.setText(vehicle.getPassengers().toString());
-        infoStartDate.setText(reservation.getStartDate().toString());
-        infoEndDate.setText(reservation.getEndDate().toString());
-        LocalDate first_date = convertToLocalDateViaInstant(reservation.getStartDate());
-        LocalDate second_date = convertToLocalDateViaInstant(reservation.getEndDate());
+        infoStartDate.setText(startDate.toString());
+        infoEndDate.setText(endDate.toString());
+        LocalDate first_date = convertToLocalDateViaInstant(startDate);
+        LocalDate second_date = convertToLocalDateViaInstant(endDate);
         Period duration = Period.between(first_date,second_date);
         infoDuration.setText(duration.toString());
         infoPpd.setText(String.valueOf(vehicle.getPrice()));
-        infoTotP.setText(String.valueOf(reservation.totalPrice()));
+        Reservation res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
+        infoTotP.setText(String.valueOf(res.totalPrice()));
     }
 
     public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
@@ -105,10 +105,6 @@ public class InfoPageController implements Initializable{
                 .toLocalDate();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //setData();
-    }
 
 
     @FXML

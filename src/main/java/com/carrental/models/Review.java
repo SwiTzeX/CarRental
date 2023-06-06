@@ -15,11 +15,14 @@ public class Review {
     public Integer stars;
     public String comment;
 
-    public Review(Integer idR, Integer idU, Integer stars, String comment) {
+    public Date creationDate;
+
+    public Review(Integer idR, Integer idU, Integer stars, String comment, Date creationDate) {
         this.idR = idR;
         this.idU = idU;
         this.stars = stars;
         this.comment = comment;
+        this.creationDate = creationDate;
     }
 
     public Integer getIdR() {
@@ -55,21 +58,30 @@ public class Review {
     public void setComment(String comment) {
         this.comment = comment;
     }
-//select top 100 * from myTable
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
 
     public ArrayList<Review> getComments(){
         ArrayList<Review> reviews = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Reviews ORDER BY ? ASC LIMIT 25";
+            String req = "SELECT * FROM Reviews ORDER BY creationDate DESC LIMIT 25";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
-                int idR = rs.getInt(2);
-                int idU = rs.getInt(3);
-                int stars = rs.getInt(4);
-                String comment = rs.getString(5);
-                reviews.add(new Review(idR, idU, stars, comment));
+                int idR = rs.getInt(1);
+                int idU = rs.getInt(2);
+                int stars = rs.getInt(3);
+                String comment = rs.getString(4);
+                Date creationDate = rs.getDate(5);
+                reviews.add(new Review(idR, idU, stars, comment, creationDate));
             }
             rs.close();
             stmt.close();
@@ -87,6 +99,7 @@ public class Review {
                 ", idU=" + idU +
                 ", stars=" + stars +
                 ", comment='" + comment + '\'' +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }

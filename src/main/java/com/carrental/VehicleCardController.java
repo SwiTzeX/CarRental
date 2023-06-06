@@ -21,6 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.util.Date;
+
 public class VehicleCardController {
 
     @FXML
@@ -139,7 +141,7 @@ public class VehicleCardController {
         if(App.getUser() == null){
             App.openLogin((Node)event.getSource());
         }else{
-           App.getMainController().openVehicle(vehicle, Reservation.getAllReservations().get(0));
+           App.getMainController().openVehicle(vehicle, new Date(),new Date());
         }
     }
 

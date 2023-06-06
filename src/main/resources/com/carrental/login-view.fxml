@@ -13,34 +13,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyTextField?>
+<?import com.carrental.customnodes.MyPasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #6279FF; -fx-background-radius: 30; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.LoginController">
    <children>
+      <ImageView fitHeight="77.0" fitWidth="447.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo/iPhone%2014-%201.png" />
+         </image>
+      </ImageView>
       <HBox prefHeight="800.0" prefWidth="1400.0">
          <children>
             <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;">
                <children>
-                  <ImageView fitHeight="791.0" fitWidth="547.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="800.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/Desktop%20-%201.png" />
-                     </image></ImageView>
+                        <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
+                     </image>
+                  </ImageView>
                </children></Pane>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 0 0 30;">
                <children>
-                  <Label text="LOGIN" textAlignment="CENTER" textFill="#353550">
-                     <font>
-                        <Font name="Arial Bold" size="43.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="usernamefield" prefHeight="49.0" prefWidth="732.0" promptText="Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField fx:id="passwordfield" prefHeight="41.0" prefWidth="500.0" promptText="Password" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF #FFFFFF #000000DB #FFFFFF;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </PasswordField>
+                  <Pane prefHeight="108.0" prefWidth="447.0">
+                     <children>
+                        <ImageView fitHeight="182.0" fitWidth="421.0" layoutX="-1.0" layoutY="-195.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo/iPhone%2014%20-%201.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="136.0" fitWidth="500.0" layoutX="-16.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo/iPhone%2014-%201.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <MyTextField fx:id="usernamefield" prefHeight="49.0" prefWidth="732.0" promptText="Username">
+
+                  </MyTextField>
+                  <MyPasswordField fx:id="passwordfield" prefHeight="41.0" prefWidth="500.0" promptText="Password" >
+
+                  </MyPasswordField>
                   <Button fx:id="button_signin" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="213.0" style="-fx-background-color: #6279FF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
@@ -77,7 +90,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets left="-243.0" top="18.0" />
+                  <Insets left="-234.0" top="18.0" />
                </HBox.margin>
             </Button>
          </children>

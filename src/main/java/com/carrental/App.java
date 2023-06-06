@@ -24,7 +24,10 @@ public class App extends Application {
     private static App app;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
+        user = User.getUserById(48);
+        //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
+        //sApp.getUser().getAllNotifications().get(0).delete();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         //mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");

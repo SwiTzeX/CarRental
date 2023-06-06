@@ -13,31 +13,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: F0F2FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
+<VBox fx:id="dashvbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: F0F2FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
    <children>
-      <Label alignment="CENTER" prefHeight="128.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
+      <Label alignment="CENTER" prefHeight="126.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
          <font>
             <Font name="Myanmar Text Bold" size="48.0" />
          </font>
       </Label>
-      <HBox prefHeight="71.0" prefWidth="1250.0">
+      <HBox prefHeight="62.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #6279ff;" text="Generate report" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #6279ff; -fx-background-radius: 30;" text="Generate report" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="1060.0" />
+                  <Insets left="1090.0" />
                </HBox.margin>
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
          </children>
-         <padding>
-            <Insets top="20.0" />
-         </padding>
       </HBox>
       <HBox prefHeight="113.0" prefWidth="1250.0">
          <children>
-            <HBox prefHeight="172.0" prefWidth="1218.0" style="-fx-border-radius: 30; -fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30;">
+            <HBox prefHeight="134.0" prefWidth="1218.0" style="-fx-border-radius: 30; -fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30;">
                <children>
                   <VBox prefHeight="94.0" prefWidth="359.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <children>
@@ -176,7 +173,7 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <VBox style="-fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30; -fx-border-radius: 30;">
+      <VBox prefWidth="1210.0" style="-fx-background-color: white; -fx-border-color: E1E1E1; -fx-background-radius: 30; -fx-border-radius: 30;">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
