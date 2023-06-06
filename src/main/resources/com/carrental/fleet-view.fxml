@@ -36,9 +36,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,9 +52,20 @@
             <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
                         <children>
+               <TextField fx:id="searchbar" prefHeight="38.0" prefWidth="222.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <font>
+                     <Font name="Arial" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </TextField>
                               <ComboBox fx:id="brandDropList" onAction="#filterVehicles" prefHeight="37.0" prefWidth="160.0" promptText="Brand Name" styleClass="menu" stylesheets="@style/menu.css">
                                     <HBox.margin>
-                                          <Insets />
+                                          <Insets left="65.0" />
                                     </HBox.margin>
                               </ComboBox>
                               <ComboBox fx:id="modelDropList" layoutX="40.0" layoutY="25.0" onAction="#filterVehicles" prefHeight="37.0" prefWidth="160.0" promptText="Model Name" styleClass="menu" stylesheets="@style/menu.css">
@@ -65,16 +76,8 @@
                                     <items>
                                     </items>
                               </ComboBox>
-                              <Button fx:id="clearFilterButton" mnemonicParsing="false" onAction="#clearAllFilter" prefHeight="37.0" prefWidth="98.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Clear All Filter" />
-               <HBox alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="466.0">
-                  <children>
-                     <Button fx:id="clearFilterButton1" mnemonicParsing="false" prefHeight="37.0" prefWidth="145.0" style="-fx-border-color: #d0d4de; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10; -fx-background-color: #F6F8FF;" stylesheets="@style/menu.css" text="Add Vehicule">
-                        <HBox.margin>
-                           <Insets />
-                        </HBox.margin>
-                     </Button>
-                  </children>
-               </HBox>
+               <Button fx:id="clearfilterbtn" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE" />
+               <Button fx:id="addvehiculebtn" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Add Vehicule" textFill="WHITE" />
                         </children>
                         <padding>
                               <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
@@ -84,12 +87,13 @@
             <children>
                <TableView fx:id="tableid" prefHeight="531.0" prefWidth="1160.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
                  <columns>
-                   <TableColumn fx:id="Brand" prefWidth="192.6" text="Brand Name" />
-                   <TableColumn fx:id="ModelN" prefWidth="192.6" text="Model Name" />
-                     <TableColumn fx:id="NumberRes" prefWidth="192.6" text="Number of reservations" />
-                     <TableColumn fx:id="PlateNum" prefWidth="192.6" text="Plate Number" />
-                     <TableColumn fx:id="Status" prefWidth="192.6" text="Status" />
-                     <TableColumn fx:id="Actions" prefWidth="192.6" text="Actions" />
+                     <TableColumn fx:id="Brand1" prefWidth="85.0" text="IdV" />
+                   <TableColumn fx:id="Brand" prefWidth="170.0" text="Brand Name" />
+                   <TableColumn fx:id="ModelN" prefWidth="170.0" text="Model Name" />
+                     <TableColumn fx:id="NumberRes" prefWidth="170.0" text="Number of reservations" />
+                     <TableColumn fx:id="PlateNum" prefWidth="180.0" text="Plate Number" />
+                     <TableColumn fx:id="Status" prefWidth="150.0" text="Status" />
+                     <TableColumn fx:id="Actions" prefWidth="228.0" text="Actions" />
                  </columns>
                   <opaqueInsets>
                      <Insets />
@@ -99,7 +103,7 @@
          </VBox>
             </children>
       </VBox>
-      <Label alignment="BOTTOM_CENTER" layoutX="507.0" layoutY="771.0" prefHeight="25.0" prefWidth="265.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="478.0" AnchorPane.topAnchor="771.0">
+      <Label alignment="BOTTOM_CENTER" layoutX="490.0" layoutY="754.0" prefHeight="25.0" prefWidth="265.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="495.0" AnchorPane.topAnchor="754.0">
             <font>
                   <Font name="Arial" size="16.0" />
             </font>
@@ -119,7 +123,7 @@
          </Pane>
          <Label alignment="CENTER" prefHeight="38.0" prefWidth="355.0" text="Fleet Managment" textFill="#6279ff">
             <HBox.margin>
-               <Insets left="111.0" right="8.0" top="3.0" />
+               <Insets left="200.0" right="8.0" top="3.0" />
             </HBox.margin>
             <font>
                <Font name="Arial Bold" size="35.0" />
@@ -127,7 +131,7 @@
          </Label>
          <Label prefHeight="31.0" prefWidth="113.0" text="ADMIN NAME" textFill="#00000094">
             <HBox.margin>
-               <Insets left="330.0" top="12.0" />
+               <Insets left="235.0" top="12.0" />
             </HBox.margin>
             <font>
                <Font name="Arial" size="17.0" />
@@ -143,31 +147,12 @@
          </ImageView>
       </children>
    </HBox>
-   <HBox cache="true" cacheHint="QUALITY" layoutX="77.0" layoutY="106.0" mouseTransparent="true" prefHeight="32.0" prefWidth="1119.0">
-      <children>
-         <Label prefHeight="46.0" prefWidth="301.0" text="Search Filters" textFill="#6279ff">
-            <font>
-               <Font size="25.0" />
-            </font>
-            <HBox.margin>
-               <Insets />
-            </HBox.margin>
-            <padding>
-               <Insets left="-12.0" top="13.0" />
-            </padding>
-         </Label>
-      </children>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-   </HBox>
-   <Pane layoutX="15.0" layoutY="67.0" prefHeight="35.0" prefWidth="1250.0">
-      <children>
-         <Separator layoutX="5.0" layoutY="34.0" prefHeight="0.0" prefWidth="1206.0">
-            <padding>
-               <Insets top="-9.0" />
-            </padding>
-         </Separator>
-      </children>
-   </Pane>
+   <Label layoutX="65.0" layoutY="123.0" prefHeight="49.0" prefWidth="331.0" text="Search Filters" textFill="#6279ff">
+      <font>
+         <Font size="25.0" />
+      </font>
+      <padding>
+         <Insets left="-12.0" top="13.0" />
+      </padding>
+   </Label>
 </AnchorPane>

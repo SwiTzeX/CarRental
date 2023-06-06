@@ -1,6 +1,5 @@
 package com.carrental;
 
-import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +16,6 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class FleetController implements Initializable {
@@ -92,10 +90,10 @@ public class FleetController implements Initializable {
             brandDropList.getItems().add(brand);
         }
 
-        for(String model:Vehicle.getAllModelsFromAvailableVehicles(vehicles)) {
+        /**for(String model:Vehicle.getAllModelsFromAvailableVehicles(vehicles)) {
             modelDropList.getItems().add(model);
         }
-        statusDropList.getItems().addAll("Disponible","indisponible");
+        statusDropList.getItems().addAll("Disponible","indisponible");**/
 
 
 
