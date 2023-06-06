@@ -78,9 +78,9 @@ public class RegisterController implements Initializable {
         // Check if the password meets the required criteria
         if (phonen.matches(lowercaseRegex) || phonen.matches(uppercaseRegex) ||
                 phonen.matches(specialCharRegex)) {
-            return true; // Password contains multiple character types
+            return true;
         } else {
-            return false; // Password does not meet the criteria
+            return false;
         }
     }
 
@@ -233,7 +233,7 @@ public class RegisterController implements Initializable {
                 }
             }
         });
-        passwordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+        /**passwordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 try {
                     if (!validatePassword(String.valueOf(passwordid))) {
@@ -247,6 +247,17 @@ public class RegisterController implements Initializable {
                     passwordid.hideError();
                 }
             }
-        });
+        });**/
+        /**phonenumid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                try {
+                    if(validatePhoneNum(String.valueOf(phonenumid))){
+                        phonenumid.showError("needs to contain only numbers");
+                    }
+                } catch (Exception ignored) {
+                    phonenumid.hideError();
+                }
+            }
+        });**/
     }
 }
