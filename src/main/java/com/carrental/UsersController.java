@@ -276,16 +276,20 @@ public class UsersController implements Initializable {
 
         tableview.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-
                 User selectedUser = tableview.getSelectionModel().getSelectedItem();
 
-                if (selectedUser != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
+                    Parent userDetailsRoot = loader.load();
 
-                    //userDetailsController.displayUserDetails(selectedUser);
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(userDetailsRoot));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
-
 
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modify");
@@ -496,7 +500,7 @@ public class UsersController implements Initializable {
         invoicestatue.setPromptText("Invoice Status");
     }
 
-    @FXML
+   /* @FXML
     private void handleTableRowClick(MouseEvent event) {
         User selectedUser = tableview.getSelectionModel().getSelectedItem();
         try {
@@ -513,7 +517,7 @@ public class UsersController implements Initializable {
             e.printStackTrace();
         }
 
-    }
+    }*/
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {
             if (searchKeyword.isEmpty()) {
