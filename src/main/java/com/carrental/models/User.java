@@ -312,7 +312,7 @@ public class User {
         try {
             Connection conn = SingletonConnection.getConnection();
             conn.setAutoCommit(false);
-
+// le problem au debut cetait quand vous supprimer user katnsaw matsuprimiw idu dyalo fles tables okhrin
             // Supprimer les réservations associées à l'utilisateur
             String deleteReservationsQuery = "DELETE FROM Reservations WHERE idU=" + this.getId();
             Statement deleteReservationsStmt = conn.createStatement();
