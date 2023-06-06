@@ -1,9 +1,11 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -62,10 +64,13 @@ public class VehicleCardController {
     @FXML
     private Label vehTrunkCapacityLabel;
 
+    private Vehicle vehicle = null;
+
     boolean shadowAnimation = false;
     Timeline timeline = null;
 
     public void setData(Vehicle vehicle){
+        this.vehicle = vehicle;
         vehBrandModel.setText(vehicle.getBrandName() + " " + vehicle.getModelName());
         vehType.setText(vehicle.getType());
         vehPrice.setText(String.valueOf(vehicle.getPrice())+" DH");
@@ -128,6 +133,14 @@ public class VehicleCardController {
         fadeTransition.setOnFinished(event -> {
             shadowAnimation = true;
         });
+    }
+    @FXML
+    void rentEvent(ActionEvent event) {
+        if(App.getUser() == null){
+            App.openLogin((Node)event.getSource());
+        }else{
+           App.getMainController().openVehicle(vehicle, Reservation.getAllReservations().get(0));
+        }
     }
 
 }

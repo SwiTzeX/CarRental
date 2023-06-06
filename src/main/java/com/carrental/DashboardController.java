@@ -3,14 +3,21 @@ package com.carrental;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.chart.NumberAxis;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -73,7 +80,9 @@ public class DashboardController implements Initializable {
         float countTotalS = Reservation.totalSales();
         countTotalSales.setText(String.valueOf(countTotalS));
     }
-    public void reportButton(){
-
+    public void onClickReportButton(){
+        CsvExport exporter = new CsvExport();
+        exporter.export("Reservations");
     }
+
 }

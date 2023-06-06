@@ -308,18 +308,35 @@ public class User {
         }
     }
 
-    public boolean delete(){
+    public boolean delete() {
         try {
             Connection conn = SingletonConnection.getConnection();
-            System.out.println(this.getId());
-            String req = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
-            Statement stmt = conn.createStatement();
-            int rs = stmt.executeUpdate(req);
-            return rs > 0;
+            conn.setAutoCommit(false);
+// le problem au debut cetait quand vous supprimer user katnsaw matsuprimiw idu dyalo fles tables okhrin
+            // Supprimer les réservations associées à l'utilisateur
+            String deleteReservationsQuery = "DELETE FROM Reservations WHERE idU=" + this.getId();
+            Statement deleteReservationsStmt = conn.createStatement();
+            deleteReservationsStmt.executeUpdate(deleteReservationsQuery);
+
+            // Supprimer les notifications associées à l'utilisateur
+            String deleteNotificationsQuery = "DELETE FROM Notifications WHERE idU=" + this.getId();
+            Statement deleteNotificationsStmt = conn.createStatement();
+            deleteNotificationsStmt.executeUpdate(deleteNotificationsQuery);
+
+            // Supprimer l'utilisateur de la table Users
+            String deleteUserQuery = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
+            Statement deleteUserStmt = conn.createStatement();
+            int affectedRows = deleteUserStmt.executeUpdate(deleteUserQuery);
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            return affectedRows > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public ArrayList<Notification> getAllNotifications(){
         return Notification.getAllNotificationsForUser(this);

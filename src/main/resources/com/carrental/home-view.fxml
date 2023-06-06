@@ -45,6 +45,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyTextField?>
 <VBox fx:id="mainBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="10.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <HBox fx:id="searchBox" alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <opaqueInsets>
@@ -57,17 +58,10 @@
          <HBox.margin>
             <Insets bottom="20.0" top="20.0" />
          </HBox.margin>
-         <ImageView fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="locIcon" fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@icons/loc.png" />
          </ImageView>
-         <VBox prefHeight="67.0" prefWidth="292.0">
-            <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Location" textFill="#353550">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font>
-            </Label>
-            <TextField prefHeight="26.0" prefWidth="215.0" styleClass="textField" stylesheets="@style/textfield.css" />
-         </VBox>
+         <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="292.0" promptText="Pickup Location" promptFontSize="15" inputFontSize="15"/>
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding>
@@ -82,23 +76,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <VBox prefHeight="67.0" prefWidth="190.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Pickup Date" textFill="#353550">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField styleClass="textField" stylesheets="@style/textfield.css" />
-               </children>
-            </VBox>
+            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-
+            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -117,32 +102,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <VBox prefHeight="67.0" prefWidth="190.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Date" textFill="#353550">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField styleClass="textField" stylesheets="@style/textfield.css" />
-               </children>
-            </VBox>
+            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <VBox layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="116.0" text="Return Time" textFill="#353550">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField styleClass="textField" stylesheets="@style/textfield.css" />
-               </children>
-            </VBox>
+            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -151,7 +118,7 @@
             <Insets bottom="20.0" left="5.0" top="20.0" />
          </HBox.margin>
       </HBox>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
+      <Button fx:id="searchBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0">
                <image>
@@ -171,7 +138,7 @@
    </HBox>
    <VBox fx:id="vehicleCardsBox" layoutX="50.0" layoutY="200.0" prefHeight="571.0" prefWidth="1306.0" style="-fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="200.0">
       <children>
-         <HBox prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
+         <HBox fx:id="filtersBox" prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
             <children>
                <ComboBox fx:id="gearDropList" onAction="#filterVehicles" prefHeight="37.0" prefWidth="116.0" promptText="Gear Type" styleClass="menu" stylesheets="@style/menu.css">
                   <HBox.margin>

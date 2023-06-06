@@ -226,6 +226,7 @@ public class Reservation {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(reservations);
         return reservations;
     }
 

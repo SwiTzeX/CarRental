@@ -433,15 +433,16 @@ public class Vehicle {
             boolean and = false;
             ArrayList<Vehicle> vehicles = new ArrayList<>();
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Vehicles WHERE ";
+            String req = "SELECT * FROM Vehicles ";
             if(filterSettings.get(0) != null){
-                req += "gearType = '" + filterSettings.get(0) + "' ";
+                req += "WHERE gearType = '" + filterSettings.get(0) + "' ";
                 and = true;
             }
             if(filterSettings.get(1) != null){
                 if(and){
                     req += "AND ";
                 }else{
+                    req += "WHERE ";
                     and = true;
                 }
                 req += "fuelType = '" + filterSettings.get(1) + "' ";
@@ -450,6 +451,7 @@ public class Vehicle {
                 if(and){
                     req += "AND ";
                 }else{
+                    req += "WHERE ";
                     and = true;
                 }
                 req += "brandName = '" + filterSettings.get(2) + "' ";
@@ -458,6 +460,7 @@ public class Vehicle {
                 if(and){
                     req += "AND ";
                 }else{
+                    req += "WHERE ";
                     and = true;
                 }
                 req += "color = '" + filterSettings.get(3) + "' ";
@@ -465,21 +468,27 @@ public class Vehicle {
             if(filterSettings.get(4) != null) {
                 if (and) {
                     req += "AND ";
+                }else{
+                    req += "WHERE ";
+                    and = true;
                 }
                 req += "type = '" + filterSettings.get(4) + "' ";
             }
             if(filterSettings.get(5) != null){
                 if (and) {
+                    req += "WHERE ";
                     req += "AND ";
                 }
                 req += "modelName = '" + filterSettings.get(5) + "' ";
             }
             if(filterSettings.get(6) != null){
                 if (and) {
+                    req += "WHERE ";
                     req += "AND ";
                 }
                 req += "disponibility = '" + filterSettings.get(6) + "' ";
             }
+            System.out.println(req);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){

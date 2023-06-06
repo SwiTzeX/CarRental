@@ -11,11 +11,12 @@ module com.carrental.carrental {
     requires java.desktop;
     requires java.sql;
     requires mysql.connector.j;
+   // requires java.mail;
 
 
     opens com.carrental.models to javafx.base;
-    opens com.carrental to javafx.fxml;
     exports com.carrental;
     exports com.carrental.customnodes;
     opens com.carrental.customnodes to javafx.fxml;
+    opens com.carrental to javafx.base, javafx.fxml;
 }
