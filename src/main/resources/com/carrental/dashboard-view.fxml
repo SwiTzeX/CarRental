@@ -22,7 +22,7 @@
       </Label>
       <HBox prefHeight="71.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #6279ff;" text="Generate report" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #6279ff;" text="Generate report" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="1060.0" />
                </HBox.margin>

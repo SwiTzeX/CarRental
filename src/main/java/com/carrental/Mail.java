@@ -1,3 +1,4 @@
+/*
 package com.carrental;
 import javax.mail.internet.*;
 import java.util.Properties;
@@ -32,3 +33,5 @@ import javax.mail.*;
             }
         }
     }
+
+ */
