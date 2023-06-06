@@ -201,9 +201,6 @@ public class UsersController implements Initializable {
             tableview.refresh();
         });
 
-
-
-
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedRole = newValue;
             applyFilters();

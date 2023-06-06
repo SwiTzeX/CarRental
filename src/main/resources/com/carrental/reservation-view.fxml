@@ -22,24 +22,8 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="1220.0" spacing="200.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="268.0" spacing="10.0">
-                     <children>
-                        <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/icons8_Search_52px.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="41.0" prefWidth="210.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <Label prefHeight="36.0" prefWidth="364.0" text="Gestion des reservations" textAlignment="CENTER" textFill="#353550">
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="268.0" spacing="10.0" />
+                  <Label prefHeight="36.0" prefWidth="364.0" text="Gestion des reservations" textAlignment="CENTER" textFill="#6279ff">
                      <font>
                         <Font name="Arial" size="30.0" />
                      </font>
@@ -67,9 +51,9 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#353550">
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#6279ff">
                      <font>
-                        <Font name="Arial" size="15.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                      <styleClass>
                         <String fx:value="box" />
@@ -77,9 +61,9 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#353550">
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#6279ff">
                      <font>
-                        <Font name="Arial" size="15.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                      <styleClass>
                         <String fx:value="box" />
@@ -87,9 +71,9 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 3" textFill="#353550">
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 3" textFill="#6279ff">
                      <font>
-                        <Font name="Arial" size="15.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                      <styleClass>
                         <String fx:value="box" />
@@ -97,9 +81,9 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 4" textFill="#353550">
+                  <CheckBox mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 4" textFill="#6279ff">
                      <font>
-                        <Font name="Arial" size="15.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                      <styleClass>
                         <String fx:value="box" />
@@ -107,8 +91,21 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="708.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="708.0" spacing="10.0">
                      <children>
+                        <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Search_52px.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchId" prefHeight="41.0" prefWidth="210.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
                         <Button fx:id="addReservation" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="ADD RESERVATION" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
@@ -121,17 +118,17 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1190.0" stylesheets="@style/table.css">
+            <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1190.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="FullName" />
-                <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="Phone Number" />
-                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Brand Name" />
-                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Model Name" />
-                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="Price" />
-                  <TableColumn prefWidth="130.0" style="-fx-background-color: #ebeeff;" text="Start Date " />
-                  <TableColumn prefWidth="120.0" style="-fx-background-color: #ebeeff;" text="End Date" />
-                  <TableColumn prefWidth="150.0" style="-fx-background-color: #ebeeff;" text="Status" />
-                  <TableColumn prefWidth="130.0" style="-fx-background-color: #ebeeff;" />
+                <TableColumn fx:id="col_fullname" prefWidth="125.0" style="-fx-alignment: center;" text="FullName" />
+                <TableColumn fx:id="col_phoneNumber" prefWidth="120.0" style="-fx-alignment: center;" text="Phone Number" />
+                  <TableColumn fx:id="col_brandName" prefWidth="132.0" style="-fx-alignment: center;" text="Brand Name" />
+                  <TableColumn fx:id="col_modelName" prefWidth="134.0" style="-fx-alignment: center;" text="Model Name" />
+                  <TableColumn fx:id="col_price" prefWidth="102.0" style="-fx-alignment: center;" text="Price" />
+                  <TableColumn fx:id="col_startDate" prefWidth="176.0" style="-fx-alignment: center;" text="Start Date " />
+                  <TableColumn fx:id="col_endDate" prefWidth="167.0" style="-fx-alignment: center;" text="End Date" />
+                  <TableColumn fx:id="col_status" prefWidth="77.0" style="-fx-alignment: center;" text="Status" />
+                  <TableColumn fx:id="col_edit" prefWidth="156.0" style="-fx-alignment: center;" text="Edit" />
               </columns>
                <VBox.margin>
                   <Insets right="30.0" />
