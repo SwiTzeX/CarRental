@@ -26,7 +26,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         user = User.getUserById(48);
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+        //sApp.getUser().getAllNotifications().get(0).delete();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         //mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
