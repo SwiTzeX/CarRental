@@ -3,20 +3,17 @@ package com.carrental;
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,24 +23,24 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable {
 
 
-
+    public Button register;
     @FXML
-    private TextField Nid;
+    private MyTextField Nid;
 
     @FXML
     private MyTextField ageid;
 
     @FXML
-    private TextField mailid;
+    private MyTextField mailid;
 
     @FXML
-    private TextField fullnameid;
+    private MyTextField fullnameid;
 
     @FXML
-    private TextField phonenumid;
+    private MyTextField phonenumid;
 
     @FXML
-    private PasswordField passwordid;
+    private MyPasswordField passwordid;
 
     @FXML
     private MyPasswordField Vpasswordid;
@@ -187,6 +184,22 @@ public class RegisterController implements Initializable {
         }
     }
 
+    @FXML
+    void gotohome(ActionEvent event) {
+        try {
+            // Load the FXML file for the second view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
+            Parent home = loader.load();
+
+            // Create a new stage and set the second view as the root
+            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(home));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     @Override
@@ -198,15 +211,40 @@ public class RegisterController implements Initializable {
                 try {
                     int age = Integer.parseInt(ageid.getText());
                     if (age < 18) {
-                        errorid.setVisible(true);
-                        errorid.setText("Your age is under 18 !");
                         ageid.showError("Your age is under 18 !");
                     } else {
                         ageid.hideError();
                     }
-                }catch(Exception ignored){
+                } catch (Exception ignored) {
                     ageid.hideError();
 
+                }
+            }
+        });
+        mailid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                try {
+                    if (!ValidateEmail(String.valueOf(mailid))) {
+                        mailid.showError("Invalid email");
+
+                    }
+                } catch (Exception ignored) {
+                    mailid.hideError();
+                }
+            }
+        });
+        passwordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                try {
+                    if (!validatePassword(String.valueOf(passwordid))) {
+                        passwordid.showError("Your password must contain:" +
+                                "\t•Upper case" +
+                                "\t•Lower case" +
+                                "\t•At least one number" +
+                                "\t•At least one special character");
+                    }
+                } catch (Exception ignored) {
+                    passwordid.hideError();
                 }
             }
         });
