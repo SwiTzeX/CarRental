@@ -31,12 +31,28 @@
                         <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="101.0" layoutY="594.0" prefHeight="77.0" prefWidth="358.0" text="Luxury car at your" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="649.0" prefHeight="51.0" prefWidth="200.0" text="door steps" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="100.0" layoutY="696.0" prefHeight="20.0" prefWidth="303.0" text="Rent the latest model cars at cheap price" textFill="WHITE" />
+                  <ImageView fitHeight="77.0" fitWidth="79.0" layoutX="461.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo/Car%20Rental%20by%20UIR%20(2).png" />
+                     </image>
+                  </ImageView>
                </children></Pane>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 0 0 30;">
                <children>
                   <Pane prefHeight="108.0" prefWidth="447.0">
                      <children>
-                        <ImageView fitHeight="182.0" fitWidth="421.0" layoutX="-1.0" layoutY="-195.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="182.0" fitWidth="421.0" layoutX="-1.0" layoutY="-172.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@logo/iPhone%2014%20-%201.png" />
                            </image>
