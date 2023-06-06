@@ -186,7 +186,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="278.0">
          <children>
-            <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
+            <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

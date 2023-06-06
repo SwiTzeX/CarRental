@@ -1,9 +1,11 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -62,10 +64,13 @@ public class VehicleCardController {
     @FXML
     private Label vehTrunkCapacityLabel;
 
+    private Vehicle vehicle = null;
+
     boolean shadowAnimation = false;
     Timeline timeline = null;
 
     public void setData(Vehicle vehicle){
+        this.vehicle = vehicle;
         vehBrandModel.setText(vehicle.getBrandName() + " " + vehicle.getModelName());
         vehType.setText(vehicle.getType());
         vehPrice.setText(String.valueOf(vehicle.getPrice())+" DH");
@@ -75,7 +80,7 @@ public class VehicleCardController {
         vehFuelType.setText(vehicle.getFuelType());
         vehGearType.setText(vehicle.getGearType());
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
-        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
+        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900,800,true,true);
         vehImage.setImage(image);
         Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()),40,40,true,true);
         vehBrandImage.setImage(brandImage);
@@ -128,6 +133,14 @@ public class VehicleCardController {
         fadeTransition.setOnFinished(event -> {
             shadowAnimation = true;
         });
+    }
+    @FXML
+    void rentEvent(ActionEvent event) {
+        if(App.getUser() == null){
+            App.openLogin((Node)event.getSource());
+        }else{
+           App.getMainController().openVehicle(vehicle, Reservation.getAllReservations().get(0));
+        }
     }
 
 }

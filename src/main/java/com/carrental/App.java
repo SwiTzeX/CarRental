@@ -5,22 +5,29 @@ import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class App extends Application {
     public User user;
+    private MainController mainController;
     private static App app;
     @Override
     public void start(Stage stage) throws IOException {
-        //user = User.getUserById(22);
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Payment-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        stage.setTitle("Hello test!");
+        //mainController = fxmlLoader.getController();
+        stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -34,7 +41,49 @@ public class App extends Application {
         app.user = user;
     }
 
+    public static MainController getMainController() {
+        System.out.println(app.mainController);
+        return app.mainController;
+    }
 
+    public static void setMainController(MainController mainController) {
+        app.mainController = mainController;
+    }
+
+    public static void openLogin(Node source){
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("login-view.fxml"));
+            Parent login = loader.load();
+            Stage stage =(Stage) source.getScene().getWindow();
+            stage.setScene(new Scene(login));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void openRegister(Node source){
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("register-view.fxml"));
+            Parent register = loader.load();
+            Stage stage =(Stage)source.getScene().getWindow();
+            stage.setScene(new Scene(register));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void openAdmin(Node source){
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
+            Parent register = loader.load();
+            Stage stage =(Stage)source.getScene().getWindow();
+            stage.setScene(new Scene(register));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void init() {

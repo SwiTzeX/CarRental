@@ -224,7 +224,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate));
             }
@@ -249,7 +249,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
@@ -274,7 +274,7 @@ public class User {
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
-                Date creationDate = rs.getDate(9);
+                Date creationDate = rs.getTimestamp(9);
                 boolean isAdmin = rs.getBoolean(10);
                 return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate);
             }
@@ -308,23 +308,48 @@ public class User {
         }
     }
 
-    public boolean delete(){
+    public boolean delete() {
         try {
             Connection conn = SingletonConnection.getConnection();
-            System.out.println(this.getId());
-            String req = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
-            Statement stmt = conn.createStatement();
-            int rs = stmt.executeUpdate(req);
-            return rs > 0;
+            conn.setAutoCommit(false);
+// le problem au debut cetait quand vous supprimer user katnsaw matsuprimiw idu dyalo fles tables okhrin
+            // Supprimer les réservations associées à l'utilisateur
+            String deleteReservationsQuery = "DELETE FROM Reservations WHERE idU=" + this.getId();
+            Statement deleteReservationsStmt = conn.createStatement();
+            deleteReservationsStmt.executeUpdate(deleteReservationsQuery);
+
+            // Supprimer les notifications associées à l'utilisateur
+            String deleteNotificationsQuery = "DELETE FROM Notifications WHERE idU=" + this.getId();
+            Statement deleteNotificationsStmt = conn.createStatement();
+            deleteNotificationsStmt.executeUpdate(deleteNotificationsQuery);
+
+            // Supprimer l'utilisateur de la table Users
+            String deleteUserQuery = "DELETE FROM Users WHERE idU=" + this.getId() + " OR email='" + this.getEmail() + "'";
+            Statement deleteUserStmt = conn.createStatement();
+            int affectedRows = deleteUserStmt.executeUpdate(deleteUserQuery);
+
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            return affectedRows > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ArrayList<Notification> getAllNotifications(){
-        return Notification.getNotificationsForUser(this);
-    }
 
+    public ArrayList<Notification> getAllNotifications(){
+        return Notification.getAllNotificationsForUser(this);
+    }
+    public ArrayList<Notification> getAllUnreadNotifications(){
+        return Notification.getAllUnreadNotificationsForUser(this);
+    }
+    public ArrayList<Reservation> getReservations(){
+        return Reservation.getUserReservations(this);
+    }
+    public void sendNotification(String title,String content){
+         Notification.create(this,title,content);
+    }
 
 
     public boolean checkPassword(String password){
@@ -344,4 +369,49 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 '}';
     }
+    public static User createUser(String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin, Date creationDate) {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "INSERT INTO Users (nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, nId);
+            stmt.setString(2, email);
+            stmt.setString(3, phoneNumber);
+            stmt.setBoolean(4, status);
+            stmt.setInt(5, age);
+            stmt.setString(6, fullName);
+            stmt.setString(7, password);
+            stmt.setBoolean(8, isAdmin);
+            stmt.setDate(9, new java.sql.Date(creationDate.getTime()));
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                return new User(id, nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public static ArrayList<Integer> getAllUsersId(){
+        ArrayList<Integer> listIdUser = new ArrayList<>();
+        try{
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT idU FROM Users";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                listIdUser.add(id);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listIdUser;
+    }
+
 }

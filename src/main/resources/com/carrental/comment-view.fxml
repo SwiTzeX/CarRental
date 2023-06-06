@@ -4,59 +4,84 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="116.0" prefWidth="700.0" style="-fx-border-color: #F6F8FF; -fx-border-radius: 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentView">
+<HBox prefHeight="132.0" prefWidth="1134.0" style="-fx-border-color: E1E1E1; -fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentController">
    <children>
-      <HBox prefHeight="132.0" prefWidth="700.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #F6F8FF;">
+      <VBox prefHeight="130.0" prefWidth="81.0">
          <children>
-            <VBox prefHeight="163.0" prefWidth="108.0">
+            <ImageView fx:id="userIcon" fitHeight="46.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/user-icon.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="15.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox prefHeight="130.0" prefWidth="1020.0">
+         <children>
+            <HBox prefWidth="750.0">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
                <children>
-                  <Pane prefHeight="41.0" prefWidth="0.0" style="-fx-background-color: #6279FF; -fx-background-radius: 70;">
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="10.0" />
-                     </VBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Pane>
-               </children>
-            </VBox>
-            <VBox prefHeight="163.0" prefWidth="641.0">
-               <children>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets top="12.0" />
-                     </VBox.margin>
-                     <children>
-                        <Label fx:id="username" prefHeight="25.0" prefWidth="664.0" text="Username" textFill="#353550">
-                           <font>
-                              <Font name="Myanmar MN" size="13.0" />
-                           </font>
-                        </Label>
-                        <MenuButton mnemonicParsing="false">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Supprimer" />
-                          </items>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </MenuButton>
-                     </children>
-                  </HBox>
-                  <Label prefHeight="11.0" prefWidth="309.0" text="May 18th, 2023 at 4:00 pm" textFill="#0000007b">
+                  <Label fx:id="username" prefHeight="26.0" prefWidth="952.0" text="Username" textFill="#353550">
                      <font>
-                        <Font name="Myanmar MN" size="8.0" />
+                        <Font name="Myanmar MN" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="comment" prefHeight="68.0" prefWidth="589.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. " textFill="#353550" wrapText="true" />
+                  <MenuButton fx:id="choiceMenu" mnemonicParsing="false">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Modify" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </MenuButton>
                </children>
-            </VBox>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="1020.0">
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="102.0">
+                     <children>
+                        <ImageView fx:id="star1" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="star2" fitHeight="20.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="star3" fitHeight="20.0" fitWidth="20.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="star4" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/emptystar.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="star5" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/emptystar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Label fx:id="commentText" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="987.0" text="This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. This is a comment.  Lorem ipsum dolor sit amet consectetur adipisicing elit. " textFill="#353550" wrapText="true" />
          </children>
-      </HBox>
+      </VBox>
    </children>
-</AnchorPane>
+</HBox>

@@ -1,16 +1,23 @@
 package com.carrental.models;
 
+import com.carrental.SingletonConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Review {
     public Integer idR;
     public Integer idU;
-    public Integer idV;
     public Integer stars;
     public String comment;
 
-    public Review(Integer idR, Integer idU, Integer idV, Integer stars, String comment) {
+    public Review(Integer idR, Integer idU, Integer stars, String comment) {
         this.idR = idR;
         this.idU = idU;
-        this.idV = idV;
         this.stars = stars;
         this.comment = comment;
     }
@@ -31,13 +38,7 @@ public class Review {
         this.idU = idU;
     }
 
-    public Integer getIdV() {
-        return this.idV;
-    }
 
-    public void setIdV(Integer idV) {
-        this.idV = idV;
-    }
 
     public Integer getStars() {
         return this.stars;
@@ -54,13 +55,36 @@ public class Review {
     public void setComment(String comment) {
         this.comment = comment;
     }
+//select top 100 * from myTable
+
+    public ArrayList<Review> getComments(){
+        ArrayList<Review> reviews = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reviews ORDER BY ? ASC LIMIT 25";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idR = rs.getInt(2);
+                int idU = rs.getInt(3);
+                int stars = rs.getInt(4);
+                String comment = rs.getString(5);
+                reviews.add(new Review(idR, idU, stars, comment));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reviews;
+
+    }
 
     @Override
     public String toString() {
         return "Review{" +
                 "idR=" + idR +
                 ", idU=" + idU +
-                ", idV=" + idV +
                 ", stars=" + stars +
                 ", comment='" + comment + '\'' +
                 '}';

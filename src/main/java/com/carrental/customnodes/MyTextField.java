@@ -17,10 +17,13 @@ public class MyTextField extends StackPane {
     private Line backLine = new Line();
     private Line frontLine = new Line();
 
-    private  String promptText;
+    private String promptText;
     private Label promptTextLabel = new Label();
     private boolean isPromptTextShowing = true;
-    private double FontSize = 16;
+    private double promptFontSize = 16;
+    private double inputFontSize = 16;
+    private Boolean error = false;
+
     public MyTextField() {
         super();
         setupTexts();
@@ -46,7 +49,7 @@ public class MyTextField extends StackPane {
     private void setupTextField() {
         textField.setStyle("-fx-background-color: transparent;");
         textField.setPadding(new Insets(0, 0, 0, -0.8));
-        textField.setFont(new Font(getFontSize()));
+        textField.setFont(new Font("Arial",inputFontSize));
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 showPromptText();
@@ -66,17 +69,15 @@ public class MyTextField extends StackPane {
 
     private void setupTexts() {
         promptTextLabel.setText(promptText);
-        System.out.println(this.getWidth());
-        promptTextLabel.setFont(new Font(FontSize));
-        promptTextLabel.setFont(new Font(FontSize));
+        promptTextLabel.setFont(new Font("Arial",promptFontSize));
         getChildren().add(promptTextLabel);
-        promptTextLabel.setTranslateY(-1);
+        promptTextLabel.setTranslateY(-2);
         errorLabel.setText("test");
         errorLabel.setStyle("-fx-text-fill: red;");
         errorLabel.setVisible(false);
-        backLine.setStrokeWidth(1.5);
-        frontLine.setStrokeWidth(1.5);
-        frontLine.setStyle("-fx-stroke: #a390f0;");
+        backLine.setStrokeWidth(1.2);
+        frontLine.setStrokeWidth(1.2);
+        frontLine.setStyle("-fx-stroke: #6279ff;");
         getChildren().addAll(backLine,frontLine, errorLabel);
         promptTextLabel.widthProperty().addListener((obs, oldWidth, newWidth) -> {
             promptTextLabel.setTranslateX(-(this.getWidth()-promptTextLabel.getWidth()) / 2);
@@ -107,8 +108,9 @@ public class MyTextField extends StackPane {
         Text test = new Text(getPromptText());
         test.setScaleX(0.9);
         test.setScaleY(0.9);
-        double X = (-(this.getWidth()-test.getBoundsInLocal().getWidth())/ 2);
-        translateTransition.setToX(X+(test.getBoundsInLocal().getWidth()-(test.getBoundsInLocal().getWidth()*0.9)));
+        test.setFont(new Font("Arial",promptFontSize));
+        double X = (-(this.getWidth()-test.getBoundsInLocal().getWidth()*0.9)/ 2);
+        translateTransition.setToX(X);
         translateTransition.play();
     }
 
@@ -120,7 +122,7 @@ public class MyTextField extends StackPane {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.25), promptTextLabel);
         double X = -(this.getWidth()-promptTextLabel.getWidth()) / 2;
         translateTransition.setToX(X);
-        translateTransition.setToY(-1);
+        translateTransition.setToY(-2);
         translateTransition.play();
     }
 
@@ -152,24 +154,36 @@ public class MyTextField extends StackPane {
         translateTransition.setCycleCount(6);
         translateTransition.setAutoReverse(true);
         translateTransition.play();
+        this.error = true;
     }
 
     public void hideError(){
         errorLabel.setVisible(false);
         promptTextLabel.setStyle("-fx-text-fill: #353535;");
         backLine.setStyle("-fx-stroke: #353535;");
+        this.error = false;
     }
 
     public String getText() {
         return textField.getText();
     }
 
-    public double getFontSize() {
-        return FontSize;
+    public double getPromptFontSize() {
+        return promptFontSize;
     }
 
-    public void setFontSize(double fontSize) {
-        FontSize = fontSize;
+    public void setPromptFontSize(double promptFontSize) {
+        this.promptFontSize = promptFontSize;
+        promptTextLabel.setFont(new Font("Arial",promptFontSize));
+    }
+
+    public double getInputFontSize() {
+        return inputFontSize;
+    }
+
+    public void setInputFontSize(double inputFontSize) {
+        this.inputFontSize = inputFontSize;
+        textField.setFont(new Font("Arial",inputFontSize));
     }
 
     public void setText(String text) {
@@ -184,6 +198,10 @@ public class MyTextField extends StackPane {
 
     public void setErrorLabel(Label errorLabel) {
         this.errorLabel = errorLabel;
+    }
+
+    public Boolean isError(){
+        return error;
     }
 
     public ReadOnlyBooleanProperty myFocusedProperty(){
