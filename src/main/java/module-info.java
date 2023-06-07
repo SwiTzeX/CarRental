@@ -20,6 +20,7 @@ module com.carrental.carrental {
     requires com.google.api.services.gmail;
     requires com.google.api.client.extensions.java6.auth;
     requires com.google.api.client.extensions.jetty.auth;
+    requires mail;
     //requires javax.mail.api;
     //requires com.google.api.client.auth;
     //requires java.mail;

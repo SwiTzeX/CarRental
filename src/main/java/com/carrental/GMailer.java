@@ -217,7 +217,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
-//import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.Base64;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
@@ -245,15 +245,15 @@ public class GMailer {
     public static void main(String[] args) {
         try {
             NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-            //JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-            //Gmail service = createGmailService(httpTransport, jsonFactory);
+            JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
+            Gmail service = createGmailService(httpTransport, jsonFactory);
 
             final String senderEmail = "uircarrental@gmail.com";
             final String recipientEmail = "gmasmoud7@gmail.com";
             final String subject = "Sujet de l'e-mail";
             final String body = "Contenu de l'e-mail";
 
-            //sendMessage(service, senderEmail, recipientEmail, subject, body);
+            sendMessage(service, senderEmail, recipientEmail, subject, body);
             System.out.println("L'e-mail a été envoyé avec succès !");
         } catch (IOException | GeneralSecurityException e) {
             System.out.println("Une erreur s'est produite lors de l'envoi de l'e-mail : " + e.getMessage());
