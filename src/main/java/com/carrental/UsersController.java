@@ -99,25 +99,19 @@ public class UsersController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         find.setOnAction(event -> {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);
         });
-
-
         addUser.setOnAction(event -> {
             // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
             Dialog<User> dialog = new Dialog<>();
             dialog.setTitle("Add User");
             dialog.setHeaderText(null);
-
             ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
-
             GridPane grid = new GridPane();
             TextField nIdField = new TextField();
             TextField emailField = new TextField();
@@ -125,8 +119,6 @@ public class UsersController implements Initializable {
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
             TextField NIDField = new TextField();
-
-
             grid.add(new Label("National ID"), 0, 1);
             grid.add(NIDField, 1, 1);
             grid.add(new Label("Email"), 0, 2);
@@ -137,34 +129,24 @@ public class UsersController implements Initializable {
             grid.add(fullnameField, 1, 4);
             grid.add(new Label("Password"), 0, 5);
             grid.add(passwordField, 1, 5);
-
             dialog.getDialogPane().setContent(grid);
-
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == buttonTypeOk) {
                     try {
-
                         String newNId = NIDField.getText();
                         String newEmail = emailField.getText();
                         String newPhone = phoneField.getText();
                         String newFullName = fullnameField.getText();
                         String newPassword = passwordField.getText();
-
                         // Vérifier si l'ID, le NID ou le numéro existent déjà
-
                         boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                         boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
                         String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
                         boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
-
                         // Vérifier si le numéro de téléphone est au format valide
                         String phoneRegex = "^06\\d{8}$";
                         boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
-
-
                             // Vérifier si l'e-mail est au format valide
-
-
                             if (!isEmailValid) {
                                 // Afficher un message d'erreur si l'e-mail n'est pas au format valide
                                 showAlert("Error", "Invalid email format. Please enter a valid email address.");
@@ -185,7 +167,6 @@ public class UsersController implements Initializable {
                                     showAlert("Error", "Failed to create user. Please check the input fields.");
                                 }
                             }
-
                     } catch (NumberFormatException e) {
                         // Gérer l'erreur si l'ID n'est pas un nombre valide
                         showAlert("Error", "Invalid ID. Please enter a valid number.");
@@ -193,35 +174,27 @@ public class UsersController implements Initializable {
                 }
                 return null;
             });
-
             dialog.showAndWait();
             tableview.refresh();
         });
-
         roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedRole = newValue;
             applyFilters();
         });
-
         invoicestatue.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedInvoiceStatus = newValue;
             applyFilters();
         });
-
         invoicedate.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedInvoiceDate = newValue;
             applyFilters();
         });
-
      roles.getItems().addAll("admin", "client");
      invoicestatue.getItems().addAll("blocked", "active");
      invoicedate.getItems().addAll("newest", "oldest", "Price");
-
         applyFilters();
-
         ArrayList<User> users = User.getAllUsers();
         userList.addAll(users);
-
         IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nIdColumn.setCellValueFactory(new PropertyValueFactory<>("nId"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -231,8 +204,6 @@ public class UsersController implements Initializable {
         isadmincolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getIsAdmin()));
         statuecolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getStatus()));
         creationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
-
-
         isadmincolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
             @Override
             protected void updateItem(Boolean isAdmin, boolean empty) {
@@ -250,7 +221,6 @@ public class UsersController implements Initializable {
                 }
             }
         });
-
         statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
             @Override
             protected void updateItem(Boolean isBlocked, boolean empty) {
@@ -268,11 +238,9 @@ public class UsersController implements Initializable {
                 }
             }
         });
-
         tableview.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 User selectedUser = tableview.getSelectionModel().getSelectedItem();
-
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
                     Parent userDetailsRoot = loader.load();
@@ -286,7 +254,6 @@ public class UsersController implements Initializable {
                 }
             }
         });
-
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modify");
             private final Button blockButton = new Button("Block");
@@ -299,11 +266,9 @@ public class UsersController implements Initializable {
                 });
                 modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
-
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     boolean isBlocked = user.getStatus(); // Obtains the current status of the user
-
                     if (isBlocked) {
                         // If the user is already blocked, unblock them
                         user.setStatus(false);
@@ -315,30 +280,20 @@ public class UsersController implements Initializable {
                         blockButton.setText("unblock");
                         blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
                     }
-
                     tableview.refresh();
                 });
-
-
                 blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
-
-
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-
                     // Prompt the user for confirmation
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmation");
                     alert.setHeaderText("delete this user");
                     alert.setContentText("are you sure?");
-
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
-
                         tableview.getItems().remove(user);
-
-
                         boolean alphacool = user.delete();
                         if (alphacool) {
                             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -354,13 +309,10 @@ public class UsersController implements Initializable {
                             errorAlert.showAndWait();
                         }
                     }
-
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
-
             }
-
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -372,11 +324,7 @@ public class UsersController implements Initializable {
                 }
             }
         });
-
         tableview.setItems(userList);
-
-
-
     }
 
     private void showEditDialog(User user) {
