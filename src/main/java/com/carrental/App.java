@@ -27,9 +27,9 @@ public class App extends Application {
         user = User.getUserById(48);
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
         //sApp.getUser().getAllNotifications().get(0).delete();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("comments-page-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        //mainController = fxmlLoader.getController();
+        mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
