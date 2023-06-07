@@ -27,7 +27,7 @@ public class App extends Application {
         user = User.getUserById(48);
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
         //sApp.getUser().getAllNotifications().get(0).delete();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
         //mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
@@ -78,7 +78,7 @@ public class App extends Application {
 
     public static void openAdmin(Node source){
         try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("users-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
             Parent register = loader.load();
             Stage stage =(Stage)source.getScene().getWindow();
             stage.setScene(new Scene(register));

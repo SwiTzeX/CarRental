@@ -182,8 +182,8 @@ public class MyPasswordField extends StackPane {
     private void setupEye(){
         this.getChildren().add(eyeView);
         this.heightProperty().addListener((obs, oldWidth, newWidth) -> {
-        eyeView.setFitHeight(this.getHeight());
-        eyeView.setFitWidth(this.getHeight());
+        eyeView.setFitHeight(25);
+        eyeView.setFitWidth(25);
         eyeView.setTranslateY(-3);
         eyeView.setTranslateX((int) (this.getWidth()/2 - eyeView.getFitWidth()/2));
         eyeView.setScaleX(0.9);
