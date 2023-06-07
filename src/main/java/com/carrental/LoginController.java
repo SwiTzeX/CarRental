@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        a.setVisible(false);
        usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
           // System.out.println("Account not found!");
             if (!newValue){
@@ -112,7 +112,6 @@ public class LoginController implements Initializable {
             }
         });
        passwordfield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-
            if (!newValue && u != null) {
 
                //String password = passwordfield.getText();
