@@ -43,13 +43,13 @@ public class CommentController {
     @FXML
     private ImageView userIcon;
 
-    Image str = new Image("main.resources.icons.star", 20, 20, true, true);
-    Image emptystr = new Image("main.resources.icons.emptystar", 20, 20, true, true);
+    Image str = new Image(getClass().getResourceAsStream("icons/star.png"), 512, 512, true, true);
+    Image emptystr = new Image(getClass().getResourceAsStream("icons/emptystar.png"), 512, 512, true, true);
 
 
     public void setData(Review review){
 
-        Image image = new Image("main.resources.icons.user-icon", 43, 46, true, true);
+        Image image = new Image(getClass().getResourceAsStream("icons/user-icon.png"), 512, 512, true, true);
         userIcon.setImage(image);
         username.setText(User.getUserById(review.idU).fullName);
         commentText.setText(review.getComment());
