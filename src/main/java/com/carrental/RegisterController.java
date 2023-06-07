@@ -2,7 +2,6 @@ package com.carrental;
 
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
-import com.carrental.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,8 +47,8 @@ public class RegisterController implements Initializable {
     @FXML
     private Label loginbtnid;
 
-    @FXML
-    private Label errorid;
+/*    @FXML
+    private Label errorid;*/
 
 
     private boolean validatePassword(String password) {
@@ -69,11 +68,14 @@ public class RegisterController implements Initializable {
     }
 
 
+
     private boolean validatePhoneNum(String phonen) {
         // Define regular expressions for different character types
         String lowercaseRegex = ".*[a-z].*";
         String uppercaseRegex = ".*[A-Z].*";
         String specialCharRegex = ".*[!@#$%^&*()_+\\-=[\\\\]{};':\"\\\\|,.<>/?].*";
+        //String numberRegex = ".*\\d.*";
+
 
         // Check if the password meets the required criteria
         if (phonen.matches(lowercaseRegex) || phonen.matches(uppercaseRegex) ||
@@ -87,9 +89,9 @@ public class RegisterController implements Initializable {
     private boolean ValidateEmail(String mail) {
         String emailRegex=".+@.+\\..+";
         if (mail.matches(emailRegex)){
-            return true; // Password contains multiple character types
+            return true;
         } else {
-        return false; // Password does not meet the criteria
+        return false;
         }
     }
 
@@ -106,7 +108,7 @@ public class RegisterController implements Initializable {
         System.out.println(password);
 
 
-        User u1 = User.getUserByEmail(email);
+        /*User u1 = User.getUserByEmail(email);
         if(u1 != null){
             errorid.setVisible(true);
             errorid.setText("THIS EMAIL ALREADY EXISTS !");
@@ -122,7 +124,6 @@ public class RegisterController implements Initializable {
         if (password.length()<8) {
             errorid.setVisible(true);
             errorid.setText("Your password should contain at least 8 characters !");
-
             return;
         }
 
@@ -164,7 +165,7 @@ public class RegisterController implements Initializable {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @FXML
@@ -204,60 +205,83 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        errorid.setVisible(false);
-        errorid.setStyle("-fx-text-fill: red");
+        String lowercaseRegex = ".*[a-z].*";
+        String uppercaseRegex = ".*[A-Z].*";
+        String specialCharRegex = ".*[!@#$%^&*()_+\\-=[\\\\]{};':\"\\\\|,.<>/?].*";
+        //String numberRegex = ".*\\d.*";
+
+
+        // Check if the password meets the required criteria
+
         ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 try {
                     int age = Integer.parseInt(ageid.getText());
                     if (age < 18) {
                         ageid.showError("Your age is under 18 !");
+                    } else if (age > 100) {
+                        ageid.showError("Your age must be under 100 !");
                     } else {
                         ageid.hideError();
                     }
                 } catch (Exception ignored) {
-                    ageid.hideError();
-
+                    ageid.showError("Age must contain only numbers");
                 }
             }
         });
         mailid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                try {
-                    if (!ValidateEmail(String.valueOf(mailid))) {
-                        mailid.showError("Invalid email");
-
-                    }
-                } catch (Exception ignored) {
+                boolean test2 = ValidateEmail(String.valueOf(mailid.getText()));
+                if (test2){
                     mailid.hideError();
+                }else {
+                    mailid.showError("Invalid Email");
                 }
             }
         });
-        /**passwordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+
+        passwordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                try {
-                    if (!validatePassword(String.valueOf(passwordid))) {
-                        passwordid.showError("Your password must contain:" +
-                                "\t•Upper case" +
-                                "\t•Lower case" +
-                                "\t•At least one number" +
-                                "\t•At least one special character");
-                    }
-                } catch (Exception ignored) {
+                    boolean test = validatePassword(String.valueOf(passwordid.getText()));
+                if (passwordid.getText().length() < 8)
+                    passwordid.showError("Password must contain at least 8 characters.");
+
+                else if (test) {
                     passwordid.hideError();
                 }
+
+                else {
+                    passwordid.showError("Must contain:" +
+                            "Upper case" +
+                            "/Lower case" +
+                            "/At least one number" +
+                            " and one special character");           }
             }
-        });**/
-        /**phonenumid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+        });
+        Vpasswordid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                try {
-                    if(validatePhoneNum(String.valueOf(phonenumid))){
-                        phonenumid.showError("needs to contain only numbers");
-                    }
-                } catch (Exception ignored) {
-                    phonenumid.hideError();
+
+                    boolean test = Vpasswordid.getText().matches(passwordid.getText());
+                    if (test)
+                    Vpasswordid.hideError();
+                    else{
+                    Vpasswordid.showError("Your Password isn't the same");
                 }
             }
-        });**/
+        });
+        phonenumid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                try {
+                    int phone = Integer.parseInt(phonenumid.getText());
+                    /*if(validatePhoneNum(String.valueOf(phone))){
+                        phonenumid.showError("needs to contain only numbers");
+                    }*/
+                    phonenumid.hideError();
+                } catch (Exception ignored) {
+                    phonenumid.showError("needs to contain only numbers");
+                }
+            }
+        });
+
     }
 }
