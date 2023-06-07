@@ -23,15 +23,15 @@
          <children>
             <TableView fx:id="tableview" prefHeight="555.0" prefWidth="1204.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn fx:id="IdColumn" editable="false" prefWidth="59.0" resizable="false" text="idU">
+                <TableColumn fx:id="IdColumn" editable="false" prefWidth="42.0" resizable="false" text="idU">
 
                 </TableColumn>
-                <TableColumn fx:id="nIdColumn" editable="false" minWidth="0.0" prefWidth="88.0" resizable="false" text="National id">
+                <TableColumn fx:id="nIdColumn" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" text="National id">
 
 
 
                 </TableColumn>
-                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="129.0" resizable="false" text="E-mail">
+                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="125.0" resizable="false" text="E-mail">
 
 
 
@@ -41,7 +41,7 @@
 
 
                   </TableColumn>
-                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="133.0" resizable="false" text="Full Name">
+                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="142.0" resizable="false" text="Full Name">
 
 
 
@@ -51,10 +51,10 @@
 
 
                   </TableColumn>
-                  <TableColumn fx:id="isadmincolumn" prefWidth="112.0" text="isAdmin" />
-                  <TableColumn fx:id="statuecolumn" prefWidth="87.0" text="status" />
-                  <TableColumn fx:id="creationDate" editable="false" prefWidth="147.0" resizable="false" text="creationDate" />
-                  <TableColumn fx:id="actionColumn" prefWidth="265.0" text="action" />
+                  <TableColumn fx:id="isadmincolumn" prefWidth="75.0" text="Profile" />
+                  <TableColumn fx:id="statuecolumn" prefWidth="86.0" text="status" />
+                  <TableColumn fx:id="creationDate" editable="false" prefWidth="141.0" resizable="false" text="creationDate" />
+                  <TableColumn fx:id="actionColumn" prefWidth="309.0" text="action" />
 
 
               </columns>
