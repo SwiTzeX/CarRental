@@ -52,9 +52,9 @@
                         <Image url="@icons/WhatsApp%20Image%202023-05-21%20à%2001.31.07.jpg" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="18.0" prefWidth="154.0" text="            ALPHA">
+                  <Label fx:id="usernamelabela" prefHeight="18.0" prefWidth="154.0" text="            ">
                      <VBox.margin>
-                        <Insets left="111.0" top="6.0" />
+                        <Insets left="131.0" top="6.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Arial Bold" size="14.0" />
@@ -138,8 +138,6 @@
             </Label>
             <TableView layoutX="16.0" layoutY="45.0" prefHeight="569.0" prefWidth="861.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn prefWidth="120.0" resizable="false" text="Full Name" />
-                <TableColumn resizable="false" text="NID" />
                   <TableColumn prefWidth="138.0" resizable="false" text="BrandName" />
                   <TableColumn prefWidth="153.0" resizable="false" text="ModelName" />
                   <TableColumn prefWidth="130.0" resizable="false" text="startDate" />
