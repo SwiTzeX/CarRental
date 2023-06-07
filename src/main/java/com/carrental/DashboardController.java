@@ -101,7 +101,7 @@ public class DashboardController implements Initializable {
     @FXML
     public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
-        exporter.export("Reservations");
+        exporter.export();
         onClickCsvReport(e);
     }
 

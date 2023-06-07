@@ -3,7 +3,7 @@ package com.carrental;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
-//import com.carrental.tables.DataReservation;
+import com.carrental.tables.DataReservation;
 import com.carrental.tables.DataReservation;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
@@ -79,6 +79,18 @@ public class ReservationController implements Initializable {
     @FXML
     private TextField searchId;
 
+    @FXML
+    private CheckBox statusId0;
+
+    @FXML
+    private CheckBox statusId1;
+
+    @FXML
+    private CheckBox statusId2;
+
+    @FXML
+    private CheckBox statusId3;
+
     ObservableList<DataReservation> dataResList = FXCollections.observableArrayList();
     ArrayList<Reservation> resList ;
     public String searchKeyword;
@@ -96,11 +108,10 @@ public class ReservationController implements Initializable {
 
         resList = Reservation.getAllReservations();
         for(Reservation i:resList) {
-            DataReservation res = new DataReservation(i.getUser().getFullName(), i.getUser().getPhoneNumber(), i.getVehicle().getBrandName(), i.getVehicle().getModelName(), i.getVehicle().getPrice(), i.getStartDate(), i.getEndDate(), String.valueOf(i.getStatus()));
-            System.out.println(res);
+            DataReservation res = new DataReservation(i.getUser().getId(),i.getVehicle().getId(),i.getUser().getFullName(), i.getUser().getPhoneNumber(), i.getVehicle().getBrandName(), i.getVehicle().getModelName(), i.getVehicle().getPrice(), i.getStartDate(), i.getEndDate(), String.valueOf(i.getStatus()));
             dataResList.add(res);
         }
-        //col_fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        col_fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         col_phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         col_brandName.setCellValueFactory(new PropertyValueFactory<>("brandName"));
         col_modelName.setCellValueFactory(new PropertyValueFactory<>("modelName"));
@@ -108,7 +119,6 @@ public class ReservationController implements Initializable {
         col_startDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         col_endDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
         col_edit.setCellFactory(param -> new TableCell<DataReservation, String>() {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");
@@ -178,13 +188,25 @@ public class ReservationController implements Initializable {
                 } else {
                     HBox buttonBox = new HBox(modifyButton, deleteButton);
                     buttonBox.setSpacing(15);
-                    //buttonBox.setPadding(new Insets(0, 0, 0, 10));
                     buttonBox.setAlignment(Pos.CENTER);
                     setGraphic(buttonBox);
                 }
             }
         });
         TableViewReservation.setItems(dataResList);
+
+        statusId0.setOnAction(event -> {
+            updateTableView();
+        });
+        statusId1.setOnAction(event -> {
+            updateTableView();
+        });
+        statusId2.setOnAction(event -> {
+            updateTableView();
+        });
+        statusId3.setOnAction(event -> {
+            updateTableView();
+        });
     }
     private void showEditDialog(DataReservation dataRes) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
@@ -198,8 +220,10 @@ public class ReservationController implements Initializable {
         GridPane grid = new GridPane();
         ComboBox<Integer> idUserField = new ComboBox<>();
         idUserField.setItems(FXCollections.observableList(User.getAllUsersId()));
+        idUserField.getSelectionModel().select(User.getAllUsersId().indexOf(dataRes.getIdU()));
         ComboBox<Integer> idVehicleField = new ComboBox<>();
         idVehicleField.setItems(FXCollections.observableList(Vehicle.getAllVehicleId()));
+        idUserField.getSelectionModel().select(Vehicle.getAllVehicleId().indexOf(dataRes.getIdV()));
         TextField startDateField = new TextField(format.format(dataRes.getStartDate()));
         TextField endDateField = new TextField(format.format(dataRes.getEndDate()));
         TextField statusField = new TextField(String.valueOf(dataRes.getStatus()));
@@ -285,7 +309,7 @@ public class ReservationController implements Initializable {
         }
         idVehicleField.setItems(idVList);
 
-        VBox vboxStartDate = new VBox(10);
+        /*VBox vboxStartDate = new VBox(10);
         DatePicker startDateField = new DatePicker();
 
         VBox vboxEndDate = new VBox(10);
@@ -298,7 +322,6 @@ public class ReservationController implements Initializable {
                     @Override
                     public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
-
                         long p = ChronoUnit.DAYS.between(startDateField.getValue(), item);
                         setTooltip(new Tooltip("You're about to stay for " + p + " days"));
                     }
@@ -310,17 +333,20 @@ public class ReservationController implements Initializable {
         startDateField.setValue(LocalDate.now());
         endDateField.setValue(startDateField.getValue().plusDays(1));
         vboxStartDate.getChildren().add(startDateField);
-        vboxEndDate.getChildren().add(endDateField);
-
+        vboxEndDate.getChildren().add(endDateField);*/
+        TextField startDateField = new TextField();
+        startDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
+        TextField endDateField = new TextField();
+        endDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
         TextField statusField = new TextField();
         grid.add(new Label("Id User"), 0, 1);
         grid.add(idUserField, 1, 1);
         grid.add(new Label("Id Vehicle"), 0, 2);
         grid.add(idVehicleField, 1, 2);
         grid.add(new Label("Start Date"), 0, 3);
-        grid.add(vboxStartDate, 1, 3);
+        grid.add(startDateField, 1, 3);
         grid.add(new Label("End Date"),0,4);
-        grid.add(vboxEndDate, 1, 4);
+        grid.add(endDateField, 1, 4);
         grid.add(new Label("Status"),0,5);
         grid.add(statusField, 1, 5);
 
@@ -335,10 +361,9 @@ public class ReservationController implements Initializable {
                 String newBrandName = Vehicle.getVehiclesById(newIdVehicle).getBrandName();
                 String newModelName = Vehicle.getVehiclesById(newIdVehicle).getModelName();
                 float newPrice = Vehicle.getVehiclesById(newIdVehicle).getPrice();
-                String newStartDate = String.valueOf(startDateField.getValue());
-                String newEndDate = String.valueOf(endDateField.getValue());
+                String newStartDate = String.valueOf(startDateField.getText());
+                String newEndDate = String.valueOf(endDateField.getText());
                 String newStatus = statusField.getText();
-
                 try {
                     Reservation.create(User.getUserById(newIdUser), Vehicle.getVehiclesById(newIdVehicle), format.parse(newStartDate), format.parse(newEndDate), Integer.parseInt(newStatus));
                     DataReservation data = new DataReservation(newFullName, newPhoneNumber, newBrandName, newModelName, newPrice, format.parse(newStartDate), format.parse(newEndDate), newStatus);
@@ -375,7 +400,27 @@ public class ReservationController implements Initializable {
             }
         }));
     }
+
+    private void updateTableView() {
+        TableViewReservation.setItems(dataResList.filtered(reservation -> {
+            boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("0") ||
+                    (statusId1.isSelected() && reservation.getStatus().equals("1")) ||
+                    (statusId2.isSelected() && reservation.getStatus().equals("2")) ||
+                    (statusId3.isSelected() && reservation.getStatus().equals("3"));
+            return statusFilter;
+        }));
+        if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected()){
+            clearFilter();
+        }
+    }
+
+    private void clearFilter(){
+        dataResList.clear();
+        resList = Reservation.getAllReservations();
+        for(Reservation i:resList) {
+            DataReservation res = new DataReservation(i.getUser().getId(),i.getVehicle().getId(),i.getUser().getFullName(), i.getUser().getPhoneNumber(), i.getVehicle().getBrandName(), i.getVehicle().getModelName(), i.getVehicle().getPrice(), i.getStartDate(), i.getEndDate(), String.valueOf(i.getStatus()));
+            dataResList.add(res);
+        }
+        TableViewReservation.setItems(dataResList);
+    }
 }
-
-
-
