@@ -11,6 +11,15 @@ module com.carrental.carrental {
     requires java.desktop;
     requires java.sql;
     requires mysql.connector.j;
+    requires com.google.api.client;
+    requires google.api.client;
+    requires com.google.api.client.json.gson;
+    requires com.google.api.client.auth;
+    requires javax.mail.api;
+    requires org.apache.commons.codec;
+    requires com.google.api.services.gmail;
+    requires com.google.api.client.extensions.java6.auth;
+    requires com.google.api.client.extensions.jetty.auth;
     //requires javax.mail.api;
     //requires com.google.api.client.auth;
     //requires java.mail;
