@@ -49,6 +49,36 @@ public class Vehicle {
         this.image = "vehicles/"+brandName+"/"+modelName+"/"+color+".png";
         this.plate = plate;
     }
+
+    public Vehicle(String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower, String image, String brandImage, String plate) {
+        this.modelName = modelName;
+        this.color = color;
+        this.disponibility = disponibility;
+        this.brandName = brandName;
+        this.vehicleState = vehicleState;
+        this.price = price;
+        this.type = type;
+        this.passengers = passengers;
+        this.fuelType = fuelType;
+        this.gearType = gearType;
+        this.deposit = deposit;
+        this.trunkCapacity = trunkCapacity;
+        this.maxSpeed = maxSpeed;
+        this.horsePower = horsePower;
+        this.image = image;
+        this.brandImage = brandImage;
+        this.plate = plate;
+    }
+
+    public Vehicle(Integer id, String modelName, Boolean disponibility, String brandName, float price, String plate) {
+        this.id = id;
+        this.modelName = modelName;
+        this.disponibility = disponibility;
+        this.brandName = brandName;
+        this.price = price;
+        this.plate = plate;
+    }
+
     public Vehicle(){}
 
 

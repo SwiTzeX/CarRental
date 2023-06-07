@@ -51,7 +51,7 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox fx:id="statusId0" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#6279ff">
+                  <CheckBox fx:id="statusId0" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 0" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId1" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#6279ff">
+                  <CheckBox fx:id="statusId1" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId2" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 3" textFill="#6279ff">
+                  <CheckBox fx:id="statusId2" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 4" textFill="#6279ff">
+                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 3" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -120,15 +120,15 @@
             </HBox>
             <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1190.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                <TableColumn fx:id="col_fullname" prefWidth="125.0" style="-fx-alignment: center;" text="FullName" />
-                <TableColumn fx:id="col_phoneNumber" prefWidth="120.0" style="-fx-alignment: center;" text="Phone Number" />
-                  <TableColumn fx:id="col_brandName" prefWidth="132.0" style="-fx-alignment: center;" text="Brand Name" />
-                  <TableColumn fx:id="col_modelName" prefWidth="134.0" style="-fx-alignment: center;" text="Model Name" />
-                  <TableColumn fx:id="col_price" prefWidth="102.0" style="-fx-alignment: center;" text="Price" />
-                  <TableColumn fx:id="col_startDate" prefWidth="176.0" style="-fx-alignment: center;" text="Start Date " />
-                  <TableColumn fx:id="col_endDate" prefWidth="167.0" style="-fx-alignment: center;" text="End Date" />
-                  <TableColumn fx:id="col_status" prefWidth="77.0" style="-fx-alignment: center;" text="Status" />
-                  <TableColumn fx:id="col_edit" prefWidth="156.0" style="-fx-alignment: center;" text="Edit" />
+                <TableColumn fx:id="col_fullname" prefWidth="118.0" style="-fx-alignment: center;" text="FullName" />
+                <TableColumn fx:id="col_phoneNumber" prefWidth="109.0" style="-fx-alignment: center;" text="Phone Number" />
+                  <TableColumn fx:id="col_brandName" prefWidth="119.0" style="-fx-alignment: center;" text="Brand Name" />
+                  <TableColumn fx:id="col_modelName" prefWidth="125.0" style="-fx-alignment: center;" text="Model Name" />
+                  <TableColumn fx:id="col_price" prefWidth="114.0" style="-fx-alignment: center;" text="Price" />
+                  <TableColumn fx:id="col_startDate" prefWidth="151.0" style="-fx-alignment: center;" text="Start Date " />
+                  <TableColumn fx:id="col_endDate" prefWidth="162.0" style="-fx-alignment: center;" text="End Date" />
+                  <TableColumn fx:id="col_status" prefWidth="60.0" style="-fx-alignment: center;" text="Status" />
+                  <TableColumn fx:id="col_edit" prefWidth="231.0" style="-fx-alignment: center;" text="Edit" />
               </columns>
                <VBox.margin>
                   <Insets right="30.0" />

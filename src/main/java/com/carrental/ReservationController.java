@@ -122,13 +122,15 @@ public class ReservationController implements Initializable {
         col_edit.setCellFactory(param -> new TableCell<DataReservation, String>() {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");
+            private final Button approveButton = new Button("Approve");
+            private final Button refuseButton = new Button("Refuse");
 
             {
                 modifyButton.setOnAction(event -> {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     showEditDialog(dataReservation);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 deleteButton.setOnAction(event -> {
@@ -172,12 +174,100 @@ public class ReservationController implements Initializable {
                             System.out.println("Action canceled!");
                         }
                     });
-
-
                 });
 
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;");
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+                approveButton.setOnAction(event -> {
+                    DataReservation dataReservation = getTableView().getItems().get(getIndex());
+
+                    Alert alertConfirm = new Alert(Alert.AlertType.CONFIRMATION);
+                    alertConfirm.setTitle("Confirmation");
+                    alertConfirm.setHeaderText("Are you sure?");
+                    alertConfirm.setContentText("This action cannot be undone.");
+                    DialogPane dialogPane = alertConfirm.getDialogPane();
+                    dialogPane.getStylesheets().add(
+                            getClass().getResource("style/stylesDelete.css").toExternalForm()
+                    );
+                    dialogPane.getStyleClass().add("custom-alert");
+                    alertConfirm.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.OK) {
+                            // User clicked "OK"
+                            int newStatus = 1;
+                            dataReservation.setStatus(String.valueOf(newStatus));
+                            int i = dataResList.indexOf(dataReservation);
+                            Reservation res = resList.get(i);
+                            res.setStatus(newStatus);
+                            TableViewReservation.setItems(dataResList);
+                            res.getUser().sendNotification("Reservation", "Your reservation has been approved");
+                        } else {
+                            // User clicked "Cancel" or closed the confirmation alert
+                            System.out.println("Action canceled!");
+                        }
+                    });
+                });
+                approveButton.setStyle("-fx-background-radius: 30; -fx-background-color: #228B22; -fx-border-radius: 30; -fx-pref-width: 70px");
+                approveButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+                refuseButton.setOnAction(event -> {
+                    DataReservation dataReservation = getTableView().getItems().get(getIndex());
+
+                    TextArea reason = new TextArea();
+                    reason.setPrefWidth(200);  // Set preferred width
+                    reason.setPrefHeight(70); // Set preferred height
+
+                    Dialog<DataReservation> dialogReason = new Dialog<>();
+                    dialogReason.setTitle("Reason");
+                    dialogReason.setHeaderText(null);
+
+                    ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    dialogReason.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+                    GridPane grid = new GridPane();
+                    dialogReason.getDialogPane().setContent(grid);
+                    grid.add(new Label("Reasons "), 0, 1);
+                    grid.add(reason, 1, 1);
+
+                    dialogReason.setResultConverter(dialogButton -> {
+                        if (dialogButton == buttonTypeOk) {
+                            Alert alertConfirm = new Alert(Alert.AlertType.ERROR);
+                            alertConfirm.setTitle("Confirmation");
+                            alertConfirm.setHeaderText("Reasons are : \n"+reason.getText());
+                            alertConfirm.setContentText("This action cannot be undone.");
+                            DialogPane dialogPane = alertConfirm.getDialogPane();
+                            dialogPane.getStylesheets().add(
+                                    getClass().getResource("style/stylesDelete.css").toExternalForm()
+                            );
+                            dialogPane.getStyleClass().add("custom-alert");
+                            alertConfirm.showAndWait().ifPresent(response -> {
+                                if (response == ButtonType.OK) {
+                                    // User clicked "OK"
+                                    int newStatus = -1;
+                                    dataReservation.setStatus(String.valueOf(newStatus));
+                                    int i = dataResList.indexOf(dataReservation);
+                                    Reservation res = resList.get(i);
+                                    res.setStatus(newStatus);
+                                    TableViewReservation.setItems(dataResList);
+                                    res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
+                                            + " has been refused for thr following reason : \n" + reason.getText());
+                                } else {
+                                    // User clicked "Cancel" or closed the confirmation alert
+                                    System.out.println("Action canceled!");
+                                }
+                            });
+                        }
+                        return null;
+                    });
+                    Optional<DataReservation> result = dialogReason.showAndWait();
+                    result.ifPresent(updatedRes -> {
+                        int index = TableViewReservation.getItems().indexOf(updatedRes);
+                        if (index != -1) {
+                            dataResList.set(index, updatedRes);
+                        }
+                    });
+                });
+                refuseButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                refuseButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
             }
             @Override
@@ -186,10 +276,19 @@ public class ReservationController implements Initializable {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    HBox buttonBox = new HBox(modifyButton, deleteButton);
-                    buttonBox.setSpacing(15);
-                    buttonBox.setAlignment(Pos.CENTER);
-                    setGraphic(buttonBox);
+                    DataReservation dataReservation = getTableView().getItems().get(getIndex());
+                    int status = Integer.parseInt(dataReservation.getStatus());
+                    if(status == 0){
+                        HBox buttonBox = new HBox(approveButton, refuseButton, deleteButton);
+                        buttonBox.setSpacing(10);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        setGraphic(buttonBox);
+                    }else{
+                        HBox buttonBox = new HBox(modifyButton, deleteButton);
+                        buttonBox.setSpacing(15);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        setGraphic(buttonBox);
+                    }
                 }
             }
         });
@@ -223,7 +322,7 @@ public class ReservationController implements Initializable {
         idUserField.getSelectionModel().select(User.getAllUsersId().indexOf(dataRes.getIdU()));
         ComboBox<Integer> idVehicleField = new ComboBox<>();
         idVehicleField.setItems(FXCollections.observableList(Vehicle.getAllVehicleId()));
-        idUserField.getSelectionModel().select(Vehicle.getAllVehicleId().indexOf(dataRes.getIdV()));
+        idVehicleField.getSelectionModel().select(Vehicle.getAllVehicleId().indexOf(dataRes.getIdV()));
         TextField startDateField = new TextField(format.format(dataRes.getStartDate()));
         TextField endDateField = new TextField(format.format(dataRes.getEndDate()));
         TextField statusField = new TextField(String.valueOf(dataRes.getStatus()));
@@ -275,6 +374,7 @@ public class ReservationController implements Initializable {
             }
             return null;
         });
+
 
         Optional<DataReservation> result = dialog.showAndWait();
         result.ifPresent(updatedRes -> {
