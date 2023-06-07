@@ -1,13 +1,23 @@
 package com.carrental;
 
+import com.carrental.tables.DataReservation;
+import com.carrental.models.Vehicle;
+import com.carrental.UsersController;
+import com.carrental.ReservationController;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class UserDetailsController implements Initializable {
@@ -30,6 +40,26 @@ public class UserDetailsController implements Initializable {
 
     @FXML
     private  Label nidlabel;
+    @FXML
+    private TableView<DataReservation> tableview1;
+    @FXML
+    private TableColumn<DataReservation, String> brandnamecolunmn;
+
+    @FXML
+    private TableColumn<DataReservation, String> modelenamecolumn;
+
+    @FXML
+    private TableColumn<DataReservation, Date> startdatecolumn;
+
+    @FXML
+    private TableColumn<DataReservation, Date> enddatecolumn;
+
+    @FXML
+    private TableColumn<DataReservation, Float> pricecolumn;
+
+
+
+
 
     public  void displayUserDetails(User user) {
         usernamelabela.setText(user.getFullName());
@@ -41,10 +71,18 @@ public class UserDetailsController implements Initializable {
         ArrayList<Reservation> allreservations = user.getReservations();
         int l = allreservations.size();
         taskdone.setText(String.valueOf(l));
+      //  ObservableList<DataReservation> reservationList = FXCollections.observableArrayList(allreservations);
+
+       // tableview1.setItems(reservationList);
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        brandnamecolunmn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        modelenamecolumn.setCellValueFactory(new PropertyValueFactory<>("modelName"));
+        startdatecolumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        enddatecolumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        pricecolumn.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }

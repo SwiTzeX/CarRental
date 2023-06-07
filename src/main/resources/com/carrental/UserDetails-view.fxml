@@ -104,13 +104,13 @@
                   <Font name="Arial Bold" size="19.0" />
                </font>
             </Label>
-            <TableView layoutX="24.0" layoutY="45.0" prefHeight="488.0" prefWidth="688.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview1" layoutX="24.0" layoutY="45.0" prefHeight="488.0" prefWidth="688.0" style="-fx-border-color: #6279FF; -fx-border-image-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
-                  <TableColumn prefWidth="138.0" resizable="false" text="BrandName" />
-                  <TableColumn prefWidth="153.0" resizable="false" text="ModelName" />
-                  <TableColumn prefWidth="130.0" resizable="false" text="startDate" />
-                  <TableColumn prefWidth="139.0" text="endDate" />
-                  <TableColumn prefWidth="102.0" text="price" />
+                  <TableColumn fx:id="brandnamecolunmn" prefWidth="138.0" resizable="false" text="BrandName" />
+                  <TableColumn fx:id="modelenamecolumn" prefWidth="153.0" resizable="false" text="ModelName" />
+                  <TableColumn fx:id="startdatecolumn" prefWidth="130.0" resizable="false" text="startDate" />
+                  <TableColumn fx:id="enddatecolumn" prefWidth="139.0" text="endDate" />
+                  <TableColumn fx:id="pricecolumn" prefWidth="102.0" text="price" />
               </columns>
                <padding>
                   <Insets left="22.0" right="17.0" />
