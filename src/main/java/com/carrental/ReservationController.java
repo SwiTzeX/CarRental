@@ -195,12 +195,13 @@ public class ReservationController implements Initializable {
                         if (response == ButtonType.OK) {
                             // User clicked "OK"
                             int newStatus = 1;
-                            dataReservation.setStatus(String.valueOf(newStatus));
                             int i = dataResList.indexOf(dataReservation);
+                            dataReservation.setStatus(String.valueOf(newStatus));
                             Reservation res = resList.get(i);
                             res.setStatus(newStatus);
-                            TableViewReservation.setItems(dataResList);
-                            res.getUser().sendNotification("Reservation", "Your reservation has been approved");
+                            res.getUser().sendNotification("Reservation", "Your reservation for "+ dataReservation.getBrandName() + " "
+                                    + dataReservation.getModelName()+"has been approved");
+                            TableViewReservation.refresh();
                         } else {
                             // User clicked "Cancel" or closed the confirmation alert
                             System.out.println("Action canceled!");
@@ -230,41 +231,18 @@ public class ReservationController implements Initializable {
 
                     dialogReason.setResultConverter(dialogButton -> {
                         if (dialogButton == buttonTypeOk) {
-                            Alert alertConfirm = new Alert(Alert.AlertType.ERROR);
-                            alertConfirm.setTitle("Confirmation");
-                            alertConfirm.setHeaderText("Reasons are : \n"+reason.getText());
-                            alertConfirm.setContentText("This action cannot be undone.");
-                            DialogPane dialogPane = alertConfirm.getDialogPane();
-                            dialogPane.getStylesheets().add(
-                                    getClass().getResource("style/stylesDelete.css").toExternalForm()
-                            );
-                            dialogPane.getStyleClass().add("custom-alert");
-                            alertConfirm.showAndWait().ifPresent(response -> {
-                                if (response == ButtonType.OK) {
-                                    // User clicked "OK"
-                                    int newStatus = -1;
-                                    int i = dataResList.indexOf(dataReservation);
-                                    dataReservation.setStatus(String.valueOf(newStatus));
-                                    dataResList.get(i).setStatus(String.valueOf(newStatus));
-                                    System.out.println(dataResList.get(i));
-                                    Reservation res = resList.get(i);
-                                    TableViewReservation.setItems(FXCollections.observableArrayList());
-                                    DataReservation test = dataResList.get(i);
-                                    dataResList.remove(i);
-                                    TableViewReservation.setItems(dataResList);
-                                    dataResList.add(dataResList.size(),test);
-                                    TableViewReservation.setItems(dataResList);
-                                    /*dataResList.remove(dataResList.size()-1);
-                                    dataResList.add(i,test);
-                                    TableViewReservation.setItems(dataResList);*/
-                                    res.setStatus(newStatus);
-                                    res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
-                                            + " has been refused for thr following reason : \n" + reason.getText());
-                                } else {
-                                    // User clicked "Cancel" or closed the confirmation alert
-                                    System.out.println("Action canceled!");
-                                }
-                            });
+                            // User clicked "OK"
+                            int newStatus = -1;
+                            int i = dataResList.indexOf(dataReservation);
+                            dataReservation.setStatus(String.valueOf(newStatus));
+                            Reservation res = resList.get(i);
+                            res.setStatus(newStatus);
+                            res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
+                                    + " has been refused for the following reason : \n" + reason.getText());
+                            return dataReservation;
+                        } else {
+                            // User clicked "Cancel" or closed the confirmation alert
+                            System.out.println("Action canceled!");
                         }
                         return null;
                     });
@@ -515,7 +493,7 @@ public class ReservationController implements Initializable {
             boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("0") ||
                     (statusId1.isSelected() && reservation.getStatus().equals("1")) ||
                     (statusId2.isSelected() && reservation.getStatus().equals("2")) ||
-                    (statusId3.isSelected() && reservation.getStatus().equals("3"));
+                    (statusId3.isSelected() && reservation.getStatus().equals("-1"));
             return statusFilter;
         }));
         if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected()){
