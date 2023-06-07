@@ -493,19 +493,30 @@ public class Vehicle {
                 }
                 req += "disponibility = '" + filterSettings.get(6) + "' ";
             }
-            if(pickupDate != null){
+            if(pickupDate != null || returnDate!= null) {
                 if (and) {
                     req += "AND ";
-                }else{
+                } else {
                     req += "WHERE ";
+                }
+                and = false;
+                req += "idV NOT IN ( SELECT idV FROM Reservations WHERE ";
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                if (returnDate != null) {
+                    String rDate = format.format(returnDate);
+                    req += "startDate <= '" + rDate + "' ";
                     and = true;
                 }
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
-                String pDate = format.format(pickupDate);
-                String rDate = format.format(returnDate);
-                req += " idV NOT IN ( SELECT idV FROM Reservations startDate <= '"+rDate+"' AND endDate >= '"+pDate+"' )";
+                if (pickupDate != null) {
+                    if (and) {
+                        req += "AND ";
+                    }
+                    String pDate = format.format(pickupDate);
+                    req +="endDate >= '" + pDate + "' ";
+                }
+                req +=")";
             }
-
+            System.out.println(req);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){

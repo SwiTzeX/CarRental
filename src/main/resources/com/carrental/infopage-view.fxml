@@ -56,7 +56,7 @@
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="infoStartDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                <Label fx:id="infoStartDate" prefHeight="31.0" prefWidth="402.0" textFill="#353535">
                                                    <font>
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
@@ -73,7 +73,7 @@
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="infoEndDate" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                <Label fx:id="infoEndDate" prefHeight="31.0" prefWidth="430.0" textFill="#353535">
                                                    <font>
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
@@ -90,7 +90,7 @@
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="infoDuration" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                <Label fx:id="infoDuration" prefHeight="31.0" prefWidth="313.0" textFill="#353535">
                                                    <font>
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
@@ -107,7 +107,7 @@
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="infoPpd" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                <Label fx:id="infoPpd" prefHeight="31.0" prefWidth="327.0" textFill="#353535">
                                                    <font>
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
@@ -124,7 +124,7 @@
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="infoTotP" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                <Label fx:id="infoTotP" prefHeight="31.0" prefWidth="351.0" textFill="#353535">
                                                    <font>
                                                       <Font name="Myanmar MN" size="20.0" />
                                                    </font>
@@ -185,7 +185,7 @@
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="infoBrand1" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
+                                                      <Label fx:id="infoBrand" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -210,7 +210,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoModel1" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
+                                                      <Label fx:id="infoModel" prefHeight="38.0" prefWidth="511.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -222,15 +222,15 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@icons/fill.png" />
                                                          </image>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" />
+                                                            <Insets left="7.0" />
                                                          </HBox.margin>
                                                       </ImageView>
-                                                      <Label prefHeight="35.0" prefWidth="102.0" text="Color :" textFill="#353535">
+                                                      <Label prefHeight="35.0" prefWidth="102.0" text=" Color :" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -238,7 +238,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoColor1" prefHeight="38.0" prefWidth="514.0" textFill="#353535">
+                                                      <Label fx:id="infoColor" prefHeight="38.0" prefWidth="514.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -247,7 +247,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="493.0">
                                                    <children>
-                                                      <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@icons/gear-shift%20(1).png" />
                                                          </image>
@@ -263,7 +263,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoGear1" prefHeight="38.0" prefWidth="471.0" textFill="#353535">
+                                                      <Label fx:id="infoGear" prefHeight="38.0" prefWidth="471.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -300,7 +300,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoTrunk1" prefHeight="38.0" prefWidth="190.0" textFill="#353535">
+                                                      <Label fx:id="infoTrunk" prefHeight="38.0" prefWidth="190.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -325,7 +325,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoFuel1" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoFuel" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -350,7 +350,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoPsngr1" prefHeight="38.0" prefWidth="179.0" textFill="#353535">
+                                                      <Label fx:id="infoPsngr" prefHeight="38.0" prefWidth="179.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>
@@ -375,7 +375,7 @@
                                                             <Insets left="15.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="infoHp1" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
+                                                      <Label fx:id="infoHp" prefHeight="38.0" prefWidth="248.0" textFill="#353535">
                                                          <font>
                                                             <Font name="Myanmar MN" size="20.0" />
                                                          </font>

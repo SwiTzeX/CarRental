@@ -124,16 +124,18 @@ public class UsersController implements Initializable {
             TextField phoneField = new TextField();
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
+            TextField NIDField = new TextField();
 
 
-
-            grid.add(new Label("Email:"), 0, 2);
+            grid.add(new Label("National ID"), 0, 1);
+            grid.add(NIDField, 1, 1);
+            grid.add(new Label("Email"), 0, 2);
             grid.add(emailField, 1, 2);
-            grid.add(new Label("Phone number:"), 0, 3);
+            grid.add(new Label("Phone Number"), 0, 3);
             grid.add(phoneField, 1, 3);
-            grid.add(new Label("Full name:"), 0, 4);
+            grid.add(new Label("Full Name"), 0, 4);
             grid.add(fullnameField, 1, 4);
-            grid.add(new Label("Password:"), 0, 5);
+            grid.add(new Label("Password"), 0, 5);
             grid.add(passwordField, 1, 5);
 
             dialog.getDialogPane().setContent(grid);
@@ -142,7 +144,7 @@ public class UsersController implements Initializable {
                 if (dialogButton == buttonTypeOk) {
                     try {
 
-                        String newNId = nIdField.getText();
+                        String newNId = NIDField.getText();
                         String newEmail = emailField.getText();
                         String newPhone = phoneField.getText();
                         String newFullName = fullnameField.getText();
@@ -274,7 +276,8 @@ public class UsersController implements Initializable {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
                     Parent userDetailsRoot = loader.load();
-
+                    UserDetailsController userDetailsController = loader.getController();
+                    userDetailsController.displayUserDetails(selectedUser);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(userDetailsRoot));
                     stage.show();

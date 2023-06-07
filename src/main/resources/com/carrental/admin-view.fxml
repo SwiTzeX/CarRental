@@ -4,94 +4,101 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="820.0" prefWidth="153.0" style="-fx-background-color: #6279FF;">
+      <VBox prefHeight="820.0" prefWidth="150.0" style="-fx-background-color: #6279FF;">
          <children>
-            <Pane prefHeight="155.0" prefWidth="163.0">
+            <ImageView fitHeight="156.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo/Car%20Rental%20by%20UIR%20(3).png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="120.0" prefWidth="150.0" spacing="15.0" translateY="100.0">
                <children>
-                  <ImageView fitHeight="142.0" fitWidth="133.0" layoutX="13.0" layoutY="15.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo/Car%20Rental%20by%20UIR%20(3).png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <VBox translateY="100.0">
-               <children>
-                  <HBox prefHeight="9.0" prefWidth="153.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/dashboard.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="29.0" prefWidth="114.0" text="Dashboard" textFill="#f0f2ff">
+                        <Label text="Dashboard" textFill="WHITE">
                            <font>
-                              <Font name="Myanmar MN" size="12.0" />
+                              <Font name="Arial Bold" size="13.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="9.0" prefWidth="153.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/users.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="29.0" prefWidth="114.0" text="User Management" textFill="#f0f2ff">
+                        <Label text="User Management" textFill="WHITE">
                            <font>
-                              <Font name="Myanmar MN" size="12.0" />
+                              <Font name="Arial Bold" size="13.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="9.0" prefWidth="153.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/cars-D.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="29.0" prefWidth="114.0" text="Fleet Management" textFill="#f0f2ff">
+                        <Label text="Fleet Management" textFill="WHITE">
                            <font>
-                              <Font name="Myanmar MN" size="12.0" />
+                              <Font name="Arial Bold" size="13.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="9.0" prefWidth="153.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/reservations-D.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="29.0" prefWidth="114.0" text="Reservations" textFill="#f0f2ff">
+                        <Label text="Reservations" textFill="WHITE">
                            <font>
-                              <Font name="Myanmar MN" size="12.0" />
+                              <Font name="Arial Bold" size="13.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
@@ -102,18 +109,5 @@
             </Label>
          </children>
       </VBox>
-      <Pane layoutX="153.0" prefHeight="815.0" prefWidth="1247.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="105.0" prefWidth="1248.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="TEXT_ONLY" prefHeight="105.0" prefWidth="1249.0" text="Dashboard" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Myanmar MN" size="40.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
    </children>
-</AnchorPane>
+</HBox>

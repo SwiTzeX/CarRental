@@ -4,6 +4,7 @@ import com.carrental.customnodes.MyTextField;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,9 +21,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -38,6 +40,10 @@ public class HomeController implements Initializable {
     public Button searchBtn;
     public HBox filtersBox;
     public ImageView locIcon;
+    public MyTextField pickupDateTF;
+    public MyTextField pickupTimeTF;
+    public MyTextField returnDateTF;
+    public MyTextField returnTimeTF;
     @FXML
     private ComboBox<String> brandsDropList;
 
@@ -81,7 +87,8 @@ public class HomeController implements Initializable {
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
     int maxPages;
     public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
-
+    public Date pickDate = null;
+    public Date returnDate = null;
     public static <T> List<List<T>> split(Collection<T> data, int size)
     {
         List<List<T>> lists=new ArrayList<>((data.size()+size-1)/size);
@@ -148,7 +155,7 @@ public class HomeController implements Initializable {
             previousPageButton.setVisible(true);
         }
         if(vehicles.size()> 0) {
-            totalVeh.setText(String.valueOf(vehicles.size()) + " Vehicles found");
+            totalVeh.setText(vehicles.size() + " Vehicles found");
             pageNumber--;
             try {
                 for (int i = 0; i < vehiclesHolder.get(pageNumber).size(); i++) { // vehiclesHolder.get(0) = first 4 items in vehicles // first page
@@ -197,6 +204,35 @@ public class HomeController implements Initializable {
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
         refreshComboBoxes();
+
+        //
+        //DatePicker datePicker = new DatePicker();
+        //datePicker.setVisible(false);
+        //searchBox.getChildren().add(datePicker);
+        pickupDateTF.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue){
+               //datePicker.show();
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
+                try{
+                    Date date = format.parse(pickupDateTF.getText());
+                    pickupDateTF.hideError();
+                } catch (ParseException e) {
+                    pickupDateTF.showError("(Valid date: 10-12-2023)");
+                }
+            }
+        });
+        returnDateTF.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue){
+                //datePicker.show();
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
+                try{
+                    Date date = format.parse(returnDateTF.getText());
+                    returnDateTF.hideError();
+                } catch (ParseException e) {
+                    returnDateTF.showError("(Valid date: 10-12-2023)");
+                }
+            }
+        });
     }
 
 
@@ -263,16 +299,36 @@ public class HomeController implements Initializable {
     }
     @FXML
     public void filterVehicles(javafx.event.ActionEvent event) {
-        ComboBox<String> dropList = (ComboBox<String>) event.getSource();
-        Text theText = new Text(dropList.getValue());
-        double width = (int)theText.getBoundsInLocal().getWidth()+63;
-        dropList.setPrefWidth(width);
-        if (dropList == gearDropList) filterSettings.set(0, dropList.getValue());
-        else if (dropList == fuelDropList) filterSettings.set(1, dropList.getValue());
-        else if (dropList == brandsDropList) filterSettings.set(2, dropList.getValue());
-        else if (dropList == colorsDropList) filterSettings.set(3, dropList.getValue());
-        else if (dropList == typeDropList) filterSettings.set(4, dropList.getValue());
-        vehicles = Vehicle.filterVehicles(filterSettings,null,null);
+        if(!pickupDateTF.isError() && pickupDateTF.getText().length()>0) {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                pickDate = format.parse(pickupDateTF.getText());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if(!returnDateTF.isError() && returnDateTF.getText().length()>0) {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                returnDate = format.parse(returnDateTF.getText());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            ComboBox<String> dropList = (ComboBox<String>) event.getSource();
+            Text theText = new Text(dropList.getValue());
+            double width = (int) theText.getBoundsInLocal().getWidth() + 63;
+            dropList.setPrefWidth(width);
+            if (dropList == gearDropList) filterSettings.set(0, dropList.getValue());
+            else if (dropList == fuelDropList) filterSettings.set(1, dropList.getValue());
+            else if (dropList == brandsDropList) filterSettings.set(2, dropList.getValue());
+            else if (dropList == colorsDropList) filterSettings.set(3, dropList.getValue());
+            else if (dropList == typeDropList) filterSettings.set(4, dropList.getValue());
+        } catch (Exception e) {
+            ;
+        }
+        vehicles = Vehicle.filterVehicles(filterSettings,pickDate,returnDate);
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
         this.loadCardsByPage(1);
@@ -289,6 +345,12 @@ public class HomeController implements Initializable {
         gearDropList.setValue(null);
         //gearDropList.setPromptText("Gear Type");
         refreshComboBoxes();
+        pickDate = null;
+        returnDate = null;
+        pickupDateTF.setText("");
+        pickupDateTF.hideError();
+        returnDateTF.setText("");
+        returnDateTF.hideError();
     }
     @FXML
     public void nextPageDisplay(){
@@ -302,6 +364,4 @@ public class HomeController implements Initializable {
         pageNumber--;
         this.loadCardsByPage(pageNumber);
     }
-
-
 }
