@@ -20,7 +20,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
+import javax.sound.midi.Soundbank;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -108,6 +110,28 @@ public class ReservationController implements Initializable {
         col_startDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         col_endDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        col_status.setCellFactory(column -> new TableCell<DataReservation, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setTextFill(Color.BLACK);
+                } else {
+                    setText(item);
+                    if (item.equals("Waiting")) {
+                        setTextFill(Color.ORANGE);
+                    } else if (item.equals("Refused")) {
+                        setTextFill(Color.RED);
+                    } else if (item.equals("Approved")) {
+                        setTextFill(Color.FORESTGREEN);
+                    } else {
+                        setTextFill(Color.BLACK);
+                    }
+                }
+            }
+        });
+
         col_edit.setCellFactory(param -> new TableCell<DataReservation, String>() {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");
