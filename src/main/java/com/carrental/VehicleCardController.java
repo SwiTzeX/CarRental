@@ -67,11 +67,12 @@ public class VehicleCardController {
     private Label vehTrunkCapacityLabel;
 
     private Vehicle vehicle = null;
+    private Date startDate,endDate;
 
     boolean shadowAnimation = false;
     Timeline timeline = null;
 
-    public void setData(Vehicle vehicle){
+    public void setData(Vehicle vehicle,Date startDate,Date endDate){
         this.vehicle = vehicle;
         vehBrandModel.setText(vehicle.getBrandName() + " " + vehicle.getModelName());
         vehType.setText(vehicle.getType());
@@ -90,6 +91,8 @@ public class VehicleCardController {
         vehBrandImage.setFitWidth(40);
         vehBrandImage.setFitHeight(40);
         vehTrunkCapacityLabel.setText(String.valueOf(vehicle.getTrunkCapacity()));
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
     @FXML
     void mouseInAnimation(MouseEvent event) {
@@ -141,7 +144,8 @@ public class VehicleCardController {
         if(App.getUser() == null){
             App.openLogin((Node)event.getSource());
         }else{
-           App.getMainController().openVehicle(vehicle, new Date(),new Date());
+            System.out.println(startDate);
+           App.getMainController().openVehicle(vehicle, startDate,endDate);
         }
     }
 

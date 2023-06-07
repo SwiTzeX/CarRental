@@ -164,7 +164,7 @@ public class HomeController implements Initializable {
                     fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
                     VBox vehicleCard = fxmlLoader.load();
                     VehicleCardController vehicleCardController = fxmlLoader.getController();
-                    vehicleCardController.setData(vehicle);
+                    vehicleCardController.setData(vehicle,pickDate,returnDate);
                     cardLayout.getChildren().add(vehicleCard);
                     vehicleCardController.loadIn();
                 }
