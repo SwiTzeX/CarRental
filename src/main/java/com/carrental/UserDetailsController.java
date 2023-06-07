@@ -1,11 +1,13 @@
 package com.carrental;
 
+import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserDetailsController implements Initializable {
@@ -13,6 +15,9 @@ public class UserDetailsController implements Initializable {
     private  Label usernamelabel;
     @FXML
     private Label usernamelabela;
+
+    @FXML
+    private Label taskdone;
 
     @FXML
     private  Label emaillabel;
@@ -33,6 +38,9 @@ public class UserDetailsController implements Initializable {
         rolelabel.setText("Role: " + (user.getIsAdmin() ? "Admin" : "Client"));
         agelabel.setText("Age: " + user.getAge());
         nidlabel.setText("NID: " + user.getNId());
+        ArrayList<Reservation> allreservations = user.getReservations();
+        int l = allreservations.size();
+        taskdone.setText(String.valueOf(l));
     }
 
     @Override

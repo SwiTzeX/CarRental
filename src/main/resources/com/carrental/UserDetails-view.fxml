@@ -68,7 +68,7 @@
                         <Image url="@icons/Icon.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="35.0" prefWidth="63.0" text="1.23k">
+                  <Label fx:id="taskdone" prefHeight="35.0" prefWidth="63.0">
                      <VBox.margin>
                         <Insets left="191.0" top="-60.0" />
                      </VBox.margin>
