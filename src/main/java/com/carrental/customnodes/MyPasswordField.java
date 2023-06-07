@@ -10,7 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.File;
+import java.util.Objects;
 
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
@@ -45,6 +48,27 @@ public class MyPasswordField extends StackPane {
         setupTexts();
         setupTextField();
         setupEye();
+
+        textField.setOnKeyPressed(event -> {
+            if (event.isControlDown() && event.getCode() == KeyCode.V) {
+                String copiedText = Clipboard.getSystemClipboard().getString();
+                if (!showPassword) {
+                    StringBuilder bullets = new StringBuilder();
+                    String tt = "";
+                    for (int i = 0; i < textField.getText().length(); i++) {
+                        bullets.append(BULLET);
+                    }
+                    if (textField.getText().equals( copiedText)){
+                        text = copiedText;
+                    }else {
+                        text += copiedText;
+                    }
+                    System.out.println(tt);
+                    textField.setText(bullets.toString());
+                    textField.positionCaret(bullets.length());
+                }
+            }
+        });
         textField.setOnKeyTyped(event -> {
             if (!showPassword) {
                 String typedCharacter = event.getCharacter();
@@ -59,6 +83,8 @@ public class MyPasswordField extends StackPane {
                 } else if (event.getCharacter().charAt(0) == '\b') {
                     if (text.length() > 0) text = text.substring(0, text.length() - 1);
                 }
+            }else{
+                text = textField.getText();
             }
         });
     }

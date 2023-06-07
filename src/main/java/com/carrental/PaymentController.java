@@ -1,6 +1,7 @@
 package com.carrental;
 
 import com.carrental.models.Reservation;
+import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,11 @@ import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.event.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -89,9 +93,6 @@ public class PaymentController implements Initializable {
     private ToggleGroup RadioGrp;
 
     @FXML
-    private Label StarsVar;
-
-    @FXML
     private Label DepositVar;
 
     @FXML
@@ -104,6 +105,8 @@ public class PaymentController implements Initializable {
     private HBox mainHBox;
 
     static VBox mainvbox;
+
+    private Reservation reservation;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -135,19 +138,25 @@ public class PaymentController implements Initializable {
         return method;
     }
 
-    public void setData(Vehicle vehicle, Reservation reservation){
-        BrandNameVar.setText(vehicle.getBrandName());
-        PricePerDay.setText(String.valueOf(vehicle.getPrice())+" DH");
-        NumPVar.setText(String.valueOf(vehicle.getPassengers()));
-        FuelTypeVar.setText(vehicle.getFuelType());
-        GearTypeVar.setText(vehicle.getGearType());
-        HpVar.setText(String.valueOf(vehicle.getHorsePower()));
-        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
+    public void setData(Reservation reservation){
+        this.reservation=reservation;
+        BrandNameVar.setText(reservation.vehicle.getBrandName());
+        PricePerDay.setText(String.valueOf(reservation.vehicle.getPrice())+" DH");
+        NumPVar.setText(String.valueOf(reservation.vehicle.getPassengers()));
+        FuelTypeVar.setText(reservation.vehicle.getFuelType());
+        GearTypeVar.setText(reservation.vehicle.getGearType());
+        HpVar.setText(String.valueOf(reservation.vehicle.getHorsePower()));
+        Image image = new Image(getClass().getResourceAsStream(reservation.vehicle.getImage()));
         CarImageVar.setImage(image);
-        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
+        Image brandImage = new Image(getClass().getResourceAsStream(reservation.vehicle.getBrandImage()));
         BrandLogoVar.setImage(brandImage);
-        TrunkCapVar.setText(String.valueOf(vehicle.getTrunkCapacity()));
+        TrunkCapVar.setText(String.valueOf(reservation.vehicle.getTrunkCapacity()));
         TotalPrice.setText(String.valueOf(reservation.totalPrice()));
+        ColorVar.setText(reservation.vehicle.color);
+        ModelNameVar.setText(reservation.vehicle.modelName);
+        DepositVar.setText(String.valueOf(reservation.vehicle.deposit));
+        startDateVar.setText(String.valueOf(reservation.startDate));
+        endDateVar.setText(String.valueOf(reservation.endDate));
     }
 
     private void performTransition(ActionEvent e) {
@@ -160,6 +169,8 @@ public class PaymentController implements Initializable {
 
     @FXML
     public void EndCheckout(ActionEvent e) {
+        Reservation.create(reservation.user,reservation.vehicle,reservation.startDate,reservation.endDate,0);
+        reservation.vehicle.setDisponibility(false);
         //Payment Method Paypal
         if(this.getRadioValue()=="Paypal"){
         // Define the URL to redirect to

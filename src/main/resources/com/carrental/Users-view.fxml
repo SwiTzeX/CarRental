@@ -26,27 +26,27 @@
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="59.0" resizable="false" text="idU">
 
                 </TableColumn>
-                <TableColumn fx:id="nIdColumn" editable="false" minWidth="0.0" prefWidth="88.0" resizable="false" text="nid">
+                <TableColumn fx:id="nIdColumn" editable="false" minWidth="0.0" prefWidth="88.0" resizable="false" text="National id">
 
 
 
                 </TableColumn>
-                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="139.0" resizable="false" text="email">
+                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="139.0" resizable="false" text="E-mail">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="129.0" resizable="false" text="phoneNumber">
+                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="129.0" resizable="false" text="Phone Number">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="144.0" resizable="false" text="fullname">
+                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="144.0" resizable="false" text="Full Name">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="150.0" resizable="false" text="password">
+                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="150.0" resizable="false" text="Password">
 
 
 
@@ -120,7 +120,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="4.0" top="18.0" />
+                  <Insets left="-19.0" top="18.0" />
                </HBox.margin>
             </TextField>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">

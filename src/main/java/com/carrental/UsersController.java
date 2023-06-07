@@ -119,17 +119,14 @@ public class UsersController implements Initializable {
             dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
 
             GridPane grid = new GridPane();
-            TextField idField = new TextField();
             TextField nIdField = new TextField();
             TextField emailField = new TextField();
             TextField phoneField = new TextField();
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
 
-            grid.add(new Label("ID:"), 0, 0);
-            grid.add(idField, 1, 0);
-            grid.add(new Label("NID:"), 0, 1);
-            grid.add(nIdField, 1, 1);
+
+
             grid.add(new Label("Email:"), 0, 2);
             grid.add(emailField, 1, 2);
             grid.add(new Label("Phone number:"), 0, 3);
@@ -144,7 +141,7 @@ public class UsersController implements Initializable {
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == buttonTypeOk) {
                     try {
-                        int newId = Integer.parseInt(idField.getText());
+
                         String newNId = nIdField.getText();
                         String newEmail = emailField.getText();
                         String newPhone = phoneField.getText();
@@ -152,21 +149,19 @@ public class UsersController implements Initializable {
                         String newPassword = passwordField.getText();
 
                         // Vérifier si l'ID, le NID ou le numéro existent déjà
-                        boolean idExists = userList.stream().anyMatch(user -> user.getId() == newId);
+
                         boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                         boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
+                        String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
+                        boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
 
-                        if (idExists || nidExists || phoneNumberExists) {
-                            // Afficher un message d'erreur si l'un des identifiants existe déjà
-                            showAlert("Error", "Cannot add user. ID, NID, or phone number already exists.");
-                        } else {
+                        // Vérifier si le numéro de téléphone est au format valide
+                        String phoneRegex = "^06\\d{8}$";
+                        boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
+
+
                             // Vérifier si l'e-mail est au format valide
-                            String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
-                            boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
 
-                            // Vérifier si le numéro de téléphone est au format valide
-                            String phoneRegex = "^06\\d{8}$";
-                            boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
 
                             if (!isEmailValid) {
                                 // Afficher un message d'erreur si l'e-mail n'est pas au format valide
@@ -176,7 +171,7 @@ public class UsersController implements Initializable {
                                 showAlert("Error", "Invalid phone number format. Please enter a valid phone number starting with '06' and having 10 digits.");
                             } else {
                                 // Créer le nouvel utilisateur
-                                User newUser = User.createUser(newNId, newEmail, newPhone, true, 25, newFullName, newPassword, false, new Date());
+                                User newUser = User.create(newNId, newEmail, newPhone, null, newFullName, newPassword);
                                 //User newUser = User.create()
                                 if (newUser != null) {
                                     // Ajouter le nouvel utilisateur à la liste des utilisateurs
@@ -188,7 +183,7 @@ public class UsersController implements Initializable {
                                     showAlert("Error", "Failed to create user. Please check the input fields.");
                                 }
                             }
-                        }
+
                     } catch (NumberFormatException e) {
                         // Gérer l'erreur si l'ID n'est pas un nombre valide
                         showAlert("Error", "Invalid ID. Please enter a valid number.");
