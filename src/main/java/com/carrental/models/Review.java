@@ -17,6 +17,8 @@ public class Review {
 
     public Date creationDate;
 
+
+
     public Review(Integer idR, Integer idU, Integer stars, String comment, Date creationDate) {
         this.idR = idR;
         this.idU = idU;
@@ -68,7 +70,7 @@ public class Review {
     }
 
 
-    public ArrayList<Review> getComments(){
+    public static ArrayList<Review> getComments(){
         ArrayList<Review> reviews = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -89,7 +91,6 @@ public class Review {
             throw new RuntimeException(e);
         }
         return reviews;
-
     }
 
     @Override

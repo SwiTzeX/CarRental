@@ -16,7 +16,7 @@ public class CsvExport {
 
         try {
             Connection connection = SingletonConnection.getConnection();
-            String sql = "SELECT CONCAT(YEAR(startDate), '-', LPAD(MONTH(startDate), 2, '0')) AS month, SUM(DATEDIFF(endDate, startDate) * price) AS total_revenue FROM Reservations JOIN Vehicles ON Reservations.idV = Vehicles.idV GROUP BY YEAR(startDate), MONTH(startDate) ORDER BY YEAR(startDate), MONTH(startDate);";
+            String sql = "SELECT DATE_FORMAT(DATE_FORMAT(res.startDate, '%Y-%m-01'), '%Y-%m') AS month, SUM(DATEDIFF(LEAST(DATE_FORMAT(res.endDate, '%Y-%m-01'), LAST_DAY(res.startDate)), res.startDate) * veh.price) AS total_revenue FROM Reservations res JOIN Vehicles veh ON res.idV = veh.idV WHERE res.status = 1 GROUP BY month ORDER BY month;";
 
             Statement statement = connection.createStatement();
 
