@@ -430,7 +430,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <VBox prefHeight="196.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
+            <VBox prefHeight="167.0" prefWidth="372.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
                <children>
                   <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="232.0" text="Excellent choice !" textFill="#353550">
                      <font>
@@ -443,25 +443,8 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <VBox prefHeight="103.0" prefWidth="340.0" spacing="13.0">
+                  <VBox prefHeight="74.0" prefWidth="340.0" spacing="13.0">
                      <children>
-                        <HBox prefHeight="16.0" prefWidth="320.0" spacing="20.0">
-                           <children>
-                              <Label fx:id="AvisId" text="Customer reviews :">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="StarsVar" text="StarsVar">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
                         <HBox prefHeight="16.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -527,7 +510,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="109.0" right="109.0" top="5.0" />
+                  <Insets left="109.0" right="109.0" top="15.0" />
                </VBox.margin>
                <opaqueInsets>
                   <Insets />
