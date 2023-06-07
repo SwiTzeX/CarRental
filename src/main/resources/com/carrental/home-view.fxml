@@ -76,14 +76,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Date" promptFontSize="15" inputFontSize="15"/>
+            <MyTextField fx:id="pickupDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time" promptFontSize="15" inputFontSize="15"/>
+            <MyTextField fx:id="pickupTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -102,14 +102,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Date" promptFontSize="15" inputFontSize="15"/>
+            <MyTextField fx:id="returnDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Time" promptFontSize="15" inputFontSize="15"/>
+            <MyTextField fx:id="returnTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -118,7 +118,7 @@
             <Insets bottom="20.0" left="5.0" top="20.0" />
          </HBox.margin>
       </HBox>
-      <Button fx:id="searchBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
+      <Button fx:id="searchBtn" onAction="#filterVehicles" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0">
                <image>
