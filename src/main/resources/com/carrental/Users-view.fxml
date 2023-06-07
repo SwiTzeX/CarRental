@@ -19,9 +19,9 @@
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
 
    <children>
-      <VBox layoutX="10.0" layoutY="223.0" prefHeight="547.0" prefWidth="1186.0">
+      <VBox layoutX="10.0" layoutY="223.0" prefHeight="547.0" prefWidth="1215.0">
          <children>
-            <TableView fx:id="tableview" prefHeight="559.0" prefWidth="1186.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" prefHeight="574.0" prefWidth="1201.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="42.0" resizable="false" text="idU">
 
@@ -46,18 +46,21 @@
 
 
                   </TableColumn>
-                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="118.0" resizable="false" text="Password">
+                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="123.0" resizable="false" text="Password">
 
 
 
                   </TableColumn>
                   <TableColumn fx:id="isadmincolumn" prefWidth="75.0" text="Profile" />
-                  <TableColumn fx:id="statuecolumn" prefWidth="86.0" text="status" />
-                  <TableColumn fx:id="creationDate" editable="false" prefWidth="141.0" resizable="false" text="creationDate" />
-                  <TableColumn fx:id="actionColumn" prefWidth="244.0" text="action" />
+                  <TableColumn fx:id="statuecolumn" prefWidth="90.0" text="status" />
+                  <TableColumn fx:id="creationDate" editable="false" prefWidth="145.0" resizable="false" text="creationDate" />
+                  <TableColumn fx:id="actionColumn" prefWidth="246.0" text="action" />
 
 
               </columns>
+               <VBox.margin>
+                  <Insets left="14.0" top="-19.0" />
+               </VBox.margin>
             </TableView>
          </children></VBox>
       <HBox layoutX="67.0" layoutY="9.0" prefHeight="56.0" prefWidth="1250.0">
@@ -70,13 +73,16 @@
                   <Insets left="68.0" />
                </HBox.margin>
                <children>
-                  <Separator layoutX="-103.0" prefHeight="110.0" prefWidth="1202.0" />
+                  <Separator layoutX="-103.0" prefHeight="110.0" prefWidth="1202.0">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></Separator>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1049.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/jimmy-fallon.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="1050.0" layoutY="11.0" prefHeight="29.0" prefWidth="62.0" text="ADMIN" textFill="#00000092">
+                  <Label layoutX="994.0" layoutY="12.0" prefHeight="29.0" prefWidth="62.0" text="ADMIN NAME" textFill="#00000092">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
@@ -90,7 +96,7 @@
                   <Insets left="60.0" right="8.0" top="4.0" />
                </HBox.margin>
                <font>
-                  <Font name="Arial" size="35.0" />
+                  <Font name="Arial Bold" size="35.0" />
                </font>
             </Label>
          </children>
@@ -102,7 +108,7 @@
                   <Font size="25.0" />
                </font>
                <HBox.margin>
-                  <Insets />
+                  <Insets top="-10.0" />
                </HBox.margin>
                <padding>
                   <Insets left="-35.0" top="13.0" />
@@ -123,35 +129,35 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="-30.0" top="18.0" />
+                  <Insets left="-27.0" top="1.0" />
                </HBox.margin>
             </TextField>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets left="148.0" top="17.0" />
+                  <Insets left="156.0" top="1.0" />
                </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets top="17.0" />
+                  <Insets top="1.0" />
                </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="169.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets top="17.0" />
+                  <Insets top="1.0" />
                </HBox.margin>
             </ComboBox>
             <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="8.0" top="21.0" />
+                  <Insets top="4.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+            <Button fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="134.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets top="21.0" />
+                  <Insets top="4.0" />
                </HBox.margin>
             </Button>
 
