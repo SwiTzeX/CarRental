@@ -46,11 +46,7 @@ public class LoginController implements Initializable {
 
    @FXML
     void login(ActionEvent event) {
-      //  String username = usernamefield.getText();
-      // String password = passwordfield.getText();
-
-      // App.setUser(u);
-       if (u != null && !usernamefield.isError() && !passwordfield.isError()) {
+       if (u != null && !usernamefield.isError() && !passwordfield.isError() && passwordfield.getText().length()>0) {
 
                try {
                    App.setUser(u);
