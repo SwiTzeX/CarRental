@@ -243,11 +243,21 @@ public class ReservationController implements Initializable {
                                 if (response == ButtonType.OK) {
                                     // User clicked "OK"
                                     int newStatus = -1;
-                                    dataReservation.setStatus(String.valueOf(newStatus));
                                     int i = dataResList.indexOf(dataReservation);
+                                    dataReservation.setStatus(String.valueOf(newStatus));
+                                    dataResList.get(i).setStatus(String.valueOf(newStatus));
+                                    System.out.println(dataResList.get(i));
                                     Reservation res = resList.get(i);
-                                    res.setStatus(newStatus);
+                                    TableViewReservation.setItems(FXCollections.observableArrayList());
+                                    DataReservation test = dataResList.get(i);
+                                    dataResList.remove(i);
                                     TableViewReservation.setItems(dataResList);
+                                    dataResList.add(dataResList.size(),test);
+                                    TableViewReservation.setItems(dataResList);
+                                    /*dataResList.remove(dataResList.size()-1);
+                                    dataResList.add(i,test);
+                                    TableViewReservation.setItems(dataResList);*/
+                                    res.setStatus(newStatus);
                                     res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
                                             + " has been refused for thr following reason : \n" + reason.getText());
                                 } else {
@@ -374,7 +384,6 @@ public class ReservationController implements Initializable {
             }
             return null;
         });
-
 
         Optional<DataReservation> result = dialog.showAndWait();
         result.ifPresent(updatedRes -> {
