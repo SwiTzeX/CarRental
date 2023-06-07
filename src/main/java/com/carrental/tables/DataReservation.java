@@ -32,7 +32,15 @@ public class DataReservation {
         this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.status = status;
+        if(status.equals("0")){
+            this.status = "Waiting";
+        }else if(status.equals("1")){
+            this.status = "Approved";
+        }else if(status.equals("2")){
+            this.status = "Ended";
+        }else{
+            this.status = "Refused";
+        }
     }
 
     public DataReservation(String fullName, String phoneNumber, String brandName, String modelName, float price, Date startDate, Date endDate, String status) {

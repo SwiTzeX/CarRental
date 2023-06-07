@@ -51,7 +51,7 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox fx:id="statusId0" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 0" textFill="#6279ff">
+                  <CheckBox fx:id="statusId0" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Waiting" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId1" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 1" textFill="#6279ff">
+                  <CheckBox fx:id="statusId1" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Approved" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId2" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status 2" textFill="#6279ff">
+                  <CheckBox fx:id="statusId2" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Status -1" textFill="#6279ff">
+                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Refused" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>

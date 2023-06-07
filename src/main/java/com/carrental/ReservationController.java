@@ -4,13 +4,10 @@ import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import com.carrental.tables.DataReservation;
-import com.carrental.tables.DataReservation;
-import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
@@ -23,18 +20,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.util.Callback;
-import javafx.util.Duration;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
@@ -194,11 +183,12 @@ public class ReservationController implements Initializable {
                     alertConfirm.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
                             // User clicked "OK"
-                            int newStatus = 1;
+                            String newStatus = "Approved";
+                            int newStatusNbr = 1;
                             int i = dataResList.indexOf(dataReservation);
-                            dataReservation.setStatus(String.valueOf(newStatus));
+                            dataReservation.setStatus(newStatus);
                             Reservation res = resList.get(i);
-                            res.setStatus(newStatus);
+                            res.setStatus(newStatusNbr);
                             res.getUser().sendNotification("Reservation", "Your reservation for "+ dataReservation.getBrandName() + " "
                                     + dataReservation.getModelName()+"has been approved");
                             TableViewReservation.refresh();
@@ -232,11 +222,12 @@ public class ReservationController implements Initializable {
                     dialogReason.setResultConverter(dialogButton -> {
                         if (dialogButton == buttonTypeOk) {
                             // User clicked "OK"
-                            int newStatus = -1;
+                            String newStatus = "refused";
+                            int newStatusNbr = -1;
                             int i = dataResList.indexOf(dataReservation);
-                            dataReservation.setStatus(String.valueOf(newStatus));
+                            dataReservation.setStatus(newStatus);
                             Reservation res = resList.get(i);
-                            res.setStatus(newStatus);
+                            res.setStatus(newStatusNbr);
                             res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
                                     + " has been refused for the following reason : \n" + reason.getText());
                             return dataReservation;
@@ -265,8 +256,8 @@ public class ReservationController implements Initializable {
                     setGraphic(null);
                 } else {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
-                    int status = Integer.parseInt(dataReservation.getStatus());
-                    if(status == 0){
+                    String status = dataReservation.getStatus();
+                    if(status.equals("Waiting")){
                         HBox buttonBox = new HBox(approveButton, refuseButton, deleteButton);
                         buttonBox.setSpacing(10);
                         buttonBox.setAlignment(Pos.CENTER);
@@ -313,7 +304,10 @@ public class ReservationController implements Initializable {
         idVehicleField.getSelectionModel().select(Vehicle.getAllVehicleId().indexOf(dataRes.getIdV()));
         TextField startDateField = new TextField(format.format(dataRes.getStartDate()));
         TextField endDateField = new TextField(format.format(dataRes.getEndDate()));
-        TextField statusField = new TextField(String.valueOf(dataRes.getStatus()));
+        ComboBox<String> statusField = new ComboBox<>();
+        ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
+        statusField.setItems(items);
+        statusField.getSelectionModel().selectFirst();
         grid.add(new Label("Id User"), 0, 1);
         grid.add(idUserField, 1, 1);
         grid.add(new Label("Id Vehicle"), 0, 2);
@@ -338,7 +332,7 @@ public class ReservationController implements Initializable {
                 Float newPrice = Vehicle.getVehiclesById(newIdVehicle).getPrice();
                 String newStartDate = startDateField.getText();
                 String newEndDate = endDateField.getText();
-                String newStatus = statusField.getText();
+                String newStatus = statusField.getValue();
                 dataRes.setFullName(newFullName);
                 dataRes.setPhoneNumber(newPhoneNumber);
                 dataRes.setBrandName(newBrandName);
@@ -351,7 +345,15 @@ public class ReservationController implements Initializable {
                 try {
                 res.setStartDate(format.parse(newStartDate));
                 res.setEndDate(format.parse(newEndDate));
-                res.setStatus(Integer.parseInt(newStatus));
+                if(newStatus.equals("Waiting")){
+                    res.setStatus(0);
+                }else if(newStatus.equals("Approved")){
+                    res.setStatus(1);
+                }else if(newStatus.equals("Ended")){
+                    res.setStatus(2);
+                }else{
+                    res.setStatus(-1);
+                }
                 dataRes.setStartDate(format.parse(newStartDate));
                 dataRes.setEndDate(format.parse(newEndDate));
                 } catch (ParseException e) {
@@ -490,10 +492,10 @@ public class ReservationController implements Initializable {
 
     private void updateTableView() {
         TableViewReservation.setItems(dataResList.filtered(reservation -> {
-            boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("0") ||
-                    (statusId1.isSelected() && reservation.getStatus().equals("1")) ||
-                    (statusId2.isSelected() && reservation.getStatus().equals("2")) ||
-                    (statusId3.isSelected() && reservation.getStatus().equals("-1"));
+            boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("Waiting") ||
+                    (statusId1.isSelected() && reservation.getStatus().equals("Approved")) ||
+                    (statusId2.isSelected() && reservation.getStatus().equals("Ended")) ||
+                    (statusId3.isSelected() && reservation.getStatus().equals("Refused"));
             return statusFilter;
         }));
         if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected()){
