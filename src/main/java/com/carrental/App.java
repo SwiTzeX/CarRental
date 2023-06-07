@@ -29,7 +29,7 @@ public class App extends Application {
         //sApp.getUser().getAllNotifications().get(0).delete();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        mainController = fxmlLoader.getController();
+        //mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
