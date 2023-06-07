@@ -19,9 +19,9 @@
 <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
 
    <children>
-      <VBox layoutX="31.0" layoutY="223.0" prefHeight="547.0" prefWidth="1250.0">
+      <VBox layoutX="10.0" layoutY="223.0" prefHeight="547.0" prefWidth="1204.0">
          <children>
-            <TableView fx:id="tableview" prefHeight="555.0" prefWidth="1250.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="tableview" prefHeight="555.0" prefWidth="1204.0" style="-fx-border-color: #ebeeff; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="IdColumn" editable="false" prefWidth="59.0" resizable="false" text="idU">
 
@@ -31,30 +31,30 @@
 
 
                 </TableColumn>
-                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="139.0" resizable="false" text="E-mail">
+                  <TableColumn fx:id="emailColumn" editable="false" prefWidth="129.0" resizable="false" text="E-mail">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="129.0" resizable="false" text="Phone Number">
+                  <TableColumn fx:id="phoneColumn" editable="false" prefWidth="112.0" resizable="false" text="Phone Number">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="144.0" resizable="false" text="Full Name">
+                  <TableColumn fx:id="fullnameColumn" editable="false" prefWidth="133.0" resizable="false" text="Full Name">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="150.0" resizable="false" text="Password">
+                  <TableColumn fx:id="passwordColumn" editable="false" prefWidth="118.0" resizable="false" text="Password">
 
 
 
                   </TableColumn>
-                  <TableColumn fx:id="isadmincolumn" prefWidth="73.0" text="isAdmin" />
-                  <TableColumn fx:id="statuecolumn" prefWidth="77.0" text="status" />
-                  <TableColumn fx:id="creationDate" editable="false" prefWidth="163.0" resizable="false" text="creationDate" />
-                  <TableColumn fx:id="actionColumn" prefWidth="228.0" text="action" />
+                  <TableColumn fx:id="isadmincolumn" prefWidth="112.0" text="isAdmin" />
+                  <TableColumn fx:id="statuecolumn" prefWidth="87.0" text="status" />
+                  <TableColumn fx:id="creationDate" editable="false" prefWidth="147.0" resizable="false" text="creationDate" />
+                  <TableColumn fx:id="actionColumn" prefWidth="265.0" text="action" />
 
 
               </columns>
@@ -70,8 +70,8 @@
                   <Insets left="68.0" />
                </HBox.margin>
                <children>
-                  <Separator layoutX="-103.0" prefHeight="110.0" prefWidth="1237.0" />
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1067.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                  <Separator layoutX="-103.0" prefHeight="110.0" prefWidth="1148.0" />
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="996.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/jimmy-fallon.png" />
                      </image>
@@ -80,11 +80,14 @@
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
+                     <padding>
+                        <Insets left="-66.0" />
+                     </padding>
                   </Label>
                </children></Pane>
             <Label alignment="CENTER" prefHeight="38.0" prefWidth="355.0" text="Gestion des comptes" textFill="#6279ff">
                <HBox.margin>
-                  <Insets left="155.0" right="8.0" top="4.0" />
+                  <Insets left="47.0" right="8.0" top="4.0" />
                </HBox.margin>
                <font>
                   <Font name="Arial" size="35.0" />
@@ -102,7 +105,7 @@
                   <Insets />
                </HBox.margin>
                <padding>
-                  <Insets left="-12.0" top="13.0" />
+                  <Insets left="-35.0" top="13.0" />
                </padding>
             </Label>
          </children>
@@ -120,12 +123,12 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="-19.0" top="18.0" />
+                  <Insets left="-30.0" top="18.0" />
                </HBox.margin>
             </TextField>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets left="177.0" top="17.0" />
+                  <Insets left="148.0" top="17.0" />
                </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
@@ -156,7 +159,7 @@
       </HBox>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="778.0" prefHeight="20.0" prefWidth="205.0" text="© UIR Project 2022-2023" textFill="#6279ff">
          <padding>
-            <Insets left="12.0" />
+            <Insets left="-173.0" />
          </padding>
       </Label>
    </children>
