@@ -78,10 +78,13 @@ public class InfoPageController{
     private Label username;
 
     public void setData(Vehicle vehicle, Date startDate, Date endDate ){ //search
-        Image image = new Image(vehicle.getBrandImage(),799, 441, true, true);
+        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900, 800, true, true);
         carpic.setImage(image);
-        infoBrand.setText(vehicle.getBrandName());
+        System.out.println(vehicle.getBrandName());
+
+        this.infoBrand.setText(vehicle.getBrandName());
         infoModel.setText(vehicle.getModelName());
+
         infoColor.setText(vehicle.getColor());
         infoFuel.setText(vehicle.getFuelType());
         infoGear.setText(vehicle.getGearType());
@@ -97,6 +100,7 @@ public class InfoPageController{
         infoPpd.setText(String.valueOf(vehicle.getPrice()));
         Reservation res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
         infoTotP.setText(String.valueOf(res.totalPrice()));
+
     }
 
     public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
