@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="mainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.AdminController">
    <children>
-      <VBox prefHeight="820.0" prefWidth="150.0" style="-fx-background-color: #6279FF;">
+      <VBox fx:id="navBar" prefHeight="820.0" prefWidth="150.0" style="-fx-background-color: #6279FF;">
          <children>
             <ImageView fitHeight="156.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -20,7 +20,7 @@
             </ImageView>
             <VBox prefHeight="120.0" prefWidth="150.0" spacing="15.0" translateY="100.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                  <HBox fx:id="dashboardBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +40,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                  <HBox fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -60,7 +60,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                  <HBox fx:id="fleetManageBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -80,7 +80,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                  <HBox fx:id="reservationsBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
