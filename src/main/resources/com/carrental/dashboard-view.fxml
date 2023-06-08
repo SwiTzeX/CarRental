@@ -18,11 +18,11 @@
             <Font name="Myanmar Text Bold" size="48.0" />
          </font>
       </Label>
-      <HBox prefHeight="67.0" prefWidth="1250.0">
+      <HBox prefHeight="79.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" text="Generate report">
+            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" prefHeight="31.0" prefWidth="114.0" style="-fx-background-color: #6279FF;" text="Generate report" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="1045.0" />
+                  <Insets left="1.031035E7" />
                </HBox.margin>
             </Button>
          </children>
@@ -36,17 +36,23 @@
                         <Insets bottom="20.0" left="100.0" right="25.0" />
                      </VBox.margin>
                      <children>
-                        <VBox prefHeight="149.0" prefWidth="281.0">
+                        <VBox prefHeight="149.0" prefWidth="337.0">
                            <children>
-                              <Label prefHeight="42.0" prefWidth="105.0" text="Customers">
+                              <Label prefHeight="39.0" prefWidth="142.0" text="Customers">
                                  <font>
-                                    <Font name="Arial" size="18.0" />
+                                    <Font name="Arial" size="24.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="20.0" top="20.0" />
+                                    <Insets left="60.0" top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="countCust" prefHeight="98.0" prefWidth="174.0" text="Label" />
+                              <Label fx:id="countCust" alignment="CENTER_RIGHT" prefHeight="92.0" prefWidth="362.0" text="countCust">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets right="70.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="109.0" prefWidth="86.0">
@@ -58,17 +64,23 @@
                   </HBox>
                   <HBox prefHeight="150.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                      <children>
-                        <VBox prefHeight="149.0" prefWidth="281.0">
+                        <VBox prefHeight="149.0" prefWidth="337.0">
                            <children>
-                              <Label prefHeight="37.0" prefWidth="141.0" text="Available cars">
+                              <Label prefHeight="36.0" prefWidth="174.0" text="Available cars">
                                  <font>
-                                    <Font name="Arial" size="18.0" />
+                                    <Font name="Arial" size="24.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="20.0" top="20.0" />
+                                    <Insets left="60.0" top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="countCars" prefHeight="95.0" prefWidth="406.0" text="Label" />
+                              <Label fx:id="countCars" alignment="CENTER_RIGHT" prefHeight="95.0" prefWidth="406.0" text="countCars">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets right="70.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="109.0" prefWidth="86.0">
@@ -90,17 +102,23 @@
                <children>
                   <HBox prefHeight="150.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                      <children>
-                        <VBox prefHeight="149.0" prefWidth="281.0">
+                        <VBox prefHeight="149.0" prefWidth="475.0">
                            <children>
                               <Label prefHeight="42.0" prefWidth="105.0" text="Rented">
                                  <font>
-                                    <Font name="Arial" size="18.0" />
+                                    <Font name="Arial" size="24.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="20.0" top="20.0" />
+                                    <Insets left="60.0" top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label prefHeight="98.0" prefWidth="174.0" text="Label" />
+                              <Label alignment="CENTER" prefHeight="88.0" prefWidth="424.0" text="countRented">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="70.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="109.0" prefWidth="86.0">
@@ -115,17 +133,23 @@
                   </HBox>
                   <HBox prefHeight="150.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                      <children>
-                        <VBox prefHeight="149.0" prefWidth="281.0">
+                        <VBox prefHeight="149.0" prefWidth="440.0">
                            <children>
-                              <Label prefHeight="37.0" prefWidth="146.0" text="Total Revenue">
+                              <Label prefHeight="36.0" prefWidth="172.0" text="Total Revenue">
                                  <font>
-                                    <Font name="Arial" size="18.0" />
+                                    <Font name="Arial" size="24.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="20.0" top="20.0" />
+                                    <Insets left="60.0" top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="countTotalSales" prefHeight="98.0" prefWidth="174.0" text="Label" />
+                              <Label fx:id="countTotalSales" alignment="CENTER" prefHeight="94.0" prefWidth="335.0" text="countTotalSales">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="70.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="109.0" prefWidth="86.0">
