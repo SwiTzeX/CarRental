@@ -298,6 +298,29 @@ public class Reservation {
         }
         return reservations;
     }
+    public static ArrayList<Reservation> getAllEndedReservations(){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE status = 2";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getTimestamp(3);
+                Date endDate = rs.getTimestamp(4);
+                int stat = rs.getInt(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(reservations);
+        return reservations;
+    }
 
     public float totalPrice(){
         long durationInMillis = this.endDate.getTime() - this.startDate.getTime();
