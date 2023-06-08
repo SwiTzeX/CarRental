@@ -444,7 +444,7 @@ public class Vehicle {
             String req = "INSERT INTO Vehicles VALUES(null,'" + modelName + "','" + color
                     + "'," + disponibility + ",'" + brandName + "'," + vehicleState + "," + price
                     + ",'" + type + "'," + passengers + ",'" + fuelType + "','" +gearType
-                    + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower + ")";
+                    + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower +",'"+plate+"')";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
