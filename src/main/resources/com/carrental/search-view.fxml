@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.SearchController">
+   <children>
+      <VBox alignment="CENTER" layoutX="493.0" layoutY="151.0" prefHeight="444.0" prefWidth="414.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
+         <children>
+            <VBox alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="398.0">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo/iPhone%2014-%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="297.0" prefWidth="398.0" spacing="50.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="398.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/loc.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="25.0" prefWidth="328.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="398.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" layoutX="144.0" layoutY="10.0" prefHeight="80.0" prefWidth="181.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/calendar.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" layoutX="218.0" layoutY="10.0" prefHeight="80.0" prefWidth="168.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/stopwatch.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="398.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" layoutX="144.0" layoutY="10.0" prefHeight="80.0" prefWidth="181.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/calendar.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" layoutX="218.0" layoutY="10.0" prefHeight="80.0" prefWidth="168.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/stopwatch.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="367.0" style="-fx-background-color: #6279ff; -fx-background-radius: 10;" text="SEARCH" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
