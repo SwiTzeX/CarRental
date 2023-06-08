@@ -109,8 +109,8 @@
                   <TableColumn fx:id="brandnamecolunmn" prefWidth="138.0" resizable="false" text="Brand Name" />
                   <TableColumn fx:id="modelenamecolumn" prefWidth="153.0" resizable="false" text="Model Name" />
                   <TableColumn fx:id="startdatecolumn" prefWidth="130.0" resizable="false" text="Start Date" />
-                  <TableColumn fx:id="enddatecolumn" prefWidth="163.0" text="End Date" />
-                  <TableColumn fx:id="pricecolumn" prefWidth="105.0" text="Price" />
+                  <TableColumn fx:id="enddatecolumn" prefWidth="163.0" resizable="false" text="End Date" />
+                  <TableColumn fx:id="pricecolumn" prefWidth="105.0" resizable="false" text="Price" />
               </columns>
                <padding>
                   <Insets left="22.0" right="17.0" />
