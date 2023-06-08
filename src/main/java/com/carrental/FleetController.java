@@ -275,7 +275,7 @@ public class FleetController implements Initializable {
         });
 
 
-        for (String brand : Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
+        for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
         statusDropList.getItems().addAll("Available","Not Available");
@@ -297,7 +297,7 @@ public class FleetController implements Initializable {
 
 
         //statusDropList.getItems().addAll("true","false");
-        for (String brand : Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
+        for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
 

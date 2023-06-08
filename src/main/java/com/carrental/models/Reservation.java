@@ -226,7 +226,6 @@ public class Reservation {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(reservations);
         return reservations;
     }
 
@@ -318,7 +317,6 @@ public class Reservation {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(reservations);
         return reservations;
     }
 
@@ -343,6 +341,26 @@ public class Reservation {
         }
         return total;
     }
+
+    public static float getGrowth(){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Reservations WHERE status > 0 AND MONTH(startDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Reservations WHERE status = 2 AND MONTH(startDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(startDate) < MONTH(CURRENT_DATE())) AS prev;\n";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
+
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+
     public String getTimeLeft() {
         long currentTimeMillis = System.currentTimeMillis();
         long inputTimeMillis = this.getEndDate().getTime();

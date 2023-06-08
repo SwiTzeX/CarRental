@@ -354,7 +354,7 @@ public class Vehicle {
         this.trunkCapacity = trunkCapacity;
     }
 
-    public static ArrayList<String> getAllBrandsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+    public static ArrayList<String> getAllBrandsAvailable(ArrayList<Vehicle> vehicles) {
         ArrayList<String> brands =new ArrayList<String>();
         for(Vehicle vehicle:vehicles){
             if (!brands.contains(vehicle.getBrandName())) {
@@ -363,7 +363,7 @@ public class Vehicle {
         }
         return brands;
     }
-    public static ArrayList<String> getAllColorsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+    public static ArrayList<String> getAllColorsAvailable(ArrayList<Vehicle> vehicles) {
         ArrayList<String> colors =new ArrayList<String>();
         for(Vehicle vehicle:vehicles){
             if (!colors.contains(vehicle.getColor())) {
@@ -613,6 +613,24 @@ public class Vehicle {
         }
         return listIdVehicle;
     }
+    public static float getRevenueOfBrand(String brand){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT SUM(price*DATEDIFF(endDate,startDate)) FROM Reservations NATURAL JOIN Vehicles WHERE brandName = '" + brand+"'" ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+
     @Override
     public String toString() {
         return "Vehicle{" +

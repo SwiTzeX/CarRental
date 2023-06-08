@@ -144,8 +144,9 @@ public class VehicleCardController {
         if(App.getUser() == null){
             App.openLogin((Node)event.getSource());
         }else{
-            System.out.println(startDate);
-           App.getMainController().openVehicle(vehicle, startDate,endDate);
+            if(startDate != null && endDate !=null) {
+                App.getMainController().openVehicle(vehicle, startDate, endDate);
+            }
         }
     }
 
