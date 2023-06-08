@@ -546,7 +546,6 @@ public class Vehicle {
                 }
                 req +=")";
             }
-            System.out.println(req);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
@@ -629,7 +628,25 @@ public class Vehicle {
         }
         return 0;
     }
+    public boolean delete() {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            for(Reservation reservation:this.getReservations()){
+                reservation.delete();
+            }
+            String req = "DELETE FROM Vehicles WHERE idV=" + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
 
+            return rs > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Reservation> getReservations(){
+        return Reservation.getVehicleReservations(this);
+    }
 
     @Override
     public String toString() {
