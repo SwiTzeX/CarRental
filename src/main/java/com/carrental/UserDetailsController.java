@@ -68,12 +68,16 @@ public class UserDetailsController implements Initializable {
         rolelabel.setText("Role: " + (user.getIsAdmin() ? "Admin" : "Client"));
         agelabel.setText("Age: " + user.getAge());
         nidlabel.setText("NID: " + user.getNId());
+        ObservableList<DataReservation> reservationList = FXCollections.observableArrayList();
         ArrayList<Reservation> allreservations = user.getReservations();
         int l = allreservations.size();
         taskdone.setText(String.valueOf(l));
-      //  ObservableList<DataReservation> reservationList = FXCollections.observableArrayList(allreservations);
+        for(Reservation i:allreservations) {
+            DataReservation res = new DataReservation(i.getUser().getId(),i.getVehicle().getId(),i.getUser().getFullName(), i.getUser().getPhoneNumber(), i.getVehicle().getBrandName(), i.getVehicle().getModelName(), i.getVehicle().getPrice(), i.getStartDate(), i.getEndDate(), String.valueOf(i.getStatus()));
+            reservationList.add(res);
+        }
 
-       // tableview1.setItems(reservationList);
+        tableview1.setItems(reservationList);
 
     }
 
