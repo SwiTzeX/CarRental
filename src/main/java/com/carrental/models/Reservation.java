@@ -362,7 +362,14 @@ public class Reservation {
         }
         return total;
     }
-
+    public static float totalSaleInYear(int year){
+        ArrayList<Reservation> list = getAllReservationsByYear(year);
+        float total = 0;
+        for(Reservation res : list){
+            total += res.totalPrice();
+        }
+        return total;
+    }
     public static float getGrowth(){
         try {
             Connection conn = SingletonConnection.getConnection();

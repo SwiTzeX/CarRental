@@ -17,13 +17,13 @@
          <children>
             <ImageView fitHeight="64.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons/approval-symbol-in-badge.png" />
+                  <Image url="@icons/dashboard-pack/check-circle.png" />
                </image>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </ImageView>
-            <Label text="Success !" textAlignment="CENTER" textFill="#158a01">
+            <Label text="Success !" textAlignment="CENTER" textFill="#57bf72">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

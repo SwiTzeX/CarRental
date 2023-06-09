@@ -52,28 +52,28 @@
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets left="30.0" top="5.0" />
+                                          <Insets left="20.0" top="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="countCust" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
+                                    <Label fx:id="countCust" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
                                           <Font name="System Bold" size="30.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets right="35.0" />
+                                          <Insets left="20.0" right="35.0" />
                                        </VBox.margin>
                                     </Label>
                                     <HBox prefHeight="55.0" prefWidth="190.0">
                                        <children>
                                           <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <HBox.margin>
-                                                <Insets left="10.0" top="14.0" />
+                                                <Insets left="20.0" top="14.0" />
                                              </HBox.margin>
                                              <image>
                                                 <Image url="@icons/dashboard-pack/up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthUser" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -119,15 +119,15 @@
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets left="30.0" top="5.0" />
+                                          <Insets left="20.0" top="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="countRented" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
+                                    <Label fx:id="countRented" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
                                           <Font name="System Bold" size="30.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets right="35.0" />
+                                          <Insets left="20.0" right="35.0" />
                                        </VBox.margin>
                                     </Label>
                                     <HBox prefHeight="55.0" prefWidth="188.0">
@@ -137,10 +137,10 @@
                                                 <Image url="@icons/dashboard-pack/up.png" />
                                              </image>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="14.0" />
+                                                <Insets left="20.0" top="14.0" />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthRent" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -195,15 +195,15 @@
                                                 <Font name="Arial Bold" size="16.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets left="30.0" top="10.0" />
+                                                <Insets left="20.0" top="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label fx:id="countCars" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
+                                          <Label fx:id="countCars" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                              <font>
                                                 <Font name="System Bold" size="30.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets right="35.0" />
+                                                <Insets left="20.0" right="35.0" />
                                              </VBox.margin>
                                           </Label>
                                           <HBox prefHeight="50.0" prefWidth="180.0">
@@ -213,10 +213,10 @@
                                                       <Image url="@icons/dashboard-pack/up.png" />
                                                    </image>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" top="14.0" />
+                                                      <Insets left="20.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                                <Label fx:id="growthCars" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -262,10 +262,10 @@
                                                 <Font name="Arial Bold" size="16.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets left="30.0" top="10.0" />
+                                                <Insets left="20.0" top="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label fx:id="countTotalSales" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="186.0" text="5" textAlignment="RIGHT" textFill="#353535">
+                                          <Label fx:id="countTotalSales" alignment="CENTER" prefHeight="50.0" prefWidth="186.0" text="5" textAlignment="RIGHT" textFill="#353535">
                                              <font>
                                                 <Font name="System Bold" size="30.0" />
                                              </font>
@@ -280,10 +280,10 @@
                                                       <Image url="@icons/dashboard-pack/down.png" />
                                                    </image>
                                                    <HBox.margin>
-                                                      <Insets left="10.0" top="14.0" />
+                                                      <Insets left="20.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="47.0" prefWidth="42.0" text="-6,8%" textFill="#d53131">
+                                                <Label fx:id="growthRev" prefHeight="47.0" prefWidth="42.0" text="-6,8%" textFill="#d53131">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -333,10 +333,10 @@
                <children>
                   <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis side="LEFT" tickLabelFill="#6279ff" />
                     </yAxis>
                   </BarChart>
                </children>
@@ -398,10 +398,10 @@
             </HBox>
             <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="266.0" prefWidth="1190.0" style="-fx-border-color: E1E1E1;" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis side="LEFT" tickLabelFill="#6279ff" />
                </yAxis>
                <padding>
                   <Insets top="10.0" />
