@@ -283,7 +283,7 @@
                                                       <Insets left="10.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#d53131">
+                                                <Label prefHeight="47.0" prefWidth="42.0" text="-6,8%" textFill="#d53131">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
