@@ -85,6 +85,13 @@ public class ReservationController implements Initializable {
     ObservableList<DataReservation> dataResList = FXCollections.observableArrayList();
     ArrayList<Reservation> resList ;
     public String searchKeyword;
+    public void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
@@ -422,36 +429,14 @@ public class ReservationController implements Initializable {
         }
         idVehicleField.setItems(idVList);
 
-        /*VBox vboxStartDate = new VBox(10);
-        DatePicker startDateField = new DatePicker();
-
-        VBox vboxEndDate = new VBox(10);
-        DatePicker endDateField = new DatePicker();
-
-        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        long p = ChronoUnit.DAYS.between(startDateField.getValue(), item);
-                        setTooltip(new Tooltip("You're about to stay for " + p + " days"));
-                    }
-                };
-            }
-        };
-
-        endDateField.setDayCellFactory(dayCellFactory);
-        startDateField.setValue(LocalDate.now());
-        endDateField.setValue(startDateField.getValue().plusDays(1));
-        vboxStartDate.getChildren().add(startDateField);
-        vboxEndDate.getChildren().add(endDateField);*/
         TextField startDateField = new TextField();
         startDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
         TextField endDateField = new TextField();
         endDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
-        TextField statusField = new TextField();
+        ComboBox<String> statusField = new ComboBox<>();
+        ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
+        statusField.setItems(items);
+        statusField.getSelectionModel().selectFirst();
         grid.add(new Label("Id User"), 0, 1);
         grid.add(idUserField, 1, 1);
         grid.add(new Label("Id Vehicle"), 0, 2);
@@ -468,17 +453,43 @@ public class ReservationController implements Initializable {
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == buttonTypeOk) {
                 Integer newIdUser = idUserField.getValue();
+                if(newIdUser == null){
+                    showAlert("Error", "IdUser is empty");
+                    return null;
+                }
                 Integer newIdVehicle = idVehicleField.getValue();
+                if(newIdVehicle == null){
+                    showAlert("Error", "IdVehicle is empty");
+                    return null;
+                }
                 String newFullName = User.getUserById(newIdUser).getFullName();
                 String newPhoneNumber = User.getUserById(newIdUser).getPhoneNumber();
                 String newBrandName = Vehicle.getVehiclesById(newIdVehicle).getBrandName();
                 String newModelName = Vehicle.getVehiclesById(newIdVehicle).getModelName();
                 float newPrice = Vehicle.getVehiclesById(newIdVehicle).getPrice();
                 String newStartDate = String.valueOf(startDateField.getText());
+                if(newStartDate == null){
+                    showAlert("Error", "Start Date is empty");
+                    return null;
+                }
                 String newEndDate = String.valueOf(endDateField.getText());
-                String newStatus = statusField.getText();
+                if(newEndDate == null){
+                    showAlert("Error", "End Date is empty");
+                    return null;
+                }
+                String newStatus = statusField.getValue();
+                Integer status = null;
+                if(newStatus.equals("Waiting")){
+                    status = 0;
+                }else if(newStatus.equals("Approved")){
+                    status = 1;
+                }else if(newStatus.equals("Ended")){
+                    status = 2;
+                }else{
+                    status = -1;
+                }
                 try {
-                    Reservation.create(User.getUserById(newIdUser), Vehicle.getVehiclesById(newIdVehicle), format.parse(newStartDate), format.parse(newEndDate), Integer.parseInt(newStatus));
+                    Reservation.create(User.getUserById(newIdUser), Vehicle.getVehiclesById(newIdVehicle), format.parse(newStartDate), format.parse(newEndDate), status);
                     DataReservation data = new DataReservation(newFullName, newPhoneNumber, newBrandName, newModelName, newPrice, format.parse(newStartDate), format.parse(newEndDate), newStatus);
                     dataResList.add(data);
                 } catch (ParseException e) {
