@@ -124,7 +124,6 @@ public class Reservation {
             int rs = stmt.executeUpdate(req);
             if (rs==1){
                 this.status = status;
-                System.out.println(this.status);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -234,6 +233,28 @@ public class Reservation {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "SELECT * FROM Reservations WHERE MONTH(startDate) = " + month ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int idU = rs.getInt(1);
+                int idV = rs.getInt(2);
+                Date startDate = rs.getTimestamp(3);
+                Date endDate = rs.getTimestamp(4);
+                int stat = rs.getInt(5);
+                reservations.add(new Reservation(User.getUserById(idU), Vehicle.getVehiclesById(idV), startDate, endDate, stat));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reservations;
+    }
+    public static ArrayList<Reservation> getAllReservationsByYear(int year){
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Reservations WHERE Year(startDate) = " + year ;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
@@ -392,7 +413,6 @@ public class Reservation {
         }
 
         result += isFuture ? "" : " ago";
-        System.out.println(result);
         return result;
     }
 
