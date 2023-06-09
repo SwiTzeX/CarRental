@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.carrental.Terms_ConditionsController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.Terms_ConditionsController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="4000.0" prefWidth="1400.0">
          <children>
@@ -21,7 +21,7 @@
                <children>
                   <VBox prefHeight="82.0" prefWidth="1189.0">
                      <children>
-                        <Label prefHeight="36.0" prefWidth="145.0" text="Rent EZ" textFill="#353550">
+                        <Label prefHeight="36.0" prefWidth="145.0" text="Rent EZ" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="30.0" />
                            </font>
@@ -35,7 +35,7 @@
                   </VBox>
                   <VBox spacing="20.0">
                      <children>
-                        <Label prefHeight="36.0" prefWidth="176.0" text="Policies" textFill="#353550">
+                        <Label prefHeight="36.0" prefWidth="176.0" text="Policies" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="30.0" />
                            </font>
@@ -351,7 +351,7 @@
                   </VBox>
                   <VBox prefHeight="336.0" prefWidth="1189.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="36.0" prefWidth="299.0" text="Cancellation Policy" textFill="#353550">
+                        <Label prefHeight="36.0" prefWidth="299.0" text="Cancellation Policy" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="30.0" />
                            </font>
@@ -460,7 +460,7 @@
                   </VBox>
                   <VBox layoutX="10.0" layoutY="1846.0" prefHeight="556.0" prefWidth="1189.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="36.0" prefWidth="299.0" text="Terms of Use" textFill="#353550">
+                        <Label prefHeight="36.0" prefWidth="299.0" text="Terms of Use" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="30.0" />
                            </font>
