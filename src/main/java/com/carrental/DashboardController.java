@@ -11,11 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -25,6 +23,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -35,8 +34,13 @@ public class DashboardController implements Initializable {
     @FXML
     Label countCars;
     @FXML
+    Label countRented;
+    @FXML
     Button reportButton;
-
+    @FXML
+    Label revCur;
+    @FXML
+    Label revPrev;
     @FXML
     static VBox dashvbox;
     @FXML
@@ -44,14 +48,21 @@ public class DashboardController implements Initializable {
     @FXML
     final NumberAxis yAxis = new NumberAxis();
     @FXML
+    final CategoryAxis xAx = new CategoryAxis();
+    @FXML
+    final NumberAxis yAx = new NumberAxis();
+    @FXML
     private LineChart<Number, Number> lineChart = new LineChart<>(xAxis,yAxis);
+    @FXML
+    private BarChart<String, Number> barChart=new BarChart<>(xAx,yAx);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniLineChart();
         getCountCust();
         getCountCars();
         getCountTotalSales();
-
+        getRented();
+        iniBarChart();
     }
     @FXML
     static Stage csvpopupStage = new Stage();
@@ -80,6 +91,22 @@ public class DashboardController implements Initializable {
         }
     }
 
+    public void iniBarChart(){
+        xAx.setLabel("Brand");
+        yAx.setLabel("Value");
+        ArrayList<String> bl = new ArrayList<>();
+        bl = Vehicle.getAllBrandsAvailable(Vehicle.getAllVehicles());
+        XYChart.Series<String,Number> serie = new XYChart.Series();
+        for(String b : bl){
+            serie.getData().add(new XYChart.Data(b,Vehicle.getRevenueOfBrand(b)));
+        }
+        barChart.getData().add(serie);
+        barChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
+        for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
+            n.setStyle("-fx-bar-fill: #6279FF;");
+        }
+    }
+
     public void getCountCust() {
         int countC = User.getAllUsers().size();
         countCust.setText(String.valueOf(countC));
@@ -97,6 +124,18 @@ public class DashboardController implements Initializable {
          s = s+Reservation.totalSaleInMonth(i);
         }
         countTotalSales.setText(String.valueOf(s));
+    }
+    public void getRented(){
+        int countR = Reservation.getAllEndedReservations().size();
+        countRented.setText(String.valueOf(countR));
+    }
+    public void getRevPrev(){
+        //int revP;
+        //revPrev.setText(String.valueOf(revP));
+    }
+    public void getRevCur(){
+        //int revC
+        //revCur.setText(String.valueOf(revC));
     }
     @FXML
     public void onClickReportButton(ActionEvent e){
@@ -125,5 +164,6 @@ public class DashboardController implements Initializable {
             b.printStackTrace();
         }
     }
+
 
 }

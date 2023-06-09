@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.Terms_ConditionsController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="4000.0" prefWidth="1400.0">
+         <children>
+            <Label layoutX="529.0" layoutY="14.0" text="Terms &amp; Condtions" textFill="#353550">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Separator layoutX="200.0" layoutY="72.0" prefHeight="16.0" prefWidth="1000.0" />
+            <VBox layoutX="104.0" layoutY="98.0" spacing="30.0">
+               <children>
+                  <VBox prefHeight="82.0" prefWidth="1189.0">
+                     <children>
+                        <Label prefHeight="36.0" prefWidth="145.0" text="Rent EZ" textFill="#6279ff">
+                           <font>
+                              <Font name="Arial Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="54.0" prefWidth="1189.0" text="Please note the following Terms and Conditions apply to bookings placed directly on the Rent EZ website. For bookings placed through the application, please refer to their advertised Terms and Conditions or your Rental." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label prefHeight="36.0" prefWidth="176.0" text="Policies" textFill="#6279ff">
+                           <font>
+                              <Font name="Arial Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <VBox>
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Vehicle Group/Model">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="84.0" prefWidth="1189.0" text="Rent EZ vehicles are classified into groups using the ACRISS codes. The group is indicated on the top right of the vehicle image and the description at the top left. Reservations are confirmed for a group and not a particular model unless shown otherwise. Rent EZ is unable to guarantee a particular make/model or fuel type unless a guaranteed model group has been booked. The vehicle shown on any documentation is for guidance only and may be substituted with an alternative, similar or upgraded vehicle at our discretion.Model groups described as &quot;or similar&quot; are not guaranteed. Model groups described as &quot;make / model guaranteed&quot; are guaranteed model groups." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="231.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Vehicle Condition">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="213.0" prefWidth="1189.0" text="Vehicles must be returned to the location/drop off point in the same condition as when it was picked up/delivered. It is the responsibility of the hirer to ensure that the vehicle is thoroughly checked prior to taking custody of the vehicle. If the hirer does not complete the vehicle check with either the app (for Drive &amp; Go and Key &amp; Go customers), or via the Vehicle Condition Form prior to leaving the rental premises, the hirer accepts the current condition of the vehicle within the Green Motion systems as valid.Whilst in charge of the vehicle the hirer accepts responsibility for maintaining the roadworthiness of the vehicle and agrees to take remedial action to avoid unnecessary cost/damage. This will include maintaining oil levels, tire pressures and other common sense actions to maintain the vehicle. Costs will generally be covered only if it’s authorised in advance from the rental branch.The hirer must return the vehicle in a clean condition (normal wear and tear excepted). If the vehicle is exceptionally dirty upon return or if there is damage to the seats, seat upholstery or the carpets, an additional charge for deep cleaning will apply. This charge will be dependent upon the actual state of the vehicle when returned.Any damage caused to the vehicle, if returned out of hours, is the responsibility of the hirer until the rental agents have checked in the vehicle.In keeping with industry standards and association guidelines, short term vehicle rental does not have a margin of fair wear and tear for damage. A short term rental is any hire for which the duration is less than 90 consecutive days. Any change to the condition of the vehicle during the rental will be the responsibility of the customer." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="161.0" prefHeight="85.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Accidents">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="68.0" prefWidth="1189.0" text="Failure to report accidents truthfully and in keeping with the rental terms and conditions will result in risk reduction packages being null and void. Failure to cooperate or providing false information in connection with a claim will result in the driver being liable for all claims costs.In the event that a customer is involved in an accident during the hire period, a replacement vehicle is not guaranteed" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="385.0">
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Fuel Policy">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="5.0" prefWidth="1189.0" text="Basic – Like for like" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="48.0" prefHeight="0.0" prefWidth="1189.0" text="Plus – Like for like" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="0.0" prefWidth="1189.0" text="Premium – Full to full " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="0.0" prefWidth="1189.0" text="Premium Plus – Full to full" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="85.0" prefWidth="1189.0" text="Rent EZ operates a fair Fuel Policy; hirers are requested to return the vehicle with the same level of fuel as was supplied at the time of collection.Missing fuel will be charged per litre (daily rate) and an additional charge of 300 MAD (Refuelling Fee).You may be required to leave a fuel deposit reserved on your credit card which will be released when you return the car with same amount of fuel. Missing fuel will be charged on your return. The price per litre charged by the rental agent may be higher than the price at the local service station. " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="474.0">
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Mileage Policy ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="5.0" prefWidth="1189.0" text="Basic – 150 km per day " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="48.0" prefHeight="0.0" prefWidth="1189.0" text="Plus – 300 km per day" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="0.0" prefWidth="1189.0" text="Premium – Unlimited km per day" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="0.0" prefWidth="1189.0" text="Premium Plus – Unlimited km per day" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="94.0" prefHeight="0.0" prefWidth="1189.0" text="If the hirer exceeds the kilometre allowance for their rental, a fee of 5 MAD per mile/kilometre will be charged." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="115.0" prefHeight="0.0" prefWidth="1189.0" text="In the event the multi products are not offered the standard product will offer unlimited mileage within Morocco." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="385.0" prefHeight="67.0" prefWidth="1171.0">
+                           <children>
+                              <Label prefHeight="14.0" prefWidth="172.0" text="Smoking Policy">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="79.0" prefWidth="1189.0" text="A strict no smoking policy is in place for all vehicles.  If you have smoked or allowed smoking within the vehicle, charges will apply.  This includes allowing cigarette (or cigar) smoke or ash into the vehicle, which would imply the above.  A minimum fee of 100 MAD will apply." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="811.0" prefHeight="120.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="212.0" text="Valeting/Animals in Vehicles">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="106.0" prefWidth="1189.0" text="No animals should be transported in our vehicle unless contained. A valeting fee may be applied to rectify any soiling due to animal transportation. A minimum fee of 600 MAD will apply." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="122.0" prefWidth="1211.0" text="In the event that a vehicle is returned in an unclean condition (internally or externally) and requires more than our standard clean, a valeting charge of 600 MAD will apply. Hazardous or excessive soiling requiring specialist cleaning will be charged according to the nature of the specialist required.  " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="46.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Delayed Collections/ No show policy">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="84.0" prefWidth="1189.0" text="Reservations will be held for 2.5 hours from the specified reservation time after which they will be classed as a no-show.  If the hirer arrives after this time or if the rental station closes in the interim, then a vehicle is not assured.  Rent EZ will do everything possible to provide a vehicle. This may include offering a different vehicle and rates may be different to the original booking. In the event of a no-show, the booking is non-refundable.Flight numbers provided are for informational purposes only. It is the responsibility of the hirer to inform the location of any delays." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="998.0" prefHeight="91.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Lost Keys">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="A charge will apply if keys are lost or damaged. Please note that if a vehicle is stolen and keys are not returned to the rental location, the hirer will be deemed negligent. Lost keys are deemed as negligence and are not covered under the insurance excess limitation or risk reduction packages. Hirers will be liable for all costs relating to recovery, loss of use and repair. This list is not exhaustive." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1103.0" prefHeight="67.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Lost Property">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="In the event that personal belongings are left in the vehicle or at the rental station, it must be reported at the earliest convenience to Rent EZ who will endeavour to find and return the item/s.  However, Rent EZ and its representatives will not be held liable for any loss or damage to belongings left in the hire car or within the rental premises." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1194.0" prefHeight="65.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Rental Extensions">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="It may not always be possible for the hiring branch to extend the rental. Where the branch agrees an extension, the rental will be charged at the prevailing rate which may be higher or lower than the original booking rate. " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1285.0" prefHeight="33.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Non-authorised rental extension">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="72.0" prefWidth="1182.0" text="If the hirer fails to return the vehicle within the specified time, a penalty charge of 3000 MAD will be applied and the hirer will be black listed (declined for future bookings)." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1261.0" prefHeight="31.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Early Returns/Unused Rental Days">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="41.0" prefWidth="1182.0" text="No refunds (partial or full) will be given for rentals ended early including the purchase of ancillary items, late collections, no shows or cancellations made after the rental start date." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1368.0" prefHeight="86.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Late Returns">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="51.0" prefWidth="1182.0" text="A vehicle is hired for a contracted period as detailed on the rental agreement. The return day and time as selected by the hirer at the time of booking will be enforced regardless of delayed pickup time. If the vehicle is returned outside the grace period, a surcharge will be applied. Charges will be withdrawn from the card provided for the security deposit." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="25.0" prefWidth="1182.0" text="Grace period: 1 hour" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1433.0" prefHeight="65.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Amendments">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="Reservation amendments must be requested in writing via email at least 24 hours prior to the start of your rental. Please note that telephone amendments will not be accepted. An amendment request is not assured and amendments may be treated as a new booking." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1498.0" prefHeight="65.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="318.0" text="Fines, Penalties and Administration Charges">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="It is the responsibility of each hirer to cover the cost of any parking fines and traffic violations. When fines or traffic violations occur and a Green Motion location is involved in administering the charge, then an administration fee will be charged to the hirer." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1563.0" prefHeight="13.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Vehicle Trackers">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="Some of the vehicles contain tracking devices which will be used in accordance with our data protection policy." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="1628.0" prefHeight="88.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Complaints">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="All complaints should be made in writing through the Online Contact Form found on www.greenmotion.com/contact within 30 days from the last day of your rental. Whilst Green Motions does try to resolve all cases brought to our attention, those raised after this period may not be considered. If at any point during the investigation process communication ceases for a period of more than 30 days, the case will be considered closed and no further action will be taken." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="336.0" prefWidth="1189.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="36.0" prefWidth="299.0" text="Cancellation Policy" textFill="#6279ff">
+                           <font>
+                              <Font name="Arial Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="19.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="Cancellation Policy">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text=" All cancellations must be made in writing or cancelled through your account on the Green Motion website. Please note that telephone cancellations will not be accepted." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="46.0" prefHeight="9.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="285.0" text="Cancellation Policy for Basic Package">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="Non-refundable " wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="128.0" prefHeight="153.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="385.0" text="Cancellation Policy for Plus and Premium Packages">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="10.0" prefWidth="1182.0" text="Cancellation notification sent 7 or more days before the start date: the prepaid amount will be refunded minus the cancellation admin fee." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="10.0" prefWidth="1182.0" text="Cancellation notification sent 3-6 days before the start date: 50% of the prepaid amount will be refunded." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="52.0" prefHeight="10.0" prefWidth="1182.0" text="Cancellation notification sent 2 days before the start date: 25% of the prepaid amount will be refunded." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="73.0" prefHeight="10.0" prefWidth="1182.0" text="Cancellation notification sent 0-1 days before the start date: no refund due." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="94.0" prefHeight="10.0" prefWidth="1182.0" text="All prepaid reservations will be subject to a minimum cancellation fee." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="115.0" prefHeight="10.0" prefWidth="1182.0" text="For any bookings where the prepaid amount is less than the minimum cancellation fee, there will be no refund due regardless of when the cancellation request was made." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="136.0" prefHeight="10.0" prefWidth="1182.0" text="*Cancellation fee depends on the currency utilised to place the booking : £15 (GBP) / $15 (USD) / $15 (AUD) / €15 (EUR)" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="156.0" prefHeight="34.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="361.0" text="Cancellation Policy for Premium Plus Package">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="Free Cancellation until 48 hours of the reservation start time. Cancellations made less than 48 hours from the start time would be non-refundable." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="298.0" prefHeight="34.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="361.0" text="Cancellation Policy for Pay on Arrival Bookings">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="For pay on arrival reservations, the no-show / cancellation fee will equal the pre-paid amount and no refund will be due." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="1846.0" prefHeight="556.0" prefWidth="1189.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="36.0" prefWidth="299.0" text="Terms of Use" textFill="#6279ff">
+                           <font>
+                              <Font name="Arial Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="358.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="268.0" text="General Terms">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="39.0" prefWidth="1182.0" text="All bookings are subject to our terms and conditions." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="40.0" prefWidth="1182.0" text="Rent EZ Limited cannot accept liability for any charges incurred on documentation signed for and accepted locally." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="73.0" prefWidth="1182.0" text="Rent EZ Limited will not be held responsible for anyone driving under the influence of alcohol or drugs causing wilful damage, off road driving or driving without due care and attention. The hirer will accept responsibility in respect of such claims. This list is not exclusive." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="60.0" prefWidth="1182.0" text="When comprehensive insurance is taken out it is to provide the hirer with entitlement to drive and covers the vehicle in the event of an accident. In the case where the hirer is found negligent Green Motion Limited and its locations reserve the right to pursue the hirer for the recovery of all losses incurred." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="32.0" prefWidth="1182.0" text="Calls to Rent EZ may be recorded." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="51.0" prefWidth="1182.0" text="Rent EZ reserve the right to cancel a rental and refuse the service at any time." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="47.0" prefWidth="1182.0" text="Rent EZ reserves the right to cancel any bookings that were placed due to a technical error, affecting either the price, and / or booking inclusions. In these cases, customers will be notified and a full refund will be issued to the customer." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="156.0" prefHeight="64.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="361.0" text="Green Heart Donation">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="If you have elected to make a charitable donation to the Green Heart Fund during the booking process, please note that in the event of a cancellation of your booking this donation is non-refundable." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="298.0" prefHeight="120.0" prefWidth="1189.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="361.0" text="Promotions ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="95.0" prefWidth="1182.0" text="Any promotional codes used at the time of booking are applied and therefore included within the displayed price. Any terms associated with the promotions must be adhered to at the time of collection." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="31.0" prefHeight="95.0" prefWidth="1182.0" text="Terms and Conditions Issued June 2023 and may be subject to change at any time." wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
