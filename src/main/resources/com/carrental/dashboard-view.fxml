@@ -25,11 +25,11 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Label>
-      <HBox prefHeight="39.0" prefWidth="1250.0">
+      <HBox prefHeight="51.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF;" text="Generate report" textFill="WHITE">
+            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Generate report" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="1042.0" />
+                  <Insets left="1115.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -70,7 +70,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label prefHeight="44.0" prefWidth="62.0" text="+5,3%" textFill="#00c427">
+                                          <Label prefHeight="44.0" prefWidth="52.0" text="+5,3%" textFill="#00c427">
                                              <font>
                                                 <Font name="System Bold" size="16.0" />
                                              </font>
@@ -113,7 +113,7 @@
                                           <Insets left="30.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="countCust2" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
+                                    <Label fx:id="countRented" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
                                           <Font name="System Bold" size="30.0" />
                                        </font>
@@ -195,7 +195,7 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="44.0" prefWidth="54.0" text="+5,3%" textFill="#00c427">
+                                                <Label prefHeight="44.0" prefWidth="52.0" text="+5,3%" textFill="#00c427">
                                                    <font>
                                                       <Font name="System Bold" size="16.0" />
                                                    </font>
@@ -293,9 +293,9 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="331.0" prefWidth="703.0">
+            <VBox prefHeight="331.0" prefWidth="703.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                <children>
-                  <BarChart fx:id="barChart">
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="310.0" prefWidth="622.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -304,6 +304,9 @@
                     </yAxis>
                   </BarChart>
                </children>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
@@ -329,7 +332,7 @@
                               <Font name="Arial Italic" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="656.0" text="72600">
+                        <Label fx:id="revCur" alignment="CENTER" prefHeight="60.0" prefWidth="656.0" text="72600">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -348,7 +351,7 @@
                               <Font name="System Italic" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="595.0" text="73200">
+                        <Label fx:id="revPrev" alignment="CENTER" prefHeight="60.0" prefWidth="595.0" text="73200">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
