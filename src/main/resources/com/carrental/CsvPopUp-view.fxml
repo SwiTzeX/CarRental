@@ -23,7 +23,7 @@
                   <Insets />
                </VBox.margin>
             </ImageView>
-            <Label text="Success !" textAlignment="CENTER" textFill="#18a06d">
+            <Label text="Success !" textAlignment="CENTER" textFill="#57bf72">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -52,7 +52,7 @@
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
       </VBox>
-      <Button id="CsvOkButton" fx:id="CsvOkButton" mnemonicParsing="false" onAction="#onClickCsvOk" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #18a06d; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
+      <Button id="CsvOkButton" fx:id="CsvOkButton" mnemonicParsing="false" onAction="#onClickCsvOk" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #57BF72; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

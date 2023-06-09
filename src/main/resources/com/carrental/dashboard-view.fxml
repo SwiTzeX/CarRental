@@ -333,10 +333,10 @@
                <children>
                   <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis side="LEFT" tickLabelFill="#6279ff" />
                     </yAxis>
                   </BarChart>
                </children>
@@ -398,10 +398,10 @@
             </HBox>
             <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="266.0" prefWidth="1190.0" style="-fx-border-color: E1E1E1;" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis side="LEFT" tickLabelFill="#6279ff" />
                </yAxis>
                <padding>
                   <Insets top="10.0" />
