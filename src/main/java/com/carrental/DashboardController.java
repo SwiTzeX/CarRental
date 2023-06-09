@@ -24,6 +24,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -41,6 +42,14 @@ public class DashboardController implements Initializable {
     Label revCur;
     @FXML
     Label revPrev;
+    @FXML
+    private Label growthCars;
+    @FXML
+    private Label growthRent;
+    @FXML
+    private Label growthRev;
+    @FXML
+    private Label growthUser;
     @FXML
     static VBox dashvbox;
     @FXML
@@ -63,6 +72,12 @@ public class DashboardController implements Initializable {
         getCountTotalSales();
         getRented();
         iniBarChart();
+        getRevCur();
+        getRevPrev();
+        growthRented();
+        growthRevenue();
+        growthCars();
+        growthUsers();
     }
     @FXML
     static Stage csvpopupStage = new Stage();
@@ -129,14 +144,36 @@ public class DashboardController implements Initializable {
         int countR = Reservation.getAllEndedReservations().size();
         countRented.setText(String.valueOf(countR));
     }
+    private static int getPreviousYear() {
+        Calendar prevYear = Calendar.getInstance();
+        prevYear.add(Calendar.YEAR, -1);
+        return prevYear.get(Calendar.YEAR);
+    }
     public void getRevPrev(){
-        //int revP;
-        //revPrev.setText(String.valueOf(revP));
+        float revP=Reservation.totalSaleInYear(getPreviousYear());
+        revPrev.setText(String.valueOf(revP));
     }
     public void getRevCur(){
-        //int revC
-        //revCur.setText(String.valueOf(revC));
+        float revC=Reservation.totalSaleInYear(Calendar.getInstance().get(Calendar.YEAR));
+        revCur.setText(String.valueOf(revC));
     }
+    public void growthRevenue(){
+        float g = Reservation.getGrowth();
+        growthRev.setText(String.valueOf(g));
+    }
+    public void growthUsers(){
+        float g = User.getGrowth();
+        growthUser.setText(String.valueOf(g));
+    }
+    public void growthRented(){
+        float g = Reservation.getGrowth();
+        growthRent.setText(String.valueOf(g));
+    }
+    public void growthCars(){
+        //float g;
+        //growthCars.setText(String.valueOf(g));
+    }
+
     @FXML
     public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
