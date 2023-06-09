@@ -11,13 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.SearchController">
+<?import com.carrental.customnodes.MyTextField?>
+<?import com.carrental.customnodes.MyDatePicker?>
+<?import com.carrental.customnodes.MyTimePicker?>
+<AnchorPane fx:id="mainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.SearchController">
    <children>
       <VBox alignment="CENTER" layoutX="493.0" layoutY="151.0" prefHeight="444.0" prefWidth="414.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
          <children>
-            <VBox alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="398.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="98.0" prefWidth="225.0">
                <children>
-                  <ImageView fitHeight="98.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="98.0" fitWidth="474.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@logo/iPhone%2014-%201.png" />
                      </image>
@@ -36,7 +39,7 @@
                               <Image url="@icons/loc.png" />
                            </image>
                         </ImageView>
-                        <TextField prefHeight="25.0" prefWidth="341.0" />
+                        <MyTextField fx:id="locationId" prefHeight="25.0" prefWidth="341.0" promptText="Pick-up Location"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="398.0" spacing="10.0">
@@ -50,7 +53,7 @@
                                           <Image url="@icons/calendar.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField />
+                                    <MyDatePicker fx:id="pickupDateId" promptText="Pick-up Date"/>
                                  </children>
                               </HBox>
                            </children>
@@ -65,7 +68,7 @@
                                           <Image url="@icons/stopwatch.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField />
+                                    <MyTimePicker fx:id="pickupTimeId" promptText="Pick-up Time"/>
                                  </children>
                               </HBox>
                            </children>
@@ -83,7 +86,7 @@
                                           <Image url="@icons/calendar.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField />
+                                    <MyDatePicker fx:id="returnDateId" promptText="Return Date"/>
                                  </children>
                               </HBox>
                            </children>
@@ -98,14 +101,14 @@
                                           <Image url="@icons/stopwatch.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField />
+                                    <MyTimePicker fx:id="returnTimeId" promptText="Return Time"/>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="367.0" style="-fx-background-color: #6279ff; -fx-background-radius: 10;" text="SEARCH" textFill="WHITE">
+                  <Button fx:id="searchButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="367.0" style="-fx-background-color: #6279ff; -fx-background-radius: 10;" text="SEARCH" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
