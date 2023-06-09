@@ -52,22 +52,22 @@
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets left="30.0" top="5.0" />
+                                          <Insets top="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="countCust" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
+                                    <Label fx:id="countCust" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
                                           <Font name="System Bold" size="30.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets right="35.0" />
+                                          <Insets />
                                        </VBox.margin>
                                     </Label>
                                     <HBox prefHeight="55.0" prefWidth="190.0">
                                        <children>
                                           <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <HBox.margin>
-                                                <Insets left="10.0" top="14.0" />
+                                                <Insets top="14.0" />
                                              </HBox.margin>
                                              <image>
                                                 <Image url="@icons/dashboard-pack/up.png" />
@@ -109,6 +109,9 @@
                                  </children>
                               </VBox>
                            </children>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="152.0" prefWidth="223.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                            <children>
