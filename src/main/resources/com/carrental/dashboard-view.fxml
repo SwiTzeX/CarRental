@@ -25,7 +25,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Label>
-      <HBox prefHeight="51.0" prefWidth="1250.0">
+      <HBox prefHeight="49.0" prefWidth="1250.0">
          <children>
             <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Generate report" textFill="WHITE">
                <HBox.margin>
@@ -34,11 +34,11 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="314.0" prefWidth="1250.0">
+      <HBox prefHeight="330.0" prefWidth="1250.0">
          <children>
             <VBox prefHeight="310.0" prefWidth="490.0">
                <children>
-                  <HBox prefHeight="139.0" prefWidth="470.0" spacing="20.0">
+                  <HBox prefHeight="154.0" prefWidth="460.0" spacing="20.0">
                      <VBox.margin>
                         <Insets bottom="20.0" left="30.0" />
                      </VBox.margin>
@@ -47,12 +47,12 @@
                            <children>
                               <VBox prefHeight="150.0" prefWidth="259.0">
                                  <children>
-                                    <Label prefHeight="39.0" prefWidth="125.0" text="Customers" textFill="#6279ff">
+                                    <Label prefHeight="50.0" prefWidth="118.0" text="Customers" textFill="#6279ff">
                                        <font>
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets left="30.0" top="10.0" />
+                                          <Insets left="30.0" top="5.0" />
                                        </VBox.margin>
                                     </Label>
                                     <Label fx:id="countCust" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
@@ -63,33 +63,39 @@
                                           <Insets right="35.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <HBox prefHeight="44.0" prefWidth="187.0">
+                                    <HBox prefHeight="55.0" prefWidth="190.0">
                                        <children>
-                                          <ImageView fitHeight="44.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <HBox.margin>
-                                                <Insets />
+                                                <Insets left="5.0" top="14.0" />
                                              </HBox.margin>
+                                             <image>
+                                                <Image url="@icons/dashboard-pack/up.png" />
+                                             </image>
                                           </ImageView>
-                                          <Label prefHeight="44.0" prefWidth="52.0" text="+5,3%" textFill="#00c427">
+                                          <Label prefHeight="45.0" prefWidth="40.0" text="+5,3%" textFill="#57bf72">
                                              <font>
-                                                <Font name="System Bold" size="16.0" />
+                                                <Font name="System Bold" size="12.0" />
                                              </font>
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
                                           </Label>
-                                          <Label prefHeight="44.0" prefWidth="104.0" text="Since last month" />
+                                          <Label prefHeight="44.0" prefWidth="104.0" text="Since last month">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font></Label>
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="136.0" prefWidth="98.0">
+                              <VBox prefHeight="137.0" prefWidth="105.0">
                                  <children>
-                                    <Pane prefHeight="126.0" prefWidth="35.0" style="-fx-background-color: soft blue;">
+                                    <Pane prefHeight="34.0" prefWidth="16.0" style="-fx-background-color: soft blue;">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@icons/icon-pack/users%20(1).png" />
+                                                <Image url="@icons/dashboard-pack/users-alt.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -105,12 +111,12 @@
                            <children>
                               <VBox prefHeight="150.0" prefWidth="259.0">
                                  <children>
-                                    <Label prefHeight="39.0" prefWidth="125.0" text="Rented" textFill="#6279ff">
+                                    <Label prefHeight="50.0" prefWidth="125.0" text="Rented" textFill="#6279ff">
                                        <font>
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets left="30.0" top="10.0" />
+                                          <Insets left="30.0" top="5.0" />
                                        </VBox.margin>
                                     </Label>
                                     <Label fx:id="countRented" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
@@ -121,33 +127,39 @@
                                           <Insets right="35.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <HBox prefHeight="44.0" prefWidth="187.0">
+                                    <HBox prefHeight="55.0" prefWidth="188.0">
                                        <children>
-                                          <ImageView fitHeight="44.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@icons/dashboard-pack/up.png" />
+                                             </image>
                                              <HBox.margin>
-                                                <Insets />
+                                                <Insets left="5.0" top="14.0" />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label prefHeight="44.0" prefWidth="51.0" text="+5,3%" textFill="#00c427">
+                                          <Label prefHeight="45.0" prefWidth="40.0" text="+5,3%" textFill="#57bf72">
                                              <font>
-                                                <Font name="System Bold" size="16.0" />
+                                                <Font name="System Bold" size="12.0" />
                                              </font>
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
                                           </Label>
-                                          <Label prefHeight="44.0" prefWidth="104.0" text="Since last month" />
+                                          <Label prefHeight="44.0" prefWidth="104.0" text="Since last month">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font></Label>
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="136.0" prefWidth="103.0">
+                              <VBox prefHeight="137.0" prefWidth="105.0">
                                  <children>
                                     <Pane prefHeight="127.0" prefWidth="63.0" style="-fx-background-color: soft blue;">
                                        <children>
                                           <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@icons/icon-pack/users%20(1).png" />
+                                                <Image url="@icons/dashboard-pack/car.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -161,16 +173,16 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="153.0" prefWidth="408.0">
+                  <HBox prefHeight="154.0" prefWidth="460.0">
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
                      <children>
-                        <HBox prefHeight="152.0" prefWidth="472.0" spacing="20.0">
+                        <HBox prefHeight="143.0" prefWidth="460.0" spacing="20.0">
                            <children>
                               <HBox prefHeight="152.0" prefWidth="223.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                                  <children>
-                                    <VBox prefHeight="150.0" prefWidth="209.0">
+                                    <VBox prefHeight="149.0" prefWidth="187.0">
                                        <children>
                                           <Label prefHeight="34.0" prefWidth="134.0" text="Cars available" textFill="#6279ff">
                                              <font>
@@ -188,33 +200,39 @@
                                                 <Insets right="35.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <HBox prefHeight="44.0" prefWidth="180.0">
+                                          <HBox prefHeight="50.0" prefWidth="180.0">
                                              <children>
-                                                <ImageView fitHeight="44.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@icons/dashboard-pack/up.png" />
+                                                   </image>
                                                    <HBox.margin>
-                                                      <Insets />
+                                                      <Insets left="5.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="44.0" prefWidth="52.0" text="+5,3%" textFill="#00c427">
+                                                <Label prefHeight="45.0" prefWidth="40.0" text="+5,3%" textFill="#57bf72">
                                                    <font>
-                                                      <Font name="System Bold" size="16.0" />
+                                                      <Font name="System Bold" size="12.0" />
                                                    </font>
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label prefHeight="44.0" prefWidth="104.0" text="Since last month" />
+                                                <Label prefHeight="44.0" prefWidth="104.0" text="Since last month">
+                                                   <font>
+                                                      <Font size="10.0" />
+                                                   </font></Label>
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="150.0" prefWidth="46.0">
+                                    <VBox prefHeight="137.0" prefWidth="30.0">
                                        <children>
-                                          <Pane prefHeight="141.0" prefWidth="35.0" style="-fx-background-color: soft blue;">
+                                          <Pane prefHeight="127.0" prefWidth="22.0" style="-fx-background-color: soft blue;">
                                              <children>
                                                 <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@icons/icon-pack/users%20(1).png" />
+                                                      <Image url="@icons/dashboard-pack/cars.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -226,7 +244,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="152.0" prefWidth="223.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
+                              <HBox prefHeight="147.0" prefWidth="223.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                                  <children>
                                     <VBox prefHeight="150.0" prefWidth="259.0">
                                        <children>
@@ -246,33 +264,39 @@
                                                 <Insets right="35.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <HBox prefHeight="44.0" prefWidth="187.0">
+                                          <HBox prefHeight="50.0" prefWidth="190.0">
                                              <children>
-                                                <ImageView fitHeight="44.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@icons/dashboard-pack/down.png" />
+                                                   </image>
                                                    <HBox.margin>
-                                                      <Insets />
+                                                      <Insets left="5.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label prefHeight="44.0" prefWidth="54.0" text="+5,3%" textFill="#00c427">
+                                                <Label prefHeight="45.0" prefWidth="40.0" text="+5,3%" textFill="#d53131">
                                                    <font>
-                                                      <Font name="System Bold" size="16.0" />
+                                                      <Font name="System Bold" size="12.0" />
                                                    </font>
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label prefHeight="44.0" prefWidth="104.0" text="Since last month" />
+                                                <Label prefHeight="44.0" prefWidth="104.0" text="Since last month">
+                                                   <font>
+                                                      <Font size="10.0" />
+                                                   </font></Label>
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="150.0" prefWidth="97.0">
+                                    <VBox prefHeight="137.0" prefWidth="105.0">
                                        <children>
                                           <Pane prefHeight="140.0" prefWidth="58.0" style="-fx-background-color: soft blue;">
                                              <children>
                                                 <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@icons/icon-pack/users%20(1).png" />
+                                                      <Image url="@icons/dashboard-pack/coins.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
@@ -295,7 +319,7 @@
             </VBox>
             <VBox prefHeight="331.0" prefWidth="703.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                <children>
-                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="310.0" prefWidth="622.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
