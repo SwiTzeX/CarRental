@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -44,14 +45,20 @@ public class DashboardController implements Initializable {
     @FXML
     final NumberAxis yAxis = new NumberAxis();
     @FXML
+    final NumberAxis xAx = new NumberAxis();
+    @FXML
+    final NumberAxis yAx = new NumberAxis();
+    @FXML
     private LineChart<Number, Number> lineChart = new LineChart<>(xAxis,yAxis);
+    @FXML
+    private BarChart<Number, Number> barChart=new BarChart<>(xAx,yAx);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniLineChart();
         getCountCust();
         getCountCars();
         getCountTotalSales();
-
+        iniBarChart();
     }
     @FXML
     static Stage csvpopupStage = new Stage();
@@ -78,6 +85,27 @@ public class DashboardController implements Initializable {
         for(XYChart.Data<Number,Number> data : series.getData()){
             data.setNode(null);
         }
+    }
+
+    public void iniBarChart(){
+        xAx.setLabel("Brand");
+        yAx.setLabel("Value");
+        XYChart.Series<Number,Number> series = new XYChart.Series();
+        series.getData().add(new XYChart.Data("January",Reservation.totalSaleInMonth(1)));
+        series.getData().add(new XYChart.Data("February",Reservation.totalSaleInMonth(2)));
+        series.getData().add(new XYChart.Data("March",Reservation.totalSaleInMonth(3)));
+        series.getData().add(new XYChart.Data("April",Reservation.totalSaleInMonth(4)));
+        series.getData().add(new XYChart.Data("May",Reservation.totalSaleInMonth(5)));
+        series.getData().add(new XYChart.Data("June",Reservation.totalSaleInMonth(6)));
+        series.getData().add(new XYChart.Data("July",Reservation.totalSaleInMonth(7)));
+        series.getData().add(new XYChart.Data("August",Reservation.totalSaleInMonth(8)));
+        series.getData().add(new XYChart.Data("September",Reservation.totalSaleInMonth(9)));
+        series.getData().add(new XYChart.Data("October",Reservation.totalSaleInMonth(10)));
+        series.getData().add(new XYChart.Data("November",Reservation.totalSaleInMonth(11)));
+        series.getData().add(new XYChart.Data("December",Reservation.totalSaleInMonth(12)));
+        barChart.getData().addAll(series);
+        barChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
+        series.getNode().setStyle("-fx-stroke:#6279FF");
     }
 
     public void getCountCust() {
