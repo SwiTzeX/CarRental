@@ -265,12 +265,12 @@
                                                 <Insets left="30.0" top="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label fx:id="countTotalSales" alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="220.0" text="5" textAlignment="RIGHT" textFill="#353535">
+                                          <Label fx:id="countTotalSales" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="186.0" text="5" textAlignment="RIGHT" textFill="#353535">
                                              <font>
                                                 <Font name="System Bold" size="30.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets right="35.0" />
+                                                <Insets right="20.0" />
                                              </VBox.margin>
                                           </Label>
                                           <HBox prefHeight="50.0" prefWidth="190.0">
@@ -291,7 +291,7 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label prefHeight="47.0" prefWidth="104.0" text="Since last month">
+                                                <Label prefHeight="47.0" prefWidth="90.0" text="Since last month">
                                                    <font>
                                                       <Font size="10.0" />
                                                    </font>
@@ -363,7 +363,7 @@
                <children>
                   <VBox prefHeight="64.0" prefWidth="590.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="590.0" text="Current week" textFill="#6279ff">
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="590.0" text="Current year" textFill="#6279ff">
                            <font>
                               <Font name="Arial Italic" size="12.0" />
                            </font>
@@ -382,7 +382,7 @@
                   </Separator>
                   <VBox prefHeight="64.0" prefWidth="590.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="590.0" text="Previous week" textFill="#6279ff">
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="590.0" text="Previous year" textFill="#6279ff">
                            <font>
                               <Font name="System Italic" size="12.0" />
                            </font>
