@@ -1,33 +1,22 @@
 package com.carrental;
 
 import com.carrental.customnodes.MyTextField;
-import com.carrental.models.Reservation;
-import com.carrental.models.User;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.*;
 
 
@@ -180,7 +169,8 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),64,64,true,true));
+        Platform.runLater(() -> cardLayout.requestFocus());
+        locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),24,24,true,true));
        /* Date test1 = new Date(2023-1900, Calendar.MAY,16);
         Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
                 new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
@@ -188,7 +178,6 @@ public class HomeController implements Initializable {
         User user = User.create("sssdgds@ssss",null,false,null,null,null,false);
         previousPageButton.setVisible(false);
         nextPageButton.setVisible(false);
-        Platform.runLater(() -> cardLayout.requestFocus());
         //vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
         //*/
         //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
@@ -214,7 +203,7 @@ public class HomeController implements Initializable {
                //datePicker.show();
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
                 try{
-                    Date date = format.parse(pickupDateTF.getText());
+                    format.parse(pickupDateTF.getText());
                     pickupDateTF.hideError();
                 } catch (ParseException e) {
                     pickupDateTF.showError("(Valid date: 10-12-2023)");
@@ -226,7 +215,7 @@ public class HomeController implements Initializable {
                 //datePicker.show();
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
                 try{
-                    Date date = format.parse(returnDateTF.getText());
+                    format.parse(returnDateTF.getText());
                     returnDateTF.hideError();
                 } catch (ParseException e) {
                     returnDateTF.showError("(Valid date: 10-12-2023)");
@@ -288,7 +277,7 @@ public class HomeController implements Initializable {
                 }
         );
 
-        for(String brand:Vehicle.getAllBrandsFromAvailableVehicles(vehicles)) {
+        for(String brand:Vehicle.getAllBrandsAvailable(vehicles)) {
             brandsDropList.getItems().add(brand);
         }
         gearDropList.getItems().addAll("Manual","Automated");

@@ -354,7 +354,7 @@ public class Vehicle {
         this.trunkCapacity = trunkCapacity;
     }
 
-    public static ArrayList<String> getAllBrandsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+    public static ArrayList<String> getAllBrandsAvailable(ArrayList<Vehicle> vehicles) {
         ArrayList<String> brands =new ArrayList<String>();
         for(Vehicle vehicle:vehicles){
             if (!brands.contains(vehicle.getBrandName())) {
@@ -363,7 +363,7 @@ public class Vehicle {
         }
         return brands;
     }
-    public static ArrayList<String> getAllColorsFromAvailableVehicles(ArrayList<Vehicle> vehicles) {
+    public static ArrayList<String> getAllColorsAvailable(ArrayList<Vehicle> vehicles) {
         ArrayList<String> colors =new ArrayList<String>();
         for(Vehicle vehicle:vehicles){
             if (!colors.contains(vehicle.getColor())) {
@@ -444,7 +444,7 @@ public class Vehicle {
             String req = "INSERT INTO Vehicles VALUES(null,'" + modelName + "','" + color
                     + "'," + disponibility + ",'" + brandName + "'," + vehicleState + "," + price
                     + ",'" + type + "'," + passengers + ",'" + fuelType + "','" +gearType
-                    + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower + ")";
+                    + "'," + deposit + "," + trunkCapacity + "," + maxSpeed + "," + horsePower +",'"+plate+"')";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;
@@ -546,7 +546,6 @@ public class Vehicle {
                 }
                 req +=")";
             }
-            System.out.println(req);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
@@ -613,6 +612,42 @@ public class Vehicle {
         }
         return listIdVehicle;
     }
+    public static float getRevenueOfBrand(String brand){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT SUM(price*DATEDIFF(endDate,startDate)) FROM Reservations NATURAL JOIN Vehicles WHERE brandName = '" + brand+"'" ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+    public boolean delete() {
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            for(Reservation reservation:this.getReservations()){
+                reservation.delete();
+            }
+            String req = "DELETE FROM Vehicles WHERE idV=" + this.getId();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+
+            return rs > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Reservation> getReservations(){
+        return Reservation.getVehicleReservations(this);
+    }
+
     @Override
     public String toString() {
         return "Vehicle{" +

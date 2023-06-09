@@ -359,32 +359,21 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 '}';
     }
-    public static User createUser(String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin, Date creationDate) {
+    public static float getGrowth(){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "INSERT INTO Users (nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, nId);
-            stmt.setString(2, email);
-            stmt.setString(3, phoneNumber);
-            stmt.setBoolean(4, status);
-            stmt.setInt(5, age);
-            stmt.setString(6, fullName);
-            stmt.setString(7, password);
-            stmt.setBoolean(8, isAdmin);
-            stmt.setDate(9, new java.sql.Date(creationDate.getTime()));
-            stmt.executeUpdate();
-
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                int id = rs.getInt(1);
-                return new User(id, nId, email, phoneNumber, status, age, fullName, password, isAdmin, creationDate);
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Users WHERE status > 0 AND MONTH(creationDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Users WHERE status = 2 AND MONTH(creationDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(creationDate) < MONTH(CURRENT_DATE())) AS prev;\n";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return 0;
     }
 
     public static ArrayList<Integer> getAllUsersId(){
