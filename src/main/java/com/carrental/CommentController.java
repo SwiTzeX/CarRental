@@ -59,6 +59,11 @@ public class CommentController {
         else if(numStars == 3) threeStars();
         else if(numStars == 2) twoStars();
         else if(numStars == 1) oneStar();
+        if(App.getUser().isAdmin){
+            choiceMenu.setVisible(true);
+        }else{
+            choiceMenu.setVisible(false);
+        }
     }
 
     public void fiveStars() {
