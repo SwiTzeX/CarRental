@@ -293,7 +293,7 @@ public class User {
             Date date = new Date();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
             String currentDateTime = format.format(date);
-            String req = "INSERT INTO Users VALUES(null,'" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + "," +age + ", '" + fullName+ "', '" + password + "', '" +currentDateTime + "', " + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null, '" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + ", " + (age != null ? age : "NULL") + ", '" + fullName + "', '" + password + "', '" + currentDateTime + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             int id=-1;

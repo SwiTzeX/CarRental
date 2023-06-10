@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.util.regex.Pattern;
 import java.io.IOException;
 import java.net.URL;
@@ -115,6 +117,7 @@ public class UsersController implements Initializable {
             GridPane grid = new GridPane();
             TextField nIdField = new TextField();
             TextField emailField = new TextField();
+            TextField agefield = new TextField();
             TextField phoneField = new TextField();
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
@@ -127,8 +130,10 @@ public class UsersController implements Initializable {
             grid.add(phoneField, 1, 3);
             grid.add(new Label("Full Name"), 0, 4);
             grid.add(fullnameField, 1, 4);
-            grid.add(new Label("Password"), 0, 5);
-            grid.add(passwordField, 1, 5);
+            grid.add(new Label("Age"), 0, 5);
+            grid.add(agefield, 1, 5);
+            grid.add(new Label("Password"), 0, 6);
+            grid.add(passwordField, 1, 6);
             dialog.getDialogPane().setContent(grid);
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == buttonTypeOk) {
@@ -136,16 +141,23 @@ public class UsersController implements Initializable {
                         String newNId = NIDField.getText();
                         String newEmail = emailField.getText();
                         String newPhone = phoneField.getText();
+                        String newAge = agefield.getText();
                         String newFullName = fullnameField.getText();
                         String newPassword = passwordField.getText();
-                        // Vérifier si l'ID, le NID ou le numéro existent déjà
-                        boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
-                        boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
-                        String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
-                        boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
-                        // Vérifier si le numéro de téléphone est au format valide
-                        String phoneRegex = "^06\\d{8}$";
-                        boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
+                        if (Integer.parseInt(newAge) < 18) {
+                            showAlert("Error", "Age must be 18 or above.");
+                        } else {
+                            // Vérifier si l'ID, le NID ou le numéro existent déjà
+
+                            boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
+                            boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
+                            String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
+                            boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
+
+                            // Vérifier si le numéro de téléphone est au format valide
+                            String phoneRegex = "^(06|07|05)\\d{8}$";
+                            boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
+
                             // Vérifier si l'e-mail est au format valide
                             if (!isEmailValid) {
                                 // Afficher un message d'erreur si l'e-mail n'est pas au format valide
@@ -155,8 +167,11 @@ public class UsersController implements Initializable {
                                 showAlert("Error", "Invalid phone number format. Please enter a valid phone number starting with '06' and having 10 digits.");
                             } else {
                                 // Créer le nouvel utilisateur
-                                User newUser = User.create(newNId, newEmail, newPhone, null, newFullName, newPassword);
-                                //User newUser = User.create()
+                                Integer age = null;
+                                if (!newAge.isEmpty()) {
+                                    age = Integer.parseInt(newAge);
+                                }
+                                User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword);
                                 if (newUser != null) {
                                     // Ajouter le nouvel utilisateur à la liste des utilisateurs
                                     userList.add(newUser);
@@ -167,6 +182,7 @@ public class UsersController implements Initializable {
                                     showAlert("Error", "Failed to create user. Please check the input fields.");
                                 }
                             }
+                        }
                     } catch (NumberFormatException e) {
                         // Gérer l'erreur si l'ID n'est pas un nombre valide
                         showAlert("Error", "Invalid ID. Please enter a valid number.");
