@@ -9,8 +9,11 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CsvPopUpController{
+public class CsvPopUpController implements Initializable{
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
     @FXML
     private Button CsvOkButton;
     @FXML
