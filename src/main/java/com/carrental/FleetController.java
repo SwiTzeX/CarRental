@@ -103,7 +103,13 @@ public class FleetController implements Initializable {
             TextField brandnameField = new TextField();
             TextField modelnameField = new TextField();
             TextField colorField = new TextField();
-            CheckBox disponibilityField = new CheckBox();
+            //CheckBox disponibilityField = new CheckBox();
+            ComboBox<String> disponibilityField = new ComboBox<String>();
+            disponibilityField.setPromptText("Disponibility");
+            ObservableList<String> availabilitylist = disponibilityField.getItems();
+            availabilitylist.add("Available");
+            availabilitylist.add("Not Available");
+
             TextField vehiculestateField = new TextField();
             TextField priceField = new TextField();
             TextField typeField = new TextField();
@@ -187,7 +193,7 @@ public class FleetController implements Initializable {
                         String newBrandname = brandnameField.getText();
                         String newModelname = modelnameField.getText();
                         String newColor = colorField.getText();
-                        boolean newDisponibility = disponibilityField.isSelected();
+                        //String newDisponibility = disponibilityField.getValue();
                         float newPrice = 0;
                         try {
                             newPrice = Float.parseFloat(priceField.getText());
@@ -196,6 +202,13 @@ public class FleetController implements Initializable {
                             showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
                             return null;
                         }
+                        String newDisponibility = disponibilityField.getValue();
+                        Boolean Disponibilty = null;
+                        if(newDisponibility.equals("Not Available")){
+                            Disponibilty = false;}
+                        else if(newDisponibility.equals("Available")){
+                            Disponibilty = true;}
+
 
                         String newType = typeField.getText();
                         int newPassengers = Integer.parseInt(passengersField.getText());
@@ -268,10 +281,10 @@ public class FleetController implements Initializable {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
                             } else {
-                                Vehicle newVehicule = Vehicle.create(newBrandname, newModelname, newColor, newDisponibility, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
-
-                                if (newVehicule != null) {
-                                    vehicleList.add(newVehicule);
+                                Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
+                                Vehicle vehic = new Vehicle(newBrandname,newModelname,newPrice,newPlate,newDisponibility);
+                                if (vehic != null) {
+                                    vehicleList.add(vehic);
                                     tableid.setItems(vehicleList);
                                 } else {
                                     showAlert("Error", "Failed to add vehicle");
