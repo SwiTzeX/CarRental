@@ -281,8 +281,7 @@ public class FleetController implements Initializable {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
                             } else {
-                                Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
-                                Vehicle vehic = new Vehicle(newBrandname,newModelname,newPrice,newPlate,newDisponibility);
+                                Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
                                 if (vehic != null) {
                                     vehicleList.add(vehic);
                                     tableid.setItems(vehicleList);
@@ -337,6 +336,24 @@ public class FleetController implements Initializable {
         Price.setCellValueFactory(new PropertyValueFactory<>("price"));
         PlateNum.setCellValueFactory(new PropertyValueFactory<>("plate"));
         Status.setCellValueFactory(new PropertyValueFactory<>("disponibility"));
+        Status.setCellFactory(param -> new TableCell<Vehicle, Boolean>() {
+            private final Label status = new Label();
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    if(item) {
+                        status.setText("Available");
+                        setGraphic(status);
+                    }else{
+                        status.setText("Not Available");
+                        setGraphic(status);
+                }
+            }
+        }});
         /*Status.setCellFactory(column -> new TableCell<Vehicle, Boolean>() {
             @Override
             private void updateItem(String item, boolean empty) {
