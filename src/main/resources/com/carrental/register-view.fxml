@@ -14,7 +14,7 @@
                <children>
                   <ImageView fitHeight="800.0" fitWidth="590.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
+                        <Image url="@logo/New%20logos/qq.png" />
                      </image>
                   </ImageView>
                   <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
