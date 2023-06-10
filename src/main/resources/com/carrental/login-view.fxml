@@ -26,9 +26,9 @@
          <children>
             <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;">
                <children>
-                  <ImageView fitHeight="800.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="800.0" fitWidth="590.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
+                        <Image url="@logo/New%20logos/qq.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="101.0" layoutY="594.0" prefHeight="77.0" prefWidth="358.0" text="Luxury car at your" textFill="WHITE">
