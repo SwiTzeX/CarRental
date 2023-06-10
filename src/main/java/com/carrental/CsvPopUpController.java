@@ -4,11 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class CsvPopUpController implements Initializable{
     @Override
@@ -18,11 +20,15 @@ public class CsvPopUpController implements Initializable{
     @FXML
     private Button CsvOkButton;
 
-    //static VBox v = DashboardController.getDashvbox();
+    public void setH(HBox h) {
+        this.h = h;
+    }
+    HBox h;
+
     @FXML
     public void onClickCsvOk(ActionEvent event) {
-        Stage stage = DashboardController.getCsvpopupStage();
+        Stage stage = (Stage) CsvOkButton.getScene().getWindow();
         stage.close();
-        //v.setEffect(null);
+        h.setEffect(null);
     }
 }
