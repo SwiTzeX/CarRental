@@ -60,7 +60,7 @@ public class DashboardController implements Initializable {
     @FXML
     ImageView arrowRev;
     @FXML
-    static VBox dashvbox;
+    private VBox dashvbox;
     @FXML
     final NumberAxis xAxis = new NumberAxis();
     @FXML
@@ -142,11 +142,8 @@ public class DashboardController implements Initializable {
     }
 
     public void getCountTotalSales() {
-        float s=0;
-
-        for(int i=1;i<=12;i++){
-         s = s+Reservation.totalSaleInMonth(i);
-        }
+        float s;
+        s= Reservation.totalSales();
         countTotalSales.setText(String.valueOf(s));
     }
     public void getRented(){
@@ -226,19 +223,11 @@ public class DashboardController implements Initializable {
             growthCars.setText("-" + String.valueOf(g) + "%");
         }
     } */
+
     @FXML
     public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
         exporter.export();
-        onClickCsvReport(e);
-    }
-
-    public static Stage getCsvpopupStage() {
-        return csvpopupStage;
-    }
-
-    @FXML
-    public void onClickCsvReport(ActionEvent e){
         try {
             GaussianBlur blurEffect = new GaussianBlur(15);
             dashvbox.setEffect(blurEffect);
@@ -254,5 +243,10 @@ public class DashboardController implements Initializable {
         }
     }
 
-
+    public static Stage getCsvpopupStage() {
+        return csvpopupStage;
+    }
+    public VBox getDashvbox(){
+        return dashvbox;
+    }
 }

@@ -108,7 +108,7 @@
                   <Font size="25.0" />
                </font>
                <HBox.margin>
-                  <Insets top="-10.0" />
+                  <Insets />
                </HBox.margin>
                <padding>
                   <Insets left="-35.0" top="13.0" />
@@ -129,7 +129,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets left="-27.0" top="1.0" />
+                  <Insets left="-27.0" top="9.0" />
                </HBox.margin>
             </TextField>
             <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
@@ -137,27 +137,27 @@
                   <Image url="@icons/icons8_Search_52px.png" />
                </image>
                <HBox.margin>
-                  <Insets left="-4.0" top="8.0" />
+                  <Insets left="-4.0" top="21.0" />
                </HBox.margin>
             </ImageView>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets left="122.0" top="1.0" />
+                  <Insets left="122.0" top="10.0" />
                </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets top="1.0" />
+                  <Insets top="10.0" />
                </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="169.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets top="1.0" />
+                  <Insets top="10.0" />
                </HBox.margin>
             </ComboBox>
             <Button fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
-                  <Insets top="4.0" />
+                  <Insets top="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="134.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
@@ -165,7 +165,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <HBox.margin>
-                  <Insets top="4.0" />
+                  <Insets top="15.0" />
                </HBox.margin>
             </Button>
 
