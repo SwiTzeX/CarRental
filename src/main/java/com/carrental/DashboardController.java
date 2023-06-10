@@ -223,22 +223,24 @@ public class DashboardController implements Initializable {
             growthCars.setText("-" + String.valueOf(g) + "%");
         }
     } */
+
     @FXML
     public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
         exporter.export();
-        onClickCsvReport(e);
-    }
-
-    public static Stage getCsvpopupStage() {
-        return csvpopupStage;
-    }
-
-    @FXML
-    public void onClickCsvReport(ActionEvent e){
         try {
-            //GaussianBlur blurEffect = new GaussianBlur(15);
-            //dashvbox.setEffect(blurEffect);
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
+            Parent back = loader1.load();
+            DashboardController dashcontroller = loader1.getController();
+            dashvbox = dashcontroller.getDashBox();
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            GaussianBlur blurEffect = new GaussianBlur(15);
+            dashvbox.setEffect(blurEffect);
+            stage.setScene(new Scene(back));
+            stage.show();
+
+
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
             csvpopupStage.setScene(new Scene(loader.load()));
             csvpopupStage.setTitle("Csv Pop Up");
@@ -251,5 +253,12 @@ public class DashboardController implements Initializable {
         }
     }
 
+    public static Stage getCsvpopupStage() {
+        return csvpopupStage;
+    }
+    @FXML
+    public VBox getDashBox() {
+        return dashvbox;
+    }
 
 }
