@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #f6f8ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ContactController">
+   <children>
+      <HBox alignment="CENTER" layoutX="200.0" layoutY="123.0" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
+         <children>
+            <ImageView fitHeight="529.0" fitWidth="788.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/location.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="606.0" prefWidth="573.0">
+               <children>
+                  <Label text="Contact US" textFill="#6279ff">
+                     <font>
+                        <Font name="Arial Bold" size="29.0" />
+                     </font>
+                  </Label>
+                  <Separator prefHeight="74.0" prefWidth="358.0">
+                     <VBox.margin>
+                        <Insets left="70.0" right="70.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <VBox prefHeight="307.0" prefWidth="498.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="448.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/telephone.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="29.0" prefWidth="135.0" text="+212 530-103000">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="60.0" layoutY="10.0" prefHeight="78.0" prefWidth="448.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/enveloppe-de-courrier-electronique.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="30.0" prefWidth="267.0" text="uircarrental@gmail.com">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="88.0" prefHeight="78.0" prefWidth="448.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/localisateur.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="54.0" prefWidth="379.0" text="Université Internationale de Rabat Technopolis Rabat-Shore Rocade Rabat-Salé, Rabat 11103" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="63.0" prefWidth="498.0" spacing="40.0">
+                           <children>
+                              <ImageView fx:id="insta" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/instagram.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="facebook" fitHeight="24.0" fitWidth="24.0" layoutX="247.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/facebook.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="linkedin" fitHeight="24.0" fitWidth="24.0" layoutX="259.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/linkedin.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="youtube" fitHeight="24.0" fitWidth="24.0" layoutX="271.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/youtube.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

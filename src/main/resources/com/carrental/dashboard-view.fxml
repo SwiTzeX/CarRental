@@ -65,15 +65,15 @@
                                     </Label>
                                     <HBox prefHeight="55.0" prefWidth="190.0">
                                        <children>
-                                          <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="arrowCust" fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <HBox.margin>
                                                 <Insets left="20.0" top="14.0" />
                                              </HBox.margin>
                                              <image>
-                                                <Image url="@icons/dashboard-pack/up.png" />
+                                                <Image url="@icons/dashboard-pack/down.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthUser" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthUser" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#5799bd">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -132,15 +132,15 @@
                                     </Label>
                                     <HBox prefHeight="55.0" prefWidth="188.0">
                                        <children>
-                                          <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="arrowRent" fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@icons/dashboard-pack/up.png" />
+                                                <Image url="@icons/dashboard-pack/down.png" />
                                              </image>
                                              <HBox.margin>
                                                 <Insets left="20.0" top="14.0" />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label fx:id="growthRent" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthRent" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#ffbd09">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -208,7 +208,7 @@
                                           </Label>
                                           <HBox prefHeight="50.0" prefWidth="180.0">
                                              <children>
-                                                <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="arrowCars" fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@icons/dashboard-pack/up.png" />
                                                    </image>
@@ -216,7 +216,7 @@
                                                       <Insets left="20.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label fx:id="growthCars" prefHeight="47.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                                <Label fx:id="growthCars" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#57bf72">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -275,7 +275,7 @@
                                           </Label>
                                           <HBox prefHeight="50.0" prefWidth="190.0">
                                              <children>
-                                                <ImageView fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="arrowRev" fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@icons/dashboard-pack/down.png" />
                                                    </image>
@@ -283,7 +283,7 @@
                                                       <Insets left="20.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label fx:id="growthRev" prefHeight="47.0" prefWidth="42.0" text="-6,8%" textFill="#d53131">
+                                                <Label fx:id="growthRev" prefHeight="47.0" prefWidth="65.0" text="-6,8%" textFill="#d53131">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -331,7 +331,7 @@
             </VBox>
             <VBox prefHeight="331.0" prefWidth="703.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                <children>
-                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="0.0" categoryGap="30.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                     </xAxis>
