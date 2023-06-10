@@ -85,11 +85,11 @@
                         <columns>
                             <TableColumn fx:id="IdV" prefWidth="85.0" text="IdV" />
                             <TableColumn fx:id="Brand" prefWidth="170.0" text="Brand Name" />
-                            <TableColumn fx:id="Model" prefWidth="170.0" text="Model Name" />
-                            <TableColumn fx:id="NumberRes" prefWidth="170.0" text="Number of reservations" />
+                            <TableColumn fx:id="Model" prefWidth="180.0" text="Model Name" />
+                            <TableColumn fx:id="Price" prefWidth="160.0" text="Price" />
                             <TableColumn fx:id="PlateNum" prefWidth="180.0" text="Plate Number" />
-                            <TableColumn fx:id="Status" prefWidth="150.0" text="Status" />
-                            <TableColumn fx:id="Actions" prefWidth="228.0" text="Actions" />
+                            <TableColumn fx:id="Status" prefWidth="170.39996337890625" text="Status" />
+                            <TableColumn fx:id="Actions" prefWidth="207.20013427734375" text="Actions" />
                         </columns>
                         <opaqueInsets>
                             <Insets />
