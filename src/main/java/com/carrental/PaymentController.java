@@ -168,7 +168,7 @@ public class PaymentController implements Initializable {
     }
 
     @FXML
-   /* public void EndCheckout(ActionEvent e) {
+   public void EndCheckout(ActionEvent e) {
         Reservation.create(reservation.user,reservation.vehicle,reservation.startDate,reservation.endDate,0);
         reservation.vehicle.setDisponibility(false);
         //Payment Method Paypal
@@ -190,7 +190,7 @@ public class PaymentController implements Initializable {
     }
        performTransition(e);
     }
-*/
+
     public void RedirectCheckout(ActionEvent e){
         try {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Main-view.fxml"));
