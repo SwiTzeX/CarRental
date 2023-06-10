@@ -142,11 +142,8 @@ public class DashboardController implements Initializable {
     }
 
     public void getCountTotalSales() {
-        float s=0;
-
-        for(int i=1;i<=12;i++){
-         s = s+Reservation.totalSaleInMonth(i);
-        }
+        float s;
+        s= Reservation.totalSales();
         countTotalSales.setText(String.valueOf(s));
     }
     public void getRented(){
@@ -240,8 +237,8 @@ public class DashboardController implements Initializable {
     @FXML
     public void onClickCsvReport(ActionEvent e){
         try {
-            GaussianBlur blurEffect = new GaussianBlur(15);
-            dashvbox.setEffect(blurEffect);
+            //GaussianBlur blurEffect = new GaussianBlur(15);
+            //dashvbox.setEffect(blurEffect);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
             csvpopupStage.setScene(new Scene(loader.load()));
             csvpopupStage.setTitle("Csv Pop Up");
