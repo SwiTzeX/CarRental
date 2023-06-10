@@ -17,6 +17,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.geometry.Insets;
 
 import javax.swing.*;
 import java.util.regex.Pattern;
@@ -140,9 +143,33 @@ public class UsersController implements Initializable {
             grid.add(agefield, 1, 5);
             grid.add(new Label("Password"), 0, 6);
             grid.add(passwordField, 1, 6);
-            // Ajouter les composants du ComboBox pour choisir le rôle
             grid.add(new Label("Role"), 0, 7);
             grid.add(roleComboBox, 1, 7);
+
+            // Set vertical spacing between the cells of the GridPane
+            grid.setVgap(10); // Adjust the value to your preference
+
+            // Set horizontal spacing between the cells of the GridPane
+            grid.setHgap(10); // Adjust the value to your preference
+
+            // Set alignment of labels to the right and vertical alignment to the center
+            GridPane.setHalignment(NIDField, HPos.LEFT);
+            GridPane.setHalignment(emailField, HPos.LEFT);
+            GridPane.setHalignment(phoneField, HPos.LEFT);
+            GridPane.setHalignment(fullnameField, HPos.LEFT);
+            GridPane.setHalignment(agefield, HPos.LEFT);
+            GridPane.setHalignment(passwordField, HPos.LEFT);
+            GridPane.setHalignment(roleComboBox, HPos.LEFT);
+            GridPane.setValignment(NIDField, VPos.CENTER);
+            GridPane.setValignment(emailField, VPos.CENTER);
+            GridPane.setValignment(phoneField, VPos.CENTER);
+            GridPane.setValignment(fullnameField, VPos.CENTER);
+            GridPane.setValignment(agefield, VPos.CENTER);
+            GridPane.setValignment(passwordField, VPos.CENTER);
+            GridPane.setValignment(roleComboBox, VPos.CENTER);
+
+            // Add padding around the grid
+            grid.setPadding(new Insets(10));
 
             dialog.getDialogPane().setContent(grid);
             dialog.setResultConverter(dialogButton -> {
