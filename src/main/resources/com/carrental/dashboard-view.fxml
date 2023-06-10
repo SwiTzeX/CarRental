@@ -57,7 +57,7 @@
                                     </Label>
                                     <Label fx:id="countCust" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
-                                          <Font name="System Bold" size="30.0" />
+                                          <Font name="System Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets left="20.0" right="35.0" />
@@ -73,7 +73,7 @@
                                                 <Image url="@icons/dashboard-pack/down.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthUser" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#5799bd">
+                                          <Label fx:id="growthUser" prefHeight="47.0" prefWidth="96.0" text="+5,3%" textFill="#5799bd">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -124,7 +124,7 @@
                                     </Label>
                                     <Label fx:id="countRented" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                        <font>
-                                          <Font name="System Bold" size="30.0" />
+                                          <Font name="System Bold" size="20.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets left="20.0" right="35.0" />
@@ -140,7 +140,7 @@
                                                 <Insets left="20.0" top="14.0" />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label fx:id="growthRent" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#ffbd09">
+                                          <Label fx:id="growthRent" prefHeight="47.0" prefWidth="90.0" text="+5,3%" textFill="#ffbd09">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -200,39 +200,12 @@
                                           </Label>
                                           <Label fx:id="countCars" prefHeight="54.0" prefWidth="130.0" text="5" textFill="#353535">
                                              <font>
-                                                <Font name="System Bold" size="30.0" />
+                                                <Font name="System Bold" size="20.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets left="20.0" right="35.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <HBox prefHeight="50.0" prefWidth="180.0">
-                                             <children>
-                                                <ImageView fx:id="arrowCars" fitHeight="22.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@icons/dashboard-pack/up.png" />
-                                                   </image>
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" top="14.0" />
-                                                   </HBox.margin>
-                                                </ImageView>
-                                                <Label fx:id="growthCars" prefHeight="47.0" prefWidth="65.0" text="+5,3%" textFill="#57bf72">
-                                                   <font>
-                                                      <Font name="System Bold" size="12.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label prefHeight="47.0" prefWidth="104.0" text="Since last month">
-                                                   <font>
-                                                      <Font size="10.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin></Label>
-                                             </children>
-                                          </HBox>
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="146.0" prefWidth="38.0">
@@ -267,7 +240,7 @@
                                           </Label>
                                           <Label fx:id="countTotalSales" alignment="CENTER" prefHeight="50.0" prefWidth="186.0" text="5" textAlignment="RIGHT" textFill="#353535">
                                              <font>
-                                                <Font name="System Bold" size="30.0" />
+                                                <Font name="System Bold" size="20.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets right="20.0" />
@@ -283,7 +256,7 @@
                                                       <Insets left="20.0" top="14.0" />
                                                    </HBox.margin>
                                                 </ImageView>
-                                                <Label fx:id="growthRev" prefHeight="47.0" prefWidth="65.0" text="-6,8%" textFill="#d53131">
+                                                <Label fx:id="growthRev" prefHeight="49.0" prefWidth="85.0" text="-6,8%" textFill="#d53131">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
