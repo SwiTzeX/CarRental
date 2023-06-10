@@ -392,6 +392,23 @@ public class Reservation {
         return 0;
     }
 
+    public static float getRevenueGrowth(){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT SUM(price*DATEDIFF(endDate,startDate)) AS current_count  FROM Vehicles NATURAL JOIN Reservations WHERE MONTH(startDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT SUM(price*DATEDIFF(endDate,startDate)) AS prev_count  FROM Vehicles NATURAL JOIN Reservations WHERE MONTH(startDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(startDate) < MONTH(CURRENT_DATE())) AS prev;" ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
+
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 
     public String getTimeLeft() {
         long currentTimeMillis = System.currentTimeMillis();
