@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
 import java.util.regex.Pattern;
@@ -76,6 +77,7 @@ public class UsersController implements Initializable {
     @FXML
     private ComboBox<String> roles;
 
+
     @FXML
     private Button clearAllFilters;
 
@@ -122,6 +124,10 @@ public class UsersController implements Initializable {
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
             TextField NIDField = new TextField();
+            // Ajouter le ComboBox pour choisir le rôle
+            ComboBox<String> roleComboBox = new ComboBox<>();
+            roleComboBox.getItems().addAll("Admin", "Client");
+
             grid.add(new Label("National ID"), 0, 1);
             grid.add(NIDField, 1, 1);
             grid.add(new Label("Email"), 0, 2);
@@ -134,6 +140,10 @@ public class UsersController implements Initializable {
             grid.add(agefield, 1, 5);
             grid.add(new Label("Password"), 0, 6);
             grid.add(passwordField, 1, 6);
+            // Ajouter les composants du ComboBox pour choisir le rôle
+            grid.add(new Label("Role"), 0, 7);
+            grid.add(roleComboBox, 1, 7);
+
             dialog.getDialogPane().setContent(grid);
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == buttonTypeOk) {
@@ -148,43 +158,40 @@ public class UsersController implements Initializable {
                             showAlert("Error", "Age must be 18 or above.");
                         } else {
                             // Vérifier si l'ID, le NID ou le numéro existent déjà
-
                             boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                             boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
                             String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
                             boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
-
-                            // Vérifier si le numéro de téléphone est au format valide
                             String phoneRegex = "^(06|07|05)\\d{8}$";
                             boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
-
-                            // Vérifier si l'e-mail est au format valide
                             if (!isEmailValid) {
-                                // Afficher un message d'erreur si l'e-mail n'est pas au format valide
                                 showAlert("Error", "Invalid email format. Please enter a valid email address.");
                             } else if (!isPhoneValid) {
-                                // Afficher un message d'erreur si le numéro de téléphone n'est pas au format valide
-                                showAlert("Error", "Invalid phone number format. Please enter a valid phone number starting with '06' and having 10 digits.");
+                                showAlert("Error", "Invalid phone number format. Please enter a valid phone number starting with '06', '07', or '05' and having 10 digits.");
                             } else {
-                                // Créer le nouvel utilisateur
+                                // Récupérer la valeur sélectionnée dans le ComboBox du rôle
+                                String selectedRole = roleComboBox.getValue();
                                 Integer age = null;
                                 if (!newAge.isEmpty()) {
                                     age = Integer.parseInt(newAge);
                                 }
-                                User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword);
+                                // Vérifier la valeur sélectionnée dans le ComboBox du rôle
+                                int isAdmin = 0; // Par défaut, considérez que le rôle est "Client"
+                                if (selectedRole.equals("Admin")) {
+                                    isAdmin = 1;
+                                }
+
+                                // Créer le nouvel utilisateur avec le rôle sélectionné
+                                User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword, isAdmin);
                                 if (newUser != null) {
-                                    // Ajouter le nouvel utilisateur à la liste des utilisateurs
                                     userList.add(newUser);
-                                    // Mettre à jour la tableview
                                     tableview.setItems(userList);
                                 } else {
-                                    // Gérer l'erreur si la création de l'utilisateur échoue
                                     showAlert("Error", "Failed to create user. Please check the input fields.");
                                 }
                             }
                         }
                     } catch (NumberFormatException e) {
-                        // Gérer l'erreur si l'ID n'est pas un nombre valide
                         showAlert("Error", "Invalid ID. Please enter a valid number.");
                     }
                 }
