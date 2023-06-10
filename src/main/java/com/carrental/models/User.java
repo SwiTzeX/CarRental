@@ -285,28 +285,33 @@ public class User {
         }
         return null;
     }
-    public static User create(String nid,String email, String phoneNumber, Integer age, String fullName, String password){
-        boolean status = true;
-        boolean isAdmin = false;
+    public static User create(String nid, String email, String phoneNumber, Integer age, String fullName, String password, int isAdmin) {
+        boolean status = true; // Valeur par défaut pour le statut
+        boolean isAdminRole = (isAdmin == 1); // Vérifie si le rôle est admin
+
         try {
             Connection conn = SingletonConnection.getConnection();
             Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentDateTime = format.format(date);
+
             String req = "INSERT INTO Users VALUES(null, '" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + ", " + (age != null ? age : "NULL") + ", '" + fullName + "', '" + password + "', '" + currentDateTime + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
-            stmt.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
-            int id=-1;
+            stmt.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
+
+            int id = -1;
             ResultSet rs = stmt.getGeneratedKeys();
-            if(rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt(1);
             }
             stmt.close();
-            return new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,date);
+
+            return new User(id, nid, email, phoneNumber, status, age, fullName, password, isAdminRole, date);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public boolean delete() {
         try {
