@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.*;
@@ -343,34 +344,21 @@ public class FleetController implements Initializable {
             protected void updateItem(Boolean item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty) {
+                    setText(null);
+                    setTextFill(Color.BLACK);
                     setGraphic(null);
                 } else {
                     if(item) {
                         status.setText("Available");
+                        status.setTextFill(Color.GREEN);
                         setGraphic(status);
                     }else{
                         status.setText("Not Available");
+                        status.setTextFill(Color.RED);
                         setGraphic(status);
                 }
             }
         }});
-        /*Status.setCellFactory(column -> new TableCell<Vehicle, Boolean>() {
-            @Override
-            private void updateItem(String item, boolean empty) {
-                super.updateItem(Boolean.valueOf(item), empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setTextFill(Color.BLACK);
-                } else {
-                    setText(item);
-                    if (item.equals("Available")) {
-                        setTextFill(Color.ORANGE);
-                    } else {
-                        setTextFill(Color.RED);
-                    }
-                }
-            }
-        });*/
         Actions.setCellFactory(param -> new TableCell<Vehicle, Void>() {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");
