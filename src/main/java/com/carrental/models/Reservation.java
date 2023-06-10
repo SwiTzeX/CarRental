@@ -350,6 +350,11 @@ public class Reservation {
         long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
         return this.vehicle.getPrice() * daysBetween;
     }
+    public static float totalPriceD(Vehicle vehicle,Date startDate,Date endDate){
+        long durationInMillis = endDate.getTime() - startDate.getTime();
+        long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
+        return vehicle.getPrice() * daysBetween;
+    }
     public static float totalSales(){
         ArrayList<Reservation> list = getAllReservationsByStatus(true);
         float total = 0;
@@ -448,7 +453,7 @@ public class Reservation {
         long currentTimeMillis = System.currentTimeMillis();
         long endTimeMillis = this.getEndDate().getTime();
         long startTimeMillis = this.getStartDate().getTime();
-        long timeDifferenceMillis = Math.abs(currentTimeMillis - endTimeMillis);
+        long timeDifferenceMillis = currentTimeMillis - endTimeMillis;
         double totalTimeMillis = endTimeMillis - startTimeMillis;
         double percentage = (double) timeDifferenceMillis / totalTimeMillis;
         return (double) percentage*100;
