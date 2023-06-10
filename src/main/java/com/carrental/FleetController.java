@@ -5,19 +5,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.fxml.Initializable;
-import javafx.scene.text.Text;
-
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class FleetController implements Initializable {
@@ -35,7 +31,7 @@ public class FleetController implements Initializable {
     private TableColumn<Vehicle, String> Model;
 
     @FXML
-    private TableColumn<Vehicle, Integer> NumberRes;
+    private TableColumn<Vehicle, Integer> Price;
 
     @FXML
     private TableColumn<Vehicle, String> PlateNum;
@@ -81,7 +77,7 @@ public class FleetController implements Initializable {
 
 
     public void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -107,13 +103,27 @@ public class FleetController implements Initializable {
             TextField brandnameField = new TextField();
             TextField modelnameField = new TextField();
             TextField colorField = new TextField();
-            TextField disponibilityField = new TextField();
+            CheckBox disponibilityField = new CheckBox();
             TextField vehiculestateField = new TextField();
             TextField priceField = new TextField();
             TextField typeField = new TextField();
             TextField passengersField = new TextField();
-            TextField fueltypeField = new TextField();
-            TextField geartypeField = new TextField();
+            //TextField fueltypeField = new TextField();
+            //TextField geartypeField = new TextField();
+            //TextField fueltypeField = new TextField();
+            ComboBox<String> fueltypeField = new ComboBox<String>();
+            fueltypeField.setPromptText("Fuel type");
+            ObservableList<String> fuellist = fueltypeField.getItems();
+            fuellist.add("Diesel");
+            fuellist.add("Petrol");
+            fuellist.add("Electric");
+
+            //TextField geartypeField = new TextField();
+            ComboBox<String> geartypeField = new ComboBox<String>();
+            geartypeField.setPromptText("Gear type");
+            ObservableList<String> gearlist = geartypeField.getItems();
+            gearlist.add("Manual");
+            gearlist.add("Automated");
             TextField depositField = new TextField();
             TextField trunkcapacityField = new TextField();
             TextField maxspeedField = new TextField();
@@ -177,14 +187,27 @@ public class FleetController implements Initializable {
                         String newBrandname = brandnameField.getText();
                         String newModelname = modelnameField.getText();
                         String newColor = colorField.getText();
-                        boolean newDisponibility = Boolean.parseBoolean(disponibilityField.getText());
-                        boolean newVehiculestate = Boolean.parseBoolean(vehiculestateField.getText());
-                        float newPrice = Float.parseFloat(priceField.getText());
+                        boolean newDisponibility = disponibilityField.isSelected();
+                        float newPrice = 0;
+                        try {
+                            newPrice = Float.parseFloat(priceField.getText());
+                        }catch (Exception ignored){
+
+                            showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
+                            return null;
+                        }
+
                         String newType = typeField.getText();
                         int newPassengers = Integer.parseInt(passengersField.getText());
-                        String newFueltype = fueltypeField.getText();
-                        String newGeartype = geartypeField.getText();
-                        float newDeposit = Float.parseFloat(depositField.getText());
+                        String newFueltype = fueltypeField.getValue();
+                        String newGeartype = geartypeField.getValue();
+                        float newDeposit = 0;
+                        try {
+                            newDeposit = Float.parseFloat(depositField.getText());
+                        }catch (Exception ignored){
+                            showAlert("Error", "Invalid deposit format. Please enter a valid numeric value.");
+                            return null;
+                        }
                         int newTrunkcapacity = Integer.parseInt(trunkcapacityField.getText());
                         int newMaxspeed = Integer.parseInt(maxspeedField.getText());
                         int newHorsepower = Integer.parseInt(horsepowerField.getText());
@@ -196,18 +219,26 @@ public class FleetController implements Initializable {
                         if (platenumExists) {
                             showAlert("Error", "Cannot add vehicule. Plate number already exists.");
                         } else {
-                            String dispoRegex = "^[01]$"; // Regular expression for 0 or 1
+                            /*String dispoRegex = "^[01]$"; // Regular expression for 0 or 1
                             boolean isDispoValid = Pattern.matches(dispoRegex, Boolean.toString(newDisponibility));
-
-                            String priceRegex = "^[0-9]+(\\.[0-9]+)?$"; // Regular expression for a float number
+                            */
+                            /*String priceRegex = "^[0-9]+$"; // Regular expression for a float number
                             boolean isPriceValid = Pattern.matches(priceRegex, Float.toString(newPrice));
+                            */
+                            /*String price1Regex = "^[0-9]+(\\.[0-9]+)?$";
+                            String price2Regex = "^[0-9]+$";
+                            String price3Regex = "^.*[A-Za-z].*$";
+                            boolean isPriceValid1 = Pattern.matches(price1Regex,Float.toString(newPrice));
+                            boolean isPriceValid2 = Pattern.matches(price2Regex,Float.toString(newPrice));
+                            boolean isPriceValid3 = Pattern.matches(price3Regex,Float.toString(newPrice));*/
+
 
                             String passengersRegex = "^[0-9]+$"; // Regular expression for an integer number
                             boolean isPassengersValid = Pattern.matches(passengersRegex, Integer.toString(newPassengers));
 
-                            String depositRegex = "^[0-9]+$"; // Regular expression for an integer number
+                            /*String depositRegex = "^[0-9]+(\\.[0-9]+)?$"; // Regular expression for an integer number
                             boolean isDepositValid = Pattern.matches(depositRegex, Float.toString(newDeposit));
-
+                            */
                             String trunkCapacityRegex = "^[0-9]+$"; // Regular expression for an integer number
                             boolean isTrunkCapacityValid = Pattern.matches(trunkCapacityRegex, Integer.toString(newTrunkcapacity));
 
@@ -218,19 +249,16 @@ public class FleetController implements Initializable {
                             boolean isHorsepowerValid = Pattern.matches(horsepowerRegex, Integer.toString(newHorsepower));
 
 
-                            if (!isDispoValid) {
-                                // Display an error message if the dispo is not valid
-                                showAlert("Error", "Invalid dispo value. Please enter either 0 or 1.");
-                            } else if (!isPriceValid) {
+                            /*if (!isPriceValid) {
                                 // Display an error message if the price is not in a valid format
                                 showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
-                            } else if (!isPassengersValid) {
+                            } else*/ if (!isPassengersValid) {
                                 // Display an error message if the passengers value is not in a valid format
                                 showAlert("Error", "Invalid passengers format. Please enter a valid integer value.");
-                            } else if (!isDepositValid) {
+                            }/* else if (!isDepositValid) {
                                 // Display an error message if the deposit value is not in a valid format
                                 showAlert("Error", "Invalid deposit format. Please enter a valid integer value.");
-                            } else if (!isTrunkCapacityValid) {
+                            }*/ else if (!isTrunkCapacityValid) {
                                 // Display an error message if the trunk capacity value is not in a valid format
                                 showAlert("Error", "Invalid trunk capacity format. Please enter a valid integer value.");
                             } else if (!isMaxSpeedValid) {
@@ -240,7 +268,7 @@ public class FleetController implements Initializable {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
                             } else {
-                                Vehicle newVehicule = Vehicle.create(newBrandname, newModelname, newColor, newDisponibility, newVehiculestate, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
+                                Vehicle newVehicule = Vehicle.create(newBrandname, newModelname, newColor, newDisponibility, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
 
                                 if (newVehicule != null) {
                                     vehicleList.add(newVehicule);
@@ -251,99 +279,268 @@ public class FleetController implements Initializable {
                                 }
                             }
                         }
-                    } catch (NumberFormatException e) {
+
+                    } catch(Exception e){
                         throw new RuntimeException(e);
+
                     }
                 }
                 return null;
             });
-
+            ;
             dialog.showAndWait();
             tableid.refresh();
+
         });
 
 
         brandDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedBrandName = newValue;
-            applyFilters(new ActionEvent());
+            applyFilters();
         });
 
 
         statusDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedStatus = newValue;
-            applyFilters(new ActionEvent());
+            applyFilters();
         });
 
 
         for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
-        statusDropList.getItems().addAll("Available","Not Available");
+        statusDropList.getItems().addAll("true","false");
 
 
 
         vehicles = Vehicle.getAllVehicles();
+
+
         vehicleList.addAll(vehicles);
-        IdV.setCellValueFactory(new PropertyValueFactory<>("IdV"));
-        Brand.setCellValueFactory(new PropertyValueFactory<>("BrandName"));
-        Model.setCellValueFactory(new PropertyValueFactory<>("ModelName"));
-        PlateNum.setCellValueFactory(new PropertyValueFactory<>("PlateNumber"));
-        Status.setCellValueFactory(new PropertyValueFactory<>("Disponibility"));
 
-        // columnisadmine.setCellValueFactory(new PropertyValueFactory<User, boolean>("isAdmin"));
+        IdV.setCellValueFactory(new PropertyValueFactory<>("id"));
+        Brand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        Model.setCellValueFactory(new PropertyValueFactory<>("modelName"));
+        Price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        PlateNum.setCellValueFactory(new PropertyValueFactory<>("plate"));
+        Status.setCellValueFactory(new PropertyValueFactory<>("disponibility"));
+        /*Status.setCellFactory(column -> new TableCell<Vehicle, Boolean>() {
+            @Override
+            private void updateItem(String item, boolean empty) {
+                super.updateItem(Boolean.valueOf(item), empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setTextFill(Color.BLACK);
+                } else {
+                    setText(item);
+                    if (item.equals("Available")) {
+                        setTextFill(Color.ORANGE);
+                    } else {
+                        setTextFill(Color.RED);
+                    }
+                }
+            }
+        });*/
+        Actions.setCellFactory(param -> new TableCell<Vehicle, Void>() {
+            private final Button modifyButton = new Button("Modify");
+            private final Button deleteButton = new Button("Delete");
 
-        tableid.setVisible(true);
+            {
+                modifyButton.setOnAction(event -> {
+                    Vehicle vehicle = getTableView().getItems().get(getIndex());
+                    showEditDialog(vehicle);
+                });
+                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+                deleteButton.setOnAction(event -> {
+                    Vehicle vehicle = getTableView().getItems().get(getIndex());
+                    // Prompt the vehicle for confirmation
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("delete this vehicle");
+                    alert.setContentText("are you sure?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        tableid.getItems().remove(vehicle);
+                        boolean delete = vehicle.delete();
+                        if (delete) {
+                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                            successAlert.setTitle("delete");
+                            successAlert.setHeaderText(null);
+                            successAlert.setContentText("vehicle is no longer in the data base.");
+                            successAlert.showAndWait();
+                        } else {
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                            errorAlert.setTitle("Erreur delete");
+                            errorAlert.setHeaderText(null);
+                            errorAlert.setContentText("erreur delete");
+                            errorAlert.showAndWait();
+                        }
+                    }
+                });
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox buttonBox = new HBox(modifyButton, deleteButton);
+                    buttonBox.setSpacing(50);
+                    setGraphic(buttonBox);
+                }
+            }
+        });
         tableid.setItems(vehicleList);
 
 
-        //statusDropList.getItems().addAll("true","false");
+
+
+        //statusDropList.getItems().addAll("Available","Not");
         for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
 
-        /**for(String model:Vehicle.getAllModelsFromAvailableVehicles(vehicles)) {
-         modelDropList.getItems().add(model);
-         }
-         statusDropList.getItems().addAll("Disponible","indisponible");**/
+    }
+    private void showEditDialog(Vehicle vehicle) {
+        Dialog<Vehicle> dialog = new Dialog<>();
+        dialog.setTitle("Modify the vehicle");
+        dialog.setHeaderText(null);
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        TextField brandnameField = new TextField(vehicle.getBrandName());
+        TextField modelnameField = new TextField(vehicle.getModelName());
+        TextField priceField = new TextField(String.valueOf(vehicle.getPrice()));
+        TextField plateField = new TextField(vehicle.getPlate());
+        CheckBox disponibilityField = new CheckBox();
+        disponibilityField.setSelected(true);
 
 
+        grid.add(new Label("Brand Name:"), 0, 0);
+        grid.add(brandnameField, 1, 0);
+        grid.add(new Label("Model Name:"), 0, 1);
+        grid.add(modelnameField, 1, 1);
+        grid.add(new Label("Disponibility:"), 0, 2);
+        grid.add(disponibilityField, 1, 2);
+        grid.add(new Label("Price:"), 0, 3);
+        grid.add(priceField, 1, 3);
+        grid.add(new Label("Plate:"), 0, 4);
+        grid.add(plateField, 1, 4);
+
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == buttonTypeOk) {
+
+                String newbrandname = brandnameField.getText();
+                String newmodelname = modelnameField.getText();
+                float newprice = Float.parseFloat(priceField.getText());
+                String newplate = plateField.getText();
+                boolean newDisponibility = disponibilityField.isSelected();
+
+                vehicle.setBrandName(newbrandname);
+                vehicle.setModelName(newmodelname);
+                vehicle.setPrice(newprice);
+                vehicle.setPlate(newplate);
+                vehicle.setDisponibility(newDisponibility);
+
+                return vehicle;
+            }
+            return null;
+        });
+
+        Optional<Vehicle> result = dialog.showAndWait();
+        result.ifPresent(updatedvehicle -> {
+            int index = tableid.getItems().indexOf(updatedvehicle);
+            if (index != -1) {
+                vehicleList.set(index, updatedvehicle);
+            }
+        });
     }
 
-        private void applyFilters(javafx.event.ActionEvent event) {
-            ComboBox<String> dropList = (ComboBox<String>) event.getSource();
-            Text theText = new Text(dropList.getValue());
-            double width = (int)theText.getBoundsInLocal().getWidth()+63;
-            dropList.setPrefWidth(width);
-            if (dropList == statusDropList) filterSettings.set(0, dropList.getValue());
-            else if (dropList == brandDropList) filterSettings.set(2, dropList.getValue());
-            System.out.println(filterSettings);
-            vehicles = Vehicle.filterVehicles(filterSettings,null,null);
-        }
+    /*private void applyFilters(javafx.event.ActionEvent event) {
+        ComboBox<String> dropList = (ComboBox<String>) event.getSource();
+        Text theText = new Text(dropList.getValue());
+        double width = (int)theText.getBoundsInLocal().getWidth()+63;
+        dropList.setPrefWidth(width);
+        if (dropList == statusDropList) filterSettings.set(0, dropList.getValue());
+        else if (dropList == brandDropList) filterSettings.set(2, dropList.getValue());
+        System.out.println(filterSettings);
+        vehicles = Vehicle.filterVehicles(filterSettings,null,null);
+    }*/
+    private void applyFilters() {
+        tableid.setItems(vehicleList.filtered(vehicle -> {
+            boolean statusFilter = selectedStatus == null || selectedStatus.isEmpty() ||
+                    (selectedStatus.equals("true") && vehicle.getDisponibility() ||
+                            (selectedStatus.equals("false") && !vehicle.getDisponibility()));
+
+            boolean brandFilter = (selectedBrandName == null) || selectedBrandName.isEmpty() ||
+                    (selectedBrandName.equals(vehicle.getBrandName()));
 
 
-        @FXML
-        private void clearallfilters(ActionEvent event) {
-            brandDropList.getSelectionModel().clearSelection();
-            statusDropList.getSelectionModel().clearSelection();
-            tableid.setItems(vehicleList);
+            return statusFilter && brandFilter;
+        }));
+    }
 
-            // Réinitialiser les valeurs par défaut des JComboBox
-            brandDropList.getSelectionModel().clearSelection();
-            statusDropList.getSelectionModel().clearSelection();
-        }
 
-        private void applySearchFilter(String searchKeyword) {
-            tableid.setItems(vehicleList.filtered(vehicle -> {
-                if (searchKeyword.isEmpty()) {
-                    return true;
-                } else {
-                    String lowerCaseSearchTerm = searchKeyword.toLowerCase();
-                    String plate = vehicle.getPlate();
-                    plate = plate != null ? plate : "";
-                    return plate.contains(lowerCaseSearchTerm);
+    /*public void refreshComboBoxes(){
+        brandDropList = new ComboBox<>();
+        brandDropList.setPromptText("Brands");
+        brandDropList.setPrefWidth(128);
+        *//*brandsDropList.setOnAction(event -> {
+                    filterVehicles(event);
                 }
-            }));
-        }
+        );*//*
+
+        statusDropList = new ComboBox<>();
+        statusDropList.setPromptText("Status");
+        statusDropList.setPrefWidth(128);
+
+        *//*statusDropList.setOnAction(event -> {
+                    filterVehicles(event);
+                }
+        );*//*
+    }*/
+    @FXML
+    private void clearallfilters(ActionEvent event) {
+        brandDropList.getSelectionModel().clearSelection();
+        statusDropList.getSelectionModel().clearSelection();
+        tableid.setItems(vehicleList);
+
+
+        // Réinitialiser les valeurs par défaut des JComboBox
+            /*brandDropList.getSelectionModel().clearSelection();
+            statusDropList.getSelectionModel().clearSelection();*/
+        //refreshComboBoxes();
+        tableid.refresh();
     }
+
+    private void applySearchFilter(String searchKeyword) {
+        tableid.setItems(vehicleList.filtered(vehicle -> {
+            if (searchKeyword.isEmpty()) {
+                return true;
+            } else {
+                String lowerCaseSearchTerm = searchKeyword.toLowerCase();
+                String plate = vehicle.getPlate().toLowerCase();
+                String brand = vehicle.getBrandName().toLowerCase();
+                String model = vehicle.getModelName().toLowerCase();
+                plate = plate != null ? plate : "";
+                brand = brand != null ? brand : "";
+                model = model != null ? model : "";
+
+                return brand.contains(lowerCaseSearchTerm) ||
+                        model.contains(lowerCaseSearchTerm) ||
+                        plate.contains(lowerCaseSearchTerm) ;
+            }
+        }));
+    }
+}
 
 
