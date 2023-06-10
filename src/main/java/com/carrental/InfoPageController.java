@@ -81,17 +81,18 @@ public class InfoPageController{
 
     @FXML
     private Label username;
-
-    static Reservation res = new Reservation();
+    Vehicle vehicle;
+    Date startDate;
+    Date endDate;
 
     public void setData(Vehicle vehicle, Date startDate, Date endDate ){ //search
         Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900, 800, true, true);
         carpic.setImage(image);
-        System.out.println(vehicle.getBrandName());
-
+        this.vehicle=vehicle;
+        this.startDate=startDate;
+        this.endDate=endDate;
         this.infoBrand.setText(vehicle.getBrandName());
         infoModel.setText(vehicle.getModelName());
-
         infoColor.setText(vehicle.getColor());
         infoFuel.setText(vehicle.getFuelType());
         infoGear.setText(vehicle.getGearType());
@@ -105,9 +106,7 @@ public class InfoPageController{
         Period duration = Period.between(first_date,second_date);
         infoDuration.setText(duration.toString());
         infoPpd.setText(String.valueOf(vehicle.getPrice()));
-        Reservation res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
-        infoTotP.setText(String.valueOf(res.totalPrice()));
-        res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
+        infoTotP.setText(String.valueOf(Reservation.totalPriceD(vehicle,startDate,endDate)));
 
     }
 
@@ -127,7 +126,7 @@ public class InfoPageController{
             Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(payment));
             PaymentController paymentController = loader.getController();
-            paymentController.setData(res);
+            paymentController.setData(vehicle,startDate,endDate);
             infoPane.getChildren().clear();
             infoPane.getChildren().addAll(payment);
             stage.show();
