@@ -214,6 +214,7 @@ public class RegisterController implements Initializable {
         // Check if the password meets the required criteria
 
         ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("test");
             if (!newValue) {
                 try {
                     int age = Integer.parseInt(ageid.getText());

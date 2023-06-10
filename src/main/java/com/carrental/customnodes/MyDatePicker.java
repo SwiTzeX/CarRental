@@ -1,5 +1,6 @@
 package com.carrental.customnodes;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
@@ -77,6 +78,8 @@ public class MyDatePicker extends StackPane {
 
     public void setDate(Date date) {
         this.date = date;
+        showPromptText();
+        textField.setText(format.format(date));
     }
 
     private void updateTextField(){
@@ -116,6 +119,9 @@ public class MyDatePicker extends StackPane {
 
             }
         });
+       textField.textProperty().addListener((observable, oldValue, newValue) -> {
+           Platform.runLater(this::showPromptText);
+                });
         getChildren().add(textField);
 
     }

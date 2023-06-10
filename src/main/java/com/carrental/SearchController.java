@@ -83,6 +83,7 @@ public class SearchController implements Initializable {
             boolean isLocationEmpty = locationIdText.trim().isEmpty();
             if (isLocationEmpty) {
                 locationId.showError("Location Field is empty");
+                return;
             }else{
                 locationId.hideError();
             }
@@ -91,6 +92,7 @@ public class SearchController implements Initializable {
             boolean isPickUpDateEmpty = pickUpDateText.trim().isEmpty();
             if (isPickUpDateEmpty) {
                 pickupDateId.showError("Pick-up Date is empty");
+                return;
             }else{
                 pickupDateId.hideError();
             }
@@ -99,6 +101,7 @@ public class SearchController implements Initializable {
             boolean isPickUpTimeEmpty = pickUpTimeText.trim().isEmpty();
             if (isPickUpTimeEmpty) {
                 pickupTimeId.showError("Pick-up Time is empty");
+                return;
             }else{
                 pickupTimeId.hideError();
             }
@@ -107,6 +110,7 @@ public class SearchController implements Initializable {
             boolean isReturnDateEmpty = returnDateText.trim().isEmpty();
             if (isReturnDateEmpty) {
                 returnDateId.showError("Return Date is empty");
+                return;
             }else{
                 returnDateId.hideError();
             }
@@ -115,9 +119,11 @@ public class SearchController implements Initializable {
             boolean isReturnTimeEmpty = returnTimeText.trim().isEmpty();
             if (isReturnTimeEmpty) {
                 returnTimeId.showError("Return Time is empty");
+                return;
             }else{
                 returnTimeId.hideError();
             }
+            App.getMainController().openHome(pickupDateId.getDate(),returnDateId.getDate(),pickupTimeId.getDate(),returnTimeId.getDate(),locationId.getText());
         });
     }
 }

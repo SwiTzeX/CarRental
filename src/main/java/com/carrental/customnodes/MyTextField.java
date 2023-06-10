@@ -1,5 +1,6 @@
 package com.carrental.customnodes;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -63,6 +64,9 @@ public class MyTextField extends StackPane {
                 //textField.setStyle("-fx-border-color: grey;-fx-border-width: 0 0 1 0;-fx-background-color: transparent;");
                 removeLine();
             }
+        });
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(this::showPromptText);
         });
         getChildren().add(textField);
     }

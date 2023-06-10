@@ -12,6 +12,7 @@
 
 <!--ss-->
 
+<?import com.carrental.customnodes.MyButton?>
 <VBox fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseInAnimation" onMouseExited="#mouseOutAnimation" prefHeight="430.0" prefWidth="300.0" spacing="8.0" style="-fx-background-color: #F6F8FF; -fx-border-color: #f0f2ff; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.VehicleCardController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="300.0" spacing="5.0" style="-fx-background-color: transparent;">
@@ -186,14 +187,14 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="278.0">
          <children>
-            <Button fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
+            <MyButton fx:id="rentButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="298.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="RENT NOW" textFill="#6279ff">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
-            </Button>
+            </MyButton>
          </children>
       </HBox>
    </children>

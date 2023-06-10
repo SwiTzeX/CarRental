@@ -1,6 +1,8 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyDatePicker;
 import com.carrental.customnodes.MyTextField;
+import com.carrental.customnodes.MyTimePicker;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import com.carrental.models.Vehicle;
 import javafx.scene.layout.VBox;
@@ -29,10 +32,11 @@ public class HomeController implements Initializable {
     public Button searchBtn;
     public HBox filtersBox;
     public ImageView locIcon;
-    public MyTextField pickupDateTF;
-    public MyTextField pickupTimeTF;
-    public MyTextField returnDateTF;
-    public MyTextField returnTimeTF;
+    public MyDatePicker pickupDateTF;
+    public MyTimePicker pickupTimeTF;
+    public MyDatePicker returnDateTF;
+    public MyTimePicker returnTimeTF;
+    public MyTextField locationTF;
     @FXML
     private ComboBox<String> brandsDropList;
 
@@ -106,7 +110,11 @@ public class HomeController implements Initializable {
             numberLbl.setFont(pageNumberLabel.getFont());
             numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
             numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
-            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            numberLbl.setOnMouseClicked(event ->{
+                new Thread(() -> {
+                    Platform.runLater(()-> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+                }).start();
+            });
             Label separatorLabel = new Label("...");
             paginationBox.getChildren().addAll(numberLbl,separatorLabel);
         }
@@ -119,7 +127,11 @@ public class HomeController implements Initializable {
             }
             numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
             numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
-            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            numberLbl.setOnMouseClicked(event ->{
+                new Thread(() -> {
+                    Platform.runLater(()-> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+                }).start();
+            });
             paginationBox.getChildren().add(numberLbl);
         }
 
@@ -128,7 +140,11 @@ public class HomeController implements Initializable {
             numberLbl.setFont(pageNumberLabel.getFont());
             numberLbl.setOnMouseEntered(event -> numberLbl.setUnderline(true));
             numberLbl.setOnMouseExited(event -> numberLbl.setUnderline(false));
-            numberLbl.setOnMouseClicked(event -> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+            numberLbl.setOnMouseClicked(event ->{
+                new Thread(() -> {
+                    Platform.runLater(()-> loadCardsByPage(Integer.parseInt(numberLbl.getText())));
+                }).start();
+            });
             Label separatorLabel = new Label("...");
             paginationBox.getChildren().addAll(separatorLabel,numberLbl);
         }
@@ -153,6 +169,22 @@ public class HomeController implements Initializable {
                     fxmlLoader.setLocation(getClass().getResource("vehicle-card-view.fxml"));
                     VBox vehicleCard = fxmlLoader.load();
                     VehicleCardController vehicleCardController = fxmlLoader.getController();
+                    Calendar cal1 = Calendar.getInstance();
+                    Calendar cal2 = Calendar.getInstance();
+                    cal1.setTime(pickupDateTF.getDate());
+                    cal2.setTime(pickupTimeTF.getDate());
+                    int year = cal1.get(Calendar.YEAR);
+                    int month = cal1.get(Calendar.MONTH);
+                    int day = cal1.get(Calendar.DAY_OF_MONTH);
+                    cal1.set(year, month, day, cal2.get(Calendar.HOUR_OF_DAY), cal2.get(Calendar.MINUTE), cal2.get(Calendar.SECOND));
+                    pickDate = cal1.getTime();
+                    cal1.setTime(returnDateTF.getDate());
+                    cal2.setTime(returnTimeTF.getDate());
+                    year = cal1.get(Calendar.YEAR);
+                    month = cal1.get(Calendar.MONTH);
+                    day = cal1.get(Calendar.DAY_OF_MONTH);
+                    cal1.set(year, month, day, cal2.get(Calendar.HOUR_OF_DAY), cal2.get(Calendar.MINUTE), cal2.get(Calendar.SECOND));
+                    returnDate = cal1.getTime();
                     vehicleCardController.setData(vehicle,pickDate,returnDate);
                     cardLayout.getChildren().add(vehicleCard);
                     vehicleCardController.loadIn();
@@ -169,59 +201,19 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         Platform.runLater(() -> cardLayout.requestFocus());
         locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),24,24,true,true));
-       /* Date test1 = new Date(2023-1900, Calendar.MAY,16);
-        Reservation res = Reservation.create(new User(1,"hh@","948",true,32,"nn","hh",false),
-                new Vehicle(1,"hh","hh","hh",true,false,9384,"hh",4,"hh","hh",543,234,234,234),
-                test1, test1,true);
-        User user = User.create("sssdgds@ssss",null,false,null,null,null,false);
-        previousPageButton.setVisible(false);
-        nextPageButton.setVisible(false);
-        //vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120));
-        //*/
-        //Vehicle.create( "Volkswagen", "Golf", "white", true, true, 200, "SUV", 5, "Petrol", "Automated", 300000, 1000, 190, 240);
-
         vehicles = Vehicle.getAllVehicles();
         for(int i=0; i<20; i++) {
             vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120,"sASDSA"));
         }
-        /*for(int i=0; i<2; i++) {
-            vehicles.add(new Vehicle(2, "Ferrari", "F430", "red", true, true, 200, "SUV", 4, "Petrol", "Manual", 300000, 1000, 210, 350));
-        }*/
+
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
-        this.loadCardsByPage(1);
+
         refreshComboBoxes();
 
-        //
-        //DatePicker datePicker = new DatePicker();
-        //datePicker.setVisible(false);
-        //searchBox.getChildren().add(datePicker);
-        pickupDateTF.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue){
-               //datePicker.show();
-                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
-                try{
-                    format.parse(pickupDateTF.getText());
-                    pickupDateTF.hideError();
-                } catch (ParseException e) {
-                    pickupDateTF.showError("(Valid date: 10-12-2023)");
-                }
-            }
-        });
-        returnDateTF.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue){
-                //datePicker.show();
-                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy") ;
-                try{
-                    format.parse(returnDateTF.getText());
-                    returnDateTF.hideError();
-                } catch (ParseException e) {
-                    returnDateTF.showError("(Valid date: 10-12-2023)");
-                }
-            }
-        });
     }
 
 
@@ -277,7 +269,7 @@ public class HomeController implements Initializable {
                 }
         );
 
-        for(String brand:Vehicle.getAllBrandsAvailable(vehicles)) {
+       for(String brand:Vehicle.getAllBrandsAvailable(vehicles)) {
             brandsDropList.getItems().add(brand);
         }
         gearDropList.getItems().addAll("Manual","Automated");
@@ -288,22 +280,8 @@ public class HomeController implements Initializable {
     }
     @FXML
     public void filterVehicles(javafx.event.ActionEvent event) {
-        if(!pickupDateTF.isError() && pickupDateTF.getText().length()>0) {
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                pickDate = format.parse(pickupDateTF.getText());
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        if(!returnDateTF.isError() && returnDateTF.getText().length()>0) {
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-            try {
-                returnDate = format.parse(returnDateTF.getText());
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        pickDate = pickupDateTF.getDate();
+        returnDate = returnDateTF.getDate();
         try {
             ComboBox<String> dropList = (ComboBox<String>) event.getSource();
             Text theText = new Text(dropList.getValue());
@@ -320,7 +298,9 @@ public class HomeController implements Initializable {
         vehicles = Vehicle.filterVehicles(filterSettings,pickDate,returnDate);
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
-        this.loadCardsByPage(1);
+        new Thread(() -> {
+            Platform.runLater(()-> loadCardsByPage(1));
+        }).start();
     }
 
     @FXML
@@ -329,7 +309,7 @@ public class HomeController implements Initializable {
         vehicles = Vehicle.getAllVehicles();
         vehiclesHolder = HomeController.split(vehicles,4);
         maxPages = vehiclesHolder.size();
-        this.loadCardsByPage(1);
+        new Thread(() -> {Platform.runLater(()->loadCardsByPage(1));}).start();
         gearDropList.getSelectionModel().clearSelection();
         gearDropList.setValue(null);
         //gearDropList.setPromptText("Gear Type");
@@ -345,12 +325,32 @@ public class HomeController implements Initializable {
     public void nextPageDisplay(){
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber++;
-        this.loadCardsByPage(pageNumber);
+        int finalPageNumber = pageNumber;
+        new Thread(() -> {
+            Platform.runLater(()-> loadCardsByPage(finalPageNumber));
+        }).start();
     }
     @FXML
     public void previousPageDisplay(){
         int pageNumber = Integer.parseInt(pageNumberLabel.getText());
         pageNumber--;
-        this.loadCardsByPage(pageNumber);
+        int finalPageNumber = pageNumber;
+        new Thread(() -> {
+            Platform.runLater(()-> loadCardsByPage(finalPageNumber));
+        }).start();
     }
+
+    public void setData(Date pickupDate,Date returnDate,Date pickupTime,Date returnTime,String location){
+        Platform.runLater(()-> {
+            pickupTimeTF.setDate(pickupTime);
+            pickupDateTF.setDate(pickupDate);
+            returnDateTF.setDate(returnDate);
+            returnTimeTF.setDate(returnTime);
+            locationTF.setText(location);
+            new Thread(() -> {
+                Platform.runLater(()-> loadCardsByPage(1));
+            }).start();
+        });
+    }
+
 }
