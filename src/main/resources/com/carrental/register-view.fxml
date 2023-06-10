@@ -12,7 +12,7 @@
          <children>
             <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;">
                <children>
-                  <ImageView fitHeight="800.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="800.0" fitWidth="590.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
                      </image>
