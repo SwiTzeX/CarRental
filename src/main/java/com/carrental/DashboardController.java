@@ -15,12 +15,13 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,6 +52,14 @@ public class DashboardController implements Initializable {
     @FXML
     private Label growthUser;
     @FXML
+    ImageView arrowCars;
+    @FXML
+    ImageView arrowCust;
+    @FXML
+    ImageView arrowRent;
+    @FXML
+    ImageView arrowRev;
+    @FXML
     static VBox dashvbox;
     @FXML
     final NumberAxis xAxis = new NumberAxis();
@@ -75,8 +84,8 @@ public class DashboardController implements Initializable {
         getRevCur();
         getRevPrev();
         growthRented();
-        growthRevenue();
-        growthCars();
+        //growthRevenue();
+        //growthCars();
         growthUsers();
     }
     @FXML
@@ -157,23 +166,66 @@ public class DashboardController implements Initializable {
         float revC=Reservation.totalSaleInYear(Calendar.getInstance().get(Calendar.YEAR));
         revCur.setText(String.valueOf(revC));
     }
-    public void growthRevenue(){
-        float g = Reservation.getGrowth();
-        growthRev.setText(String.valueOf(g));
-    }
+    /* public void growthRevenue(){
+        float g = Reservation.getGrowthRev();
+        if(g >= 0){
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
+            arrowRev.setImage(image);
+            growthRev.setStyle("-fx-text-fill: #57BF72");
+            growthRev.setText("+" + String.valueOf(g) + "%");
+        }
+        else {
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
+            arrowRev.setImage(image);
+            growthRev.setStyle("-fx-text-fill: #D53131");
+            growthRev.setText("-" + String.valueOf(g) + "%");
+        }
+    } */
     public void growthUsers(){
         float g = User.getGrowth();
-        growthUser.setText(String.valueOf(g));
+        if(g >= 0){
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
+            arrowCust.setImage(image);
+            growthUser.setStyle("-fx-text-fill: #57BF72");
+            growthUser.setText("+" + String.valueOf(g) + "%");
+        }
+        else {
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
+            arrowCust.setImage(image);
+            growthUser.setStyle("-fx-text-fill: #D53131");
+            growthUser.setText("-" + String.valueOf(g) + "%");
+        }
     }
     public void growthRented(){
         float g = Reservation.getGrowth();
-        growthRent.setText(String.valueOf(g));
+        if(g >= 0){
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
+            arrowRent.setImage(image);
+            growthRent.setStyle("-fx-text-fill: #57BF72");
+            growthRent.setText("+" + String.valueOf(g) + "%");
+        }
+        else {
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
+            arrowRent.setImage(image);
+            growthRent.setStyle("-fx-text-fill: #D53131");
+            growthRent.setText("-" + String.valueOf(g) + "%");
+        }
     }
-    public void growthCars(){
-        //float g;
-        //growthCars.setText(String.valueOf(g));
-    }
-
+    /* public void growthCars(){
+        float g = Vehicle.getGrowth();
+        if(g >= 0){
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
+            arrowCars.setImage(image);
+            growthCars.setStyle("-fx-text-fill: #57BF72");
+            growthCars.setText("+" + String.valueOf(g) + "%");
+        }
+        else {
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
+            arrowCars.setImage(image);
+            growthCars.setStyle("-fx-text-fill: #D53131");
+            growthCars.setText("-" + String.valueOf(g) + "%");
+        }
+    } */
     @FXML
     public void onClickReportButton(ActionEvent e){
         CsvExport exporter = new CsvExport();
@@ -188,8 +240,8 @@ public class DashboardController implements Initializable {
     @FXML
     public void onClickCsvReport(ActionEvent e){
         try {
-            //GaussianBlur blurEffect = new GaussianBlur(15);
-            //dashvbox.setEffect(blurEffect);
+            GaussianBlur blurEffect = new GaussianBlur(15);
+            dashvbox.setEffect(blurEffect);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
             csvpopupStage.setScene(new Scene(loader.load()));
             csvpopupStage.setTitle("Csv Pop Up");
