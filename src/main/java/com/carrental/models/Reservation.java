@@ -25,6 +25,10 @@ public class Reservation {
         this.status = status;
     }
 
+    public Reservation() {
+
+    }
+
     public User getUser() {
         return user;
     }

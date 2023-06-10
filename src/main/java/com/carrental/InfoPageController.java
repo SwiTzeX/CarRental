@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
@@ -25,6 +27,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class InfoPageController{
+
+    @FXML
+    private AnchorPane infoPane;
 
     @FXML
     private Button btnBookNow;
@@ -77,6 +82,8 @@ public class InfoPageController{
     @FXML
     private Label username;
 
+    static Reservation res = new Reservation();
+
     public void setData(Vehicle vehicle, Date startDate, Date endDate ){ //search
         Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900, 800, true, true);
         carpic.setImage(image);
@@ -100,6 +107,7 @@ public class InfoPageController{
         infoPpd.setText(String.valueOf(vehicle.getPrice()));
         Reservation res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
         infoTotP.setText(String.valueOf(res.totalPrice()));
+        res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
 
     }
 
@@ -115,9 +123,13 @@ public class InfoPageController{
     void onClickBookNow(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment-view.fxml"));
-            Parent login = loader.load();
+            HBox payment = loader.load();
             Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
+            stage.setScene(new Scene(payment));
+            PaymentController paymentController = loader.getController();
+            paymentController.setData(res);
+            infoPane.getChildren().clear();
+            infoPane.getChildren().addAll(payment);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
