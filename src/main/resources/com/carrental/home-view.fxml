@@ -46,6 +46,8 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.carrental.customnodes.MyTextField?>
+<?import com.carrental.customnodes.MyDatePicker?>
+<?import com.carrental.customnodes.MyTimePicker?>
 <VBox fx:id="mainBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="10.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <HBox fx:id="searchBox" alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <opaqueInsets>
@@ -61,7 +63,7 @@
          <ImageView fx:id="locIcon" fitHeight="22.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@icons/loc.png" />
          </ImageView>
-         <MyTextField layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="292.0" promptText="Pickup Location" promptFontSize="15" inputFontSize="15"/>
+         <MyTextField fx:id="locationTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="292.0" promptText="Pickup Location" promptFontSize="15" inputFontSize="15"/>
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding>
@@ -76,14 +78,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <MyTextField fx:id="pickupDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Date" promptFontSize="15" inputFontSize="15"/>
+            <MyDatePicker fx:id="pickupDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <MyTextField fx:id="pickupTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time" promptFontSize="15" inputFontSize="15"/>
+            <MyTimePicker fx:id="pickupTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Pickup Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
@@ -102,14 +104,14 @@
                   <Image url="@icons/calendar.png" />
                </image>
             </ImageView>
-            <MyTextField fx:id="returnDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Date" promptFontSize="15" inputFontSize="15"/>
+            <MyDatePicker fx:id="returnDateTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Date" promptFontSize="15" inputFontSize="15"/>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="46.0" prefWidth="5.0" />
             <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="20.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/stopwatch.png" />
                </image>
             </ImageView>
-            <MyTextField fx:id="returnTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Time" promptFontSize="15" inputFontSize="15"/>
+            <MyTimePicker fx:id="returnTimeTF" layoutX="47.0" layoutY="10.0" prefHeight="67.0" prefWidth="190.0" promptText="Return Time" promptFontSize="15" inputFontSize="15"/>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />

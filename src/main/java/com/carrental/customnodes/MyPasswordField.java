@@ -54,7 +54,6 @@ public class MyPasswordField extends StackPane {
                 String copiedText = Clipboard.getSystemClipboard().getString();
                 if (!showPassword) {
                     StringBuilder bullets = new StringBuilder();
-                    String tt = "";
                     for (int i = 0; i < textField.getText().length(); i++) {
                         bullets.append(BULLET);
                     }
@@ -63,7 +62,6 @@ public class MyPasswordField extends StackPane {
                     }else {
                         text += copiedText;
                     }
-                    System.out.println(tt);
                     textField.setText(bullets.toString());
                     textField.positionCaret(bullets.length());
                 }

@@ -18,11 +18,11 @@
    <children>
       <VBox alignment="CENTER" layoutX="493.0" layoutY="151.0" prefHeight="444.0" prefWidth="414.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
          <children>
-            <VBox alignment="CENTER_RIGHT" prefHeight="98.0" prefWidth="225.0">
+            <VBox alignment="CENTER" prefHeight="98.0" prefWidth="225.0">
                <children>
                   <ImageView fitHeight="98.0" fitWidth="474.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/iPhone%2014-%201.png" />
+                        <Image url="@logo/New%20logos/Full%20logo%20white%20background.png" />
                      </image>
                   </ImageView>
                </children>
