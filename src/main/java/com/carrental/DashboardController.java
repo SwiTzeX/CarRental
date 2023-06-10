@@ -60,7 +60,7 @@ public class DashboardController implements Initializable {
     @FXML
     ImageView arrowRev;
     @FXML
-    static VBox dashvbox;
+    private VBox dashvbox;
     @FXML
     final NumberAxis xAxis = new NumberAxis();
     @FXML
@@ -229,18 +229,8 @@ public class DashboardController implements Initializable {
         CsvExport exporter = new CsvExport();
         exporter.export();
         try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
-            Parent back = loader1.load();
-            DashboardController dashcontroller = loader1.getController();
-            dashvbox = dashcontroller.getDashBox();
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             GaussianBlur blurEffect = new GaussianBlur(15);
             dashvbox.setEffect(blurEffect);
-            stage.setScene(new Scene(back));
-            stage.show();
-
-
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
             csvpopupStage.setScene(new Scene(loader.load()));
             csvpopupStage.setTitle("Csv Pop Up");
@@ -256,9 +246,7 @@ public class DashboardController implements Initializable {
     public static Stage getCsvpopupStage() {
         return csvpopupStage;
     }
-    @FXML
-    public VBox getDashBox() {
+    public VBox getDashvbox(){
         return dashvbox;
     }
-
 }
