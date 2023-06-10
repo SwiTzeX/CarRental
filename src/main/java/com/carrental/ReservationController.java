@@ -338,7 +338,7 @@ public class ReservationController implements Initializable {
         ComboBox<String> statusField = new ComboBox<>();
         ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
         statusField.setItems(items);
-        statusField.getSelectionModel().selectFirst();
+        statusField.getSelectionModel().select(dataRes.getStatus());
         grid.add(new Label("Id User"), 0, 1);
         grid.add(idUserField, 1, 1);
         grid.add(new Label("Id Vehicle"), 0, 2);
@@ -362,7 +362,15 @@ public class ReservationController implements Initializable {
                 String newModelName = Vehicle.getVehiclesById(newIdVehicle).getModelName();
                 Float newPrice = Vehicle.getVehiclesById(newIdVehicle).getPrice();
                 String newStartDate = startDateField.getText();
+                if(newStartDate == null){
+                    showAlert("Error", "Start Date is empty");
+                    return null;
+                }
                 String newEndDate = endDateField.getText();
+                if(newEndDate == null){
+                    showAlert("Error", "End Date is empty");
+                    return null;
+                }
                 String newStatus = statusField.getValue();
                 dataRes.setFullName(newFullName);
                 dataRes.setPhoneNumber(newPhoneNumber);
@@ -388,7 +396,8 @@ public class ReservationController implements Initializable {
                 dataRes.setStartDate(format.parse(newStartDate));
                 dataRes.setEndDate(format.parse(newEndDate));
                 } catch (ParseException e) {
-                    throw new RuntimeException(e);
+                    showAlert("Error", "Date and Time Field is empty");
+                    //throw new RuntimeException(e);
                 }
                 dataRes.setStatus(newStatus);
                 return dataRes;
@@ -489,11 +498,15 @@ public class ReservationController implements Initializable {
                     status = -1;
                 }
                 try {
-                    Reservation.create(User.getUserById(newIdUser), Vehicle.getVehiclesById(newIdVehicle), format.parse(newStartDate), format.parse(newEndDate), status);
+                    Date starDate = format.parse(newStartDate);
+                    Date endDate = format.parse(newEndDate);
+                    Reservation.create(User.getUserById(newIdUser), Vehicle.getVehiclesById(newIdVehicle), starDate, endDate, status);
                     DataReservation data = new DataReservation(newFullName, newPhoneNumber, newBrandName, newModelName, newPrice, format.parse(newStartDate), format.parse(newEndDate), newStatus);
                     dataResList.add(data);
                 } catch (ParseException e) {
-                    throw new RuntimeException(e);
+                    showAlert("Error", "Date and Time Field is empty");
+                    return null;
+                    //throw new RuntimeException(e);
                 }
 
                 TableViewReservation.setItems(dataResList);
