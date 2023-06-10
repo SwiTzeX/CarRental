@@ -331,7 +331,7 @@
             </VBox>
             <VBox prefHeight="331.0" prefWidth="703.0" style="-fx-background-color: white; -fx-border-color: E1E1E1;">
                <children>
-                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="2.0" categoryGap="130.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" barGap="0.0" categoryGap="30.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="306.0" prefWidth="702.0" style="-fx-background-color: white;" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
                     </xAxis>
