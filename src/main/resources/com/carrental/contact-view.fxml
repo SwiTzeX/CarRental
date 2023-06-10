@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #f6f8ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ContactController">
    <children>
       <HBox alignment="CENTER" layoutX="200.0" layoutY="123.0" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
@@ -41,7 +40,7 @@
                                     <Image url="@icons/telephone.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="29.0" prefWidth="135.0" text="+212 666666666">
+                              <Label prefHeight="29.0" prefWidth="135.0" text="+212 530-103000">
                                  <font>
                                     <Font name="Arial Bold" size="15.0" />
                                  </font>
@@ -58,7 +57,7 @@
                                     <Image url="@icons/enveloppe-de-courrier-electronique.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="30.0" prefWidth="267.0" text="contact@rentez.com">
+                              <Label prefHeight="30.0" prefWidth="267.0" text="uircarrental@gmail.com">
                                  <font>
                                     <Font name="Arial Bold" size="15.0" />
                                  </font>
@@ -87,22 +86,22 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="63.0" prefWidth="498.0" spacing="40.0">
                            <children>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="insta" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@icons/instagram.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="247.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="facebook" fitHeight="24.0" fitWidth="24.0" layoutX="247.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@icons/facebook.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="259.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="linkedin" fitHeight="24.0" fitWidth="24.0" layoutX="259.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@icons/linkedin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="271.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="youtube" fitHeight="24.0" fitWidth="24.0" layoutX="271.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@icons/youtube.png" />
                                  </image>
