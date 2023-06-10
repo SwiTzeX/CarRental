@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.*;
@@ -281,8 +282,7 @@ public class FleetController implements Initializable {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
                             } else {
-                                Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
-                                Vehicle vehic = new Vehicle(newBrandname,newModelname,newPrice,newPlate,newDisponibility);
+                                Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
                                 if (vehic != null) {
                                     vehicleList.add(vehic);
                                     tableid.setItems(vehicleList);
@@ -337,23 +337,28 @@ public class FleetController implements Initializable {
         Price.setCellValueFactory(new PropertyValueFactory<>("price"));
         PlateNum.setCellValueFactory(new PropertyValueFactory<>("plate"));
         Status.setCellValueFactory(new PropertyValueFactory<>("disponibility"));
-        /*Status.setCellFactory(column -> new TableCell<Vehicle, Boolean>() {
+        Status.setCellFactory(param -> new TableCell<Vehicle, Boolean>() {
+            private final Label status = new Label();
+
             @Override
-            private void updateItem(String item, boolean empty) {
-                super.updateItem(Boolean.valueOf(item), empty);
-                if (empty || item == null) {
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
                     setText(null);
                     setTextFill(Color.BLACK);
+                    setGraphic(null);
                 } else {
-                    setText(item);
-                    if (item.equals("Available")) {
-                        setTextFill(Color.ORANGE);
-                    } else {
-                        setTextFill(Color.RED);
-                    }
+                    if(item) {
+                        status.setText("Available");
+                        status.setTextFill(Color.GREEN);
+                        setGraphic(status);
+                    }else{
+                        status.setText("Not Available");
+                        status.setTextFill(Color.RED);
+                        setGraphic(status);
                 }
             }
-        });*/
+        }});
         Actions.setCellFactory(param -> new TableCell<Vehicle, Void>() {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");

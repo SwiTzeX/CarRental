@@ -442,6 +442,7 @@ public class ReservationController implements Initializable {
         startDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
         TextField endDateField = new TextField();
         endDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
+
         ComboBox<String> statusField = new ComboBox<>();
         ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
         statusField.setItems(items);

@@ -15,7 +15,6 @@ public class Vehicle {
     public String modelName;
     public String color;
     public Boolean disponibility;
-    public String strdispo;
     public String brandName;
     public Boolean vehicleState;
     public float price;
@@ -51,14 +50,6 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    public Vehicle( String brandName,String modelName,  float price, String plate,String strdispo) {
-        this.brandName = brandName;
-        this.modelName = modelName;
-        this.price = price;
-        this.plate = plate;
-        this.strdispo = strdispo;
-    }
-
     public Vehicle(String modelName, String color, Boolean disponibility, String brandName, Boolean vehicleState, float price, String type, Integer passengers, String fuelType, String gearType, float deposit, Integer trunkCapacity, Integer maxSpeed, Integer horsePower, String image, String brandImage, String plate) {
         this.modelName = modelName;
         this.color = color;
@@ -89,14 +80,6 @@ public class Vehicle {
     }
 
     public Vehicle(){}
-
-    public String getStrdispo() {
-        return strdispo;
-    }
-
-    public void setStrdispo(String strdispo) {
-        this.strdispo = strdispo;
-    }
 
     public String getPlate() {
         return plate;
