@@ -4,6 +4,7 @@ import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,17 +78,20 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniLineChart();
-        getCountCust();
-        getCountCars();
-        getCountTotalSales();
-        getRented();
         iniBarChart();
-        getRevCur();
-        getRevPrev();
-        growthRented();
-        //growthRevenue();
-        //growthCars();
-        growthUsers();
+        new Thread(() -> Platform.runLater(()->{
+            getCountCust();
+            getCountCars();
+            getCountTotalSales();
+            getRented();
+            getRevCur();
+            getRevPrev();
+            growthRented();
+            //growthRevenue();
+            //growthCars();
+            growthUsers();
+        })).start();
+
     }
 
 

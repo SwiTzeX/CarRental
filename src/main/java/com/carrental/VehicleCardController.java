@@ -83,9 +83,20 @@ public class VehicleCardController {
         vehFuelType.setText(vehicle.getFuelType());
         vehGearType.setText(vehicle.getGearType());
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
-        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900,800,true,true);
+        Image image =null;
+        try {
+            image = new Image(getClass().getResourceAsStream(vehicle.getImage()), 1900, 800, true, true);
+        } catch (Exception e) {
+            image = new Image(getClass().getResourceAsStream("icons/noimage.png"), 1024, 1024, true, true);
+        }
         vehImage.setImage(image);
-        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()),40,40,true,true);
+        Image brandImage = null;
+        try {
+            brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()),40,40,true,true);
+        } catch (Exception e) {
+            brandImage = new Image(getClass().getResourceAsStream("icons/noimage2.png"), 98, 98, true, true);
+        }
+
         vehBrandImage.setImage(brandImage);
         vehBrandImage.setPreserveRatio(true);
         vehBrandImage.setFitWidth(40);

@@ -3,16 +3,19 @@ package com.carrental;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
+    public HBox logoutBtn;
+    public HBox homeBtn;
     @FXML
     private HBox dashboardBtn;
 
@@ -30,8 +33,11 @@ public class AdminController implements Initializable {
 
     @FXML
     private VBox navBar;
+
+    HBox pageSelected = null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        pageSelected = dashboardBtn;
         loadDashboard();
         dashboardBtn.setOnMouseClicked(event ->{
             loadDashboard();
@@ -48,6 +54,14 @@ public class AdminController implements Initializable {
 
     }
 
+    public void animation(HBox btn){
+        pageSelected.getChildren().get(1).setStyle("-fx-text-fill: #d9deff");
+        ((ImageView) pageSelected.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+pageSelected.getChildren().get(0).getId()+".png"),24,24,true,true));
+        btn.getChildren().get(1).setStyle("-fx-text-fill: white");
+        ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+"-W.png"),24,24,true,true));
+        pageSelected = btn;
+    }
+
     public void loadDashboard(){
         try {
             FXMLLoader loader = new FXMLLoader(MainController.class.getResource("dashboard-view.fxml"));
@@ -55,6 +69,7 @@ public class AdminController implements Initializable {
             //Stage stage =(Stage)mainBox.getScene().getWindow();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,dashboardPage);
+            animation(dashboardBtn);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,6 +81,7 @@ public class AdminController implements Initializable {
             //Stage stage =(Stage)mainBox.getScene().getWindow();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,usersPage);
+            animation(userManageBtn);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +93,7 @@ public class AdminController implements Initializable {
             //Stage stage =(Stage)mainBox.getScene().getWindow();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,fleetPage);
+            animation(fleetManageBtn);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,6 +105,7 @@ public class AdminController implements Initializable {
             //Stage stage =(Stage)mainBox.getScene().getWindow();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,reservationsPage);
+            animation(reservationsBtn);
         } catch (IOException e) {
             e.printStackTrace();
         }

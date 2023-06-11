@@ -47,17 +47,9 @@ public class LoginController implements Initializable {
    @FXML
     void login(ActionEvent event) {
        if (u != null && !usernamefield.isError() && !passwordfield.isError() && passwordfield.getText().length()>0) {
+           App.setUser(u);
+           App.openMain((Node)event.getSource());
 
-               try {
-                   App.setUser(u);
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-                   Parent Home = loader.load();
-                   Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                   stage.setScene(new Scene(Home));
-                   stage.show();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
            }
 
        }
@@ -75,18 +67,6 @@ public class LoginController implements Initializable {
         }
     }
 
-    @FXML
-    void btngotologine(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-            Parent Home = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(Home));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -121,8 +101,6 @@ public class LoginController implements Initializable {
                else {
 
                    passwordfield.hideError();
-
-
                }
 
            }

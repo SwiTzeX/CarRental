@@ -543,7 +543,7 @@ public class Vehicle {
                     String pDate = format.format(pickupDate);
                     req +="endDate >= '" + pDate + "' ";
                 }
-                req +=")";
+                req +="AND (status = 0 OR status = 1))";
             }
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
@@ -650,6 +650,7 @@ public class Vehicle {
     @Override
     public String toString() {
         return "Vehicle{" +
+                "id='" + id + '\'' +
                 "type='" + type + '\'' +
                 ", color='" + color + '\'' +
                 ", passengers=" + passengers +
