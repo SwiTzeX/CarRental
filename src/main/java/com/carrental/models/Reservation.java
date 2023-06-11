@@ -348,12 +348,12 @@ public class Reservation {
     public float totalPrice(){
         long durationInMillis = this.endDate.getTime() - this.startDate.getTime();
         long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
-        return this.vehicle.getPrice() * daysBetween;
+        return (float) (Math.round(this.vehicle.getPrice() * daysBetween * 100) / 100.0);
     }
     public static float totalPriceD(Vehicle vehicle,Date startDate,Date endDate){
         long durationInMillis = endDate.getTime() - startDate.getTime();
         long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
-        return vehicle.getPrice() * daysBetween;
+        return (float) (Math.round(vehicle.getPrice() * daysBetween * 100) / 100.0);
     }
     public static float totalSales(){
         ArrayList<Reservation> list = getAllReservationsByStatus(true);

@@ -43,6 +43,11 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     public HBox navBar;
+    public Label homeBtn;
+    public Label reviewsBtn;
+    public Label contactBtn;
+    public Label termsBtn;
+    Label selectedBtn = null;
     @FXML
     VBox mainBox;
     @FXML
@@ -75,6 +80,31 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        selectedBtn = homeBtn;
+        homeBtn.setOnMouseEntered(event->{
+            homeBtn.setStyle("-fx-text-fill: white");
+                });
+        reviewsBtn.setOnMouseEntered(event->{
+            reviewsBtn.setStyle("-fx-text-fill: white");
+        });
+        contactBtn.setOnMouseEntered(event->{
+            contactBtn.setStyle("-fx-text-fill: white");
+        });
+        termsBtn.setOnMouseEntered(event->{
+            termsBtn.setStyle("-fx-text-fill: white");
+        });
+        homeBtn.setOnMouseExited(event->{
+            if(selectedBtn!=homeBtn) homeBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        reviewsBtn.setOnMouseExited(event->{
+            if(selectedBtn!=reviewsBtn) reviewsBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        contactBtn.setOnMouseExited(event->{
+            if(selectedBtn!=contactBtn) contactBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        termsBtn.setOnMouseExited(event->{
+            if(selectedBtn!=termsBtn) termsBtn.setStyle("-fx-text-fill: #d9deff");
+        });
         if(App.getUser() != null){
             userBox.getChildren().clear();
             ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
@@ -367,6 +397,9 @@ public class MainController implements Initializable {
             //homeController.loadIn();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,home);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
             if(App.getUser()!=null){
                 new Thread(this::refreshUserBox).start();
             }
@@ -382,6 +415,9 @@ public class MainController implements Initializable {
             AnchorPane searchPage = fxmlLoader.load();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,searchPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
             if(App.getUser()!=null){
                 refreshUserBox();}
         } catch (IOException e) {
@@ -398,6 +434,24 @@ public class MainController implements Initializable {
             infoPageController.setData(vehicle, startDate, endDate);
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,infoPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
+            refreshUserBox();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openCheckOut(Vehicle vehicle, Date startDate,Date endDate){
+        try {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("payment-view.fxml"));
+            HBox paymentPage = loader.load();
+            Stage stage =(Stage)userBox.getScene().getWindow();
+            PaymentController paymentController = loader.getController();
+            paymentController.setData(vehicle, startDate, endDate);
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,paymentPage);
             refreshUserBox();
         } catch (IOException e) {
             e.printStackTrace();
@@ -411,6 +465,9 @@ public class MainController implements Initializable {
             VBox searchPage = fxmlLoader.load();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,searchPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            reviewsBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = reviewsBtn;
             if(App.getUser()!=null){
                 refreshUserBox();}
         } catch (IOException e) {
@@ -425,6 +482,9 @@ public class MainController implements Initializable {
             ScrollPane termsPage = fxmlLoader.load();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,termsPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            termsBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = termsBtn;
             if(App.getUser()!=null){
                 refreshUserBox();}
         } catch (IOException e) {
@@ -439,6 +499,9 @@ public class MainController implements Initializable {
             AnchorPane contactPage = fxmlLoader.load();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,contactPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            contactBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = contactBtn;
             if(App.getUser()!=null){
                 refreshUserBox();}
         } catch (IOException e) {

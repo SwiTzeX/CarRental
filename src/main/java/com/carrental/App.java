@@ -79,10 +79,10 @@ public class App extends Application {
 
     public static void openAdmin(Node source){
         try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("terms_conditions-view.fxml"));
-            Parent register = loader.load();
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
+            Parent adminPage = loader.load();
             Stage stage =(Stage)source.getScene().getWindow();
-            stage.setScene(new Scene(register));
+            stage.setScene(new Scene(adminPage));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
