@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
@@ -27,9 +28,10 @@ public class App extends Application {
         user = User.getUserById(48);
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
         //sApp.getUser().getAllNotifications().get(0).delete();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("users-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        //mainController = fxmlLoader.getController();
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Sora");
+        mainController = fxmlLoader.getController();
         stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -45,7 +47,6 @@ public class App extends Application {
     }
 
     public static MainController getMainController() {
-        System.out.println(app.mainController);
         return app.mainController;
     }
 
@@ -79,9 +80,9 @@ public class App extends Application {
     public static void openAdmin(Node source){
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
-            Parent register = loader.load();
+            Parent adminPage = loader.load();
             Stage stage =(Stage)source.getScene().getWindow();
-            stage.setScene(new Scene(register));
+            stage.setScene(new Scene(adminPage));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

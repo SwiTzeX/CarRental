@@ -1,5 +1,6 @@
 package com.carrental.customnodes;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
@@ -82,6 +83,7 @@ public class MyTimePicker extends StackPane {
 
     public void setDate(Date date) {
         this.date = date;
+        textField.setText(format.format(date));
     }
 
     private void updateTextField(){
@@ -97,7 +99,6 @@ public class MyTimePicker extends StackPane {
 
 
     private void setupTextField() {
-        System.out.println(date);
         textField.setStyle("-fx-background-color: transparent;");
         textField.setPadding(new Insets(0, 0, 0, -0.8));
         textField.setFont(new Font("Arial",inputFontSize));
@@ -121,6 +122,9 @@ public class MyTimePicker extends StackPane {
                 removeLine();
 
             }
+        });
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(this::showPromptText);
         });
         getChildren().add(textField);
 

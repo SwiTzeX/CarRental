@@ -48,7 +48,6 @@ public class CommentController {
 
 
     public void setData(Review review){
-
         Image image = new Image(getClass().getResourceAsStream("icons/user-icon.png"), 512, 512, true, true);
         userIcon.setImage(image);
         username.setText(User.getUserById(review.idU).fullName);

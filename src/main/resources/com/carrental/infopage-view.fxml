@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.InfoPageController">
+<AnchorPane fx:id="infoPane" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.InfoPageController">
    <children>
       <VBox alignment="CENTER" layoutX="-2.0" layoutY="-1.0" prefHeight="745.0" prefWidth="1401.0">
          <children>

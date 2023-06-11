@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -106,7 +107,6 @@ public class PaymentController implements Initializable {
 
     static VBox mainvbox;
 
-    private Reservation reservation;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -114,18 +114,7 @@ public class PaymentController implements Initializable {
     }
 
     static Stage popupStage = new Stage();
-    @FXML
-    public void onClickBack(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("infopage-view.fxml"));
-            Parent back = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(back));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 @FXML
     public String getRadioValue() {
@@ -138,25 +127,31 @@ public class PaymentController implements Initializable {
         return method;
     }
 
-    public void setData(Reservation reservation){
-        this.reservation=reservation;
-        BrandNameVar.setText(reservation.vehicle.getBrandName());
-        PricePerDay.setText(String.valueOf(reservation.vehicle.getPrice())+" DH");
-        NumPVar.setText(String.valueOf(reservation.vehicle.getPassengers()));
-        FuelTypeVar.setText(reservation.vehicle.getFuelType());
-        GearTypeVar.setText(reservation.vehicle.getGearType());
-        HpVar.setText(String.valueOf(reservation.vehicle.getHorsePower()));
-        Image image = new Image(getClass().getResourceAsStream(reservation.vehicle.getImage()));
+    Vehicle vehicle;
+    Date startDate;
+    Date endDate;
+
+    public void setData(Vehicle vehicle, java.util.Date startDate, Date endDate ){
+        this.vehicle=vehicle;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        BrandNameVar.setText(vehicle.getBrandName());
+        PricePerDay.setText(String.valueOf(vehicle.getPrice())+" DH");
+        NumPVar.setText(String.valueOf(vehicle.getPassengers()));
+        FuelTypeVar.setText(vehicle.getFuelType());
+        GearTypeVar.setText(vehicle.getGearType());
+        HpVar.setText(String.valueOf(vehicle.getHorsePower()));
+        Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()));
         CarImageVar.setImage(image);
-        Image brandImage = new Image(getClass().getResourceAsStream(reservation.vehicle.getBrandImage()));
+        Image brandImage = new Image(getClass().getResourceAsStream(vehicle.getBrandImage()));
         BrandLogoVar.setImage(brandImage);
-        TrunkCapVar.setText(String.valueOf(reservation.vehicle.getTrunkCapacity()));
-        TotalPrice.setText(String.valueOf(reservation.totalPrice()));
-        ColorVar.setText(reservation.vehicle.color);
-        ModelNameVar.setText(reservation.vehicle.modelName);
-        DepositVar.setText(String.valueOf(reservation.vehicle.deposit));
-        startDateVar.setText(String.valueOf(reservation.startDate));
-        endDateVar.setText(String.valueOf(reservation.endDate));
+        TrunkCapVar.setText(String.valueOf(vehicle.getTrunkCapacity()));
+        TotalPrice.setText(String.valueOf(Reservation.totalPriceD(vehicle,startDate,endDate)));
+        ColorVar.setText(vehicle.color);
+        ModelNameVar.setText(vehicle.modelName);
+        DepositVar.setText(String.valueOf(vehicle.deposit));
+        startDateVar.setText(String.valueOf(startDate));
+        endDateVar.setText(String.valueOf(endDate));
     }
 
     private void performTransition(ActionEvent e) {
@@ -169,8 +164,8 @@ public class PaymentController implements Initializable {
 
     @FXML
    public void EndCheckout(ActionEvent e) {
-        Reservation.create(reservation.user,reservation.vehicle,reservation.startDate,reservation.endDate,0);
-        reservation.vehicle.setDisponibility(false);
+        Reservation.create(App.getUser(),vehicle,startDate,endDate,0);
+        App.getUser().sendNotification("Reservation","Your reservation for "+vehicle.getBrandName()+" "+vehicle.getModelName()+" will be pending until it is approved.");
         //Payment Method Paypal
         if(this.getRadioValue()=="Paypal"){
         // Define the URL to redirect to
@@ -193,15 +188,12 @@ public class PaymentController implements Initializable {
 
     public void RedirectCheckout(ActionEvent e){
         try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-            Parent back = loader1.load();
-            MainController maincontroller = loader1.getController();
+
+            MainController maincontroller = App.getMainController();
+            maincontroller.openSearch();
             mainvbox = maincontroller.getMainBox();
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             GaussianBlur blurEffect = new GaussianBlur(15);
             mainvbox.setEffect(blurEffect);
-            stage.setScene(new Scene(back));
-            stage.show();
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), mainvbox);
             fadeTransition.setFromValue(0.0);
             fadeTransition.setToValue(1.0);

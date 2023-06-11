@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
@@ -25,6 +27,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class InfoPageController{
+
+    @FXML
+    private AnchorPane infoPane;
 
     @FXML
     private Button btnBookNow;
@@ -76,15 +81,18 @@ public class InfoPageController{
 
     @FXML
     private Label username;
+    Vehicle vehicle;
+    Date startDate;
+    Date endDate;
 
     public void setData(Vehicle vehicle, Date startDate, Date endDate ){ //search
         Image image = new Image(getClass().getResourceAsStream(vehicle.getImage()),1900, 800, true, true);
         carpic.setImage(image);
-        System.out.println(vehicle.getBrandName());
-
+        this.vehicle=vehicle;
+        this.startDate=startDate;
+        this.endDate=endDate;
         this.infoBrand.setText(vehicle.getBrandName());
         infoModel.setText(vehicle.getModelName());
-
         infoColor.setText(vehicle.getColor());
         infoFuel.setText(vehicle.getFuelType());
         infoGear.setText(vehicle.getGearType());
@@ -98,8 +106,7 @@ public class InfoPageController{
         Period duration = Period.between(first_date,second_date);
         infoDuration.setText(duration.toString());
         infoPpd.setText(String.valueOf(vehicle.getPrice()));
-        Reservation res = new Reservation(App.getUser(), vehicle, startDate, endDate, 0);
-        infoTotP.setText(String.valueOf(res.totalPrice()));
+        infoTotP.setText(String.valueOf(Reservation.totalPriceD(vehicle,startDate,endDate)));
 
     }
 
@@ -113,16 +120,8 @@ public class InfoPageController{
 
     @FXML
     void onClickBookNow(ActionEvent event){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment-view.fxml"));
-            Parent login = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            App.getMainController().openCheckOut(vehicle,startDate,endDate);
         }
-    }
 
 
 }

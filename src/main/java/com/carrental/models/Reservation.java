@@ -25,6 +25,10 @@ public class Reservation {
         this.status = status;
     }
 
+    public Reservation() {
+
+    }
+
     public User getUser() {
         return user;
     }
@@ -344,7 +348,12 @@ public class Reservation {
     public float totalPrice(){
         long durationInMillis = this.endDate.getTime() - this.startDate.getTime();
         long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
-        return this.vehicle.getPrice() * daysBetween;
+        return (float) (Math.round(this.vehicle.getPrice() * daysBetween * 100) / 100.0);
+    }
+    public static float totalPriceD(Vehicle vehicle,Date startDate,Date endDate){
+        long durationInMillis = endDate.getTime() - startDate.getTime();
+        long daysBetween = TimeUnit.MILLISECONDS.toDays(durationInMillis);
+        return (float) (Math.round(vehicle.getPrice() * daysBetween * 100) / 100.0);
     }
     public static float totalSales(){
         ArrayList<Reservation> list = getAllReservationsByStatus(true);
@@ -388,6 +397,23 @@ public class Reservation {
         return 0;
     }
 
+    public static float getRevenueGrowth(){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT SUM(price*DATEDIFF(endDate,startDate)) AS current_count  FROM Vehicles NATURAL JOIN Reservations WHERE MONTH(startDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT SUM(price*DATEDIFF(endDate,startDate)) AS prev_count  FROM Vehicles NATURAL JOIN Reservations WHERE MONTH(startDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(startDate) < MONTH(CURRENT_DATE())) AS prev;" ;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return rs.getFloat(1);
+
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 
     public String getTimeLeft() {
         long currentTimeMillis = System.currentTimeMillis();
@@ -427,7 +453,7 @@ public class Reservation {
         long currentTimeMillis = System.currentTimeMillis();
         long endTimeMillis = this.getEndDate().getTime();
         long startTimeMillis = this.getStartDate().getTime();
-        long timeDifferenceMillis = Math.abs(currentTimeMillis - endTimeMillis);
+        long timeDifferenceMillis = currentTimeMillis - endTimeMillis;
         double totalTimeMillis = endTimeMillis - startTimeMillis;
         double percentage = (double) timeDifferenceMillis / totalTimeMillis;
         return (double) percentage*100;

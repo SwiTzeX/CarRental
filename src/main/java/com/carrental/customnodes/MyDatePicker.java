@@ -1,5 +1,6 @@
 package com.carrental.customnodes;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
@@ -24,6 +25,8 @@ import java.time.Month;
 import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -77,6 +80,8 @@ public class MyDatePicker extends StackPane {
 
     public void setDate(Date date) {
         this.date = date;
+        showPromptText();
+        textField.setText(format.format(date));
     }
 
     private void updateTextField(){
@@ -116,6 +121,9 @@ public class MyDatePicker extends StackPane {
 
             }
         });
+       textField.textProperty().addListener((observable, oldValue, newValue) -> {
+           Platform.runLater(this::showPromptText);
+                });
         getChildren().add(textField);
 
     }
@@ -134,8 +142,12 @@ public class MyDatePicker extends StackPane {
         HBox popupContent = new HBox(days,months,years);
         popupContent.setSpacing(5);
         popupContent.setStyle("-fx-background-color: white;-fx-padding: 2");
-        for (Month month : Month.values()) {
-            months.getItems().add(month.getDisplayName(TextStyle.SHORT, Locale.getDefault()));
+        ArrayList<String> monthsText =  new ArrayList<>(Arrays.asList(
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ));
+        for (String txt : monthsText) {
+            months.getItems().add(txt);
         }
         months.getSelectionModel().selectFirst();
         for(int i = 0;i<10;i++){

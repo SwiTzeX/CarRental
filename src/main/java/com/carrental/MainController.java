@@ -6,11 +6,13 @@ import com.carrental.models.Notification;
 import com.carrental.models.Reservation;
 import com.carrental.models.Vehicle;
 import javafx.animation.*;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,6 +43,11 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     public HBox navBar;
+    public Label homeBtn;
+    public Label reviewsBtn;
+    public Label contactBtn;
+    public Label termsBtn;
+    Label selectedBtn = null;
     @FXML
     VBox mainBox;
     @FXML
@@ -73,6 +80,31 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        selectedBtn = homeBtn;
+        homeBtn.setOnMouseEntered(event->{
+            homeBtn.setStyle("-fx-text-fill: white");
+                });
+        reviewsBtn.setOnMouseEntered(event->{
+            reviewsBtn.setStyle("-fx-text-fill: white");
+        });
+        contactBtn.setOnMouseEntered(event->{
+            contactBtn.setStyle("-fx-text-fill: white");
+        });
+        termsBtn.setOnMouseEntered(event->{
+            termsBtn.setStyle("-fx-text-fill: white");
+        });
+        homeBtn.setOnMouseExited(event->{
+            if(selectedBtn!=homeBtn) homeBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        reviewsBtn.setOnMouseExited(event->{
+            if(selectedBtn!=reviewsBtn) reviewsBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        contactBtn.setOnMouseExited(event->{
+            if(selectedBtn!=contactBtn) contactBtn.setStyle("-fx-text-fill: #d9deff");
+        });
+        termsBtn.setOnMouseExited(event->{
+            if(selectedBtn!=termsBtn) termsBtn.setStyle("-fx-text-fill: #d9deff");
+        });
         if(App.getUser() != null){
             userBox.getChildren().clear();
             ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
@@ -106,7 +138,9 @@ public class MainController implements Initializable {
             reservationCircle.setTranslateX(7);
             reservationCircle.setTranslateY(-7);
             ImageView carsIcon = new ImageView(new Image(getClass().getResourceAsStream("icons/cars.png"),20,20,true,true));
+            carsIcon.setClip(new ImageView(new Image(getClass().getResourceAsStream("icons/cars.png"),20,20,true,true)));
             reservationsBtn = new StackPane(carsIcon);
+
             refreshUserBox();
 
 
@@ -138,10 +172,10 @@ public class MainController implements Initializable {
         }
         try {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("home-view.fxml"));
-        VBox home = fxmlLoader.load();
-        HomeController homeController = fxmlLoader.getController();
-        mainBox.getChildren().add(home);
+        fxmlLoader.setLocation(getClass().getResource("search-view.fxml"));
+        AnchorPane searchPage = fxmlLoader.load();
+        SearchController searchController = fxmlLoader.getController();
+        mainBox.getChildren().add(searchPage);
         //homeController.loadIn();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -353,17 +387,39 @@ public class MainController implements Initializable {
         }
     }
     @FXML
-    public void openHome(){
+    public void openHome(Date pickupDate,Date returnDate,Date pickupTime,Date returnTime,String location){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("home-view.fxml"));
             VBox home = fxmlLoader.load();
             HomeController homeController = fxmlLoader.getController();
+            homeController.setData(pickupDate,returnDate,pickupTime,returnTime,location);
             //homeController.loadIn();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,home);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
             if(App.getUser()!=null){
-            refreshUserBox();}
+                new Thread(this::refreshUserBox).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void openSearch(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("search-view.fxml"));
+            AnchorPane searchPage = fxmlLoader.load();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,searchPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
+            if(App.getUser()!=null){
+                refreshUserBox();}
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -378,11 +434,81 @@ public class MainController implements Initializable {
             infoPageController.setData(vehicle, startDate, endDate);
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,infoPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = homeBtn;
             refreshUserBox();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void openCheckOut(Vehicle vehicle, Date startDate,Date endDate){
+        try {
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("payment-view.fxml"));
+            HBox paymentPage = loader.load();
+            Stage stage =(Stage)userBox.getScene().getWindow();
+            PaymentController paymentController = loader.getController();
+            paymentController.setData(vehicle, startDate, endDate);
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,paymentPage);
+            refreshUserBox();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void openReviews(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("comments-page-view.fxml"));
+            VBox searchPage = fxmlLoader.load();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,searchPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            reviewsBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = reviewsBtn;
+            if(App.getUser()!=null){
+                refreshUserBox();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void openTerms(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("terms&conditions-view.fxml"));
+            ScrollPane termsPage = fxmlLoader.load();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,termsPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            termsBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = termsBtn;
+            if(App.getUser()!=null){
+                refreshUserBox();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void openContact(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("contact-view.fxml"));
+            AnchorPane contactPage = fxmlLoader.load();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,contactPage);
+            selectedBtn.setStyle("-fx-text-fill: #d9deff");
+            contactBtn.setStyle("-fx-text-fill: white");
+            selectedBtn = contactBtn;
+            if(App.getUser()!=null){
+                refreshUserBox();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void goToLogin(javafx.event.ActionEvent event) {
         App.openLogin((Node)event.getSource());
@@ -396,7 +522,7 @@ public class MainController implements Initializable {
         App.setUser(null);
         userBox.getChildren().clear();
         userBox.getChildren().addAll(signupBtn,signinBtn);
-        openHome();
+        openSearch();
     }
 
     public void logIn(){

@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -60,7 +61,7 @@ public class DashboardController implements Initializable {
     @FXML
     ImageView arrowRev;
     @FXML
-    static VBox dashvbox;
+    private VBox dashvbox;
     @FXML
     final NumberAxis xAxis = new NumberAxis();
     @FXML
@@ -88,8 +89,7 @@ public class DashboardController implements Initializable {
         //growthCars();
         growthUsers();
     }
-    @FXML
-    static Stage csvpopupStage = new Stage();
+
 
     public void iniLineChart(){
         xAxis.setLabel("Month");
@@ -229,20 +229,14 @@ public class DashboardController implements Initializable {
         CsvExport exporter = new CsvExport();
         exporter.export();
         try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
-            Parent back = loader1.load();
-            DashboardController dashcontroller = loader1.getController();
-            dashvbox = dashcontroller.getDashBox();
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             GaussianBlur blurEffect = new GaussianBlur(15);
-            dashvbox.setEffect(blurEffect);
-            stage.setScene(new Scene(back));
-            stage.show();
-
-
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CsvPopUp-view.fxml"));
+            Stage csvpopupStage = new Stage();
             csvpopupStage.setScene(new Scene(loader.load()));
+            CsvPopUpController csvPopUpController = loader.getController();
+            HBox hbox=(HBox) dashvbox.getParent();
+            csvPopUpController.setH(hbox);
+            hbox.setEffect(blurEffect);
             csvpopupStage.setTitle("Csv Pop Up");
             csvpopupStage.initModality(Modality.APPLICATION_MODAL); // Set modality to block main window
             csvpopupStage.initStyle(StageStyle.UNDECORATED);
@@ -252,13 +246,4 @@ public class DashboardController implements Initializable {
             b.printStackTrace();
         }
     }
-
-    public static Stage getCsvpopupStage() {
-        return csvpopupStage;
-    }
-    @FXML
-    public VBox getDashBox() {
-        return dashvbox;
-    }
-
 }

@@ -12,9 +12,9 @@
          <children>
             <Pane prefHeight="800.0" prefWidth="554.0" style="-fx-background-color: #6279FF;">
                <children>
-                  <ImageView fitHeight="800.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="800.0" fitWidth="590.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/marc-kleen-BTECOzHzgps-unsplash.png" />
+                        <Image url="@logo/New%20logos/qq.png" />
                      </image>
                   </ImageView>
                   <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
@@ -45,7 +45,7 @@
                         <Insets top="-50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#gotohome" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="&lt; Home">
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#gotohome" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="&lt; Home">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>

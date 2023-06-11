@@ -2,10 +2,8 @@ package com.carrental.models;
 
 import com.carrental.SingletonConnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -69,7 +67,6 @@ public class Review {
         this.creationDate = creationDate;
     }
 
-
     public static ArrayList<Review> getComments(){
         ArrayList<Review> reviews = new ArrayList<>();
         try {
@@ -91,6 +88,41 @@ public class Review {
             throw new RuntimeException(e);
         }
         return reviews;
+    }
+
+    public static Review create(Integer idUser,Integer stars, String comment){
+        try{
+            Connection conn = SingletonConnection.getConnection();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String creationDate = format.format(new Date());
+            String req = "INSERT INTO Reviews VALUES(null, " + idUser + ", " + stars + ", '" + comment + "', '" + creationDate+"')";
+            Statement stmt = (Statement) conn.createStatement();
+            stmt.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
+
+            int idReview = -1;
+            ResultSet rs1 = stmt.getGeneratedKeys();
+            if (rs1.next()) {
+                idReview = rs1.getInt(1);
+            }
+            stmt.close();
+
+            return new Review(idReview, idUser, stars, comment, new Date());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean delete(){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "DELETE FROM Reviews WHERE idR = " + this.getIdR();
+            Statement stmt = conn.createStatement();
+            int rs = stmt.executeUpdate(req);
+            stmt.close();
+            return rs > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

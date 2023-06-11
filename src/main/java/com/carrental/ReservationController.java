@@ -126,9 +126,9 @@ public class ReservationController implements Initializable {
                     setTextFill(Color.BLACK);
                 } else {
                     setText(item);
-                    if (item.equals("Waiting")) {
+                    if (item.equals("Pending")) {
                         setTextFill(Color.ORANGE);
-                    } else if (item.equals("Refused")) {
+                    } else if (item.equals("Denied")) {
                         setTextFill(Color.RED);
                     } else if (item.equals("Approved")) {
                         setTextFill(Color.FORESTGREEN);
@@ -221,7 +221,7 @@ public class ReservationController implements Initializable {
                             Reservation res = resList.get(i);
                             res.setStatus(newStatusNbr);
                             res.getUser().sendNotification("Reservation", "Your reservation for "+ dataReservation.getBrandName() + " "
-                                    + dataReservation.getModelName()+"has been approved");
+                                    + dataReservation.getModelName()+" has been approved.");
                             TableViewReservation.refresh();
                         } else {
                             // User clicked "Cancel" or closed the confirmation alert
@@ -253,14 +253,14 @@ public class ReservationController implements Initializable {
                     dialogReason.setResultConverter(dialogButton -> {
                         if (dialogButton == buttonTypeOk) {
                             // User clicked "OK"
-                            String newStatus = "refused";
+                            String newStatus = "Denied";
                             int newStatusNbr = -1;
                             int i = dataResList.indexOf(dataReservation);
                             dataReservation.setStatus(newStatus);
                             Reservation res = resList.get(i);
                             res.setStatus(newStatusNbr);
                             res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
-                                    + " has been refused for the following reason : \n" + reason.getText());
+                                    + " has been Denied for the following reason : \n" + reason.getText());
                             return dataReservation;
                         } else {
                             // User clicked "Cancel" or closed the confirmation alert
@@ -288,7 +288,7 @@ public class ReservationController implements Initializable {
                 } else {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     String status = dataReservation.getStatus();
-                    if(status.equals("Waiting")){
+                    if(status.equals("Pending")){
                         HBox buttonBox = new HBox(approveButton, refuseButton, deleteButton);
                         buttonBox.setSpacing(10);
                         buttonBox.setAlignment(Pos.CENTER);
@@ -336,7 +336,7 @@ public class ReservationController implements Initializable {
         TextField startDateField = new TextField(format.format(dataRes.getStartDate()));
         TextField endDateField = new TextField(format.format(dataRes.getEndDate()));
         ComboBox<String> statusField = new ComboBox<>();
-        ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
+        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied");
         statusField.setItems(items);
         statusField.getSelectionModel().select(dataRes.getStatus());
         grid.add(new Label("Id User"), 0, 1);
@@ -384,7 +384,7 @@ public class ReservationController implements Initializable {
                 try {
                 res.setStartDate(format.parse(newStartDate));
                 res.setEndDate(format.parse(newEndDate));
-                if(newStatus.equals("Waiting")){
+                if(newStatus.equals("Pending")){
                     res.setStatus(0);
                 }else if(newStatus.equals("Approved")){
                     res.setStatus(1);
@@ -444,7 +444,7 @@ public class ReservationController implements Initializable {
         endDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
 
         ComboBox<String> statusField = new ComboBox<>();
-        ObservableList<String> items = FXCollections.observableArrayList("Waiting", "Approved", "Ended", "Refused");
+        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied");
         statusField.setItems(items);
         statusField.getSelectionModel().selectFirst();
         grid.add(new Label("Id User"), 0, 1);
@@ -489,7 +489,7 @@ public class ReservationController implements Initializable {
                 }
                 String newStatus = statusField.getValue();
                 Integer status = null;
-                if(newStatus.equals("Waiting")){
+                if(newStatus.equals("Pending")){
                     status = 0;
                 }else if(newStatus.equals("Approved")){
                     status = 1;
@@ -541,10 +541,10 @@ public class ReservationController implements Initializable {
 
     private void updateTableView() {
         TableViewReservation.setItems(dataResList.filtered(reservation -> {
-            boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("Waiting") ||
+            boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("Pending") ||
                     (statusId1.isSelected() && reservation.getStatus().equals("Approved")) ||
                     (statusId2.isSelected() && reservation.getStatus().equals("Ended")) ||
-                    (statusId3.isSelected() && reservation.getStatus().equals("Refused"));
+                    (statusId3.isSelected() && reservation.getStatus().equals("Denied"));
             return statusFilter;
         }));
         if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected()){
