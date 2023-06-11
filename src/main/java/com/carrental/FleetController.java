@@ -108,7 +108,7 @@ public class FleetController implements Initializable {
             //CheckBox disponibilityField = new CheckBox();
             ComboBox<String> disponibilityField = new ComboBox<String>();
             disponibilityField.setPrefWidth(200);
-            disponibilityField.setPromptText("Available");
+            disponibilityField.setValue("Available");
             ObservableList<String> availabilitylist = disponibilityField.getItems();
             availabilitylist.add("Available");
             availabilitylist.add("Not Available");
@@ -204,6 +204,7 @@ public class FleetController implements Initializable {
 
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == buttonTypeOk) {
+                   Boolean test = true;
                     try {
                         String newBrandname = brandnameField.getText();
                         String newModelname = modelnameField.getText();
@@ -215,7 +216,9 @@ public class FleetController implements Initializable {
                         }catch (Exception ignored){
 
                             showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
-                            return null;
+                            //return null;
+                            dialog.showAndWait();
+                            //test =false;
                         }
                         String newDisponibility = disponibilityField.getValue();
                         Boolean Disponibilty = null;
@@ -234,7 +237,9 @@ public class FleetController implements Initializable {
                             newDeposit = Float.parseFloat(depositField.getText());
                         }catch (Exception ignored){
                             showAlert("Error", "Invalid deposit format. Please enter a valid numeric value.");
-                            return null;
+                            //return null;
+                            //test =false;
+                            dialog.showAndWait();
                         }
                         int newTrunkcapacity = Integer.parseInt(trunkcapacityField.getText());
                         int newMaxspeed = Integer.parseInt(maxspeedField.getText());
@@ -244,8 +249,11 @@ public class FleetController implements Initializable {
 
                         boolean platenumExists = vehicleList.stream().anyMatch(vehicle -> vehicle.getPlate().equals(newPlate));
 
+
                         if (platenumExists) {
                             showAlert("Error", "Cannot add vehicule. Plate number already exists.");
+                            //test =false;
+                            dialog.showAndWait();
                         } else {
                             /*String dispoRegex = "^[01]$"; // Regular expression for 0 or 1
                             boolean isDispoValid = Pattern.matches(dispoRegex, Boolean.toString(newDisponibility));
@@ -283,36 +291,45 @@ public class FleetController implements Initializable {
                             } else*/ if (!isPassengersValid) {
                                 // Display an error message if the passengers value is not in a valid format
                                 showAlert("Error", "Invalid passengers format. Please enter a valid integer value.");
+                                dialog.showAndWait();
                             }/* else if (!isDepositValid) {
                                 // Display an error message if the deposit value is not in a valid format
                                 showAlert("Error", "Invalid deposit format. Please enter a valid integer value.");
                             }*/ else if (!isTrunkCapacityValid) {
                                 // Display an error message if the trunk capacity value is not in a valid format
                                 showAlert("Error", "Invalid trunk capacity format. Please enter a valid integer value.");
+                                dialog.showAndWait();
                             } else if (!isMaxSpeedValid) {
                                 // Display an error message if the max speed value is not in a valid format
                                 showAlert("Error", "Invalid max speed format. Please enter a valid integer value.");
+                                dialog.showAndWait();
                             } else if (!isHorsepowerValid) {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
+                                dialog.showAndWait();
 
                             } else {
-                                Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
-                                if (vehic != null) {
-                                    vehicleList.add(vehic);
-                                    tableid.setItems(vehicleList);
-                                } else {
-                                    showAlert("Error", "Failed to add vehicle");
+                                //if(test) {
+                                    Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
+                                    if (vehic != null) {
+                                        vehicleList.add(vehic);
+                                        tableid.setItems(vehicleList);
+                                    } else {
+                                        showAlert("Error", "Failed to add vehicle");
 
-                                }
+                                    }
+
+                                //}
                             }
                         }
 
                     } catch(Exception e){
                         throw new RuntimeException(e);
-
                     }
                 }
+                //dialog.getDialogPane().setContent(grid);
+
+              // dialog.showAndWait();
                 return null;
             });
             ;
@@ -454,8 +471,14 @@ public class FleetController implements Initializable {
         TextField plateField = new TextField(vehicle.getPlate());
         //CheckBox disponibilityField = new CheckBox();
         ComboBox<String> disponibilityField = new ComboBox<String>();
+        Boolean dispo=vehicle.getDisponibility();
+        if (dispo){
+            disponibilityField.setValue("Available");
+        } else if (!dispo) {
+            disponibilityField.setValue("Not Available");
+        }
         disponibilityField.setPrefWidth(200);
-        disponibilityField.setPromptText("Available");
+        //disponibilityField.setPromptText("Available");
         ObservableList<String> availabilitylist = disponibilityField.getItems();
         availabilitylist.add("Available");
         availabilitylist.add("Not Available");
@@ -499,6 +522,7 @@ public class FleetController implements Initializable {
 
                 return vehicle;
             }
+
             return null;
         });
 
