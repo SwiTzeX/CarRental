@@ -29,7 +29,7 @@
          <children>
             <Label alignment="BOTTOM_LEFT" prefHeight="36.0" prefWidth="221.0" text="Payment" textFill="#353550">
                <font>
-                  <Font name="Arial Bold" size="29.0" />
+                  <Font name="Sora Bold" size="29.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="30.0" top="5.0" />
