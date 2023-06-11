@@ -33,13 +33,13 @@ public class DataReservation {
         this.startDate = startDate;
         this.endDate = endDate;
         if(status.equals("0")){
-            this.status = "Waiting";
+            this.status = "Pending";
         }else if(status.equals("1")){
             this.status = "Approved";
         }else if(status.equals("2")){
             this.status = "Ended";
         }else{
-            this.status = "Refused";
+            this.status = "Denied";
         }
     }
 
