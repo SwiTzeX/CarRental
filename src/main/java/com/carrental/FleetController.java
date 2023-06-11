@@ -212,7 +212,6 @@ public class FleetController implements Initializable {
                         try {
                             newPrice = Float.parseFloat(priceField.getText());
                         }catch (Exception ignored){
-
                             showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
                             //return null;
                             dialog.showAndWait();
@@ -223,8 +222,8 @@ public class FleetController implements Initializable {
                         if(newDisponibility.equals("Not Available")){
                             Disponibilty = false;}
                         else if(newDisponibility.equals("Available")){
-                            Disponibilty = true;}
-
+                            Disponibilty = true;
+                        }
 
                         String newType = typeField.getValue();
                         int newPassengers = 0;
@@ -384,7 +383,6 @@ public class FleetController implements Initializable {
 
         vehicles = Vehicle.getAllVehicles();
 
-
         vehicleList.addAll(vehicles);
 
         IdV.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -472,13 +470,10 @@ public class FleetController implements Initializable {
         tableid.setItems(vehicleList);
 
 
-
-
         //statusDropList.getItems().addAll("Available","Not");
         for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
-
     }
     private void showEditDialog(Vehicle vehicle) {
         Dialog<Vehicle> dialog = new Dialog<>();
@@ -528,23 +523,40 @@ public class FleetController implements Initializable {
 
                 String newbrandname = brandnameField.getText();
                 String newmodelname = modelnameField.getText();
-                float newprice = Float.parseFloat(priceField.getText());
+                //float newprice = Float.parseFloat(priceField.getText());
                 String newplate = plateField.getText();
                 String newDisponibility = disponibilityField.getValue();
 
                 Boolean Disponibilty = null;
-                if(newDisponibility.equals("Not Available")){
-                    Disponibilty = false;}
-                else if(newDisponibility.equals("Available")){
-                    Disponibilty = true;}
+                if (newDisponibility.equals("Not Available")) {
+                    Disponibilty = false;
+                } else if (newDisponibility.equals("Available")) {
+                    Disponibilty = true;
+                }
 
-                vehicle.setBrandName(newbrandname);
-                vehicle.setModelName(newmodelname);
-                vehicle.setPrice(newprice);
-                vehicle.setPlate(newplate);
-                vehicle.setDisponibility(Disponibilty);
+                float newprice = 0;
+                try {
+                    newprice = Float.parseFloat(priceField.getText());
+                }catch (Exception ignored){
+                    showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
+                    dialog.showAndWait();
+                }
 
-                return vehicle;
+                boolean platenumExists = vehicleList.stream().anyMatch(vehicle1 -> vehicle1.getPlate().equals(newplate));
+
+                if (platenumExists) {
+                    showAlert("Error", "Cannot add vehicule. Plate number already exists.");
+                    //test =false;
+                    dialog.showAndWait();
+
+                    vehicle.setBrandName(newbrandname);
+                    vehicle.setModelName(newmodelname);
+                    vehicle.setPrice(newprice);
+                    vehicle.setPlate(newplate);
+                    vehicle.setDisponibility(Disponibilty);
+
+                    return vehicle;
+                }
             }
 
             return null;
