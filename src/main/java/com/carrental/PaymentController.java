@@ -114,18 +114,7 @@ public class PaymentController implements Initializable {
     }
 
     static Stage popupStage = new Stage();
-    @FXML
-    public void onClickBack(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("infopage-view.fxml"));
-            Parent back = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(back));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 @FXML
     public String getRadioValue() {

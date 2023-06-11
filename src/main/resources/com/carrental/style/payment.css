@@ -21,3 +21,15 @@
     -fx-scale-x: 1.3;
     -fx-scale-y: 1.3;
 }
+
+.radio-button .radio {
+    -fx-border-color: #6279FF;
+    -fx-border-radius:90;
+    -fx-background-color:white;
+    -fx-border-width:2;
+    -fx-mark-color:#6279FF;
+}
+
+#RadioBPaypal:selected{
+
+}
