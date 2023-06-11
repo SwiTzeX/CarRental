@@ -130,7 +130,7 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="561.0" spacing="20.0">
          <children>
-            <Button id="CheckoutBtn" fx:id="publishButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Publish" textFill="WHITE">
+            <Button id="CheckoutBtn" fx:id="publishButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Publish" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -138,7 +138,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button id="CheckoutBtn" fx:id="notNowButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/Checkout_Button.css" text="Not Now" textFill="WHITE">
+            <Button id="CheckoutBtn" fx:id="notNowButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Not Now" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>

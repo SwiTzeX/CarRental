@@ -120,20 +120,8 @@ public class InfoPageController{
 
     @FXML
     void onClickBookNow(ActionEvent event){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment-view.fxml"));
-            HBox payment = loader.load();
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(payment));
-            PaymentController paymentController = loader.getController();
-            paymentController.setData(vehicle,startDate,endDate);
-            infoPane.getChildren().clear();
-            infoPane.getChildren().addAll(payment);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            App.getMainController().openCheckOut(vehicle,startDate,endDate);
         }
-    }
 
 
 }
