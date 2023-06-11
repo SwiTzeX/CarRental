@@ -25,22 +25,22 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <children>
-                        <Label onMouseClicked="#openSearch" prefHeight="27.0" prefWidth="49.0" text="Home" textFill="WHITE">
+                        <Label fx:id="homeBtn" onMouseClicked="#openSearch" prefHeight="27.0" prefWidth="49.0" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label onMouseClicked="#openReviews" layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="69.0" text="Reviews" textFill="#d9deff">
+                        <Label fx:id="reviewsBtn" onMouseClicked="#openReviews" layoutX="75.0" layoutY="24.0" prefHeight="27.0" prefWidth="69.0" text="Reviews" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label onMouseClicked="#openContact" layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="66.0" text="Contact" textFill="#d9deff">
+                        <Label fx:id="contactBtn" onMouseClicked="#openContact" layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="66.0" text="Contact" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label onMouseClicked="#openTerms" layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="182.0" text="Terms and Conditions" textFill="#d9deff">
+                        <Label fx:id="termsBtn" onMouseClicked="#openTerms" layoutX="10.0" layoutY="24.0" prefHeight="27.0" prefWidth="182.0" text="Terms and Conditions" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
