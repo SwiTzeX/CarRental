@@ -79,7 +79,7 @@ public class FleetController implements Initializable {
 
 
     public void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -166,38 +166,36 @@ public class FleetController implements Initializable {
             grid.add(new Label("Availability:"), 0, 3);
             grid.add(disponibilityField, 1, 3);
 
-            grid.add(new Label("Vehicle State:"), 0, 4);
-            grid.add(vehiculestateField, 1, 4);
 
-            grid.add(new Label("Price:"), 0, 5);
-            grid.add(priceField, 1, 5);
+            grid.add(new Label("Price:"), 0, 4);
+            grid.add(priceField, 1, 4);
 
-            grid.add(new Label("Type:"), 0, 6);
-            grid.add(typeField, 1, 6);
+            grid.add(new Label("Type:"), 0, 5);
+            grid.add(typeField, 1, 5);
 
-            grid.add(new Label("Passengers:"), 0, 7);
-            grid.add(passengersField, 1, 7);
+            grid.add(new Label("Passengers:"), 0, 6);
+            grid.add(passengersField, 1, 6);
 
-            grid.add(new Label("Fuel Type:"), 0, 8);
-            grid.add(fueltypeField, 1, 8);
+            grid.add(new Label("Fuel Type:"), 0, 7);
+            grid.add(fueltypeField, 1, 7);
 
-            grid.add(new Label("Gear Type:"), 0, 9);
-            grid.add(geartypeField, 1, 9);
+            grid.add(new Label("Gear Type:"), 0, 8);
+            grid.add(geartypeField, 1, 8);
 
-            grid.add(new Label("Deposit:"), 0, 10);
-            grid.add(depositField, 1, 10);
+            grid.add(new Label("Deposit:"), 0, 9);
+            grid.add(depositField, 1, 9);
 
-            grid.add(new Label("Trunk Capacity:"), 0, 11);
-            grid.add(trunkcapacityField, 1, 11);
+            grid.add(new Label("Trunk Capacity:"), 0, 10);
+            grid.add(trunkcapacityField, 1, 10);
 
-            grid.add(new Label("Max Speed:"), 0, 12);
-            grid.add(maxspeedField, 1, 12);
+            grid.add(new Label("Max Speed:"), 0, 11);
+            grid.add(maxspeedField, 1, 11);
 
-            grid.add(new Label("Horsepower:"), 0, 13);
-            grid.add(horsepowerField, 1, 13);
+            grid.add(new Label("Horsepower:"), 0, 12);
+            grid.add(horsepowerField, 1, 12);
 
-            grid.add(new Label("License Plate:"), 0, 14);
-            grid.add(plateField, 1, 14);
+            grid.add(new Label("License Plate:"), 0, 13);
+            grid.add(plateField, 1, 13);
 
 
             dialog.getDialogPane().setContent(grid);
@@ -229,7 +227,14 @@ public class FleetController implements Initializable {
 
 
                         String newType = typeField.getValue();
-                        int newPassengers = Integer.parseInt(passengersField.getText());
+                        int newPassengers = 0;
+                        try {
+                            newPassengers = Integer.parseInt(passengersField.getText());
+                        }catch (Exception ignored){
+                            showAlert("Error", "Invalid Passengers format. Please enter a valid numeric value.");
+                            dialog.showAndWait();
+                        }
+
                         String newFueltype = fueltypeField.getValue();
                         String newGeartype = geartypeField.getValue();
                         float newDeposit = 0;
@@ -241,9 +246,28 @@ public class FleetController implements Initializable {
                             //test =false;
                             dialog.showAndWait();
                         }
-                        int newTrunkcapacity = Integer.parseInt(trunkcapacityField.getText());
-                        int newMaxspeed = Integer.parseInt(maxspeedField.getText());
-                        int newHorsepower = Integer.parseInt(horsepowerField.getText());
+                        int newTrunkcapacity = 0;
+                        try {
+                            newTrunkcapacity = Integer.parseInt(trunkcapacityField.getText());
+                        }catch (Exception ignored){
+                            showAlert("Error", "Invalid Trunk Capacity format. Please enter a valid numeric value.");
+                            dialog.showAndWait();
+
+                        }
+                        int newMaxspeed = 0;
+                        try{
+                            newMaxspeed = Integer.parseInt(maxspeedField.getText());
+                        }catch (Exception ignored){
+                            showAlert("Error", "Invalid Max Speed format. Please enter a valid numeric value.");
+                            dialog.showAndWait();
+                        }
+                        int newHorsepower = 0;
+                        try {
+                            newHorsepower = Integer.parseInt(horsepowerField.getText());
+                        }catch (Exception ignored){
+                            showAlert("Error", "Invalid Horse Power format. Please enter a valid numeric value.");
+                            dialog.showAndWait();
+                        }
                         String newPlate = plateField.getText();
 
 
