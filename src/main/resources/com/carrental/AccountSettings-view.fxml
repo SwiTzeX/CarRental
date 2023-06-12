@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="5.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.AccountSettingsController">
    <padding>
       <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
@@ -54,9 +53,17 @@
                         <Insets top="-10.0" />
                      </VBox.margin>
                   </Label>
+                  <Button id="deactivate" fx:id="deactivate" alignment="CENTER" mnemonicParsing="false" prefHeight="16.0" prefWidth="157.0" style="-fx-background-color: FF5151; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Disable" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
-            <VBox prefHeight="466.0" prefWidth="660.0" spacing="5.0" style="-fx-background-color: #FFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
+            <VBox alignment="CENTER" prefHeight="466.0" prefWidth="660.0" spacing="5.0" style="-fx-background-color: #FFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="618.0">
                      <children>
