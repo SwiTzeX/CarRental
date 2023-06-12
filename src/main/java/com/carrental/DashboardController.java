@@ -4,6 +4,7 @@ import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,16 +78,20 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iniLineChart();
-        getCountCust();
-        getCountCars();
-        getCountTotalSales();
-        getRented();
         iniBarChart();
-        getRevCur();
-        getRevPrev();
-        growthRented();
-        growthRevenue();
-        growthUsers();
+        new Thread(() -> Platform.runLater(()->{
+            getCountCust();
+            getCountCars();
+            getCountTotalSales();
+            getRented();
+            getRevCur();
+            getRevPrev();
+            growthRented();
+            //growthRevenue();
+            //growthCars();
+            growthUsers();
+        })).start();
+
     }
 
 
@@ -143,7 +148,7 @@ public class DashboardController implements Initializable {
     public void getCountTotalSales() {
         float s;
         s= Reservation.totalSales();
-        countTotalSales.setText(String.valueOf(s) + "DH");
+        countTotalSales.setText(String.valueOf(s));
     }
     public void getRented(){
         int countR = Reservation.getAllEndedReservations().size();
@@ -156,14 +161,14 @@ public class DashboardController implements Initializable {
     }
     public void getRevPrev(){
         float revP=Reservation.totalSaleInYear(getPreviousYear());
-        revPrev.setText(String.valueOf(revP) + "DH");
+        revPrev.setText(String.valueOf(revP));
     }
     public void getRevCur(){
         float revC=Reservation.totalSaleInYear(Calendar.getInstance().get(Calendar.YEAR));
-        revCur.setText(String.valueOf(revC) + "DH");
+        revCur.setText(String.valueOf(revC));
     }
-    public void growthRevenue(){
-        float g = Reservation.getRevenueGrowth();
+    /* public void growthRevenue(){
+        float g = Reservation.getGrowthRev();
         if(g >= 0){
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
             arrowRev.setImage(image);
@@ -174,9 +179,9 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowRev.setImage(image);
             growthRev.setStyle("-fx-text-fill: #D53131");
-            growthRev.setText(String.valueOf(g) + "%");
+            growthRev.setText("-" + String.valueOf(g) + "%");
         }
-    }
+    } */
     public void growthUsers(){
         float g = User.getGrowth();
         if(g >= 0){
@@ -189,7 +194,7 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowCust.setImage(image);
             growthUser.setStyle("-fx-text-fill: #D53131");
-            growthUser.setText(String.valueOf(g) + "%");
+            growthUser.setText("-" + String.valueOf(g) + "%");
         }
     }
     public void growthRented(){
@@ -204,9 +209,24 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowRent.setImage(image);
             growthRent.setStyle("-fx-text-fill: #D53131");
-            growthRent.setText(String.valueOf(g) + "%");
+            growthRent.setText("-" + String.valueOf(g) + "%");
         }
     }
+    /* public void growthCars(){
+        float g = Vehicle.getGrowth();
+        if(g >= 0){
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
+            arrowCars.setImage(image);
+            growthCars.setStyle("-fx-text-fill: #57BF72");
+            growthCars.setText("+" + String.valueOf(g) + "%");
+        }
+        else {
+            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
+            arrowCars.setImage(image);
+            growthCars.setStyle("-fx-text-fill: #D53131");
+            growthCars.setText("-" + String.valueOf(g) + "%");
+        }
+    } */
 
     @FXML
     public void onClickReportButton(ActionEvent e){

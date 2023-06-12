@@ -8,8 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
@@ -28,14 +31,12 @@ public class App extends Application {
         user = User.getUserById(48);
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
         //sApp.getUser().getAllNotifications().get(0).delete();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1400, 800);
-        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Sora");
-        mainController = fxmlLoader.getController();
+        Pane root = new Pane();
+        Scene scene = new Scene(root, 1400, 800);
         stage.setTitle("Rent Ez");
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.show();
+        openMain(root);
     }
 
     public static User getUser() {
@@ -54,6 +55,27 @@ public class App extends Application {
         app.mainController = mainController;
     }
 
+    public static void openMain(Node source){
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+            Parent homePage = loader.load();
+            App.setMainController(loader.getController());
+            Stage stage =(Stage) source.getScene().getWindow();
+            stage.setScene(new Scene(homePage));
+            stage.show();
+            if(!App.getUser().isCommented()){
+                Stage popupStage = new Stage();
+                FXMLLoader loaderX = new FXMLLoader(App.class.getResource("commentSection-view.fxml"));
+                popupStage.setScene(new Scene(loaderX.load()));
+                popupStage.setTitle("Review Panel");
+                popupStage.initModality(Modality.APPLICATION_MODAL); // Set modality to block main window
+                //popupStage.initStyle(StageStyle.UNDECORATED);
+                popupStage.show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void openLogin(Node source){
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("login-view.fxml"));

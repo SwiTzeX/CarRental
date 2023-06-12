@@ -371,7 +371,7 @@ public class User {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
-                return rs.getFloat(1);
+                return (float) (Math.round(rs.getFloat(1) * 100) / 100.0);
             }
             rs.close();
             stmt.close();
@@ -379,6 +379,22 @@ public class User {
             throw new RuntimeException(e);
         }
         return 0;
+    }
+    public boolean isCommented(){
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT idU FROM Users WHERE idU = "+this.id+" AND idU IN (SELECT Users.idU FROM Users INNER JOIN Reservations ON Users.idU = Reservations.idU LEFT JOIN Reviews ON Users.idU = Reviews.idU WHERE Reservations.status = 2 AND Reviews.idU IS NULL)";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            if(rs.next()){
+                return false;
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 
     public static ArrayList<Integer> getAllUsersId(){

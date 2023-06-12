@@ -11,19 +11,25 @@
 <HBox fx:id="mainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.AdminController">
    <children>
       <VBox fx:id="navBar" prefHeight="820.0" prefWidth="150.0" style="-fx-background-color: #6279FF;">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
          <children>
             <ImageView fitHeight="156.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo/Car%20Rental%20by%20UIR%20(3).png" />
+                  <Image url="@logo/New%20logos/Full%20logo%20colored%20background%202.png" />
                </image>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </ImageView>
-            <VBox prefHeight="120.0" prefWidth="150.0" spacing="15.0" translateY="100.0">
+            <VBox prefHeight="120.0" prefWidth="150.0" spacing="15.0">
                <children>
                   <HBox fx:id="dashboardBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="dashboard" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/dashboard.png" />
+                              <Image url="@icons/admin-view/dashboard-W.png" />
                            </image>
                            <HBox.margin>
                               <Insets />
@@ -41,15 +47,15 @@
                   </HBox>
                   <HBox fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="users" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/users.png" />
+                              <Image url="@icons/admin-view/users.png" />
                            </image>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label text="User Management" textFill="WHITE">
+                        <Label text="User Management" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -61,15 +67,15 @@
                   </HBox>
                   <HBox fx:id="fleetManageBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="cars" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/cars-D.png" />
+                              <Image url="@icons/admin-view/cars.png" />
                            </image>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label text="Fleet Management" textFill="WHITE">
+                        <Label text="Fleet Management" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -81,15 +87,15 @@
                   </HBox>
                   <HBox fx:id="reservationsBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="reservations" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/reservations-D.png" />
+                              <Image url="@icons/admin-view/reservations.png" />
                            </image>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label text="Reservations" textFill="WHITE">
+                        <Label text="Reservations" textFill="#d9deff">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -100,8 +106,61 @@
                      </padding>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
             </VBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="153.0" snapToPixel="false" text="© UIR Project 2022-2023" textFill="#f0f2ff" translateY="490.0">
+            <VBox prefHeight="27.0" prefWidth="150.0" spacing="15.0">
+               <children>
+                  <HBox fx:id="homeBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                     <children>
+                        <ImageView fx:id="home" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/admin-view/home.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="Home" textFill="#d9deff">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="logoutBtn" alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="148.0" spacing="5.0">
+                     <children>
+                        <ImageView fx:id="logout" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/admin-view/logout.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="Logout" textFill="#d9deff">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="400.0" />
+               </VBox.margin>
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="153.0" snapToPixel="false" text="© UIR Project 2022-2023" textFill="#f0f2ff">
                <font>
                   <Font name="Myanmar MN" size="12.0" />
                </font>
