@@ -123,7 +123,12 @@ public class SearchController implements Initializable {
             }else{
                 returnTimeId.hideError();
             }
-            App.getMainController().openHome(pickupDateId.getDate(),returnDateId.getDate(),pickupTimeId.getDate(),returnTimeId.getDate(),locationId.getText());
+            App.getMainController().setStartDate(pickupDateId.getDate());
+            App.getMainController().setEndDate(returnDateId.getDate());
+            App.getMainController().setStartTime(pickupTimeId.getDate());
+            App.getMainController().setEndTime(returnTimeId.getDate());
+            App.getMainController().setLocation(locationId.getText());
+            App.getMainController().openHome();
         });
     }
 }

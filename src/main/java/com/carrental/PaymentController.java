@@ -190,7 +190,7 @@ public class PaymentController implements Initializable {
         try {
 
             MainController maincontroller = App.getMainController();
-            maincontroller.openSearch();
+            maincontroller.openHome();
             mainvbox = maincontroller.getMainBox();
             GaussianBlur blurEffect = new GaussianBlur(15);
             mainvbox.setEffect(blurEffect);

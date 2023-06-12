@@ -26,7 +26,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <children>
-                        <Label fx:id="homeBtn" onMouseClicked="#openSearch" prefHeight="27.0" prefWidth="49.0" text="Home" textFill="WHITE">
+                        <Label fx:id="homeBtn" onMouseClicked="#openHome" prefHeight="27.0" prefWidth="49.0" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>

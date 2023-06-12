@@ -39,7 +39,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-public class AccountSettingsController {
+public class AccountSettingsController implements Initializable {
 
     @FXML
     private Label agevar;
@@ -49,6 +49,9 @@ public class AccountSettingsController {
 
     @FXML
     private Button editb;
+
+    @FXML
+    private Button deactivate;
 
     @FXML
     private Label emailvar;
@@ -68,4 +71,29 @@ public class AccountSettingsController {
     @FXML
     private Label statusvar;
 
-}
+
+    public  void setData(User user) {
+        fullname1var.setText(user.getFullName());
+        fullnamevar.setText(user.getFullName());
+        emailvar.setText(user.getEmail());
+        statusvar.setText((user.getIsAdmin() ? "Admin" : "Client"));
+        agevar.setText(String.valueOf(user.getAge()));
+        nidvar.setText(user.getNId());
+        phonevar.setText(user.getPhoneNumber());
+       // avatarimg.setImage(user.getImage());
+    }
+
+
+
+     /*editb.setOnAction(event -> {
+    });*/
+
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    setData(App.getUser());
+
+    }}
+

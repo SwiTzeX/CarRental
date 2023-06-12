@@ -3,6 +3,7 @@ package com.carrental;
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -70,6 +71,8 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       // Platform.runLater(() -> mainBox.requestFocus());
+
         a.setVisible(false);
        usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
           // System.out.println("Account not found!");
