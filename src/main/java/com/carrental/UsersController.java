@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
 public class UsersController implements Initializable {
 
 
+    public Label adminName;
     @FXML
     private TableColumn<User, Date> creationDate;
 
@@ -108,6 +109,7 @@ public class UsersController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        adminName.setText(App.getUser().getFullName());
         find.setOnAction(event -> {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);

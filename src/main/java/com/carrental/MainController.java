@@ -59,10 +59,13 @@ public class MainController implements Initializable {
     StackPane notificationBtn = null;
     StackPane reservationsBtn = null;
     VBox profileMenu = null;
+    Boolean isProfileMenuShown = false;
     VBox notificationsBox = null;
-    ScrollPane notificationPane = null;
+    ScrollPane notificationMenu = null;
+    Boolean isNotificationMenuShown = false;
     VBox reservationsBox = null;
-    ScrollPane reservationPane = null;
+    ScrollPane reservationMenu = null;
+    Boolean isReservationMenuShown = false;
 
     Boolean showed = false;
     Timeline bellTimeline = null;
@@ -156,7 +159,7 @@ public class MainController implements Initializable {
         });
         if(App.getUser() != null){
             userBox.getChildren().clear();
-            ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("test.png"),40,40,true,true));
+            ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("icons/blank-user.png"),40,40,true,true));
             Circle avatarCircle = new Circle();
             avatarCircle.setCenterX(40 / 2);
             avatarCircle.setCenterY(40 / 2);
@@ -197,24 +200,6 @@ public class MainController implements Initializable {
             signoutBtn.getStyleClass().addAll(signinBtn.getStyleClass());
             signoutBtn.setStyle(signinBtn.getStyle());
             signoutBtn.setFont(signinBtn.getFont());
-
-            avatar.setOnMouseClicked(event ->{
-                showProfileMenu();
-            });
-            notificationBtn.setOnMouseClicked(event ->{
-                showNotifications();
-                if (bellTimeline != null) {
-                    bellTimeline.stop();
-                }
-                notificationBtn.getChildren().removeAll(notifCircle,notifsNumber);
-                for (Notification notification:App.getUser().getAllUnreadNotifications()){
-                    notification.setRead(true);
-                }
-            });
-
-            reservationsBtn.setOnMouseClicked(event ->{
-                showReservations();
-            });
                 logIn();
         }else{
             logOut();
@@ -236,6 +221,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(profileMenu)) {
             return;
         }
+        isProfileMenuShown = true;
         profileMenu = new VBox();
         profileMenu.setPadding(new Insets(1));
         profileMenu.setLayoutY(58);
@@ -291,13 +277,15 @@ public class MainController implements Initializable {
     }
 
     public void hideProfileMenu(){
+        isProfileMenuShown = false;
         mainPane.getChildren().remove(profileMenu);
     }
 
     private void showNotifications(){
-        if(mainPane.getChildren().contains(notificationPane)) {
+        if(mainPane.getChildren().contains(notificationMenu)) {
             return;
         }
+        isNotificationMenuShown = true;
         notificationsBox = new VBox();
         notificationsBox.setSpacing(5);
         notificationsBox.setPadding(new Insets(5,0,0,5));
@@ -333,7 +321,7 @@ public class MainController implements Initializable {
             txt.setAlignment(Pos.CENTER);
             notificationsBox.getChildren().add(txt);
         }
-        notificationPane = new ScrollPane(notificationsBox);
+        notificationMenu = new ScrollPane(notificationsBox);
 
         notificationsBox.heightProperty().addListener((obs, oldWidth, newWidth) -> {
             if(notificationsBox.getHeight()>250){
@@ -344,35 +332,37 @@ public class MainController implements Initializable {
             }
                 });
         //notificationPane.setStyle("-fx-background-color: transparent;");
-        notificationPane.setLayoutY(45);
-        notificationPane.setLayoutX(1395-250-55);
-        notificationPane.setPrefWidth(251);
-        notificationPane.setPrefHeight(250);
-        notificationPane.setPadding(new Insets(5,5,5,5));
-        notificationPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        notificationPane.setStyle("-fx-background: transparent;-fx-background-radius: 10;-fx-background-color: white");
-        notificationPane.getStylesheets().add(this.getClass().getResource("style/scroll.css").toExternalForm());
-        notificationPane.setEffect(new DropShadow(10,Color.web("#6279FF")));
-        mainPane.getChildren().add(notificationPane);
+        notificationMenu.setLayoutY(45);
+        notificationMenu.setLayoutX(1395-250-55);
+        notificationMenu.setPrefWidth(251);
+        notificationMenu.setPrefHeight(250);
+        notificationMenu.setPadding(new Insets(5,5,5,5));
+        notificationMenu.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        notificationMenu.setStyle("-fx-background: transparent;-fx-background-radius: 10;-fx-background-color: white");
+        notificationMenu.getStylesheets().add(this.getClass().getResource("style/scroll.css").toExternalForm());
+        notificationMenu.setEffect(new DropShadow(10,Color.web("#6279FF")));
+        mainPane.getChildren().add(notificationMenu);
         //animation
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.2),notificationPane);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.2), notificationMenu);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();
-        TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(0.2),notificationPane);
+        TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(0.2), notificationMenu);
         moveTransition.setFromY(-8);
         moveTransition.setToY(0);
         moveTransition.play();
     }
     public void hideNotifications(){
-        mainPane.getChildren().remove(notificationPane);
+        isNotificationMenuShown = false;
+        mainPane.getChildren().remove(notificationMenu);
     }
 
 
     private void showReservations() {
-        if (mainPane.getChildren().contains(reservationPane)) {
+        if (mainPane.getChildren().contains(reservationMenu)) {
             return;
         }
+        isReservationMenuShown = true;
         reservationsBox = new VBox();
         reservationsBox.setSpacing(5);
         reservationsBox.setPadding(new Insets(5,0,0,5));
@@ -393,29 +383,31 @@ public class MainController implements Initializable {
             reservationsBox.getChildren().addAll(new MyReservationCard(res),separator);
         }
         reservationsBox.getChildren().remove(reservationsBox.getChildren().size()-1);
-        reservationPane = new ScrollPane(reservationsBox);
-        reservationPane.setLayoutY(45);
-        reservationPane.setLayoutX(1395-250-80);
-        reservationPane.setPrefWidth(251);
-        reservationPane.setPrefHeight(250);
-        reservationPane.setPadding(new Insets(5,5,5,5));
-        reservationPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        reservationPane.setStyle("-fx-background: transparent;-fx-background-radius: 10;-fx-background-color: white");
-        reservationPane.getStylesheets().add(this.getClass().getResource("style/scroll.css").toExternalForm());
-        reservationPane.setEffect(new DropShadow(10,Color.web("#6279FF")));
-        mainPane.getChildren().add(reservationPane);
+        reservationMenu = new ScrollPane(reservationsBox);
+        reservationMenu.setLayoutY(45);
+        reservationMenu.setLayoutX(1395-250-80);
+        reservationMenu.setPrefWidth(251);
+        reservationMenu.setPrefHeight(250);
+        reservationMenu.setPadding(new Insets(5,5,5,5));
+        reservationMenu.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        reservationMenu.setStyle("-fx-background: transparent;-fx-background-radius: 10;-fx-background-color: white");
+        reservationMenu.getStylesheets().add(this.getClass().getResource("style/scroll.css").toExternalForm());
+        reservationMenu.setEffect(new DropShadow(10,Color.web("#6279FF")));
+        mainPane.getChildren().add(reservationMenu);
         //animation
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.2),reservationPane);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.2), reservationMenu);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();
-        TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(0.2),reservationPane);
+        TranslateTransition moveTransition = new TranslateTransition(Duration.seconds(0.2), reservationMenu);
         moveTransition.setFromY(-8);
         moveTransition.setToY(0);
         moveTransition.play();
     }
     public void hideReservations(){
-        mainPane.getChildren().remove(reservationPane);
+
+        isReservationMenuShown = false;
+        mainPane.getChildren().remove(reservationMenu);
     }
 
     public void refreshUserBox(){
@@ -630,21 +622,45 @@ public class MainController implements Initializable {
 
     @FXML
     void clear(MouseEvent event) {
-        if (mainPane.getChildren().contains(profileMenu) ){
-            if(!event.getTarget().equals(avatar) && !((Node)event.getTarget()).getParent().equals(avatar) && !event.getTarget().equals(profileMenu)){
-               hideProfileMenu();
+        if (!isNotificationMenuShown){
+            if(event.getTarget().equals(notificationBtn) || ((Node)event.getTarget()).getParent().equals(notificationBtn)){
+                showNotifications();
+                if (bellTimeline != null) {
+                    bellTimeline.stop();
+                }
+                notificationBtn.getChildren().removeAll(notifCircle,notifsNumber);
+                for (Notification notification:App.getUser().getAllUnreadNotifications()){
+                    notification.setRead(true);
+                }
             }
-        }
-        if (mainPane.getChildren().contains(notificationPane) ){
-            if(!event.getTarget().equals(notificationBtn) && !((Node)event.getTarget()).getParent().equals(notificationBtn) && !event.getTarget().equals(notificationPane)&& !event.getTarget().equals(notificationsBox) && !((Node)event.getTarget()).getParent().equals(notificationsBox)){
+        }else{
+            if(!event.getTarget().equals(notificationMenu)&& !event.getTarget().equals(notificationsBox) && !((Node)event.getTarget()).getParent().equals(notificationsBox)){
                 hideNotifications();
+
             }
         }
-        if (mainPane.getChildren().contains(reservationPane) ){
-            if(!event.getTarget().equals(reservationsBtn) && !((Node)event.getTarget()).getParent().equals(reservationsBtn) && !event.getTarget().equals(reservationPane)&& !event.getTarget().equals(reservationsBox) && !((Node)event.getTarget()).getParent().equals(reservationsBox)){
+        if (!isProfileMenuShown){
+            if(event.getTarget().equals(avatar) || ((Node)event.getTarget()).getParent().equals(avatar)){
+                showProfileMenu();
+
+            }
+        }else{
+            if(!event.getTarget().equals(profileMenu)){
+                hideProfileMenu();
+
+            }
+        }
+
+        if (!isReservationMenuShown){
+            if(event.getTarget().equals(reservationsBtn) || ((Node)event.getTarget()).getParent().equals(reservationsBtn)){
+                showReservations();
+            }
+        }else{
+            if( !event.getTarget().equals(reservationMenu)&& !event.getTarget().equals(reservationsBox) && !((Node)event.getTarget()).getParent().equals(reservationsBox)){
                 hideReservations();
             }
         }
+
     }
 
 }

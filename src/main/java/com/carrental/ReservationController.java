@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
 
 public class ReservationController implements Initializable {
 
+    public Label adminName;
     @FXML
     private TableView<DataReservation> TableViewReservation;
 
@@ -95,7 +96,7 @@ public class ReservationController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
+        adminName.setText(App.getUser().getFullName());
         searchId.setOnAction(event -> {
             searchKeyword = searchId.getText();
             applySearchFilter(searchKeyword);

@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 
 public class FleetController implements Initializable {
 
+    public Label adminName;
     @FXML
     private TableColumn<Vehicle, Void> Actions;
 
@@ -89,6 +90,7 @@ public class FleetController implements Initializable {
 
     @Override
     public void initialize(URL url,ResourceBundle resourceBundle){
+        adminName.setText(App.getUser().getFullName());
         searchbar.setOnAction(event -> {
             String searchKeyword = searchbar.getText();
             applySearchFilter(searchKeyword);

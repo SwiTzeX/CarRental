@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+//update11-->
 
 <?import com.carrental.customnodes.MyButton?>
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="815.0" prefWidth="1250.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.UsersController">
 
    <children>
       <VBox layoutX="10.0" layoutY="223.0" prefHeight="547.0" prefWidth="1215.0">
@@ -54,44 +65,30 @@
                </VBox.margin>
             </TableView>
          </children></VBox>
-      <HBox layoutX="67.0" layoutY="9.0" prefHeight="56.0" prefWidth="1250.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="950.0" layoutY="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="275.0" spacing="10.0">
          <children>
-            <Pane prefHeight="70.0" prefWidth="197.0">
-               <opaqueInsets>
-                  <Insets left="18.0" />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets left="68.0" />
-               </HBox.margin>
-               <children>
-                  <Separator layoutX="-103.0" prefHeight="110.0" prefWidth="1202.0">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding></Separator>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1049.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/jimmy-fallon.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="994.0" layoutY="12.0" prefHeight="29.0" prefWidth="62.0" text="ADMIN NAME" textFill="#00000092">
-                     <font>
-                        <Font name="Arial" size="17.0" />
-                     </font>
-                     <padding>
-                        <Insets left="-66.0" />
-                     </padding>
-                  </Label>
-               </children></Pane>
-            <Label alignment="CENTER" prefHeight="38.0" prefWidth="355.0" text="Gestion des comptes" textFill="#6279ff">
-               <HBox.margin>
-                  <Insets left="60.0" right="8.0" top="4.0" />
-               </HBox.margin>
+            <Label fx:id="adminName" text="ADMIN NAME" textFill="#6279ff">
                <font>
-                  <Font name="Arial Bold" size="35.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
             </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/blank-user.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
+      <Separator layoutX="24.0" layoutY="86.0" prefHeight="20.0" prefWidth="1201.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Separator>
+      <Label layoutX="23.0" layoutY="27.0" text="Users Management" textFill="#6279ff">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Label>
       <HBox cache="true" cacheHint="QUALITY" layoutX="67.0" layoutY="96.0" mouseTransparent="true" prefHeight="49.0" prefWidth="142.0">
          <children>
             <Label prefHeight="46.0" prefWidth="301.0" text="Search Filters" textFill="#6279ff">
@@ -146,6 +143,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </ComboBox>
+
             <MyButton fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
                <HBox.margin>
                   <Insets top="15.0" />
@@ -159,15 +157,9 @@
                   <Insets top="15.0" />
                </HBox.margin>
             </MyButton>
+            
 
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="562.0" layoutY="778.0" prefHeight="20.0" prefWidth="205.0" text="© UIR Project 2022-2023" textFill="#6279ff">
-         <padding>
-            <Insets left="-173.0" />
-         </padding>
-      </Label>
    </children>
 </AnchorPane>
-<!--
-//update11-->
