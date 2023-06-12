@@ -133,6 +133,8 @@ public class DashboardController implements Initializable {
         for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
             n.setStyle("-fx-bar-fill: #6279FF;");
         }
+        barChart.setCategoryGap(70);
+        barChart.setBarGap(5);
     }
 
     public void getCountCust() {
@@ -212,21 +214,6 @@ public class DashboardController implements Initializable {
             growthRent.setText("-" + String.valueOf(g) + "%");
         }
     }
-    /* public void growthCars(){
-        float g = Vehicle.getGrowth();
-        if(g >= 0){
-            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
-            arrowCars.setImage(image);
-            growthCars.setStyle("-fx-text-fill: #57BF72");
-            growthCars.setText("+" + String.valueOf(g) + "%");
-        }
-        else {
-            Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
-            arrowCars.setImage(image);
-            growthCars.setStyle("-fx-text-fill: #D53131");
-            growthCars.setText("-" + String.valueOf(g) + "%");
-        }
-    } */
 
     @FXML
     public void onClickReportButton(ActionEvent e){
