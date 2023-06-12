@@ -65,9 +65,7 @@ public class MyReservationCard extends HBox {
             lbl2.setFont(Font.font("Arial", FontWeight.BOLD,11));
             Label timeLeft = new Label(timeleft);
             timeLeft.setStyle("-fx-text-fill: black");
-            System.out.println(reservation.getPercentageOfTimeLeft());
             if(reservation.getPercentageOfTimeLeft()<10){
-                System.out.println("test");
                 timeLeft.setStyle("-fx-text-fill: red");
             } else if (reservation.getPercentageOfTimeLeft()<20) {
                 timeLeft.setStyle("-fx-text-fill: orange");

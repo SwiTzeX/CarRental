@@ -45,14 +45,13 @@ public class MyTimePicker extends StackPane {
     ComboBox<String> minutes = new ComboBox<>();
     Popup popup = new Popup();
 
-    Date date = new Date();
+    Date date =  new Date();
     SimpleDateFormat format = new SimpleDateFormat("HH:mm");
     public MyTimePicker() {
         super();
         Calendar calendar = Calendar.getInstance();
 
         // Set the time to 00:00
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         date = calendar.getTime();
         setupTexts();
@@ -147,8 +146,9 @@ public class MyTimePicker extends StackPane {
         for(int i = 0;i<=23;i++){
             hours.getItems().add(i<10?"0"+String.valueOf(i):String.valueOf(i));
         }
-        hours.getSelectionModel().selectFirst();
-
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        String hour = sdf.format(date);
+        hours.getSelectionModel().select(hour);
         minutes.getItems().add("00");
         minutes.getItems().add("15");
         minutes.getItems().add("30");
