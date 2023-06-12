@@ -96,7 +96,8 @@ public class VehicleCardController {
         } catch (Exception e) {
             brandImage = new Image(getClass().getResourceAsStream("icons/noimage2.png"), 98, 98, true, true);
         }
-
+        vehImage.setFitHeight(175);
+        vehImage.minHeight(175);
         vehBrandImage.setImage(brandImage);
         vehBrandImage.setPreserveRatio(true);
         vehBrandImage.setFitWidth(40);

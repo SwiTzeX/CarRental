@@ -14,6 +14,7 @@
 <?import com.carrental.customnodes.MyTextField?>
 <?import com.carrental.customnodes.MyDatePicker?>
 <?import com.carrental.customnodes.MyTimePicker?>
+<?import com.carrental.customnodes.MyButton?>
 <AnchorPane fx:id="mainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.SearchController">
    <children>
       <VBox alignment="CENTER" layoutX="493.0" layoutY="151.0" prefHeight="444.0" prefWidth="414.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: #f0f2ff; -fx-border-radius: 30;">
@@ -108,11 +109,11 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="searchButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="367.0" style="-fx-background-color: #6279ff; -fx-background-radius: 10;" text="SEARCH" textFill="WHITE">
+                  <MyButton fx:id="searchButton" alignment="CENTER" mnemonicParsing="false" onAction="#rentEvent" prefHeight="37.0" prefWidth="367.0" style="-fx-background-color: #6279ff; -fx-background-radius: 10;" text="SEARCH" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
-                  </Button>
+                  </MyButton>
                </children>
             </VBox>
          </children>

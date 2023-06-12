@@ -271,9 +271,12 @@ public class HomeController implements Initializable {
        for(String brand:Vehicle.getAllBrandsAvailable(vehicles)) {
             brandsDropList.getItems().add(brand);
         }
+        for(String color:Vehicle.getAllColorsAvailable(vehicles)) {
+            colorsDropList.getItems().add(color);
+        }
+
         gearDropList.getItems().addAll("Manual","Automated");
-        fuelDropList.getItems().addAll("Diesel","Petrol","Electric");
-        colorsDropList.getItems().addAll("Red","Brown","Blue","Yellow","Green","White");
+        fuelDropList.getItems().addAll("Diesel","Petrol","Electric","Hybrid");
         typeDropList.getItems().addAll("Sedan","Wagon","SUV","Hatchback","Coupe","Sport","Pickup","Micro");
         filtersBox.getChildren().addAll(gearDropList,brandsDropList,fuelDropList,colorsDropList,typeDropList,clearFilterButton);
     }
