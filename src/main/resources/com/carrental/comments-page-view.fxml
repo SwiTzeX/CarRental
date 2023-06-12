@@ -7,7 +7,7 @@
 
 <VBox prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #f6f8ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentsPageController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="745.0" prefWidth="1400.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" vbarPolicy="ALWAYS">
          <content>
             <HBox prefHeight="697.0" prefWidth="1340.0">
                <children>
