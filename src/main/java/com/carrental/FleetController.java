@@ -43,7 +43,7 @@ public class FleetController implements Initializable {
     private TableColumn<Vehicle, Boolean> Status;
 
     @FXML
-    private Button addvehiculebtn;
+    private Button addvehiclebtn;
 
     @FXML
     private ComboBox<String> brandDropList;
@@ -70,14 +70,9 @@ public class FleetController implements Initializable {
     public ArrayList<String> filterSettings = new ArrayList<String>(Arrays.asList(null,null,null,null,null,null,null));
     public List<List<Vehicle>> vehiclesHolder = new ArrayList<>();
 
-
     String selectedBrandName;
 
-
     String selectedStatus;
-
-
-
 
     public void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -87,7 +82,6 @@ public class FleetController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL url,ResourceBundle resourceBundle){
         adminName.setText(App.getUser().getFullName());
@@ -95,9 +89,9 @@ public class FleetController implements Initializable {
             String searchKeyword = searchbar.getText();
             applySearchFilter(searchKeyword);
         });
-        addvehiculebtn.setOnAction(event -> {
+        addvehiclebtn.setOnAction(event -> {
             Dialog<Vehicle> dialog = new Dialog<>();
-            dialog.setTitle("Add Vehicule");
+            dialog.setTitle("Add Vehicle");
             dialog.setHeaderText(null);
 
             ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
@@ -117,20 +111,16 @@ public class FleetController implements Initializable {
 
             TextField vehiculestateField = new TextField();
             TextField priceField = new TextField();
-            //TextField typeField = new TextField();
             ComboBox<String> typeField = new ComboBox<String>();
             typeField.setPrefWidth(200);
             typeField.setPromptText("Sedan");
             ObservableList<String> typelist = typeField.getItems();
-            /*availabilitylist.add("Available");
-            availabilitylist.add("Not Available");*/
+
             typeField.getItems().addAll("Sedan","Wagon","SUV","Hatchback","Coupe","Sport","Pickup","Micro");
 
 
             TextField passengersField = new TextField();
-            //TextField fueltypeField = new TextField();
-            //TextField geartypeField = new TextField();
-            //TextField fueltypeField = new TextField();
+
             ComboBox<String> fueltypeField = new ComboBox<String>();
             fueltypeField.setPrefWidth(200);
             fueltypeField.setPromptText("Diesel");
@@ -140,7 +130,6 @@ public class FleetController implements Initializable {
             fuellist.add("Electric");
             fuellist.add("Hybrid");
 
-            //TextField geartypeField = new TextField();
             ComboBox<String> geartypeField = new ComboBox<String>();
             geartypeField.setPrefWidth(200);
             geartypeField.setValue("Manual");
@@ -152,9 +141,6 @@ public class FleetController implements Initializable {
             TextField maxspeedField = new TextField();
             TextField horsepowerField = new TextField();
             TextField plateField = new TextField();
-            /**TextField numreservationsField = new TextField();
-             TextField statusField = new TextField();**/
-
 
             grid.add(new Label("Brand Name:"), 0, 0);
             grid.add(brandnameField, 1, 0);
@@ -167,7 +153,6 @@ public class FleetController implements Initializable {
 
             grid.add(new Label("Availability:"), 0, 3);
             grid.add(disponibilityField, 1, 3);
-
 
             grid.add(new Label("Price:"), 0, 4);
             grid.add(priceField, 1, 4);
@@ -199,7 +184,6 @@ public class FleetController implements Initializable {
             grid.add(new Label("License Plate:"), 0, 13);
             grid.add(plateField, 1, 13);
 
-
             dialog.getDialogPane().setContent(grid);
 
             dialog.setResultConverter(dialogButton -> {
@@ -215,9 +199,7 @@ public class FleetController implements Initializable {
                             newPrice = Float.parseFloat(priceField.getText());
                         }catch (Exception ignored){
                             showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
-                            //return null;
                             dialog.showAndWait();
-                            //test =false;
                         }
                         String newDisponibility = disponibilityField.getValue();
                         Boolean Disponibilty = null;
@@ -243,8 +225,6 @@ public class FleetController implements Initializable {
                             newDeposit = Float.parseFloat(depositField.getText());
                         }catch (Exception ignored){
                             showAlert("Error", "Invalid deposit format. Please enter a valid numeric value.");
-                            //return null;
-                            //test =false;
                             dialog.showAndWait();
                         }
                         int newTrunkcapacity = 0;
@@ -552,26 +532,6 @@ public class FleetController implements Initializable {
         }));
     }
 
-
-    /*public void refreshComboBoxes(){
-        brandDropList = new ComboBox<>();
-        brandDropList.setPromptText("Brands");
-        brandDropList.setPrefWidth(128);
-        brandDropList.setOnAction(event -> {
-           applyFilters();
-                }
-        );
-
-        statusDropList = new ComboBox<>();
-        statusDropList.setPromptText("Status");
-        statusDropList.setPrefWidth(128);
-
-        statusDropList.setOnAction(event -> {
-                    applyFilters();
-
-                }
-        );
-    }*/
     @FXML
     private void clearallfilters(ActionEvent event) {
         brandDropList.getSelectionModel().clearSelection();
@@ -584,19 +544,7 @@ public class FleetController implements Initializable {
         brandDropList.setPromptText("Brand");
         statusDropList.setPromptText("status");
 
-        //refreshComboBoxes();
-
     }
-    /*private void refreshfilter(){
-         brandDropList=new ComboBox<>();
-         brandDropList.setPromptText("Brands");
-         statusDropList=new ComboBox<>();
-         statusDropList.setPromptText("Status");
-        /*for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
-            brandDropList.getItems().add(brand);
-        }
-        statusDropList.getItems().addAll("Available","Not Available");
-    }*/
 
     private void applySearchFilter(String searchKeyword) {
         tableid.setItems(vehicleList.filtered(vehicle -> {
