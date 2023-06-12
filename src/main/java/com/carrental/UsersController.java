@@ -241,7 +241,7 @@ public class UsersController implements Initializable {
         });
      roles.getItems().addAll("admin", "client");
      invoicestatue.getItems().addAll("blocked", "active");
-     invoicedate.getItems().addAll("newest", "oldest", "Price");
+     invoicedate.getItems().addAll("newest", "oldest");
         applyFilters();
         ArrayList<User> users = User.getAllUsers();
         userList.addAll(users);
