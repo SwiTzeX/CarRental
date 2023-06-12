@@ -138,12 +138,12 @@ public class DashboardController implements Initializable {
         areaChart.getData().addAll(series);
         areaChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
         for(Node n:areaChart.lookupAll(".chart-series-area-fill")) {
-            n.setStyle("-fx-fill: #abcfef; -fx-opacity: 0.5");
+            n.setStyle("-fx-fill: #d2d9ff; -fx-opacity: 0.8");
         }
         for (XYChart.Data<Number, Number> data : series.getData()) {
             data.setNode(null);
         }
-        series.getNode().lookup(".chart-series-area-line").setStyle("-fx-stroke: #abcfef");
+        series.getNode().lookup(".chart-series-area-line").setStyle("-fx-stroke: #d2d9ff");
 
     }
 
@@ -160,7 +160,7 @@ public class DashboardController implements Initializable {
         barChart.getData().add(serie);
         barChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
         for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
-            n.setStyle("-fx-bar-fill: #abcfef; -fx-opacity: 0.5");
+            n.setStyle("-fx-bar-fill: #d2d9ff; -fx-opacity: 0.8");
         }
         barChart.setCategoryGap(80);
         barChart.setBarGap(1);
@@ -210,7 +210,7 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowRev.setImage(image);
             growthRev.setStyle("-fx-text-fill: #D53131");
-            growthRev.setText("-" + String.valueOf(g) + "%");
+            growthRev.setText(String.valueOf(g) + "%");
         }
     }
     public void growthUsers(){
@@ -225,7 +225,7 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowCust.setImage(image);
             growthUser.setStyle("-fx-text-fill: #D53131");
-            growthUser.setText("-" + String.valueOf(g) + "%");
+            growthUser.setText(String.valueOf(g) + "%");
         }
     }
     public void growthRented(){
@@ -240,7 +240,7 @@ public class DashboardController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/down.png"),512,512,true,true);
             arrowRent.setImage(image);
             growthRent.setStyle("-fx-text-fill: #D53131");
-            growthRent.setText("-" + String.valueOf(g) + "%");
+            growthRent.setText(String.valueOf(g) + "%");
         }
     }
 
