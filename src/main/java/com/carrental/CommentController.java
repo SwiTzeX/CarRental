@@ -4,18 +4,29 @@ import com.carrental.models.Reservation;
 import com.carrental.models.Review;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
+import java.lang.reflect.Array;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class CommentController {
+public class CommentController implements Initializable {
 
+    public HBox main;
     @FXML
     private MenuButton choiceMenu;
 
@@ -46,7 +57,7 @@ public class CommentController {
     Image str = new Image(getClass().getResourceAsStream("icons/star.png"), 512, 512, true, true);
     Image emptystr = new Image(getClass().getResourceAsStream("icons/emptystar.png"), 512, 512, true, true);
 
-
+    Review review = null;
     public void setData(Review review){
         Image image = new Image(getClass().getResourceAsStream("icons/user-icon.png"), 512, 512, true, true);
         userIcon.setImage(image);
@@ -63,6 +74,7 @@ public class CommentController {
         }else{
             choiceMenu.setVisible(false);
         }
+        this.review = review;
     }
 
     public void fiveStars() {
@@ -103,4 +115,12 @@ public class CommentController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<MenuItem> items = choiceMenu.getItems();
+        items.get(0).setOnAction(event -> {
+            ((VBox) main.getParent()).getChildren().remove(main);
+            review.delete();
+        });
+    }
 }

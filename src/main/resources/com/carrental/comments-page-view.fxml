@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="745.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentsPageController">
+<VBox prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #f6f8ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentsPageController">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="745.0" prefWidth="1400.0" vbarPolicy="ALWAYS">
          <content>
