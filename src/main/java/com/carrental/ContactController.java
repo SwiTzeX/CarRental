@@ -26,10 +26,10 @@ public class ContactController implements Initializable {
     private ImageView youtube;
 
 
-    private static final String INSTAGRAM_URL = "https://www.instagram.com";
-    private static final String FACEBOOK_URL = "https://www.facebook.com";
+    private static final String INSTAGRAM_URL = "https://www.instagram.com/rent__ez/";
+    private static final String FACEBOOK_URL = "https://www.facebook.com/profile.php?id=100093280942401";
     private static final String YOUTUBE_URL = "https://www.youtube.com";
-    private static final String LINKEDIN_URL = "https://www.linkedin.com";
+    private static final String LINKEDIN_URL = "https://www.linkedin.com/in/rent-ez-22906227b";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
