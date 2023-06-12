@@ -84,8 +84,13 @@ public class LoginController implements Initializable {
                      usernamefield.showError("Account not found!");
                  }
                  else{
-
-                     usernamefield.hideError();
+                     if(u.getStatus() == 2){
+                         usernamefield.showError("Account inactive");
+                     } else if (u.getStatus() == 1) {
+                         usernamefield.showError("Account banned");
+                     }else{
+                         usernamefield.hideError();
+                     }
 
                  }
             }
