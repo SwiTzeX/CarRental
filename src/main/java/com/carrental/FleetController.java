@@ -271,28 +271,12 @@ public class FleetController implements Initializable {
                         }
                         String newPlate = plateField.getText();
 
-
                         boolean platenumExists = vehicleList.stream().anyMatch(vehicle -> vehicle.getPlate().equals(newPlate));
-
 
                         if (platenumExists) {
                             showAlert("Error", "Cannot add vehicule. Plate number already exists.");
-                            //test =false;
                             dialog.showAndWait();
                         } else {
-                            /*String dispoRegex = "^[01]$"; // Regular expression for 0 or 1
-                            boolean isDispoValid = Pattern.matches(dispoRegex, Boolean.toString(newDisponibility));
-                            */
-                            /*String priceRegex = "^[0-9]+$"; // Regular expression for a float number
-                            boolean isPriceValid = Pattern.matches(priceRegex, Float.toString(newPrice));
-                            */
-                            /*String price1Regex = "^[0-9]+(\\.[0-9]+)?$";
-                            String price2Regex = "^[0-9]+$";
-                            String price3Regex = "^.*[A-Za-z].*$";
-                            boolean isPriceValid1 = Pattern.matches(price1Regex,Float.toString(newPrice));
-                            boolean isPriceValid2 = Pattern.matches(price2Regex,Float.toString(newPrice));
-                            boolean isPriceValid3 = Pattern.matches(price3Regex,Float.toString(newPrice));*/
-
 
                             String passengersRegex = "^[0-9]+$"; // Regular expression for an integer number
                             boolean isPassengersValid = Pattern.matches(passengersRegex, Integer.toString(newPassengers));
@@ -309,18 +293,11 @@ public class FleetController implements Initializable {
                             String horsepowerRegex = "^[0-9]+$"; // Regular expression for an integer number
                             boolean isHorsepowerValid = Pattern.matches(horsepowerRegex, Integer.toString(newHorsepower));
 
-
-                            /*if (!isPriceValid) {
-                                // Display an error message if the price is not in a valid format
-                                showAlert("Error", "Invalid price format. Please enter a valid numeric value.");
-                            } else*/ if (!isPassengersValid) {
+                            if (!isPassengersValid) {
                                 // Display an error message if the passengers value is not in a valid format
                                 showAlert("Error", "Invalid passengers format. Please enter a valid integer value.");
                                 dialog.showAndWait();
-                            }/* else if (!isDepositValid) {
-                                // Display an error message if the deposit value is not in a valid format
-                                showAlert("Error", "Invalid deposit format. Please enter a valid integer value.");
-                            }*/ else if (!isTrunkCapacityValid) {
+                            }else if (!isTrunkCapacityValid) {
                                 // Display an error message if the trunk capacity value is not in a valid format
                                 showAlert("Error", "Invalid trunk capacity format. Please enter a valid integer value.");
                                 dialog.showAndWait();
@@ -332,19 +309,14 @@ public class FleetController implements Initializable {
                                 // Display an error message if the horsepower value is not in a valid format
                                 showAlert("Error", "Invalid horsepower format. Please enter a valid integer value.");
                                 dialog.showAndWait();
-
                             } else {
-                                //if(test) {
-                                    Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
-                                    if (vehic != null) {
-                                        vehicleList.add(vehic);
-                                        tableid.setItems(vehicleList);
-                                    } else {
-                                        showAlert("Error", "Failed to add vehicle");
-
-                                    }
-
-                                //}
+                                Vehicle vehic = Vehicle.create(newBrandname, newModelname, newColor, Disponibilty, null, newPrice, newType, newPassengers, newFueltype, newGeartype, newDeposit, newTrunkcapacity, newMaxspeed, newHorsepower, newPlate);
+                                if (vehic != null) {
+                                    vehicleList.add(vehic);
+                                    tableid.setItems(vehicleList);
+                                } else {
+                                    showAlert("Error", "Failed to add vehicle");
+                                }
                             }
                         }
 
@@ -352,9 +324,6 @@ public class FleetController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 }
-                //dialog.getDialogPane().setContent(grid);
-
-              // dialog.showAndWait();
                 return null;
             });
             ;
@@ -363,25 +332,20 @@ public class FleetController implements Initializable {
 
         });
 
-
         brandDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedBrandName = newValue;
             applyFilters();
         });
-
 
         statusDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedStatus = newValue;
             applyFilters();
         });
 
-
         for (String brand : Vehicle.getAllBrandsAvailable(vehicles)) {
             brandDropList.getItems().add(brand);
         }
         statusDropList.getItems().addAll("Available","Not Available");
-
-
 
         vehicles = Vehicle.getAllVehicles();
 
@@ -454,7 +418,7 @@ public class FleetController implements Initializable {
                     }
                 });
                 deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
-                deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
+                deleteButton.setTextFill(Color.WHITE);
             }
             @Override
             protected void updateItem(Void item, boolean empty) {
