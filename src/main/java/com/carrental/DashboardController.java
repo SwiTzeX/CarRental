@@ -46,8 +46,6 @@ public class DashboardController implements Initializable {
     @FXML
     Label revPrev;
     @FXML
-    private Label growthCars;
-    @FXML
     private Label growthRent;
     @FXML
     private Label growthRev;
@@ -74,10 +72,13 @@ public class DashboardController implements Initializable {
     @FXML
     private LineChart<Number, Number> lineChart = new LineChart<>(xAxis,yAxis);
     @FXML
+    private AreaChart<Number, Number> areaChart = new AreaChart<>(xAxis,yAxis);
+    @FXML
     private BarChart<String, Number> barChart=new BarChart<>(xAx,yAx);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        iniLineChart();
+        //iniLineChart();
+        iniAreaChart();
         iniBarChart();
         new Thread(() -> Platform.runLater(()->{
             getCountCust();
@@ -118,6 +119,34 @@ public class DashboardController implements Initializable {
             data.setNode(null);
         }
     }
+    public void iniAreaChart(){
+        xAxis.setLabel("Month");
+        yAxis.setLabel("Value");
+        XYChart.Series<Number,Number> series = new XYChart.Series();
+        series.getData().add(new XYChart.Data("January",Reservation.totalSaleInMonth(1)));
+        series.getData().add(new XYChart.Data("February",Reservation.totalSaleInMonth(2)));
+        series.getData().add(new XYChart.Data("March",Reservation.totalSaleInMonth(3)));
+        series.getData().add(new XYChart.Data("April",Reservation.totalSaleInMonth(4)));
+        series.getData().add(new XYChart.Data("May",Reservation.totalSaleInMonth(5)));
+        series.getData().add(new XYChart.Data("June",Reservation.totalSaleInMonth(6)));
+        series.getData().add(new XYChart.Data("July",Reservation.totalSaleInMonth(7)));
+        series.getData().add(new XYChart.Data("August",Reservation.totalSaleInMonth(8)));
+        series.getData().add(new XYChart.Data("September",Reservation.totalSaleInMonth(9)));
+        series.getData().add(new XYChart.Data("October",Reservation.totalSaleInMonth(10)));
+        series.getData().add(new XYChart.Data("November",Reservation.totalSaleInMonth(11)));
+        series.getData().add(new XYChart.Data("December",Reservation.totalSaleInMonth(12)));
+        areaChart.getData().addAll(series);
+        areaChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
+        for(Node n:areaChart.lookupAll(".chart-series-area-fill")) {
+            n.setStyle("-fx-fill: #abcfef; -fx-opacity: 0.5");
+        }
+        for (XYChart.Data<Number, Number> data : series.getData()) {
+            data.setNode(null);
+        }
+        series.getNode().lookup(".chart-series-area-line").setStyle("-fx-stroke: #abcfef");
+
+    }
+
 
     public void iniBarChart(){
         xAx.setLabel("Brand");
@@ -131,10 +160,10 @@ public class DashboardController implements Initializable {
         barChart.getData().add(serie);
         barChart.lookup(".chart-plot-background").setStyle("-fx-background-color:transparent");
         for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
-            n.setStyle("-fx-bar-fill: #6279FF;");
+            n.setStyle("-fx-bar-fill: #abcfef; -fx-opacity: 0.5");
         }
-        barChart.setCategoryGap(70);
-        barChart.setBarGap(5);
+        barChart.setCategoryGap(80);
+        barChart.setBarGap(1);
     }
 
     public void getCountCust() {

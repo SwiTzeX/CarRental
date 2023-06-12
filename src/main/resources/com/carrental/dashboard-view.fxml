@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -377,17 +377,14 @@
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
             </HBox>
-            <LineChart fx:id="lineChart" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="266.0" prefWidth="1190.0" style="-fx-border-color: transparent;" titleSide="BOTTOM" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" tickLabelFill="#6279ff" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis prefHeight="202.0" prefWidth="26.0" side="LEFT" tickLabelFill="#6279ff" />
-               </yAxis>
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin>
-            </LineChart>
+            <AreaChart fx:id="areaChart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" pickOnBounds="false" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
          </children>
       </VBox>
    </children>
