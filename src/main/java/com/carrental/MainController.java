@@ -131,28 +131,28 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pageSelected = homeBtn;
         homeBtn.setOnMouseEntered(event->{
-            homeBtn.setStyle("-fx-text-fill: white");
+            homeBtn.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
                 });
         reviewsBtn.setOnMouseEntered(event->{
-            reviewsBtn.setStyle("-fx-text-fill: white");
+            reviewsBtn.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         });
         contactBtn.setOnMouseEntered(event->{
-            contactBtn.setStyle("-fx-text-fill: white");
+            contactBtn.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         });
         termsBtn.setOnMouseEntered(event->{
-            termsBtn.setStyle("-fx-text-fill: white");
+            termsBtn.setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         });
         homeBtn.setOnMouseExited(event->{
-            if(pageSelected !=homeBtn) homeBtn.setStyle("-fx-text-fill: #d9deff");
+            if(pageSelected !=homeBtn) homeBtn.setStyle("-fx-text-fill: #d9deff; -fx-cursor: hand;");
         });
         reviewsBtn.setOnMouseExited(event->{
-            if(pageSelected !=reviewsBtn) reviewsBtn.setStyle("-fx-text-fill: #d9deff");
+            if(pageSelected !=reviewsBtn) reviewsBtn.setStyle("-fx-text-fill: #d9deff; -fx-cursor: hand;");
         });
         contactBtn.setOnMouseExited(event->{
-            if(pageSelected !=contactBtn) contactBtn.setStyle("-fx-text-fill: #d9deff");
+            if(pageSelected !=contactBtn) contactBtn.setStyle("-fx-text-fill: #d9deff; -fx-cursor: hand;");
         });
         termsBtn.setOnMouseExited(event->{
-            if(pageSelected !=termsBtn) termsBtn.setStyle("-fx-text-fill: #d9deff");
+            if(pageSelected !=termsBtn) termsBtn.setStyle("-fx-text-fill: #d9deff; -fx-cursor: hand;");
         });
         if(App.getUser() != null){
             userBox.getChildren().clear();

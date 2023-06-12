@@ -1,9 +1,6 @@
 package com.carrental;
 
-import com.carrental.tables.DataReservation;
-import com.carrental.models.Vehicle;
-import com.carrental.UsersController;
-import com.carrental.ReservationController;
+import com.carrental.utils.DataReservation;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import javafx.collections.FXCollections;

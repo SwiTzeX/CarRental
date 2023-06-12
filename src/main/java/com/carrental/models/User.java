@@ -2,6 +2,7 @@ package com.carrental.models;
 
 
 import com.carrental.SingletonConnection;
+import com.carrental.utils.CryptCode;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;

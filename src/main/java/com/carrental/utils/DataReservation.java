@@ -1,13 +1,5 @@
-package com.carrental.tables;
+package com.carrental.utils;
 
-import com.carrental.SingletonConnection;
-import com.carrental.models.User;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DataReservation {

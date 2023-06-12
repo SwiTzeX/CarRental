@@ -4,7 +4,7 @@ import com.carrental.customnodes.MyButton;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
-import com.carrental.tables.DataReservation;
+import com.carrental.utils.DataReservation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,7 +22,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import javax.sound.midi.Soundbank;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

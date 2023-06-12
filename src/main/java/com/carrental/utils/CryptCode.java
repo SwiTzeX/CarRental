@@ -1,4 +1,4 @@
-package com.carrental.models;
+package com.carrental.utils;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
