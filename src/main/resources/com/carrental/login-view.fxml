@@ -39,7 +39,8 @@
                         <Image url="@logo/New%20logos/logo%20car%20only%20colored%20background%202.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
+               </children>
+            </Pane>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30 0 0 30;">
                <children>
                   <Pane prefHeight="108.0" prefWidth="447.0">
@@ -51,7 +52,7 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <MyTextField fx:id="usernamefield" prefHeight="49.0" prefWidth="732.0" promptText="E-mail">
+                  <MyTextField fx:id="usernamefield" prefHeight="49.0" prefWidth="732.0" promptText="Username">
 
                   </MyTextField>
                   <MyPasswordField fx:id="passwordfield" prefHeight="41.0" prefWidth="500.0" promptText="Password">
@@ -99,5 +100,14 @@
             </ImageView>
          </children>
       </VBox>
+      <MyButton onAction="#homeButton" layoutX="1320.0" layoutY="29.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8; -fx-text-fill: #ffffff;">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MyButton>
    </children>
 </AnchorPane>

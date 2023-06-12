@@ -404,7 +404,6 @@ public class Reservation {
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
                 return (float) (Math.round(rs.getFloat(1) * 100) / 100.0);
-
             }
             rs.close();
             stmt.close();

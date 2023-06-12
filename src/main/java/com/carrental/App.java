@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.models.CryptCode;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
@@ -29,6 +30,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         user = User.getUserById(48);
+        System.out.println(CryptCode.decrypt("gtkkog/TtVrZfFQdm5vsfw=="));
         //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
         //sApp.getUser().getAllNotifications().get(0).delete();
         Pane root = new Pane();
@@ -58,6 +60,7 @@ public class App extends Application {
 
     public static void openMain(Node source){
         try {
+
             FXMLLoader loader = new FXMLLoader(App.class.getResource("main-view.fxml"));
             Parent homePage = loader.load();
             App.setMainController(loader.getController());
