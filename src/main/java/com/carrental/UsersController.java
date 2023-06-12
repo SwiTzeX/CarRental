@@ -187,7 +187,7 @@ public class UsersController implements Initializable {
                             // Vérifier si l'ID, le NID ou le numéro existent déjà
                             boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                             boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
-                            String emailRegex = "^\\w+@(gmail\\.com|outlook\\.fr|uir\\.ac\\.ma)$";
+                            String emailRegex = "^\\w+@+\\w+.+\\w$";
                             boolean isEmailValid = Pattern.matches(emailRegex, newEmail);
                             String phoneRegex = "^(06|07|05)\\d{8}$";
                             boolean isPhoneValid = Pattern.matches(phoneRegex, newPhone);
