@@ -48,6 +48,7 @@
 <?import com.carrental.customnodes.MyTextField?>
 <?import com.carrental.customnodes.MyDatePicker?>
 <?import com.carrental.customnodes.MyTimePicker?>
+<?import com.carrental.customnodes.MyButton?>
 <VBox fx:id="mainBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="10.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.HomeController">
    <HBox fx:id="searchBox" alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="107.0" prefWidth="1306.0" spacing="3.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #f0f2ff; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="44.0">
       <opaqueInsets>
@@ -120,7 +121,7 @@
             <Insets bottom="20.0" left="5.0" top="20.0" />
          </HBox.margin>
       </HBox>
-      <Button fx:id="searchBtn" onAction="#filterVehicles" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
+      <MyButton fx:id="searchBtn" onAction="#filterVehicles" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0">
                <image>
@@ -131,7 +132,7 @@
          <HBox.margin>
             <Insets left="6.0" />
          </HBox.margin>
-      </Button>
+      </MyButton>
       <fx:define>
          <Image fx:id="btnImage" url="@icons/search.png" />
       </fx:define>

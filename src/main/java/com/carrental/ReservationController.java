@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
@@ -38,7 +39,7 @@ public class ReservationController implements Initializable {
     private TableView<DataReservation> TableViewReservation;
 
     @FXML
-    private Button addReservation;
+    private MyButton addReservation;
 
     @FXML
     private TableColumn<DataReservation, String> col_brandName;
@@ -142,13 +143,18 @@ public class ReservationController implements Initializable {
         });
 
         col_edit.setCellFactory(param -> new TableCell<DataReservation, String>() {
-            private final Button modifyButton = new Button("Modify");
-            private final Button deleteButton = new Button("Delete");
-            private final Button approveButton = new Button("Approve");
-            private final Button refuseButton = new Button("Deny");
-            private final Button endButton = new Button("End");
+            private final MyButton modifyButton = new MyButton("Modify");
+            private final MyButton deleteButton = new MyButton("Delete");
+            private final MyButton approveButton = new MyButton("Approve");
+            private final MyButton refuseButton = new MyButton("Deny");
+            private final MyButton endButton = new MyButton("End");
 
             {
+                modifyButton.setPrefWidth(70);
+                deleteButton.setPrefWidth(70);
+                approveButton.setPrefWidth(70);
+                refuseButton.setPrefWidth(70);
+                endButton.setPrefWidth(70);
                 modifyButton.setOnAction(event -> {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     showEditDialog(dataReservation);

@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyButton?>
 <HBox fx:id="mainHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1400.0" spacing="15.0" style="-fx-background-color: #F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.PaymentController">
    <children>
       <VBox minWidth="-Infinity" prefHeight="745.0" prefWidth="721.0">
@@ -543,7 +544,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <Button id="CheckoutBtn" fx:id="CheckoutB" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#EndCheckout" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Checkout" textFill="WHITE">
+            <MyButton id="CheckoutBtn" fx:id="CheckoutB" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#EndCheckout" prefHeight="47.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" text="Checkout" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -553,7 +554,7 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-            </Button>
+            </MyButton>
          </children>
          <HBox.margin>
             <Insets bottom="30.0" left="50.0" top="116.0" />
