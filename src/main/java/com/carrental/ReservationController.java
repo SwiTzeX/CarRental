@@ -350,7 +350,7 @@ public class ReservationController implements Initializable {
                         buttonBox.setAlignment(Pos.CENTER);
                         setGraphic(buttonBox);
                     } else if (status.equals("Approved")) {
-                        HBox buttonBox = new HBox(endButton, deleteButton);
+                        HBox buttonBox = new HBox(endButton, modifyButton,deleteButton);
                         buttonBox.setSpacing(10);
                         buttonBox.setAlignment(Pos.CENTER);
                         setGraphic(buttonBox);
@@ -583,7 +583,6 @@ public class ReservationController implements Initializable {
                     showAlert("Error", "Date and Time Field is empty");
                     dialog.showAndWait();
                     return null;
-                    //throw new RuntimeException(e);
                 }
 
                 TableViewReservation.setItems(dataResList);
