@@ -260,7 +260,16 @@ public class MainController implements Initializable {
         admin.setOnMouseEntered(event -> admin.setStyle("-fx-background-color: #F6F8FF"));
         admin.setOnMouseExited(event -> admin.setStyle("-fx-background-color: white"));
         admin.setOnMouseClicked(event -> App.openAdmin(userBox));
+        ImageView profileImage = new ImageView(new Image(getClass().getResourceAsStream("icons/profile.png"),14,14,true,true));
+        HBox profile = new HBox(profileImage,new Label("Profile"));
+        profile.setAlignment(Pos.CENTER_LEFT);
+        profile.setSpacing(4);
+        profile.setPadding(new Insets(0, 0, 0,4));
+        profile.setOnMouseEntered(event -> profile.setStyle("-fx-background-color: #F6F8FF"));
+        profile.setOnMouseExited(event -> profile.setStyle("-fx-background-color: white"));
+        profile.setOnMouseClicked(event -> openProfileSetting());
         profileMenu.setPrefWidth(80);
+        profileMenu.getChildren().add(profile);
         if (App.getUser().getIsAdmin()){
             profileMenu.getChildren().add(admin);
             profileMenu.setLayoutX(1285);
@@ -541,6 +550,7 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void openContact(){
         try {
@@ -552,6 +562,23 @@ public class MainController implements Initializable {
             pageSelected.setStyle("-fx-text-fill: #d9deff");
             contactBtn.setStyle("-fx-text-fill: white");
             pageSelected = contactBtn;
+            if(App.getUser()!=null){
+                refreshUserBox();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openProfileSetting(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("AccountSettings-view.fxml"));
+            VBox profilePage = fxmlLoader.load();
+            mainBox.getChildren().clear();
+            mainBox.getChildren().addAll(navBar,profilePage);
+            pageSelected.setStyle("-fx-text-fill: #d9deff");
+            homeBtn.setStyle("-fx-text-fill: white");
+            pageSelected = homeBtn;
             if(App.getUser()!=null){
                 refreshUserBox();}
         } catch (IOException e) {

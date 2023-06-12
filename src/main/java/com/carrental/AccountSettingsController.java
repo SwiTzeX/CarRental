@@ -90,9 +90,7 @@ public class AccountSettingsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    User user1 = App.getUser();
-    setData(user1);
+    setData(App.getUser());
 
     }}
 
