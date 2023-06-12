@@ -87,7 +87,7 @@ public class DashboardController implements Initializable {
             getRevCur();
             getRevPrev();
             growthRented();
-            //growthRevenue();
+            growthRevenue();
             //growthCars();
             growthUsers();
         })).start();
@@ -151,7 +151,7 @@ public class DashboardController implements Initializable {
         countTotalSales.setText(String.valueOf(s));
     }
     public void getRented(){
-        int countR = Reservation.getAllEndedReservations().size();
+        int countR = Reservation.getAllReservationsByStatus(2).size();
         countRented.setText(String.valueOf(countR));
     }
     private static int getPreviousYear() {
@@ -167,8 +167,8 @@ public class DashboardController implements Initializable {
         float revC=Reservation.totalSaleInYear(Calendar.getInstance().get(Calendar.YEAR));
         revCur.setText(String.valueOf(revC));
     }
-    /* public void growthRevenue(){
-        float g = Reservation.getGrowthRev();
+    public void growthRevenue(){
+        float g = Reservation.getRevenueGrowth();
         if(g >= 0){
             Image image = new Image(getClass().getResourceAsStream("icons/dashboard-pack/up.png"),512,512,true,true);
             arrowRev.setImage(image);
@@ -181,7 +181,7 @@ public class DashboardController implements Initializable {
             growthRev.setStyle("-fx-text-fill: #D53131");
             growthRev.setText("-" + String.valueOf(g) + "%");
         }
-    } */
+    }
     public void growthUsers(){
         float g = User.getGrowth();
         if(g >= 0){
