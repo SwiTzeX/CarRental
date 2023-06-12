@@ -51,7 +51,7 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox fx:id="statusId0" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Waiting" textFill="#6279ff">
+                  <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="86.0" stylesheets="@style/checkbox.css" text="Waiting" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId1" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Approved" textFill="#6279ff">
+                  <CheckBox fx:id="statusId1" mnemonicParsing="false" prefHeight="23.0" prefWidth="102.0" stylesheets="@style/checkbox.css" text="Approved" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId2" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
+                  <CheckBox fx:id="statusId2" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -91,7 +91,17 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="91.0" prefWidth="708.0" spacing="10.0">
+                  <CheckBox fx:id="statusId4" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="mark" />
+                        <String fx:value="check-box" />
+                     </styleClass>
+                  </CheckBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="589.0" spacing="10.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>

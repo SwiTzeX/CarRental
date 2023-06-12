@@ -85,7 +85,7 @@ public class VehicleCardController {
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
         Image image =null;
         try {
-            image = new Image(getClass().getResourceAsStream(vehicle.getImage()), 1900, 800, true, true);
+            image = new Image(getClass().getResourceAsStream(vehicle.getImage()), 1500, 500, true, true);
         } catch (Exception e) {
             image = new Image(getClass().getResourceAsStream("icons/noimage.png"), 1024, 1024, true, true);
         }
