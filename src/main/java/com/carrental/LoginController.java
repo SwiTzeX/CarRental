@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
@@ -30,7 +31,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     @FXML
-    public Button button_home;
+    public MyButton button_home;
     @FXML
     public Button button_signin;
     @FXML
@@ -68,6 +69,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    @FXML
+    void homeButton(ActionEvent event){
+       App.openMain((Node) event.getSource());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -113,6 +118,7 @@ public class LoginController implements Initializable {
 
            }
            });
+
     }}
 
 

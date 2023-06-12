@@ -2,6 +2,7 @@ package com.carrental.models;
 
 
 import com.carrental.SingletonConnection;
+import com.carrental.utils.CryptCode;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ public class User {
     public Date creationDate;
     public boolean isAdmin;
     private SingletonConnection DatabaseManager;
+    private String personalKeyString = "DASDASFDSdsfsdfewrewtdsfgfd28das";
 
 
     public User(Integer id,String nId, String email, String phoneNumber, int status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
@@ -179,6 +181,7 @@ public class User {
     }
 
     public void setPassword(String password) {
+        password = CryptCode.crypt(password);
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Users SET password = '" + password + "' WHERE idU = " + this.getId();
@@ -295,7 +298,7 @@ public class User {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentDateTime = format.format(date);
 
-            String req = "INSERT INTO Users VALUES(null, '" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + ", " + (age != null ? age : "NULL") + ", '" + fullName + "', '" + password + "', '" + currentDateTime + "', " + isAdmin + ")";
+            String req = "INSERT INTO Users VALUES(null, '" + nid + "', '" + email + "', '" + phoneNumber + "', " + status + ", " + (age != null ? age : "NULL") + ", '" + fullName + "', '" + CryptCode.crypt(password) + "', '" + currentDateTime + "', " + isAdmin + ")";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(req, Statement.RETURN_GENERATED_KEYS);
 
@@ -348,7 +351,7 @@ public class User {
 
 
     public boolean checkPassword(String password){
-        return this.getPassword().equals(password);
+        return this.getPassword().equals(CryptCode.crypt(password));
     }
 
     @Override

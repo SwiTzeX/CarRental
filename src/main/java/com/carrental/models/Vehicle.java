@@ -614,7 +614,7 @@ public class Vehicle {
     public static float getRevenueOfBrand(String brand){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT SUM(price*DATEDIFF(endDate,startDate)) FROM Reservations NATURAL JOIN Vehicles WHERE brandName = '" + brand+"'" ;
+            String req = "SELECT SUM(price*DATEDIFF(endDate,startDate)) FROM Reservations NATURAL JOIN Vehicles WHERE brandName = '" + brand+"' AND status = 2" ;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){

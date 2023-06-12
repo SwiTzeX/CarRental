@@ -103,18 +103,16 @@ public class AdminController implements Initializable {
 
     }
     public void glowButton(HBox btn){
-        btn.getChildren().get(1).setStyle("-fx-text-fill: white");
+        btn.getChildren().get(1).setStyle("-fx-text-fill: white; -fx-cursor: hand;");
         ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+"-W.png"),24,24,true,true));
     }
     public void unGlowButton(HBox btn){
-        btn.getChildren().get(1).setStyle("-fx-text-fill: #d9deff");
+        btn.getChildren().get(1).setStyle("-fx-text-fill: #d9deff; -fx-cursor: hand;");
         ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+".png"),24,24,true,true));
     }
     public void animation(HBox btn){
-        pageSelected.getChildren().get(1).setStyle("-fx-text-fill: #d9deff");
-        ((ImageView) pageSelected.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+pageSelected.getChildren().get(0).getId()+".png"),24,24,true,true));
-        btn.getChildren().get(1).setStyle("-fx-text-fill: white");
-        ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+"-W.png"),24,24,true,true));
+        unGlowButton(pageSelected);
+        glowButton(btn);
         pageSelected = btn;
     }
 

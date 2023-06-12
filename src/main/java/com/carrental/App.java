@@ -1,26 +1,17 @@
 package com.carrental;
 
-import com.carrental.models.Reservation;
+import com.carrental.utils.CryptCode;
 import com.carrental.models.User;
-import com.carrental.models.Vehicle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
-import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 
 public class App extends Application {
     public User user;
@@ -58,6 +49,7 @@ public class App extends Application {
 
     public static void openMain(Node source){
         try {
+
             FXMLLoader loader = new FXMLLoader(App.class.getResource("main-view.fxml"));
             Parent homePage = loader.load();
             App.setMainController(loader.getController());

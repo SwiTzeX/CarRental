@@ -29,9 +29,9 @@
                      </font>
                   </Label>
                   <Label layoutX="110.0" layoutY="706.0" prefHeight="20.0" prefWidth="303.0" text="Rent the latest model cars at cheap price" textFill="WHITE" />
-                  <ImageView fitHeight="77.0" fitWidth="79.0" layoutX="471.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="66.0" fitWidth="101.0" layoutX="439.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/Car Rental by UIR.png" />
+                        <Image url="@logo/New%20logos/logo%20car%20only%20colored%20background%202.png" />
                      </image>
                   </ImageView>
                </children></Pane>
@@ -45,15 +45,7 @@
                         <Insets top="-50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#gotohome" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #ffffff; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="&lt; Home">
-                     <font>
-                        <Font name="Arial Bold" size="20.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="600.0" top="-100.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER" textFill="#353550">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER" textFill="black">
                      <font>
                         <Font name="Poppins" size="43.0" />
                      </font>
@@ -98,14 +90,14 @@
                   </MyPasswordField>
                   <VBox alignment="CENTER" prefHeight="30.0" prefWidth="891.0" spacing="5.0">
                      <children>
-                        <Button fx:id="register" mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
+                        <MyButton fx:id="register" mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Create Account" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
-                        </Button>
+                        </MyButton>
                         <HBox alignment="CENTER" prefHeight="4.0" prefWidth="891.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" text="Already have an account?" textAlignment="CENTER" textFill="#353550">
@@ -132,5 +124,14 @@
             </VBox>
          </children>
       </HBox>
+      <MyButton onAction="#homeButton" layoutX="1320.0" layoutY="29.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #6279ff; -fx-background-radius: 8; -fx-text-fill: #ffffff;">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MyButton>
    </children>
 </AnchorPane>
