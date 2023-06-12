@@ -40,12 +40,12 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="fullnamevar" alignment="CENTER" prefHeight="36.0" prefWidth="221.0" text="FULL NAME VAR" textFill="#353550">
+                  <Label fx:id="fullnamevar" alignment="CENTER" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                      <font>
                         <Font name="Arial Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="statusvar" text="CLIENT OR ADMIN" textFill="#00000091">
+                  <Label fx:id="statusvar" textFill="#00000091">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
@@ -53,17 +53,9 @@
                         <Insets top="-10.0" />
                      </VBox.margin>
                   </Label>
-                  <Button id="deactivate" fx:id="deactivate" alignment="CENTER" mnemonicParsing="false" prefHeight="16.0" prefWidth="157.0" style="-fx-background-color: FF5151; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Disable" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="466.0" prefWidth="660.0" spacing="5.0" style="-fx-background-color: #FFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
+            <VBox prefHeight="466.0" prefWidth="660.0" spacing="5.0" style="-fx-background-color: #FFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="618.0">
                      <children>
@@ -96,7 +88,7 @@
                                           <Font name="Arial" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="fullname1var" prefHeight="36.0" prefWidth="221.0" text="FULL NAME VAR" textFill="#353550">
+                                    <Label fx:id="fullname1var" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
@@ -113,7 +105,7 @@
                                           <Font name="Arial" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="emailvar" prefHeight="36.0" prefWidth="221.0" text="EMAIL VAR" textFill="#353550">
+                                    <Label fx:id="emailvar" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
@@ -130,7 +122,7 @@
                                           <Font name="Arial" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="phonevar" prefHeight="36.0" prefWidth="221.0" text="Phone var" textFill="#353550">
+                                    <Label fx:id="phonevar" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
@@ -157,7 +149,7 @@
                                           <Font name="Arial" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="agevar" prefHeight="36.0" prefWidth="221.0" text="AGE VAR" textFill="#353550">
+                                    <Label fx:id="agevar" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
@@ -174,7 +166,7 @@
                                           <Font name="Arial" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="nidvar" prefHeight="36.0" prefWidth="221.0" text="National ID VAR" textFill="#353550">
+                                    <Label fx:id="nidvar" prefHeight="36.0" prefWidth="221.0" textFill="#353550">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
