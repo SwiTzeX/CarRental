@@ -169,19 +169,22 @@ public class RegisterController implements Initializable {
         }
 
 */
-        User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
-        try {
-            // Load the FXML file for the second view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
+        if (!Nid.isError() && !fullnameid.isError() && !ageid.isError() && !phonenumid.isError() && !mailid.isError() && !passwordid.isError() && !Vpasswordid.isError()){
+            User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
+            try {
+                // Load the FXML file for the second view
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+                Parent login = loader.load();
 
-            // Create a new stage and set the second view as the root
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Create a new stage and set the second view as the root
+                Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(login));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @FXML
