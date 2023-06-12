@@ -17,17 +17,17 @@
          <children>
             <VBox layoutX="-40.0" layoutY="-103.0" prefHeight="548.0" prefWidth="348.0" style="-fx-background-radius: 30; -fx-border-color: #F6F8FF; -fx-background-color: #F6F8FF; -fx-border-radius: 30;">
                <children>
-                  <ImageView fitHeight="133.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="133.0" fitWidth="200.0" opacity="0.36" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets left="110.0" top="29.0" />
                      </VBox.margin>
                      <image>
-                        <Image url="@icons/WhatsApp%20Image%202023-05-21%20à%2001.31.07.jpg" />
+                        <Image url="@logo/blank-profile-picture-973460_1920.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="usernamelabela" prefHeight="18.0" prefWidth="186.0" text="            ">
+                  <Label fx:id="usernamelabela" prefHeight="18.0" prefWidth="122.0" text="            ">
                      <VBox.margin>
-                        <Insets left="132.0" top="6.0" />
+                        <Insets left="116.0" top="6.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Arial Bold" size="14.0" />
