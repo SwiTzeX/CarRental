@@ -63,7 +63,7 @@ public class App extends Application {
             Stage stage =(Stage) source.getScene().getWindow();
             stage.setScene(new Scene(homePage));
             stage.show();
-            if(!App.getUser().isCommented()){
+            if(App.getUser() != null && !App.getUser().isCommented()){
                 Stage popupStage = new Stage();
                 FXMLLoader loaderX = new FXMLLoader(App.class.getResource("commentSection-view.fxml"));
                 popupStage.setScene(new Scene(loaderX.load()));

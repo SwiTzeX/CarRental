@@ -186,7 +186,7 @@ public class Reservation {
         return null;
     }
 
-    public static ArrayList<Reservation> getAllReservationsByStatus(Boolean status){
+    public static ArrayList<Reservation> getAllReservationsByStatus(int status){
         ArrayList<Reservation> reservations = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -356,7 +356,7 @@ public class Reservation {
         return (float) (Math.round(vehicle.getPrice() * daysBetween * 100) / 100.0);
     }
     public static float totalSales(){
-        ArrayList<Reservation> list = getAllReservationsByStatus(true);
+        ArrayList<Reservation> list = getAllReservationsByStatus(2);
         float total = 0;
         for(Reservation res : list){
             total += res.totalPrice();
@@ -382,7 +382,7 @@ public class Reservation {
     public static float getGrowth(){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Reservations WHERE status > 0 AND MONTH(startDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Reservations WHERE status = 2 AND MONTH(startDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(startDate) < MONTH(CURRENT_DATE())) AS prev;\n";
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Reservations WHERE status = 2 AND MONTH(startDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Reservations WHERE status = 2 AND MONTH(startDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(startDate) < MONTH(CURRENT_DATE())) AS prev;\n";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){

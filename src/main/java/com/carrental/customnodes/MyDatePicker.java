@@ -47,7 +47,7 @@ public class MyDatePicker extends StackPane {
     ComboBox<Integer> years = new ComboBox<>();
     Popup popup = new Popup();
 
-    Date date = new Date("1/1/2023");
+    Date date = new Date();
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     public MyDatePicker() {

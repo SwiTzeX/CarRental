@@ -151,7 +151,7 @@ public class DashboardController implements Initializable {
         countTotalSales.setText(String.valueOf(s));
     }
     public void getRented(){
-        int countR = Reservation.getAllEndedReservations().size();
+        int countR = Reservation.getAllReservationsByStatus(2).size();
         countRented.setText(String.valueOf(countR));
     }
     private static int getPreviousYear() {

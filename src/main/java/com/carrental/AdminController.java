@@ -51,9 +51,59 @@ public class AdminController implements Initializable {
         reservationsBtn.setOnMouseClicked(event ->{
             loadReservationsManagement();
         });
+        homeBtn.setOnMouseClicked(event ->{
+            App.openMain(homeBtn);
+        });
+        logoutBtn.setOnMouseClicked(event ->{
+            App.setUser(null);
+            App.openMain(homeBtn);
+        });
+        dashboardBtn.setOnMouseEntered(event ->{
+            glowButton(dashboardBtn);
+        });
+        userManageBtn.setOnMouseEntered(event ->{
+            glowButton(userManageBtn);
+        });
+        fleetManageBtn.setOnMouseEntered(event ->{
+            glowButton(fleetManageBtn);
+        });
+        reservationsBtn.setOnMouseEntered(event ->{
+            glowButton(reservationsBtn);
+        });
+        homeBtn.setOnMouseEntered(event ->{
+            glowButton(homeBtn);
+        });
+        logoutBtn.setOnMouseEntered(event ->{
+            glowButton(logoutBtn);
+        });
+        dashboardBtn.setOnMouseExited(event ->{
+            unGlowButton(dashboardBtn);
+        });
+        userManageBtn.setOnMouseExited(event ->{
+            unGlowButton(userManageBtn);
+        });
+        fleetManageBtn.setOnMouseExited(event ->{
+            unGlowButton(fleetManageBtn);
+        });
+        reservationsBtn.setOnMouseExited(event ->{
+            unGlowButton(reservationsBtn);
+        });
+        homeBtn.setOnMouseExited(event ->{
+            unGlowButton(homeBtn);
+        });
+        logoutBtn.setOnMouseExited(event ->{
+            unGlowButton(logoutBtn);
+        });
 
     }
-
+    public void glowButton(HBox btn){
+        btn.getChildren().get(1).setStyle("-fx-text-fill: white");
+        ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+"-W.png"),24,24,true,true));
+    }
+    public void unGlowButton(HBox btn){
+        btn.getChildren().get(1).setStyle("-fx-text-fill: #d9deff");
+        ((ImageView) btn.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+btn.getChildren().get(0).getId()+".png"),24,24,true,true));
+    }
     public void animation(HBox btn){
         pageSelected.getChildren().get(1).setStyle("-fx-text-fill: #d9deff");
         ((ImageView) pageSelected.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("icons/admin-view/"+pageSelected.getChildren().get(0).getId()+".png"),24,24,true,true));
