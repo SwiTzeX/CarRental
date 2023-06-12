@@ -51,6 +51,9 @@ public class AccountSettingsController {
     private Button editb;
 
     @FXML
+    private Button deactivate;
+
+    @FXML
     private Label emailvar;
 
     @FXML
