@@ -50,7 +50,7 @@ public class App extends Application {
     public static void openMain(Node source){
         try {
 
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("home-view.fxml"));
             Parent homePage = loader.load();
             App.setMainController(loader.getController());
             Stage stage =(Stage) source.getScene().getWindow();
