@@ -75,7 +75,7 @@
                                                 <Image url="@icons/dashboard-pack/up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthUser" prefHeight="15.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthUser" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="+5222,13%" textFill="#57bf72">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -88,7 +88,7 @@
                                                 <Font size="10.0" />
                                              </font>
                                              <HBox.margin>
-                                                <Insets />
+                                                <Insets left="5.0" />
                                              </HBox.margin></Label>
                                        </children>
                                     </HBox>
@@ -141,7 +141,7 @@
                                                 <Image url="@icons/dashboard-pack/up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthRent" prefHeight="15.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthRent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="+5,3%" textFill="#57bf72">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -154,7 +154,7 @@
                                                 <Font size="10.0" />
                                              </font>
                                              <HBox.margin>
-                                                <Insets />
+                                                <Insets left="5.0" />
                                              </HBox.margin>
                                           </Label>
                                        </children>
@@ -212,7 +212,7 @@
                                                 <Image url="@icons/dashboard-pack/up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthCars" prefHeight="15.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
+                                          <Label fx:id="growthCars" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="42.0" text="+5,3%" textFill="#57bf72">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -279,7 +279,7 @@
                                                 <Image url="@icons/dashboard-pack/down.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="growthRev" prefHeight="15.0" prefWidth="42.0" text="+5,3%" textFill="#d53131">
+                                          <Label fx:id="growthRev" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="+5,3%" textFill="#d53131">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -292,7 +292,7 @@
                                                 <Font size="10.0" />
                                              </font>
                                              <HBox.margin>
-                                                <Insets />
+                                                <Insets left="5.0" />
                                              </HBox.margin>
                                           </Label>
                                        </children>
@@ -400,6 +400,9 @@
                <yAxis>
                   <NumberAxis prefHeight="202.0" prefWidth="26.0" side="LEFT" tickLabelFill="#6279ff" />
                </yAxis>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </LineChart>
          </children>
       </VBox>
