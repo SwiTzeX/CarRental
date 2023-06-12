@@ -70,8 +70,61 @@ public class MainController implements Initializable {
     Circle reservationCircle;
     Label notifsNumber;
 
+    private Date startDate = null;
+    private Date endDate = null;
+    private Date startTime = null;
+    private Date endTime = null;
+    private String location = null;
+
     public VBox getMainBox() {
         return mainBox;
+    }
+    public HBox getNavBar() {
+        return navBar;
+    }
+
+    public void setNavBar(HBox navBar) {
+        this.navBar = navBar;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     @Override
@@ -381,13 +434,16 @@ public class MainController implements Initializable {
         }
     }
     @FXML
-    public void openHome(Date pickupDate,Date returnDate,Date pickupTime,Date returnTime,String location){
+    public void openHome(){
         try {
+            if(this.startDate == null){
+                openSearch();
+            }
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("home-view.fxml"));
             VBox home = fxmlLoader.load();
             HomeController homeController = fxmlLoader.getController();
-            homeController.setData(pickupDate,returnDate,pickupTime,returnTime,location);
+            homeController.setData(startDate,endDate,startTime,endTime,location);
             //homeController.loadIn();
             mainBox.getChildren().clear();
             mainBox.getChildren().addAll(navBar,home);
