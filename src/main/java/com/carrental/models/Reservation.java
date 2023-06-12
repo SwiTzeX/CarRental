@@ -258,7 +258,7 @@ public class Reservation {
         ArrayList<Reservation> reservations = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Reservations WHERE Year(startDate) = " + year ;
+            String req = "SELECT * FROM Reservations WHERE Year(startDate) = " + year+" AND status = 2" ;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){
@@ -404,7 +404,6 @@ public class Reservation {
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
                 return (float) (Math.round(rs.getFloat(1) * 100) / 100.0);
-
             }
             rs.close();
             stmt.close();
