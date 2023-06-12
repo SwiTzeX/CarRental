@@ -33,7 +33,7 @@
                         <Font name="Myanmar MN" size="13.0" />
                      </font>
                   </Label>
-                  <MenuButton fx:id="choiceMenu" mnemonicParsing="false" style="-fx-background-color: #F0F0F0; -fx-text-fill: #ffffff; -fx-pref-width: 24; -fx-pref-height: 24; -fx-border-radius: 3px;">
+                  <MenuButton fx:id="choiceMenu" mnemonicParsing="false" style="-fx-background-color: #F6F8FF; -fx-text-fill: #ffffff; -fx-pref-width: 24; -fx-pref-height: 24; -fx-border-radius: 3px;">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Delete" />
                      </items>
