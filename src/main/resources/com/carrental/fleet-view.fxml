@@ -51,7 +51,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.FleetController">
     <VBox fx:id="vehicleCardsBox" layoutX="22.0" layoutY="195.0" prefHeight="598.0" prefWidth="1209.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="195.0">
         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
+            <HBox fx:id="filterBox" alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="1304.0" spacing="20.0">
                 <children>
                     <TextField fx:id="searchbar" prefHeight="38.0" prefWidth="222.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
                         <opaqueInsets>

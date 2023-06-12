@@ -349,7 +349,6 @@ public class HomeController implements Initializable {
 
     public void setData(Date pickupDate,Date returnDate,Date pickupTime,Date returnTime,String location){
         Platform.runLater(()-> {
-            System.out.println(pickupTime);
             pickupTimeTF.setDate(pickupTime);
             pickupDateTF.setDate(pickupDate);
             returnDateTF.setDate(returnDate);

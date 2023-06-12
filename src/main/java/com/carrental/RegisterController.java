@@ -116,16 +116,8 @@ public class RegisterController implements Initializable {
 
         if (!Nid.isError() && !fullnameid.isError() && !ageid.isError() && !phonenumid.isError() && !mailid.isError() && !passwordid.isError() && !Vpasswordid.isError()){
             User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-                Parent login = loader.load();
-
-                Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(login));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            App.openLogin(Nid);
+            GMailer.sendAccountConfirmation(email);
         }
     }
 

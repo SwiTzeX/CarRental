@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,8 +20,10 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class FleetController implements Initializable {
-
+    @FXML
     public Label adminName;
+    @FXML
+    public HBox filterBox;
     @FXML
     private TableColumn<Vehicle, Void> Actions;
 
@@ -45,8 +48,7 @@ public class FleetController implements Initializable {
     @FXML
     private Button addvehiclebtn;
 
-    @FXML
-    private ComboBox<String> brandDropList;
+
 
     @FXML
     private Button clearfilterbtn;
@@ -55,6 +57,8 @@ public class FleetController implements Initializable {
     @FXML
     private TextField searchbar;
 
+    @FXML
+    private ComboBox<String> brandDropList;
     @FXML
     private ComboBox<String> statusDropList;
 
@@ -534,15 +538,48 @@ public class FleetController implements Initializable {
 
     @FXML
     private void clearallfilters(ActionEvent event) {
-        brandDropList.getSelectionModel().clearSelection();
-        statusDropList.getSelectionModel().clearSelection();
+
+        brandDropList = new ComboBox<>();
+        brandDropList.getStyleClass().add("menu");
+        brandDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        brandDropList.setPromptText("Brand Name");
+        brandDropList.setPrefWidth(160);
+        brandDropList.setOnAction(e -> {
+            applyFilters();
+                }
+        );
+        for(String brand:Vehicle.getAllBrandsAvailable(vehicles)) {
+            brandDropList.getItems().add(brand);
+        }
+        statusDropList = new ComboBox<>();
+        statusDropList.getStyleClass().add("menu");
+        statusDropList.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        statusDropList.setPromptText("Status");
+        statusDropList.setPrefWidth(128);
+        statusDropList.setOnAction(e -> {
+            applyFilters();
+                }
+        );
+        statusDropList.getItems().addAll("Available","Not Available");
+        brandDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedBrandName = newValue;
+            applyFilters();
+        });
+
+        statusDropList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedStatus = newValue;
+            applyFilters();
+        });
+
+        filterBox.getChildren().clear();
+        HBox.setMargin(brandDropList, new Insets(0,0,0,360));
+        filterBox.getChildren().addAll(searchbar,brandDropList,statusDropList,clearfilterbtn,addvehiclebtn);
+
         tableid.setItems(vehicleList);
 
         tableid.refresh();
 
         //refreshfilter();
-        brandDropList.setPromptText("Brand");
-        statusDropList.setPromptText("status");
 
     }
 

@@ -79,7 +79,7 @@ public class VehicleCardController {
         vehPrice.setText(String.valueOf(vehicle.getPrice())+" DH");
         vehPassengers.setText(String.valueOf(vehicle.getPassengers()));
         vehMaxSpeed.setText(String.valueOf(vehicle.getMaxSpeed())+"km");
-        vehDeposit.setText(String.valueOf(vehicle.getDeposit())+"DH");
+        vehDeposit.setText(String.valueOf((int)vehicle.getDeposit())+"%");
         vehFuelType.setText(vehicle.getFuelType());
         vehGearType.setText(vehicle.getGearType());
         vehHorsePower.setText(String.valueOf(vehicle.getHorsePower()));
