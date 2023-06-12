@@ -159,11 +159,11 @@ public class MainController implements Initializable {
         });
         if(App.getUser() != null){
             userBox.getChildren().clear();
-            ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("icons/blank-user.png"),40,40,true,true));
+            ImageView avatarImage = new ImageView(new Image(getClass().getResourceAsStream("icons/blank-user.png"),30,30,true,true));
             Circle avatarCircle = new Circle();
-            avatarCircle.setCenterX(40 / 2);
-            avatarCircle.setCenterY(40 / 2);
-            avatarCircle.setRadius(40 / 2);
+            avatarCircle.setCenterX((double) 30 / 2);
+            avatarCircle.setCenterY((double) 30 / 2);
+            avatarCircle.setRadius((double) 30 / 2);
             avatarImage.setClip(avatarCircle);
             ImageView arrow = new ImageView(new Image(getClass().getResourceAsStream("icons/arrow-down.png"),11,7,true,true));
             avatar = new VBox(avatarImage,arrow);
@@ -419,10 +419,10 @@ public class MainController implements Initializable {
         boolean redCheck = false;
         boolean orangeCheck = false;
         for(Reservation reservation:App.getUser().getReservations()){
-            if (reservation.getPercentageOfTimeLeft() <10){
+            if (reservation.getPercentageOfTimeLeft() <10 && reservation.getStatus() == 1){
                 redCheck = true;
                 break;
-            } else if (reservation.getPercentageOfTimeLeft() <20) {
+            } else if (reservation.getPercentageOfTimeLeft() <20 && reservation.getStatus() == 1) {
                 orangeCheck = true;
             }
         }
