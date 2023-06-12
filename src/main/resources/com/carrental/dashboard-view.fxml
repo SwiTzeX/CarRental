@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyButton?>
 <VBox fx:id="dashvbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" style="-fx-background-color: F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
    <children>
       <Label prefHeight="60.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
@@ -29,11 +30,11 @@
       </Label>
       <HBox prefHeight="49.0" prefWidth="1250.0">
          <children>
-            <Button fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Generate report" textFill="WHITE">
+            <MyButton fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Generate report" textFill="WHITE">
                <HBox.margin>
                   <Insets left="1115.0" />
                </HBox.margin>
-            </Button>
+            </MyButton>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="330.0" prefWidth="1250.0" spacing="21.0">

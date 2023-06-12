@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyButton?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ReservationController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1250.0" spacing="5.0">
@@ -51,7 +52,7 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="86.0" stylesheets="@style/checkbox.css" text="Waiting" textFill="#6279ff">
+                  <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" stylesheets="@style/checkbox.css" text="Pending" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -81,7 +82,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Refused" textFill="#6279ff">
+                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Denied" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -91,7 +92,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId4" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
+                  <CheckBox fx:id="statusId4" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" stylesheets="@style/checkbox.css" text="Canceled" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -116,11 +117,11 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="addReservation" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="ADD RESERVATION" textFill="#6279ff">
+                        <MyButton fx:id="addReservation" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="ADD RESERVATION" textFill="#6279ff" darker="false">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
-                        </Button>
+                        </MyButton>
                      </children>
                   </HBox>
                </children>

@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
@@ -38,7 +39,7 @@ public class ReservationController implements Initializable {
     private TableView<DataReservation> TableViewReservation;
 
     @FXML
-    private Button addReservation;
+    private MyButton addReservation;
 
     @FXML
     private TableColumn<DataReservation, String> col_brandName;
@@ -134,7 +135,9 @@ public class ReservationController implements Initializable {
                         setTextFill(Color.RED);
                     } else if (item.equals("Approved")) {
                         setTextFill(Color.FORESTGREEN);
-                    } else {
+                    } else if (item.equals("Canceled")) {
+                        setTextFill(Color.RED);
+                    }else {
                         setTextFill(Color.BLACK);
                     }
                 }
@@ -142,13 +145,18 @@ public class ReservationController implements Initializable {
         });
 
         col_edit.setCellFactory(param -> new TableCell<DataReservation, String>() {
-            private final Button modifyButton = new Button("Modify");
-            private final Button deleteButton = new Button("Delete");
-            private final Button approveButton = new Button("Approve");
-            private final Button refuseButton = new Button("Deny");
-            private final Button endButton = new Button("End");
+            private final MyButton modifyButton = new MyButton("Modify");
+            private final MyButton deleteButton = new MyButton("Delete");
+            private final MyButton approveButton = new MyButton("Approve");
+            private final MyButton refuseButton = new MyButton("Deny");
+            private final MyButton endButton = new MyButton("End");
 
             {
+                modifyButton.setPrefWidth(70);
+                deleteButton.setPrefWidth(70);
+                approveButton.setPrefWidth(70);
+                refuseButton.setPrefWidth(70);
+                endButton.setPrefWidth(70);
                 modifyButton.setOnAction(event -> {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     showEditDialog(dataReservation);
@@ -370,6 +378,9 @@ public class ReservationController implements Initializable {
         statusId3.setOnAction(event -> {
             updateTableView();
         });
+        statusId4.setOnAction(event -> {
+            updateTableView();
+        });
     }
     private void showEditDialog(DataReservation dataRes) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
@@ -390,7 +401,7 @@ public class ReservationController implements Initializable {
         TextField startDateField = new TextField(format.format(dataRes.getStartDate()));
         TextField endDateField = new TextField(format.format(dataRes.getEndDate()));
         ComboBox<String> statusField = new ComboBox<>();
-        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied");
+        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied", "Canceled");
         statusField.setItems(items);
         statusField.getSelectionModel().select(dataRes.getStatus());
         grid.add(new Label("Id User"), 0, 1);
@@ -418,11 +429,13 @@ public class ReservationController implements Initializable {
                 String newStartDate = startDateField.getText();
                 if(newStartDate == null){
                     showAlert("Error", "Start Date is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 String newEndDate = endDateField.getText();
                 if(newEndDate == null){
                     showAlert("Error", "End Date is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 String newStatus = statusField.getValue();
@@ -444,6 +457,8 @@ public class ReservationController implements Initializable {
                     res.setStatus(1);
                 }else if(newStatus.equals("Ended")){
                     res.setStatus(2);
+                }else if(newStatus.equals("Canceled")){
+                    res.setStatus(-2);
                 }else{
                     res.setStatus(-1);
                 }
@@ -451,6 +466,7 @@ public class ReservationController implements Initializable {
                 dataRes.setEndDate(format.parse(newEndDate));
                 } catch (ParseException e) {
                     showAlert("Error", "Date and Time Field is empty");
+                    dialog.showAndWait();
                     //throw new RuntimeException(e);
                 }
                 dataRes.setStatus(newStatus);
@@ -498,7 +514,7 @@ public class ReservationController implements Initializable {
         endDateField.setPromptText("yyyy-MM-dd HH:mm:ss");
 
         ComboBox<String> statusField = new ComboBox<>();
-        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied");
+        ObservableList<String> items = FXCollections.observableArrayList("Pending", "Approved", "Ended", "Denied", "Canceled");
         statusField.setItems(items);
         statusField.getSelectionModel().selectFirst();
         grid.add(new Label("Id User"), 0, 1);
@@ -519,11 +535,13 @@ public class ReservationController implements Initializable {
                 Integer newIdUser = idUserField.getValue();
                 if(newIdUser == null){
                     showAlert("Error", "IdUser is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 Integer newIdVehicle = idVehicleField.getValue();
                 if(newIdVehicle == null){
                     showAlert("Error", "IdVehicle is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 String newFullName = User.getUserById(newIdUser).getFullName();
@@ -534,11 +552,13 @@ public class ReservationController implements Initializable {
                 String newStartDate = String.valueOf(startDateField.getText());
                 if(newStartDate == null){
                     showAlert("Error", "Start Date is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 String newEndDate = String.valueOf(endDateField.getText());
                 if(newEndDate == null){
                     showAlert("Error", "End Date is empty");
+                    dialog.showAndWait();
                     return null;
                 }
                 String newStatus = statusField.getValue();
@@ -549,6 +569,8 @@ public class ReservationController implements Initializable {
                     status = 1;
                 }else if(newStatus.equals("Ended")){
                     status = 2;
+                }else if(newStatus.equals("Canceled")){
+                    status = -2;
                 }else{
                     status = -1;
                 }
@@ -560,6 +582,7 @@ public class ReservationController implements Initializable {
                     dataResList.add(data);
                 } catch (ParseException e) {
                     showAlert("Error", "Date and Time Field is empty");
+                    dialog.showAndWait();
                     return null;
                     //throw new RuntimeException(e);
                 }

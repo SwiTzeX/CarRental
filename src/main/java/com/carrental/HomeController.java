@@ -284,6 +284,11 @@ public class HomeController implements Initializable {
     public void filterVehicles(javafx.event.ActionEvent event) {
         pickDate = pickupDateTF.getDate();
         returnDate = returnDateTF.getDate();
+        App.getMainController().setStartDate(pickupDateTF.getDate());
+        App.getMainController().setEndDate(returnDateTF.getDate());
+        App.getMainController().setStartTime(pickupTimeTF.getDate());
+        App.getMainController().setEndTime(returnTimeTF.getDate());
+        App.getMainController().setLocation(locationTF.getText());
         try {
             ComboBox<String> dropList = (ComboBox<String>) event.getSource();
             Text theText = new Text(dropList.getValue());

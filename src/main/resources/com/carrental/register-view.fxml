@@ -18,7 +18,7 @@
                      </image>
                   </ImageView>
                   <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="111.0" layoutY="604.0" prefHeight="77.0" prefWidth="358.0" text="Luxury car at your" textFill="WHITE">
+                  <Label layoutX="111.0" layoutY="604.0" prefHeight="77.0" prefWidth="358.0" text="The best cars at your" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
@@ -31,7 +31,7 @@
                   <Label layoutX="110.0" layoutY="706.0" prefHeight="20.0" prefWidth="303.0" text="Rent the latest model cars at cheap price" textFill="WHITE" />
                   <ImageView fitHeight="77.0" fitWidth="79.0" layoutX="471.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo/Car%20Rental%20by%20UIR%20(2).png" />
+                        <Image url="@logo/Car Rental by UIR.png" />
                      </image>
                   </ImageView>
                </children></Pane>

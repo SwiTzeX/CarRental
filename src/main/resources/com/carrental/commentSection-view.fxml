@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyButton?>
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="550.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentSectionController">
    <children>
       <Label prefHeight="27.0" prefWidth="238.0" text="Rate Your Experience" textFill="#6279ff">
@@ -130,22 +131,22 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="561.0" spacing="20.0">
          <children>
-            <Button id="CheckoutBtn" fx:id="publishButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Publish" textFill="WHITE">
+            <MyButton id="CheckoutBtn" fx:id="publishButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" text="Publish" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-            </Button>
-            <Button id="CheckoutBtn" fx:id="notNowButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Not Now" textFill="WHITE">
+            </MyButton>
+            <MyButton id="CheckoutBtn" fx:id="notNowButton" alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #6279FF; -fx-border-radius: 10; -fx-background-radius: 10;" text="Not Now" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-            </Button>
+            </MyButton>
          </children>
       </HBox>
    </children>

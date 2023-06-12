@@ -39,7 +39,7 @@ public class DataReservation {
         }else if(status.equals("2")){
             this.status = "Ended";
         }else if(status.equals("-2")){
-            this.status = "Ended";
+            this.status = "Canceled";
         }else{
             this.status = "Denied";
         }
