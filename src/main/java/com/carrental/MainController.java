@@ -261,7 +261,7 @@ public class MainController implements Initializable {
             separator.setStyle("-fx-background: #E1E7EF");
             notificationsBox.getChildren().addAll(test,separator);
         }
-        reservationsBox.getChildren().remove(reservationsBox.getChildren().size()-1);
+        notificationsBox.getChildren().remove(notificationsBox.getChildren().size()-1);
         notificationsBox.setMaxHeight(Double.MAX_VALUE);
         if(notificationsBox.getChildren().size() == 2){
             Label txt = new Label("There is no notification");
