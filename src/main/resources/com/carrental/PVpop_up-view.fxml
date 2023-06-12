@@ -16,7 +16,7 @@
             <Insets />
          </VBox.margin>
          <children>
-            <Label text="Awesome !" textAlignment="CENTER" textFill="#158a01">
+            <Label text="Awesome !" textAlignment="CENTER" textFill="#57bf72">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -40,9 +40,9 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <ImageView fitHeight="63.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons/approval-symbol-in-badge.png" />
+                  <Image url="@icons/dashboard-pack/check-circle.png" />
                </image>
                <VBox.margin>
                   <Insets top="-10.0" />
@@ -53,7 +53,7 @@
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
       </VBox>
-      <Button id="PopUp" fx:id="PopUp" mnemonicParsing="false" onAction="#onClickBackPV" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #16A300; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
+      <Button id="PopUp" fx:id="PopUp" mnemonicParsing="false" onAction="#onClickBackPV" prefHeight="29.0" prefWidth="154.0" style="-fx-background-color: #57BF72; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@style/PVpopup.css" text="OK" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
