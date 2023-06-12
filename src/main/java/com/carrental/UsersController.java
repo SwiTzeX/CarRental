@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -82,7 +83,6 @@ public class UsersController implements Initializable {
     @FXML
     private ComboBox<String> roles;
 
-
     @FXML
     private Button clearAllFilters;
 
@@ -116,7 +116,6 @@ public class UsersController implements Initializable {
             applySearchFilter(searchKeyword);
         });
         addUser.setOnAction(event -> {
-            // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
             Dialog<User> dialog = new Dialog<>();
             dialog.setTitle("Add User");
             dialog.setHeaderText(null);
@@ -130,7 +129,6 @@ public class UsersController implements Initializable {
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
             TextField NIDField = new TextField();
-            // Ajouter le ComboBox pour choisir le rôle
             ComboBox<String> roleComboBox = new ComboBox<>();
             roleComboBox.getItems().addAll("Admin", "Client");
 
@@ -149,13 +147,9 @@ public class UsersController implements Initializable {
             grid.add(new Label("Role"), 0, 7);
             grid.add(roleComboBox, 1, 7);
 
-            // Set vertical spacing between the cells of the GridPane
-            grid.setVgap(10); // Adjust the value to your preference
+            grid.setVgap(10);
+            grid.setHgap(10);
 
-            // Set horizontal spacing between the cells of the GridPane
-            grid.setHgap(10); // Adjust the value to your preference
-
-            // Set alignment of labels to the right and vertical alignment to the center
             GridPane.setHalignment(NIDField, HPos.LEFT);
             GridPane.setHalignment(emailField, HPos.LEFT);
             GridPane.setHalignment(phoneField, HPos.LEFT);
@@ -171,7 +165,6 @@ public class UsersController implements Initializable {
             GridPane.setValignment(passwordField, VPos.CENTER);
             GridPane.setValignment(roleComboBox, VPos.CENTER);
 
-            // Add padding around the grid
             grid.setPadding(new Insets(10));
 
             dialog.getDialogPane().setContent(grid);
@@ -187,7 +180,6 @@ public class UsersController implements Initializable {
                         if (Integer.parseInt(newAge) < 18) {
                             showAlert("Error", "Age must be 18 or above.");
                         } else {
-                            // Vérifier si l'ID, le NID ou le numéro existent déjà
                             boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                             boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
                             String emailRegex = "^\\w+@+\\w+.+\\w$";
@@ -205,13 +197,10 @@ public class UsersController implements Initializable {
                                 if (!newAge.isEmpty()) {
                                     age = Integer.parseInt(newAge);
                                 }
-                                // Vérifier la valeur sélectionnée dans le ComboBox du rôle
-                                int isAdmin = 0; // Par défaut, considérez que le rôle est "Client"
+                                int isAdmin = 0;
                                 if (selectedRole.equals("Admin")) {
                                     isAdmin = 1;
                                 }
-
-                                // Créer le nouvel utilisateur avec le rôle sélectionné
                                 User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword, isAdmin);
                                 if (newUser != null) {
                                     userList.add(newUser);
@@ -243,7 +232,7 @@ public class UsersController implements Initializable {
             applyFilters();
         });
         roles.getItems().addAll("admin", "client");
-        invoicestatue.getItems().addAll("blocked", "active");
+        invoicestatue.getItems().addAll("banned", "active");
         invoicedate.getItems().addAll("newest", "oldest");
         applyFilters();
         ArrayList<User> users = User.getAllUsers();
@@ -287,7 +276,7 @@ public class UsersController implements Initializable {
                         setText("Active");
                         setTextFill(Color.GREEN);
                     } else if (isBlocked == 1) {
-                        setText("Blocked");
+                        setText("Banned");
                         setTextFill(Color.RED);
                     } else if (isBlocked == 2) {
                         setText("unActive");
@@ -314,37 +303,43 @@ public class UsersController implements Initializable {
         });
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modify");
-            private final Button blockButton = new Button("Block");
+            private final Button blockButton = new Button("Ban");
             private final Button deleteButton = new Button("Delete");
+            private final Button activeButton = new Button("Active");
 
             {
+                activeButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    int status = user.getStatus();
+                    if (status == 2) {
+                        user.setStatus(0);
+                        activeButton.setText("Active");}
+                    tableview.refresh();
+                });
+                activeButton.setStyle("-fx-background-radius: 30; -fx-background-color: forestgreen; -fx-border-radius: 30;-fx-min-width: 75px; -fx-cursor: hand");
+                activeButton.setTextFill(Color.WHITE);
                 modifyButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 modifyButton.setTextFill(Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    int isBlocked = user.getStatus(); // Obtains the current status of the user
+                    int isBlocked = user.getStatus();
                     if (isBlocked == 1) {
-                        // If the user is already blocked, unblock them
                         user.setStatus(0);
-                        blockButton.setText("Block");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                        blockButton.setText("Ban");
                     } else {
-                        // If the user is currently unblocked, block them
                         user.setStatus(1);
-                        blockButton.setText("unblock");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
+                        blockButton.setText("Unban");
                     }
                     tableview.refresh();
                 });
-                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                blockButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    // Prompt the user for confirmation
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmation");
                     alert.setHeaderText("delete this user");
@@ -368,17 +363,29 @@ public class UsersController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                 deleteButton.setTextFill(Color.WHITE);
             }
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
+
                 if (empty) {
                     setGraphic(null);
-                } else {
-                    HBox buttonBox = new HBox(modifyButton, blockButton, deleteButton);
-                    setGraphic(buttonBox);
+                }else {
+                    User user = getTableView().getItems().get(getIndex());
+                    int status = user.getStatus();
+                    if (status == 2) {
+                        HBox buttonBox = new HBox(modifyButton, activeButton, deleteButton);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        buttonBox.setSpacing(5);
+                        setGraphic(buttonBox);
+                    } else {
+                        HBox buttonBox = new HBox(modifyButton, blockButton, deleteButton);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        buttonBox.setSpacing(5);
+                        setGraphic(buttonBox);
+                    }
                 }
             }
         });
@@ -448,7 +455,7 @@ public class UsersController implements Initializable {
     private void applyFilters() {
         tableview.setItems(userList.filtered(user -> {
             boolean statusFilter = selectedInvoiceStatus == null || selectedInvoiceStatus.isEmpty() ||
-                    (selectedInvoiceStatus.equals("blocked") && user.getStatus() == 1) ||
+                    (selectedInvoiceStatus.equals("banned") && user.getStatus() == 1) ||
                     (selectedInvoiceStatus.equals("active") && user.getStatus() == 0)||
                     (selectedInvoiceStatus.equals("unactive") && user.getStatus() == 2);
 
@@ -495,6 +502,8 @@ public class UsersController implements Initializable {
         invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
         roles.getSelectionModel().clearSelection();
+
+        tableview.refresh();
     }
 
     private void applySearchFilter(String searchKeyword) {

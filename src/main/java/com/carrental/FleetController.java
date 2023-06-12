@@ -368,7 +368,7 @@ public class FleetController implements Initializable {
                     Vehicle vehicle = getTableView().getItems().get(getIndex());
                     showEditDialog(vehicle);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 deleteButton.setOnAction(event -> {
@@ -397,7 +397,7 @@ public class FleetController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
                 deleteButton.setTextFill(Color.WHITE);
             }
             @Override

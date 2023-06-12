@@ -160,7 +160,7 @@ public class ReservationController implements Initializable {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     showEditDialog(dataReservation);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 deleteButton.setOnAction(event -> {
@@ -206,7 +206,7 @@ public class ReservationController implements Initializable {
                     });
                 });
 
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 approveButton.setOnAction(event -> {
@@ -239,7 +239,7 @@ public class ReservationController implements Initializable {
                         }
                     });
                 });
-                approveButton.setStyle("-fx-background-radius: 30; -fx-background-color: #228B22; -fx-border-radius: 30; -fx-pref-width: 70px");
+                approveButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #228B22; -fx-border-radius: 30; -fx-pref-width: 70px");
                 approveButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 refuseButton.setOnAction(event -> {
@@ -331,9 +331,9 @@ public class ReservationController implements Initializable {
                         }
                     });
                 });
-                refuseButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                refuseButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
                 refuseButton.setTextFill(javafx.scene.paint.Color.WHITE);
-                endButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                endButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
                 endButton.setTextFill(javafx.scene.paint.Color.WHITE);
             }
             @Override
