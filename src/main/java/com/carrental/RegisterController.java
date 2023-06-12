@@ -1,8 +1,10 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
 import com.carrental.models.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,8 +25,8 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
 
-
-    public Button register;
+    @FXML
+    public MyButton register;
     @FXML
     private MyTextField Nid;
 
@@ -223,7 +226,6 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // Check if the password meets the required criteria
         Nid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
@@ -317,5 +319,9 @@ public class RegisterController implements Initializable {
             }
         });
 
+    }
+
+    public void homeButton(ActionEvent event) {
+        App.openMain((Node) event.getSource());
     }
 }
