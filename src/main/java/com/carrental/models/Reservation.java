@@ -361,7 +361,7 @@ public class Reservation {
         for(Reservation res : list){
             total += res.totalPrice();
         }
-        return total;
+        return (float) (Math.round(total * 100) / 100.0);
     }
     public static float totalSaleInMonth(int month){
         ArrayList<Reservation> list = getAllReservationsByMonth(month);
@@ -369,7 +369,7 @@ public class Reservation {
         for(Reservation res : list){
             total += res.totalPrice();
         }
-        return total;
+        return (float) (Math.round(total * 100) / 100.0);
     }
     public static float totalSaleInYear(int year){
         ArrayList<Reservation> list = getAllReservationsByYear(year);
@@ -377,7 +377,7 @@ public class Reservation {
         for(Reservation res : list){
             total += res.totalPrice();
         }
-        return total;
+        return (float) (Math.round(total * 100) / 100.0);
     }
     public static float getGrowth(){
         try {
@@ -386,8 +386,7 @@ public class Reservation {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
-                return rs.getFloat(1);
-
+                return (float) (Math.round(rs.getFloat(1) * 100) / 100.0);
             }
             rs.close();
             stmt.close();
@@ -404,7 +403,7 @@ public class Reservation {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){
-                return rs.getFloat(1);
+                return (float) (Math.round(rs.getFloat(1) * 100) / 100.0);
 
             }
             rs.close();
