@@ -14,7 +14,7 @@ public class User {
     public String nId;
     public String email;
     public String phoneNumber;
-    public boolean status;
+    public int status;
     public Integer age;
     public String fullName;
     public String password;
@@ -23,7 +23,7 @@ public class User {
     private SingletonConnection DatabaseManager;
 
 
-    public User(Integer id,String nId, String email, String phoneNumber, boolean status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
+    public User(Integer id,String nId, String email, String phoneNumber, int status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
         this.id = id;
         this.nId = nId;
         this.email = email;
@@ -126,11 +126,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return this.status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         try {
             Connection conn = SingletonConnection.getConnection();
             String req = "UPDATE Users SET status = " + status + " WHERE idU = " + this.getId();
@@ -220,7 +220,7 @@ public class User {
                 String nid = rs.getString(2);
                 String email = rs.getString(3);
                 String phoneNumber = rs.getString(4);
-                boolean status = rs.getBoolean(5);
+                int status = rs.getInt(5);
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
@@ -245,7 +245,7 @@ public class User {
                 String nid = rs.getString(2);
                 String email = rs.getString(3);
                 String phoneNumber = rs.getString(4);
-                boolean status = rs.getBoolean(5);
+                int status = rs.getInt(5);
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
@@ -270,7 +270,7 @@ public class User {
                 int id = rs.getInt(1);
                 String nid = rs.getString(2);
                 String phoneNumber = rs.getString(4);
-                boolean status = rs.getBoolean(5);
+                int status = rs.getInt(5);
                 int age = rs.getInt(6);
                 String fullName = rs.getString(7);
                 String password = rs.getString(8);
@@ -286,7 +286,7 @@ public class User {
         return null;
     }
     public static User create(String nid, String email, String phoneNumber, Integer age, String fullName, String password, int isAdmin) {
-        boolean status = true; // Valeur par défaut pour le statut
+        int status = 0; // Valeur par défaut pour le statut
         boolean isAdminRole = (isAdmin == 1); // Vérifie si le rôle est admin
 
         try {

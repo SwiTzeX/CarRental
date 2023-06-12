@@ -236,7 +236,7 @@ public class Reservation {
         ArrayList<Reservation> reservations = new ArrayList<>();
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT * FROM Reservations WHERE MONTH(startDate) = " + month ;
+            String req = "SELECT * FROM Reservations WHERE MONTH(startDate) = " + month+" AND YEAR(startDate) = YEAR(CURRENT_DATE()) AND status = 2" ;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             while(rs.next()){

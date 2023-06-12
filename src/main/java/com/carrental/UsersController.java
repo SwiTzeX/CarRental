@@ -49,7 +49,7 @@ public class UsersController implements Initializable {
     private TableColumn<User, Boolean> isadmincolumn;
 
     @FXML
-    private TableColumn<User, Boolean> statuecolumn;
+    private TableColumn<User, Integer> statuecolumn;
 
     @FXML
     private TableColumn<User, String> nIdColumn;
@@ -252,7 +252,7 @@ public class UsersController implements Initializable {
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         isadmincolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getIsAdmin()));
-        statuecolumn.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue().getStatus()));
+        statuecolumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         creationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         isadmincolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
             @Override
@@ -271,19 +271,20 @@ public class UsersController implements Initializable {
                 }
             }
         });
-        statuecolumn.setCellFactory(column -> new TableCell<User, Boolean>() {
+        statuecolumn.setCellFactory(column -> new TableCell<User, Integer>() {
             @Override
-            protected void updateItem(Boolean isBlocked, boolean empty) {
+            protected void updateItem(Integer isBlocked, boolean empty) {
                 super.updateItem(isBlocked, empty);
-                if (empty || isBlocked == null) {
-                    setText(null);
+                if (empty || isBlocked == 0) {
+                    setText("Active");
+                    setTextFill(javafx.scene.paint.Color.GREEN);
                 } else {
-                    if (isBlocked) {
+                    if (isBlocked == 1) {
                         setText("Blocked");
                         setTextFill(javafx.scene.paint.Color.RED);
-                    } else {
-                        setText("Active");
-                        setTextFill(javafx.scene.paint.Color.GREEN);
+                    }else if (isBlocked == 2) {
+                            setText("unActive");
+                            setTextFill(javafx.scene.paint.Color.RED);
                     }
                 }
             }
@@ -310,6 +311,7 @@ public class UsersController implements Initializable {
             private final Button deleteButton = new Button("delete");
 
             {
+
                 modifyButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
@@ -318,21 +320,21 @@ public class UsersController implements Initializable {
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    boolean isBlocked = user.getStatus(); // Obtains the current status of the user
-                    if (isBlocked) {
+                    int isBlocked = user.getStatus(); // Obtains the current status of the user
+                    if (isBlocked == 1) {
                         // If the user is already blocked, unblock them
-                        user.setStatus(false);
+                        user.setStatus(0);
                         blockButton.setText("Block");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                     } else {
                         // If the user is currently unblocked, block them
-                        user.setStatus(true);
+                        user.setStatus(1);
                         blockButton.setText("unblock");
                         blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
                     }
                     tableview.refresh();
                 });
-                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
@@ -360,7 +362,7 @@ public class UsersController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
             }
             @Override
@@ -440,8 +442,9 @@ public class UsersController implements Initializable {
     private void applyFilters() {
         tableview.setItems(userList.filtered(user -> {
             boolean statusFilter = selectedInvoiceStatus == null || selectedInvoiceStatus.isEmpty() ||
-                    (selectedInvoiceStatus.equals("blocked") && user.getStatus()) ||
-                    (selectedInvoiceStatus.equals("active") && !user.getStatus());
+                    (selectedInvoiceStatus.equals("blocked") && user.getStatus() == 1) ||
+                    (selectedInvoiceStatus.equals("active") && user.getStatus() == 0)||
+            (selectedInvoiceStatus.equals("unactive") && user.getStatus() == 2);
 
             boolean dateFilter = selectedInvoiceDate == null || selectedInvoiceDate.isEmpty() ||
                     (selectedInvoiceDate.equals("newest") && user.getCreationDate().equals(getNewestInvoiceDate())) ||

@@ -2,6 +2,7 @@ package com.carrental;
 
 import com.carrental.models.Review;
 import com.carrental.models.Vehicle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +23,9 @@ public class CommentsPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadComments();
+        new Thread(() -> Platform.runLater(()->{
+            loadComments();
+        })).start();
     }
 
     public void loadComments(){
