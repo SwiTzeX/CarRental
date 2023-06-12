@@ -2,6 +2,7 @@ package com.carrental;
 
 import com.carrental.customnodes.MyPasswordField;
 import com.carrental.customnodes.MyTextField;
+import com.carrental.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,6 +86,23 @@ public class RegisterController implements Initializable {
             return false;
         }
     }
+    private boolean ValidateNid(String nid) {
+        String nid1 = "[A-Za-z0-9]+";
+        if (nid.matches(nid1)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean ValidateFullName(String fullname) {
+        String fullname1 = "([A-Za-z]+" + " " + "[A-Za-z]+)+";
+        if (fullname.matches(fullname1)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     private boolean ValidateEmail(String mail) {
         String emailRegex=".+@.+\\..+";
@@ -105,7 +123,6 @@ public class RegisterController implements Initializable {
         String phone = phonenumid.getText();
         String password = passwordid.getText();
 
-        System.out.println(password);
 
 
         /*User u1 = User.getUserByEmail(email);
@@ -151,21 +168,23 @@ public class RegisterController implements Initializable {
             return;
         }
 
+*/
+        if (!Nid.isError() && !fullnameid.isError() && !ageid.isError() && !phonenumid.isError() && !mailid.isError() && !passwordid.isError() && !Vpasswordid.isError()){
+            User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
+            try {
+                // Load the FXML file for the second view
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+                Parent login = loader.load();
 
-        User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password);
-        errorid.setVisible(false);
-        try {
-            // Load the FXML file for the second view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
+                // Create a new stage and set the second view as the root
+                Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(login));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-            // Create a new stage and set the second view as the root
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @FXML
@@ -202,16 +221,30 @@ public class RegisterController implements Initializable {
     }
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String lowercaseRegex = ".*[a-z].*";
-        String uppercaseRegex = ".*[A-Z].*";
-        String specialCharRegex = ".*[!@#$%^&*()_+\\-=[\\\\]{};':\"\\\\|,.<>/?].*";
-        //String numberRegex = ".*\\d.*";
-
 
         // Check if the password meets the required criteria
+        Nid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                boolean test2 = ValidateNid(String.valueOf(Nid.getText()));
+                if (test2){
+                    Nid.hideError();
+                }else {
+                    Nid.showError("Invalid National ID");
+                }
+            }
+        });
+        fullnameid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                boolean test2 = ValidateFullName(String.valueOf(fullnameid.getText()));
+                if (test2){
+                    fullnameid.hideError();
+                }else {
+                    fullnameid.showError("Invalid Full Name");
+                }
+            }
+        });
 
         ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("test");

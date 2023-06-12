@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.carrental.customnodes.MyButton?>
 <AnchorPane fx:id="mainPane" onMouseClicked="#clear" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.MainController">
    <children>
       <VBox fx:id="mainBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0">
@@ -52,16 +53,16 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="signinBtn" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
+                        <MyButton fx:id="signinBtn" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign In" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
-                        </Button>
-                        <Button fx:id="signupBtn" mnemonicParsing="false" onAction="#goToRegister" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
+                        </MyButton>
+                        <MyButton fx:id="signupBtn" mnemonicParsing="false" onAction="#goToRegister" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6;" text="Sign Up" textFill="#6279ff">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
-                        </Button>
+                        </MyButton>
                      </children>
                   </HBox>
                </children>
