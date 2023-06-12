@@ -37,6 +37,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         openMain(root);
+        //
     }
 
     public static User getUser() {
