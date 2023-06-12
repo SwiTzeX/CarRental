@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="card" fx:id="csvpopupStage" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="347.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-radius: 0; -fx-border-color: #f0f2ff;" styleClass="card" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CsvPopUpController">
+<VBox id="card" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="347.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-radius: 0; -fx-border-color: #f0f2ff;" styleClass="card" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CsvPopUpController">
    <children>
       <VBox id="content" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="316.0" spacing="10.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #16A300; -fx-background-color: #DCFFD6;" styleClass="content">
          <VBox.margin>
