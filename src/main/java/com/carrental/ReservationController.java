@@ -81,6 +81,8 @@ public class ReservationController implements Initializable {
 
     @FXML
     private CheckBox statusId3;
+    @FXML
+    private CheckBox statusId4;
 
     ObservableList<DataReservation> dataResList = FXCollections.observableArrayList();
     ArrayList<Reservation> resList ;
@@ -143,7 +145,8 @@ public class ReservationController implements Initializable {
             private final Button modifyButton = new Button("Modify");
             private final Button deleteButton = new Button("Delete");
             private final Button approveButton = new Button("Approve");
-            private final Button refuseButton = new Button("Refuse");
+            private final Button refuseButton = new Button("Deny");
+            private final Button endButton = new Button("End");
 
             {
                 modifyButton.setOnAction(event -> {
@@ -276,9 +279,55 @@ public class ReservationController implements Initializable {
                         }
                     });
                 });
+                endButton.setOnAction(event -> {
+                    DataReservation dataReservation = getTableView().getItems().get(getIndex());
+
+                    Alert alertConfirm = new Alert(Alert.AlertType.CONFIRMATION);
+                    alertConfirm.setTitle("Confirmation");
+                    alertConfirm.setHeaderText("Are you sure?");
+                    alertConfirm.setContentText("This action cannot be undone.");
+                    DialogPane dialogPaneConfirm = alertConfirm.getDialogPane();
+                    dialogPaneConfirm.getStylesheets().add(
+                            getClass().getResource("style/stylesDelete.css").toExternalForm()
+                    );
+                    dialogPaneConfirm.getStyleClass().add("custom-alert");
+
+                    Alert alertSure = new Alert(Alert.AlertType.INFORMATION);
+                    alertSure.setTitle("Reservation Ended");
+                    alertSure.setHeaderText(null);
+                    alertSure.setContentText("Your account has been deleted.");
+                    // Apply custom CSS to the alert dialog
+                    DialogPane dialogPane = alertSure.getDialogPane();
+                    dialogPane.getStylesheets().add(
+                            getClass().getResource("style/stylesDelete.css").toExternalForm()
+                    );
+                    dialogPane.getStyleClass().add("custom-alert");
+
+                    // Set a custom graphic
+                    ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("icons/delete.png")));
+                    dialogPane.setGraphic(imageView);
+
+                    alertConfirm.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.OK) {
+                            String newStatus = "Ended";
+                            int newStatusNbr = 2;
+                            int i = dataResList.indexOf(dataReservation);
+                            dataReservation.setStatus(newStatus);
+                            Reservation res = resList.get(i);
+                            res.setStatus(newStatusNbr);
+                            res.getUser().sendNotification("Reservation", "Your reservation for " + dataReservation.getBrandName() + " " + dataReservation.getModelName()
+                                    + " has finished for the following reason : \n");
+                            TableViewReservation.refresh();
+                        } else {
+                            // User clicked "Cancel" or closed the confirmation alert
+                            System.out.println("Action canceled!");
+                        }
+                    });
+                });
                 refuseButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
                 refuseButton.setTextFill(javafx.scene.paint.Color.WHITE);
-
+                endButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                endButton.setTextFill(javafx.scene.paint.Color.WHITE);
             }
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -288,12 +337,17 @@ public class ReservationController implements Initializable {
                 } else {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     String status = dataReservation.getStatus();
-                    if(status.equals("Pending")){
+                    if(status.equals("Pending")) {
                         HBox buttonBox = new HBox(approveButton, refuseButton, deleteButton);
                         buttonBox.setSpacing(10);
                         buttonBox.setAlignment(Pos.CENTER);
                         setGraphic(buttonBox);
-                    }else{
+                    } else if (status.equals("Approved")) {
+                        HBox buttonBox = new HBox(endButton, deleteButton);
+                        buttonBox.setSpacing(10);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        setGraphic(buttonBox);
+                }else{
                         HBox buttonBox = new HBox(modifyButton, deleteButton);
                         buttonBox.setSpacing(15);
                         buttonBox.setAlignment(Pos.CENTER);
@@ -544,10 +598,11 @@ public class ReservationController implements Initializable {
             boolean statusFilter = statusId0.isSelected() && reservation.getStatus().equals("Pending") ||
                     (statusId1.isSelected() && reservation.getStatus().equals("Approved")) ||
                     (statusId2.isSelected() && reservation.getStatus().equals("Ended")) ||
-                    (statusId3.isSelected() && reservation.getStatus().equals("Denied"));
+                    (statusId3.isSelected() && reservation.getStatus().equals("Denied"))||
+                    (statusId4.isSelected() && reservation.getStatus().equals("Canceled"));;
             return statusFilter;
         }));
-        if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected()){
+        if(!statusId0.isSelected() && !statusId1.isSelected() &&!statusId2.isSelected() &&!statusId3.isSelected() &&!statusId4.isSelected()){
             clearFilter();
         }
     }

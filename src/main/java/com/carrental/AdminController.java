@@ -78,21 +78,27 @@ public class AdminController implements Initializable {
         });
         dashboardBtn.setOnMouseExited(event ->{
             unGlowButton(dashboardBtn);
+            glowButton(pageSelected);
         });
         userManageBtn.setOnMouseExited(event ->{
             unGlowButton(userManageBtn);
+            glowButton(pageSelected);
         });
         fleetManageBtn.setOnMouseExited(event ->{
             unGlowButton(fleetManageBtn);
+            glowButton(pageSelected);
         });
         reservationsBtn.setOnMouseExited(event ->{
             unGlowButton(reservationsBtn);
+            glowButton(pageSelected);
         });
         homeBtn.setOnMouseExited(event ->{
             unGlowButton(homeBtn);
+            glowButton(pageSelected);
         });
         logoutBtn.setOnMouseExited(event ->{
             unGlowButton(logoutBtn);
+            glowButton(pageSelected);
         });
 
     }
