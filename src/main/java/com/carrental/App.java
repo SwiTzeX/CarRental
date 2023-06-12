@@ -102,7 +102,7 @@ public class App extends Application {
 
     public static void openAdmin(Node source){
         try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("admin-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("login-view.fxml"));
             Parent adminPage = loader.load();
             Stage stage =(Stage)source.getScene().getWindow();
             stage.setScene(new Scene(adminPage));
