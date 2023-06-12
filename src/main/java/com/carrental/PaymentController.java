@@ -165,6 +165,7 @@ public class PaymentController implements Initializable {
     @FXML
    public void EndCheckout(ActionEvent e) {
         Reservation.create(App.getUser(),vehicle,startDate,endDate,0);
+        App.getUser().sendNotification("Reservation","Your reservation for "+vehicle.getBrandName()+" "+vehicle.getModelName()+" will be pending until it is approved.");
         //Payment Method Paypal
         if(this.getRadioValue()=="Paypal"){
         // Define the URL to redirect to
@@ -187,15 +188,12 @@ public class PaymentController implements Initializable {
 
     public void RedirectCheckout(ActionEvent e){
         try {
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-            Parent back = loader1.load();
-            MainController maincontroller = loader1.getController();
+
+            MainController maincontroller = App.getMainController();
+            maincontroller.openSearch();
             mainvbox = maincontroller.getMainBox();
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             GaussianBlur blurEffect = new GaussianBlur(15);
             mainvbox.setEffect(blurEffect);
-            stage.setScene(new Scene(back));
-            stage.show();
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), mainvbox);
             fadeTransition.setFromValue(0.0);
             fadeTransition.setToValue(1.0);
