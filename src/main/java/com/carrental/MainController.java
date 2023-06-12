@@ -318,10 +318,10 @@ public class MainController implements Initializable {
             notificationsBox.getChildren().addAll(test,separator);
         }*/
         for(Notification notification:App.getUser().getAllNotifications()){
-            MyNotificationCard test = new MyNotificationCard(notification);
+            MyNotificationCard notificationCard = new MyNotificationCard(notification);
             Separator separator = new Separator();
             separator.setStyle("-fx-background: #E1E7EF");
-            notificationsBox.getChildren().addAll(test,separator);
+            notificationsBox.getChildren().addAll(notificationCard,separator);
         }
         notificationsBox.getChildren().remove(notificationsBox.getChildren().size()-1);
         notificationsBox.setMaxHeight(Double.MAX_VALUE);
@@ -445,8 +445,9 @@ public class MainController implements Initializable {
     @FXML
     public void openHome(){
         try {
-            if(this.startDate == null){
+            if(this.startDate == null || this.endDate == null || this.startTime == null || this.endTime == null){
                 openSearch();
+                return;
             }
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("home-view.fxml"));
