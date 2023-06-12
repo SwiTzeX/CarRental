@@ -88,11 +88,15 @@ public class AccountSettingsController implements Initializable {
      /*editb.setOnAction(event -> {
     });*/
 
+     /*deactivate.setOnAction(event -> {
+    });*/
+
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     setData(App.getUser());
 
     }}
