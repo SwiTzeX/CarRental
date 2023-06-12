@@ -15,26 +15,23 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -94,10 +91,72 @@ public class AccountSettingsController implements Initializable {
 
 
 
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    setData(App.getUser());
 
-    }}
+        User user = App.getUser();
 
+
+        setData(user);
+
+        editb.setOnAction(event -> {
+
+            openEditDialog(user);
+
+        });
+
+      /*  deactivate.setOnAction(event -> {
+            // Handle the "Deactivate" button click event here
+            deactivateAccount(user);
+        });*/
+    }
+
+    private void openEditDialog(User user) {
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Modify the user");
+        dialog.setHeaderText(null);
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(buttonTypeOk, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+
+        TextField nIdField = new TextField(user.getNId());
+        TextField emailField = new TextField(user.getEmail());
+        TextField phoneField = new TextField(user.getPhoneNumber());
+        TextField fullnameField = new TextField(user.getFullName());
+        TextField passwordField = new TextField(user.getPassword());
+
+
+        grid.add(new Label("NID:"), 0, 1);
+        grid.add(nIdField, 1, 1);
+        grid.add(new Label("Email:"), 0, 2);
+        grid.add(emailField, 1, 2);
+        grid.add(new Label("phone number:"), 0, 3);
+        grid.add(phoneField, 1, 3);
+        grid.add(new Label("full name:"), 0, 4);
+        grid.add(fullnameField, 1, 4);
+        grid.add(new Label("password:"), 0, 5);
+        grid.add(passwordField, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.showAndWait();
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == buttonTypeOk) {
+              user.setNId(nIdField.getText());
+              user.setEmail(emailField.getText());
+              user.setPhoneNumber(phoneField.getText());
+              user.setFullName(fullnameField.getText());
+              user.setPassword(passwordField.getText());
+
+               setData(user);
+
+            }
+            return null;
+        });
+
+
+
+}}
