@@ -52,7 +52,7 @@
             </Separator>
             <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
                <children>
-                  <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="86.0" stylesheets="@style/checkbox.css" text="Waiting" textFill="#6279ff">
+                  <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" stylesheets="@style/checkbox.css" text="Pending" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Refused" textFill="#6279ff">
+                  <CheckBox fx:id="statusId3" mnemonicParsing="false" stylesheets="@style/checkbox.css" text="Denied" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -92,7 +92,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <CheckBox fx:id="statusId4" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" stylesheets="@style/checkbox.css" text="Ended" textFill="#6279ff">
+                  <CheckBox fx:id="statusId4" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" stylesheets="@style/checkbox.css" text="Canceled" textFill="#6279ff">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
