@@ -249,7 +249,6 @@ public class RegisterController implements Initializable {
         });
 
         ageid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("test");
             if (!newValue) {
                 try {
                     int age = Integer.parseInt(ageid.getText());
@@ -307,8 +306,9 @@ public class RegisterController implements Initializable {
         });
         phonenumid.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
+               // System.out.println(Integer.parseInt(phonenumid.getText()));
                 try {
-                    int phone = Integer.parseInt(phonenumid.getText());
+                    long phone = Long.parseLong(phonenumid.getText());
                     /*if(validatePhoneNum(String.valueOf(phone))){
                         phonenumid.showError("needs to contain only numbers");
                     }*/
