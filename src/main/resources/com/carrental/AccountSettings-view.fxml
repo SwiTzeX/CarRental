@@ -34,7 +34,7 @@
                <children>
                   <ImageView fx:id="avatarimg" fitHeight="163.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/jimmy-fallon.png" />
+                        <Image url="@icons/user-icon.png" />
                      </image>
                      <VBox.margin>
                         <Insets />

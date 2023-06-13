@@ -19,7 +19,7 @@ public class App extends Application {
     public static Stage stg;
     @Override
     public void start(Stage stage) throws IOException {
-        user = User.getUserById(50);
+        user = User.getUserById(48);
         Pane root = new Pane();
         Scene scene = new Scene(root, 1400, 800);
         stage.setTitle("Rent Ez");
