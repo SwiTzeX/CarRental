@@ -78,7 +78,7 @@ public class DashboardController implements Initializable {
     private BarChart<String, Number> barChart=new BarChart<>(xAx,yAx);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //iniLineChart();
+
         iniAreaChart();
         iniBarChart();
         new Thread(() -> Platform.runLater(()->{
@@ -91,12 +91,9 @@ public class DashboardController implements Initializable {
             getRevPrev();
             growthRented();
             growthRevenue();
-            //growthCars();
             growthUsers();
         })).start();
-
     }
-
 
     public void iniLineChart(){
         xAxis.setLabel("Month");
