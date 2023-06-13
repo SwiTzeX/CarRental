@@ -418,7 +418,7 @@
                      <children>
                         <VBox prefHeight="42.0" prefWidth="143.0">
                            <children>
-                              <Label prefHeight="16.0" prefWidth="141.0" text="Price for DaysVar days :">
+                              <Label fx:id="priceTotal" prefHeight="16.0" prefWidth="141.0" text="Price for DaysVar days :">
                                  <font>
                                     <Font name="Arial" size="13.0" />
                                  </font>

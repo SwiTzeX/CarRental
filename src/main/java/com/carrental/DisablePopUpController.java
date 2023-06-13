@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -28,20 +29,21 @@ public class DisablePopUpController implements Initializable{
         deactivate.setOnAction(event -> {
 
             user.setStatus(2);
-            System.out.println(user.getStatus());
-           App.openLogin(deactivate);
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.close();
+           App.openLogin();
            App.setUser(null);
-
         });
 
     }
     @FXML
-    public static void onClickPOP(ActionEvent event) {
+    public void onClickPOP(ActionEvent event) {
 
-        Stage stage = AccountSettingsController.getPop();
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
 
     }
+
 
 
 }

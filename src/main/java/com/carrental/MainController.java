@@ -245,7 +245,7 @@ public class MainController implements Initializable {
         admin.setPadding(new Insets(0, 0, 0,4));
         admin.setOnMouseEntered(event -> admin.setStyle("-fx-background-color: #F6F8FF"));
         admin.setOnMouseExited(event -> admin.setStyle("-fx-background-color: white"));
-        admin.setOnMouseClicked(event -> App.openAdmin(userBox));
+        admin.setOnMouseClicked(event -> App.openAdmin());
         ImageView profileImage = new ImageView(new Image(getClass().getResourceAsStream("icons/profile.png"),14,14,true,true));
         HBox profile = new HBox(profileImage,new Label("Profile"));
         profile.setAlignment(Pos.CENTER_LEFT);
@@ -311,7 +311,9 @@ public class MainController implements Initializable {
             separator.setStyle("-fx-background: #E1E7EF");
             notificationsBox.getChildren().addAll(notificationCard,separator);
         }
-        notificationsBox.getChildren().remove(notificationsBox.getChildren().size()-1);
+        if(App.getUser().getAllNotifications().size()>0) {
+            notificationsBox.getChildren().remove(notificationsBox.getChildren().size() - 1);
+        }
         notificationsBox.setMaxHeight(Double.MAX_VALUE);
         if(notificationsBox.getChildren().size() == 2){
             Label txt = new Label("There is no notification");
@@ -375,14 +377,23 @@ public class MainController implements Initializable {
         Line line = new Line();
         line.setStyle("-fx-stroke: #6279FF");
         line.setEndX(230);
-
         reservationsBox.getChildren().addAll(title,line);
         for(Reservation res:App.getUser().getReservations()){
             Separator separator = new Separator();
             separator.setStyle("-fx-background: #E1E7EF");
             reservationsBox.getChildren().addAll(new MyReservationCard(res),separator);
         }
-        reservationsBox.getChildren().remove(reservationsBox.getChildren().size()-1);
+        if(App.getUser().getReservations().size()>0) {
+            reservationsBox.getChildren().remove(reservationsBox.getChildren().size()-1);
+        }
+        if(reservationsBox.getChildren().size() == 2){
+            Label txt = new Label("There is no reservations");
+            txt.setFont(new Font("Arial",12));
+            txt.setStyle("-fx-text-fill: black");
+            txt.setPrefWidth(250);
+            txt.setAlignment(Pos.CENTER);
+            reservationsBox.getChildren().add(txt);
+        }
         reservationMenu = new ScrollPane(reservationsBox);
         reservationMenu.setLayoutY(45);
         reservationMenu.setLayoutX(1395-250-80);
@@ -581,17 +592,17 @@ public class MainController implements Initializable {
 
     @FXML
     public void goToLogin(javafx.event.ActionEvent event) {
-        App.openLogin((Node)event.getSource());
+        App.openLogin();
     }
     @FXML
     void goToRegister(javafx.event.ActionEvent event) {
-        App.openRegister((Node)event.getSource());
+        App.openRegister();
     }
 
     public void logOut(){
         App.setUser(null);
         userBox.getChildren().clear();
-        userBox.getChildren().addAll(signupBtn,signinBtn);
+        userBox.getChildren().addAll(signinBtn,signupBtn);
         openSearch();
     }
 

@@ -408,7 +408,7 @@ public class User {
     public static float getGrowth(){
         try {
             Connection conn = SingletonConnection.getConnection();
-            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Users WHERE MONTH(creationDate) = MONTH(CURRENT_DATE())) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Users WHERE MONTH(creationDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(creationDate) < MONTH(CURRENT_DATE())) AS prev;";
+            String req = "SELECT CASE WHEN prev_count = 0 THEN current_count * 100 ELSE (current_count - prev_count) / prev_count * 100 END AS growth_percentage FROM (SELECT COUNT(*) AS current_count FROM Users WHERE MONTH(creationDate) = MONTH(CURRENT_DATE()) AND isAdmin = 0) AS current CROSS JOIN (SELECT COUNT(*) AS prev_count FROM Users WHERE MONTH(creationDate) >= MONTH(DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)) AND MONTH(creationDate) < MONTH(CURRENT_DATE()) AND isAdmin = 0) AS prev;";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(req);
             if(rs.next()){

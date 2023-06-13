@@ -313,12 +313,6 @@ public class HomeController implements Initializable {
         gearDropList.setValue(null);
         //gearDropList.setPromptText("Gear Type");
         refreshComboBoxes();
-        pickDate = null;
-        returnDate = null;
-        pickupDateTF.setText("");
-        pickupDateTF.hideError();
-        returnDateTF.setText("");
-        returnDateTF.hideError();
     }
     @FXML
     public void nextPageDisplay(){

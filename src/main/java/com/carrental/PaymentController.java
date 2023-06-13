@@ -150,9 +150,10 @@ public class PaymentController implements Initializable {
         TotalPrice.setText(String.valueOf(Reservation.totalPriceD(vehicle,startDate,endDate)));
         ColorVar.setText(vehicle.color);
         ModelNameVar.setText(vehicle.modelName);
-        DepositVar.setText(String.valueOf(vehicle.deposit));
+        DepositVar.setText(String.valueOf((vehicle.deposit / 100)*Reservation.totalPriceD(vehicle, startDate, endDate)));
         startDateVar.setText(String.valueOf(startDate));
         endDateVar.setText(String.valueOf(endDate));
+        TotalPrice.setText(String.valueOf(Reservation.totalPriceD(vehicle, startDate, endDate)));
     }
 
     private void performTransition(ActionEvent e) {

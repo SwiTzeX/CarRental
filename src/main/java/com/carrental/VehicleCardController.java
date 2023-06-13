@@ -154,7 +154,7 @@ public class VehicleCardController {
     @FXML
     void rentEvent(ActionEvent event) {
         if(App.getUser() == null){
-            App.openLogin((Node)event.getSource());
+            App.openLogin();
         }else{
             if(startDate != null && endDate !=null) {
                 App.getMainController().openVehicle(vehicle, startDate, endDate);

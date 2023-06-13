@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
     void login(ActionEvent event) {
        if (u != null && !usernamefield.isError() && !passwordfield.isError() && passwordfield.getText().length()>0) {
            App.setUser(u);
-           App.openMain((Node)event.getSource());
+           App.openMain();
 
            }
 
@@ -71,7 +71,7 @@ public class LoginController implements Initializable {
 
     @FXML
     void homeButton(ActionEvent event){
-       App.openMain((Node) event.getSource());
+       App.openMain();
     }
 
     @Override
