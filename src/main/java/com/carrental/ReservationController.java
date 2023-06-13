@@ -605,13 +605,18 @@ public class ReservationController implements Initializable {
                 return true;
             } else {
                 String lowerCaseSearchTerm = searchKeyword.toLowerCase();
-                return resData.getFullName().contains(lowerCaseSearchTerm) ||
-                        resData.getBrandName().contains(lowerCaseSearchTerm) ||
-                        resData.getModelName().contains(lowerCaseSearchTerm) ||
-                        resData.getPhoneNumber().contains(lowerCaseSearchTerm);
-
+                String fullName = resData.getFullName().toLowerCase();
+                String brandName = resData.getBrandName().toLowerCase();
+                String modelName = resData.getModelName().toLowerCase();
+                fullName = fullName != null ? fullName : "";
+                brandName = brandName != null ? brandName : "";
+                modelName = modelName != null ? modelName : "";
+                return fullName.contains(lowerCaseSearchTerm) ||
+                        brandName.contains(lowerCaseSearchTerm) ||
+                        modelName.contains(lowerCaseSearchTerm);
             }
         }));
+        TableViewReservation.refresh();
     }
 
     private void updateTableView() {
