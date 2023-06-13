@@ -52,11 +52,11 @@ public class AdminController implements Initializable {
             loadReservationsManagement();
         });
         homeBtn.setOnMouseClicked(event ->{
-          App.openMain(homeBtn);
+          App.openMain();
         });
         logoutBtn.setOnMouseClicked(event ->{
             App.setUser(null);
-            App.openMain(homeBtn);
+            App.openMain();
         });
         dashboardBtn.setOnMouseEntered(event ->{
             glowButton(dashboardBtn);

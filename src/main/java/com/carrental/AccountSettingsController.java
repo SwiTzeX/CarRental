@@ -1,41 +1,21 @@
 package com.carrental;
 
-import com.carrental.models.Reservation;
 import com.carrental.models.User;
-import com.carrental.models.Vehicle;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
-import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.event.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
-import java.util.Date;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-
 
 
 public class AccountSettingsController implements Initializable {
@@ -71,7 +51,6 @@ public class AccountSettingsController implements Initializable {
     private Label statusvar;
 
 
-    static Stage pop = new Stage();
 
 
     public  void setData(User user) {
@@ -152,24 +131,21 @@ public class AccountSettingsController implements Initializable {
 
 
 }
-    public void RedirectCheckouthh(ActionEvent e){
+    public void openAlert(ActionEvent e){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DisablePopUp-view.fxml"));
+            Stage pop = new Stage();
             pop.setScene(new Scene(loader.load()));
             pop.setTitle("Pop-up Panel");
             pop.initModality(Modality.APPLICATION_MODAL);
             pop.initStyle(StageStyle.UNDECORATED);
             pop.show();
-
         }
         catch (IOException b) {
             b.printStackTrace();
         }
     }
-    @FXML
-    public static Stage getPop(){
-        return pop;
-    }
+
 
 }
 

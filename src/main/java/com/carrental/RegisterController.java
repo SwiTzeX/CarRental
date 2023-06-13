@@ -116,7 +116,7 @@ public class RegisterController implements Initializable {
 
         if (!Nid.isError() && !fullnameid.isError() && !ageid.isError() && !phonenumid.isError() && !mailid.isError() && !passwordid.isError() && !Vpasswordid.isError()){
             User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
-            App.openLogin(Nid);
+            App.openLogin();
             new Thread(() -> 
                 Platform.runLater(()-> GMailer.sendAccountConfirmation(email)
             )).start();
@@ -244,6 +244,6 @@ public class RegisterController implements Initializable {
     }
 
     public void homeButton(ActionEvent event) {
-        App.openMain((Node) event.getSource());
+        App.openMain();
     }
 }
