@@ -23,7 +23,7 @@
                         <Image url="@logo/New%20logos/qq.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="101.0" layoutY="594.0" prefHeight="77.0" prefWidth="358.0" text="The Best cars at your" textFill="WHITE">
+                  <Label layoutX="101.0" layoutY="594.0" prefHeight="77.0" prefWidth="358.0" text="The best cars at your" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>

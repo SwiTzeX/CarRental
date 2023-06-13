@@ -18,17 +18,17 @@
                      </image>
                   </ImageView>
                   <Pane layoutX="330.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="111.0" layoutY="604.0" prefHeight="77.0" prefWidth="358.0" text="The best cars at your" textFill="WHITE">
+                  <Label layoutX="101.0" layoutY="594.0" prefHeight="77.0" prefWidth="358.0" text="The best cars at your" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
                   </Label>
-                  <Label layoutX="109.0" layoutY="659.0" prefHeight="51.0" prefWidth="200.0" text="door steps" textFill="WHITE">
+                  <Label layoutX="99.0" layoutY="649.0" prefHeight="51.0" prefWidth="200.0" text="door steps" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
                   </Label>
-                  <Label layoutX="110.0" layoutY="706.0" prefHeight="20.0" prefWidth="303.0" text="Rent the latest model cars at cheap price" textFill="WHITE" />
+                  <Label layoutX="100.0" layoutY="696.0" prefHeight="20.0" prefWidth="303.0" text="Rent the latest model cars at cheap price" textFill="WHITE" />
                   <ImageView fitHeight="66.0" fitWidth="101.0" layoutX="439.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@logo/New%20logos/logo%20car%20only%20colored%20background%202.png" />
@@ -37,14 +37,6 @@
                </children></Pane>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="847.0" spacing="40.0" style="-fx-background-radius: 30 0 0 30; -fx-background-color: #ffffff;">
                <children>
-                  <ImageView fitHeight="134.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo/iPhone%2014%20-%201.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="-50.0" />
-                     </VBox.margin>
-                  </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="384.0" text="Create Account" textAlignment="CENTER" textFill="black">
                      <font>
                         <Font name="Poppins" size="43.0" />
