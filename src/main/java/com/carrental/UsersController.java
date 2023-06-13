@@ -543,11 +543,13 @@ public class UsersController implements Initializable {
             selectedInvoiceDate = newValue;
             applyFilters();
         });
+        selectedInvoiceDate = null;
+        selectedInvoiceStatus = null;
+        selectedRole = null;
         searchbar.getChildren().clear();
         HBox.setMargin(roles, new Insets(0,0,0,130));
         searchbar.getChildren().addAll(find,findImg,roles,invoicedate,invoicestatue,clearallfilters,addUser);
         tableview.setItems(userList);
-
         tableview.refresh();
     }
 

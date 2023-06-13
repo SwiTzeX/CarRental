@@ -2,27 +2,20 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #f6f8ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.CommentsPageController">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="745.0" prefWidth="1400.0" style="-fx-background-color: #F6F8FF;" vbarPolicy="ALWAYS">
          <content>
-            <HBox prefHeight="697.0" prefWidth="1340.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-                  <VBox fx:id="commentsVbox" prefHeight="697.0" prefWidth="1134.0" spacing="10.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-               </children>
-            </HBox>
+            <VBox fx:id="commentsVbox" alignment="TOP_CENTER" fillWidth="false" prefWidth="1473.0" spacing="10.0" style="-fx-background-color: #F6F8FF;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
          </content>
       </ScrollPane>
    </children>

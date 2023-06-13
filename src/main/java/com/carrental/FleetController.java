@@ -570,7 +570,8 @@ public class FleetController implements Initializable {
             selectedStatus = newValue;
             applyFilters();
         });
-
+        selectedStatus = null;
+        selectedBrandName = null;
         filterBox.getChildren().clear();
         HBox.setMargin(brandDropList, new Insets(0,0,0,360));
         filterBox.getChildren().addAll(searchbar,brandDropList,statusDropList,clearfilterbtn,addvehiclebtn);
