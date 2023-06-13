@@ -87,7 +87,7 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </TextField>
-                        <MyButton fx:id="addReservation" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: #ebeeff; -fx-background-radius: 10;" text="ADD RESERVATION" textFill="#6279ff" darker="false">
+                        <MyButton fx:id="addReservation" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Add Reservation" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>

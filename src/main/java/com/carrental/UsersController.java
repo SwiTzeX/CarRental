@@ -307,12 +307,16 @@ public class UsersController implements Initializable {
             }
         });
         actionColumn.setCellFactory(param -> new TableCell<>() {
-            private final Button modifyButton = new Button("Modify");
-            private final Button blockButton = new Button("Ban");
-            private final Button deleteButton = new Button("Delete");
-            private final Button activeButton = new Button("Active");
+            private final MyButton modifyButton = new MyButton("Modify");
+            private final MyButton blockButton = new MyButton("Ban");
+            private final MyButton deleteButton = new MyButton("Delete");
+            private final MyButton activeButton = new MyButton("Active");
 
             {
+                modifyButton.setPrefWidth(70);
+                deleteButton.setPrefWidth(70);
+                blockButton.setPrefWidth(70);
+                activeButton.setPrefWidth(70);
                 activeButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     int status = user.getStatus();
@@ -321,13 +325,13 @@ public class UsersController implements Initializable {
                         activeButton.setText("Active");}
                     tableview.refresh();
                 });
-                activeButton.setStyle("-fx-background-radius: 30; -fx-background-color: forestgreen; -fx-border-radius: 30;-fx-min-width: 75px; -fx-cursor: hand");
+                activeButton.setStyle("-fx-background-radius: 30; -fx-background-color: forestgreen; -fx-border-radius: 30;-fx-width: 75px; -fx-cursor: hand");
                 activeButton.setTextFill(Color.WHITE);
                 modifyButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
                 });
-                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-width: 75px;");
                 modifyButton.setTextFill(Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
@@ -341,7 +345,7 @@ public class UsersController implements Initializable {
                     }
                     tableview.refresh();
                 });
-                blockButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                blockButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
@@ -368,7 +372,7 @@ public class UsersController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-width: 75px;");
                 deleteButton.setTextFill(Color.WHITE);
             }
             @Override

@@ -64,6 +64,11 @@
                             <Insets />
                         </HBox.margin>
                     </TextField>
+                    <ImageView fx:id="findImg" fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@icons/icons8_Search_52px.png" />
+                        </image>
+                    </ImageView>
                     <ComboBox fx:id="brandDropList" prefHeight="37.0" prefWidth="160.0" promptText="Brand Name" styleClass="menu" stylesheets="@style/menu.css">
                         <HBox.margin>
                             <Insets left="360.0" />
@@ -73,10 +78,16 @@
                         <items>
                         </items>
                     </ComboBox>
-                    <MyButton fx:id="clearfilterbtn" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE" />
-
-
-                    <MyButton fx:id="addvehiclebtn" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Add Vehicle" textFill="WHITE" />
+                    <MyButton fx:id="clearfilterbtn" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF; -fx-cursor: hand;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE" >
+                        <font>
+                            <Font name="Arial Bold" size="14.0" />
+                        </font>
+                    </MyButton>
+                    <MyButton fx:id="addvehiclebtn" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Add Vehicle" textFill="WHITE" >
+                        <font>
+                            <Font name="Arial Bold" size="14.0" />
+                        </font>
+                    </MyButton>
                 </children>
                 <padding>
                     <Insets bottom="10.0" top="10.0" />
