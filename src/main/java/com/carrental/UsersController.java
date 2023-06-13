@@ -285,7 +285,7 @@ public class UsersController implements Initializable {
                         setTextFill(Color.RED);
                     } else if (isBlocked == 2) {
                         setText("unActive");
-                        setTextFill(Color.RED);
+                        setTextFill(Color.ORANGE);
                     }
                 }
             }
@@ -372,7 +372,7 @@ public class UsersController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-width: 75px;");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-width: 75px;");
                 deleteButton.setTextFill(Color.WHITE);
             }
             @Override
