@@ -49,8 +49,6 @@ public class FleetController implements Initializable {
     @FXML
     private MyButton addvehiclebtn;
 
-
-
     @FXML
     private MyButton clearfilterbtn;
 

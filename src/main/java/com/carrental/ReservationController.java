@@ -180,27 +180,23 @@ public class ReservationController implements Initializable {
                     alertSure.setTitle("Account Deleted");
                     alertSure.setHeaderText(null);
                     alertSure.setContentText("Your account has been deleted.");
-                    // Apply custom CSS to the alert dialog
                     DialogPane dialogPane = alertSure.getDialogPane();
                     dialogPane.getStylesheets().add(
                             getClass().getResource("style/stylesDelete.css").toExternalForm()
                     );
                     dialogPane.getStyleClass().add("custom-alert");
 
-                    // Set a custom graphic
                     ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("icons/delete.png")));
                     dialogPane.setGraphic(imageView);
 
                     alertConfirm.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
-                            // User clicked "OK"
                             int i = dataResList.indexOf(dataReservation);
                             Reservation res = resList.get(i);
                             res.delete();
                             TableViewReservation.getItems().remove(dataReservation);
                             alertSure.showAndWait();
                         } else {
-                            // User clicked "Cancel" or closed the confirmation alert
                             System.out.println("Action canceled!");
                         }
                     });
@@ -223,7 +219,6 @@ public class ReservationController implements Initializable {
                     dialogPane.getStyleClass().add("custom-alert");
                     alertConfirm.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
-                            // User clicked "OK"
                             String newStatus = "Approved";
                             int newStatusNbr = 1;
                             int i = dataResList.indexOf(dataReservation);
@@ -234,7 +229,6 @@ public class ReservationController implements Initializable {
                                     + dataReservation.getModelName()+" has been approved.");
                             TableViewReservation.refresh();
                         } else {
-                            // User clicked "Cancel" or closed the confirmation alert
                             System.out.println("Action canceled!");
                         }
                     });
@@ -246,8 +240,8 @@ public class ReservationController implements Initializable {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
 
                     TextArea reason = new TextArea();
-                    reason.setPrefWidth(200);  // Set preferred width
-                    reason.setPrefHeight(70); // Set preferred height
+                    reason.setPrefWidth(200);
+                    reason.setPrefHeight(70);
 
                     Dialog<DataReservation> dialogReason = new Dialog<>();
                     dialogReason.setTitle("Reason");
@@ -262,7 +256,6 @@ public class ReservationController implements Initializable {
 
                     dialogReason.setResultConverter(dialogButton -> {
                         if (dialogButton == buttonTypeOk) {
-                            // User clicked "OK"
                             String newStatus = "Denied";
                             int newStatusNbr = -1;
                             int i = dataResList.indexOf(dataReservation);
@@ -273,7 +266,6 @@ public class ReservationController implements Initializable {
                                     + " has been Denied for the following reason : \n" + reason.getText());
                             return dataReservation;
                         } else {
-                            // User clicked "Cancel" or closed the confirmation alert
                             System.out.println("Action canceled!");
                         }
                         return null;
@@ -303,14 +295,12 @@ public class ReservationController implements Initializable {
                     alertSure.setTitle("Reservation Ended");
                     alertSure.setHeaderText(null);
                     alertSure.setContentText("Your account has been deleted.");
-                    // Apply custom CSS to the alert dialog
                     DialogPane dialogPane = alertSure.getDialogPane();
                     dialogPane.getStylesheets().add(
                             getClass().getResource("style/stylesDelete.css").toExternalForm()
                     );
                     dialogPane.getStyleClass().add("custom-alert");
 
-                    // Set a custom graphic
                     ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("icons/delete.png")));
                     dialogPane.setGraphic(imageView);
 
@@ -326,7 +316,6 @@ public class ReservationController implements Initializable {
                                     + " has finished for the following reason : \n");
                             TableViewReservation.refresh();
                         } else {
-                            // User clicked "Cancel" or closed the confirmation alert
                             System.out.println("Action canceled!");
                         }
                     });
