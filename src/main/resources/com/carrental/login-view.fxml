@@ -45,9 +45,9 @@
                <children>
                   <Pane prefHeight="108.0" prefWidth="447.0">
                      <children>
-                        <ImageView fitHeight="161.0" fitWidth="535.0" layoutX="-53.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="161.0" fitWidth="535.0" layoutX="-35.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@logo/iPhone%2014-%201.png" />
+                              <Image url="@logo/Welcome to Rent EZ.png" />
                            </image>
                         </ImageView>
                      </children>
