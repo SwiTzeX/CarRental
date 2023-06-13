@@ -22,7 +22,7 @@
                         <Insets left="110.0" top="29.0" />
                      </VBox.margin>
                      <image>
-                        <Image url="@logo/blank-profile-picture-973460_1920.png" />
+                        <Image url="@icons/blank-user.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="usernamelabela" prefHeight="18.0" prefWidth="122.0" text="            ">
