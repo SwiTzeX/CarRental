@@ -27,7 +27,6 @@ public class App extends Application {
         stage.setResizable(false);
         stg = stage;
         openMain();
-        //
     }
 
     public static User getUser() {
