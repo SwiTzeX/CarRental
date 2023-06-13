@@ -249,6 +249,33 @@ public class User {
         }
         return users;
     }
+    public static ArrayList<User> getAllClients(){
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            Connection conn = SingletonConnection.getConnection();
+            String req = "SELECT * FROM Users WHERE isAdmin ="+false;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(req);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                String nid = rs.getString(2);
+                String email = rs.getString(3);
+                String phoneNumber = rs.getString(4);
+                int status = rs.getInt(5);
+                int age = rs.getInt(6);
+                String fullName = rs.getString(7);
+                String password = rs.getString(8);
+                Date creationDate = rs.getTimestamp(9);
+                boolean isAdmin = rs.getBoolean(10);
+                users.add(new User(id,nid,email,phoneNumber,status,age,fullName,password,isAdmin,creationDate));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
     public static User getUserById(int id){
         try {
             Connection conn = SingletonConnection.getConnection();

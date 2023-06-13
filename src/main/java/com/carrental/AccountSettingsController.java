@@ -100,11 +100,7 @@ public class AccountSettingsController implements Initializable {
 
         });
 
-        disable.setOnAction(event -> {
 
-
-
-        });
     }
     private void openEditDialog(User user) {
         Dialog<User> dialog = new Dialog<>();
