@@ -169,7 +169,7 @@ public class DashboardController implements Initializable {
     }
 
     public void getCountCust() {
-        int countC = User.getAllUsers().size();
+        int countC = User.getAllClients().size();
         countCust.setText(String.valueOf(countC));
     }
 

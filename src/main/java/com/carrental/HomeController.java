@@ -204,14 +204,6 @@ public class HomeController implements Initializable {
 
         Platform.runLater(() -> cardLayout.requestFocus());
         locIcon.setImage(new Image(getClass().getResourceAsStream("icons/loc.png"),24,24,true,true));
-        vehicles = Vehicle.getAllVehicles();
-        /*for(int i=0; i<20; i++) {
-            vehicles.add(new Vehicle(2, "Volkswagen", "Touareg", "brown", true, true, 200, "Family", 4, "Petrol", "Manual", 5, 1000, 140, 120,"sASDSA"));
-        }*/
-        vehiclesHolder = HomeController.split(vehicles,4);
-        maxPages = vehiclesHolder.size();
-
-        refreshComboBoxes();
 
     }
 
@@ -348,7 +340,13 @@ public class HomeController implements Initializable {
     }
 
     public void setData(Date pickupDate,Date returnDate,Date pickupTime,Date returnTime,String location){
+
         Platform.runLater(()-> {
+            vehicles = Vehicle.filterVehicles(filterSettings,pickDate,returnDate);
+            vehiclesHolder = HomeController.split(vehicles,4);
+            maxPages = vehiclesHolder.size();
+
+            refreshComboBoxes();
             pickupTimeTF.setDate(pickupTime);
             pickupDateTF.setDate(pickupDate);
             returnDateTF.setDate(returnDate);
@@ -360,6 +358,7 @@ public class HomeController implements Initializable {
                     this.returnDate = returnDateTF.getDate();
                     vehicles = Vehicle.filterVehicles(filterSettings,pickupDate,returnDate);
                     vehiclesHolder = HomeController.split(vehicles,4);
+                    maxPages = vehiclesHolder.size();
                     loadCardsByPage(1);
                 });
             }).start();
