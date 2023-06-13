@@ -36,6 +36,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+
+
 public class AccountSettingsController implements Initializable {
 
     @FXML
@@ -69,6 +71,9 @@ public class AccountSettingsController implements Initializable {
     private Label statusvar;
 
 
+    static Stage pop = new Stage();
+
+
     public  void setData(User user) {
         fullname1var.setText(user.getFullName());
         fullnamevar.setText(user.getFullName());
@@ -79,16 +84,6 @@ public class AccountSettingsController implements Initializable {
         phonevar.setText(user.getPhoneNumber());
        // avatarimg.setImage(user.getImage());
     }
-
-
-
-     /*editb.setOnAction(event -> {
-    });*/
-
-     /*deactivate.setOnAction(event -> {
-    });*/
-
-
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,12 +100,8 @@ public class AccountSettingsController implements Initializable {
 
         });
 
-      /*  deactivate.setOnAction(event -> {
-            // Handle the "Deactivate" button click event here
-            deactivateAccount(user);
-        });*/
-    }
 
+    }
     private void openEditDialog(User user) {
         Dialog<User> dialog = new Dialog<>();
         dialog.setTitle("Modify the user");
@@ -159,4 +150,27 @@ public class AccountSettingsController implements Initializable {
 
 
 
-}}
+
+}
+    public void RedirectCheckouthh(ActionEvent e){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DisablePopUp-view.fxml"));
+            pop.setScene(new Scene(loader.load()));
+            pop.setTitle("Pop-up Panel");
+            pop.initModality(Modality.APPLICATION_MODAL);
+            pop.initStyle(StageStyle.UNDECORATED);
+            pop.show();
+
+        }
+        catch (IOException b) {
+            b.printStackTrace();
+        }
+    }
+    @FXML
+    public static Stage getPop(){
+        return pop;
+    }
+
+}
+
+
