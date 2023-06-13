@@ -19,9 +19,7 @@ public class App extends Application {
     public static Stage stg;
     @Override
     public void start(Stage stage) throws IOException {
-        user = User.getUserById(73);
-        //App.getUser().sendNotification("Hassan trami","asfdjhkEWGRIUKGDSAHBSDIUGDSA\nDSFDSDSFfDS\nSDAFSADFDS");
-        //sApp.getUser().getAllNotifications().get(0).delete();
+        user = User.getUserById(50);
         Pane root = new Pane();
         Scene scene = new Scene(root, 1400, 800);
         stage.setTitle("Rent Ez");
