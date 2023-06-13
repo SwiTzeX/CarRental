@@ -48,7 +48,7 @@ public class AccountSettingsController implements Initializable {
     private Button editb;
 
     @FXML
-    private Button deactivate;
+    private Button disable;
 
     @FXML
     private Label emailvar;

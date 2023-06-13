@@ -161,7 +161,18 @@ public class User {
     }
 
     public String getFullName() {
-        return this.fullName;
+        String[] words = this.fullName.split(" ");
+        StringBuilder capitalizedText = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                String firstLetter = word.substring(0, 1).toUpperCase();
+                String restOfWord = word.substring(1);
+                String capitalizedWord = firstLetter + restOfWord;
+                capitalizedText.append(capitalizedWord).append(" ");
+            }
+        }
+        return capitalizedText.toString().trim();
     }
 
     public void setFullName(String fullName) {

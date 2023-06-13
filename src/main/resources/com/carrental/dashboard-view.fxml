@@ -17,17 +17,43 @@
 <?import com.carrental.customnodes.MyButton?>
 <VBox fx:id="dashvbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" style="-fx-background-color: F6F8FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.DashboardController">
    <children>
-      <Label prefHeight="60.0" prefWidth="1250.0" text="Dashboard" textFill="#6279ff">
-         <font>
-            <Font name="Arial Bold" size="28.0" />
-         </font>
+      <HBox prefHeight="46.0" prefWidth="1250.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="946.0" text="Dashboard" textFill="#6279ff">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="275.0" spacing="10.0">
+               <children>
+                  <Label fx:id="adminName" text="ADMIN NAME" textFill="#6279ff">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/blank-user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
          <VBox.margin>
-            <Insets />
+            <Insets top="10.0" />
          </VBox.margin>
+      </HBox>
+      <Separator prefHeight="20.0" prefWidth="1209.0">
          <padding>
-            <Insets left="30.0" />
+            <Insets top="10.0" />
          </padding>
-      </Label>
+         <VBox.margin>
+            <Insets bottom="10.0" left="30.0" right="30.0" />
+         </VBox.margin>
+      </Separator>
       <HBox prefHeight="49.0" prefWidth="1250.0">
          <children>
             <MyButton fx:id="reportButton" mnemonicParsing="false" onAction="#onClickReportButton" style="-fx-background-color: #6279FF; -fx-background-radius: 15;" text="Generate report" textFill="WHITE">
@@ -327,7 +353,7 @@
       </HBox>
       <VBox prefHeight="354.0" prefWidth="1190.0" spacing="5.0" style="-fx-background-color: white; -fx-border-color: f0f2ff; -fx-background-radius: 5; -fx-border-radius: 5;">
          <VBox.margin>
-            <Insets bottom="25.0" left="30.0" right="28.0" top="20.0" />
+            <Insets bottom="10.0" left="30.0" right="28.0" top="20.0" />
          </VBox.margin>
          <children>
             <Label alignment="CENTER" prefHeight="29.0" prefWidth="1222.0" text="Revenue per month" textFill="#6b82ff">

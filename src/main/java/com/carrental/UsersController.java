@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.models.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -8,13 +9,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import javafx.geometry.HPos;
@@ -33,6 +37,10 @@ import java.util.ResourceBundle;
 public class UsersController implements Initializable {
 
 
+    public Label adminName;
+    public HBox searchbar;
+    public ImageView findImg;
+    public MyButton clearallfilters;
     @FXML
     private TableColumn<User, Date> creationDate;
 
@@ -80,7 +88,6 @@ public class UsersController implements Initializable {
     @FXML
     private ComboBox<String> roles;
 
-
     @FXML
     private Button clearAllFilters;
 
@@ -108,12 +115,12 @@ public class UsersController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        adminName.setText(App.getUser().getFullName());
         find.setOnAction(event -> {
             searchKeyword = find.getText();
             applySearchFilter(searchKeyword);
         });
         addUser.setOnAction(event -> {
-            // Afficher une fenêtre pop-up pour demander à l'utilisateur de saisir les données nécessaires
             Dialog<User> dialog = new Dialog<>();
             dialog.setTitle("Add User");
             dialog.setHeaderText(null);
@@ -127,7 +134,6 @@ public class UsersController implements Initializable {
             TextField fullnameField = new TextField();
             TextField passwordField = new TextField();
             TextField NIDField = new TextField();
-            // Ajouter le ComboBox pour choisir le rôle
             ComboBox<String> roleComboBox = new ComboBox<>();
             roleComboBox.getItems().addAll("Admin", "Client");
 
@@ -146,13 +152,9 @@ public class UsersController implements Initializable {
             grid.add(new Label("Role"), 0, 7);
             grid.add(roleComboBox, 1, 7);
 
-            // Set vertical spacing between the cells of the GridPane
-            grid.setVgap(10); // Adjust the value to your preference
+            grid.setVgap(10);
+            grid.setHgap(10);
 
-            // Set horizontal spacing between the cells of the GridPane
-            grid.setHgap(10); // Adjust the value to your preference
-
-            // Set alignment of labels to the right and vertical alignment to the center
             GridPane.setHalignment(NIDField, HPos.LEFT);
             GridPane.setHalignment(emailField, HPos.LEFT);
             GridPane.setHalignment(phoneField, HPos.LEFT);
@@ -168,7 +170,6 @@ public class UsersController implements Initializable {
             GridPane.setValignment(passwordField, VPos.CENTER);
             GridPane.setValignment(roleComboBox, VPos.CENTER);
 
-            // Add padding around the grid
             grid.setPadding(new Insets(10));
 
             dialog.getDialogPane().setContent(grid);
@@ -184,7 +185,6 @@ public class UsersController implements Initializable {
                         if (Integer.parseInt(newAge) < 18) {
                             showAlert("Error", "Age must be 18 or above.");
                         } else {
-                            // Vérifier si l'ID, le NID ou le numéro existent déjà
                             boolean nidExists = userList.stream().anyMatch(user -> user.getNId().equals(newNId));
                             boolean phoneNumberExists = userList.stream().anyMatch(user -> user.getPhoneNumber().equals(newPhone));
                             String emailRegex = "^\\w+@+\\w+.+\\w$";
@@ -202,13 +202,10 @@ public class UsersController implements Initializable {
                                 if (!newAge.isEmpty()) {
                                     age = Integer.parseInt(newAge);
                                 }
-                                // Vérifier la valeur sélectionnée dans le ComboBox du rôle
-                                int isAdmin = 0; // Par défaut, considérez que le rôle est "Client"
+                                int isAdmin = 0;
                                 if (selectedRole.equals("Admin")) {
                                     isAdmin = 1;
                                 }
-
-                                // Créer le nouvel utilisateur avec le rôle sélectionné
                                 User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword, isAdmin);
                                 if (newUser != null) {
                                     userList.add(newUser);
@@ -239,9 +236,9 @@ public class UsersController implements Initializable {
             selectedInvoiceDate = newValue;
             applyFilters();
         });
-     roles.getItems().addAll("admin", "client");
-     invoicestatue.getItems().addAll("blocked", "active");
-     invoicedate.getItems().addAll("newest", "oldest");
+        roles.getItems().addAll("admin", "client");
+        invoicestatue.getItems().addAll("banned", "active");
+        invoicedate.getItems().addAll("newest", "oldest");
         applyFilters();
         ArrayList<User> users = User.getAllUsers();
         userList.addAll(users);
@@ -258,15 +255,16 @@ public class UsersController implements Initializable {
             @Override
             protected void updateItem(Boolean isAdmin, boolean empty) {
                 super.updateItem(isAdmin, empty);
-                if (empty || isAdmin == null) {
+                if (empty || isAdmin == null ) {
                     setText(null);
+                    setGraphic(null);
                 } else {
                     if (isAdmin) {
                         setText("Admin");
-                        setTextFill(javafx.scene.paint.Color.GREEN);
+                        setTextFill(Color.RED);
                     } else {
                         setText("Client");
-                        setTextFill(javafx.scene.paint.Color.RED);
+                        setTextFill(Color.BLACK);
                     }
                 }
             }
@@ -275,16 +273,19 @@ public class UsersController implements Initializable {
             @Override
             protected void updateItem(Integer isBlocked, boolean empty) {
                 super.updateItem(isBlocked, empty);
-                if (empty || isBlocked == 0) {
-                    setText("Active");
-                    setTextFill(javafx.scene.paint.Color.GREEN);
-                } else {
-                    if (isBlocked == 1) {
-                        setText("Blocked");
-                        setTextFill(javafx.scene.paint.Color.RED);
-                    }else if (isBlocked == 2) {
-                            setText("unActive");
-                            setTextFill(javafx.scene.paint.Color.RED);
+                if(empty || isBlocked == null){
+                    setText(null);
+                    setGraphic(null);
+                }else {
+                    if (isBlocked == 0) {
+                        setText("Active");
+                        setTextFill(Color.GREEN);
+                    } else if (isBlocked == 1) {
+                        setText("Banned");
+                        setTextFill(Color.RED);
+                    } else if (isBlocked == 2) {
+                        setText("unActive");
+                        setTextFill(Color.RED);
                     }
                 }
             }
@@ -307,38 +308,43 @@ public class UsersController implements Initializable {
         });
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button modifyButton = new Button("Modify");
-            private final Button blockButton = new Button("Block");
-            private final Button deleteButton = new Button("delete");
+            private final Button blockButton = new Button("Ban");
+            private final Button deleteButton = new Button("Delete");
+            private final Button activeButton = new Button("Active");
 
             {
-
+                activeButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    int status = user.getStatus();
+                    if (status == 2) {
+                        user.setStatus(0);
+                        activeButton.setText("Active");}
+                    tableview.refresh();
+                });
+                activeButton.setStyle("-fx-background-radius: 30; -fx-background-color: forestgreen; -fx-border-radius: 30;-fx-min-width: 75px; -fx-cursor: hand");
+                activeButton.setTextFill(Color.WHITE);
                 modifyButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     showEditDialog(user);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
-                modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;-fx-min-width: 75px;");
+                modifyButton.setTextFill(Color.WHITE);
                 blockButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    int isBlocked = user.getStatus(); // Obtains the current status of the user
+                    int isBlocked = user.getStatus();
                     if (isBlocked == 1) {
-                        // If the user is already blocked, unblock them
                         user.setStatus(0);
-                        blockButton.setText("Block");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                        blockButton.setText("Ban");
                     } else {
-                        // If the user is currently unblocked, block them
                         user.setStatus(1);
-                        blockButton.setText("unblock");
-                        blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF6262; -fx-border-radius: 30;-fx-min-width: 75px;");
+                        blockButton.setText("Unban");
                     }
                     tableview.refresh();
                 });
-                blockButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                blockButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
                 blockButton.setTextFill(javafx.scene.paint.Color.WHITE);
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    // Prompt the user for confirmation
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmation");
                     alert.setHeaderText("delete this user");
@@ -362,17 +368,29 @@ public class UsersController implements Initializable {
                         }
                     }
                 });
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
-                deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: red; -fx-border-radius: 30;-fx-min-width: 75px;");
+                deleteButton.setTextFill(Color.WHITE);
             }
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
+
                 if (empty) {
                     setGraphic(null);
-                } else {
-                    HBox buttonBox = new HBox(modifyButton, blockButton, deleteButton);
-                    setGraphic(buttonBox);
+                }else {
+                    User user = getTableView().getItems().get(getIndex());
+                    int status = user.getStatus();
+                    if (status == 2) {
+                        HBox buttonBox = new HBox(modifyButton, activeButton, deleteButton);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        buttonBox.setSpacing(5);
+                        setGraphic(buttonBox);
+                    } else {
+                        HBox buttonBox = new HBox(modifyButton, blockButton, deleteButton);
+                        buttonBox.setAlignment(Pos.CENTER);
+                        buttonBox.setSpacing(5);
+                        setGraphic(buttonBox);
+                    }
                 }
             }
         });
@@ -442,9 +460,9 @@ public class UsersController implements Initializable {
     private void applyFilters() {
         tableview.setItems(userList.filtered(user -> {
             boolean statusFilter = selectedInvoiceStatus == null || selectedInvoiceStatus.isEmpty() ||
-                    (selectedInvoiceStatus.equals("blocked") && user.getStatus() == 1) ||
+                    (selectedInvoiceStatus.equals("banned") && user.getStatus() == 1) ||
                     (selectedInvoiceStatus.equals("active") && user.getStatus() == 0)||
-            (selectedInvoiceStatus.equals("unactive") && user.getStatus() == 2);
+                    (selectedInvoiceStatus.equals("unactive") && user.getStatus() == 2);
 
             boolean dateFilter = selectedInvoiceDate == null || selectedInvoiceDate.isEmpty() ||
                     (selectedInvoiceDate.equals("newest") && user.getCreationDate().equals(getNewestInvoiceDate())) ||
@@ -459,64 +477,80 @@ public class UsersController implements Initializable {
     }
     private Date getNewestInvoiceDate() {
         Date newestDate = null;
-
         for (User user : userList) {
             Date invoiceDate = user.getCreationDate();
-
             if (invoiceDate != null && (newestDate == null || invoiceDate.compareTo(newestDate) > 0)) {
                 newestDate = invoiceDate;
             }
         }
-
         return newestDate;
     }
 
     private Date getOldestInvoiceDate() {
-
         Date oldestDate = null;
-
         for (User user : userList) {
             Date invoiceDate = user.getCreationDate();
-
             if (invoiceDate != null && (oldestDate == null || invoiceDate.compareTo(oldestDate) < 0)) {
                 oldestDate = invoiceDate;
             }
         }
-
         return oldestDate;
     }
     @FXML
     private void clearallfilters(ActionEvent event) {
-        invoicestatue.getSelectionModel().clearSelection();
+        /*invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
-        roles.getSelectionModel().clearSelection();
+        roles.getSelectionModel().clearSelection();*/
+        invoicestatue = new ComboBox<>();
+        invoicestatue.getStyleClass().add("menu");
+        invoicestatue.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        invoicestatue.setPromptText("Status");
+        invoicestatue.setPrefWidth(169);
+        invoicestatue.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        invoicedate = new ComboBox<>();
+        invoicedate.getStyleClass().add("menu");
+        invoicedate.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        invoicedate.setPromptText("Invoice Date");
+        invoicedate.setPrefWidth(161);
+        invoicedate.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        roles = new ComboBox<>();
+        roles.getStyleClass().add("menu");
+        roles.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        roles.setPromptText("Select Roles");
+        roles.setPrefWidth(160);
+        roles.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        roles.getItems().addAll("admin", "client");
+        invoicestatue.getItems().addAll("banned", "active");
+        invoicedate.getItems().addAll("newest", "oldest");
+        roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedRole = newValue;
+            applyFilters();
+        });
+        invoicestatue.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceStatus = newValue;
+            applyFilters();
+        });
+        invoicedate.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceDate = newValue;
+            applyFilters();
+        });
+        searchbar.getChildren().clear();
+        HBox.setMargin(roles, new Insets(0,0,0,130));
+        searchbar.getChildren().addAll(find,findImg,roles,invoicedate,invoicestatue,clearallfilters,addUser);
         tableview.setItems(userList);
 
-        // Réinitialiser les valeurs par défaut des JComboBox
-        invoicestatue.getSelectionModel().clearSelection();
-        invoicedate.getSelectionModel().clearSelection();
-        roles.getSelectionModel().clearSelection();
+        tableview.refresh();
     }
 
-
-    /* @FXML
-    private void handleTableRowClick(MouseEvent event) {
-        User selectedUser = tableview.getSelectionModel().getSelectedItem();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserDetails-view.fxml"));
-            Parent userDetailsRoot = loader.load();
-            UserDetailsController userDetailsController = loader.getController();
-            UserDetailsController.displayUserDetails(selectedUser);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(userDetailsRoot));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }*/
     private void applySearchFilter(String searchKeyword) {
         tableview.setItems(userList.filtered(user -> {
             if (searchKeyword.isEmpty()) {
@@ -533,8 +567,4 @@ public class UsersController implements Initializable {
             }
         }));
     }
-//update 1
-//////////update
-
-
 }

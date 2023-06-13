@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
 
 public class ReservationController implements Initializable {
 
+    public Label adminName;
     @FXML
     private TableView<DataReservation> TableViewReservation;
 
@@ -95,7 +96,7 @@ public class ReservationController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
+        adminName.setText(App.getUser().getFullName());
         searchId.setOnAction(event -> {
             searchKeyword = searchId.getText();
             applySearchFilter(searchKeyword);
@@ -159,7 +160,7 @@ public class ReservationController implements Initializable {
                     DataReservation dataReservation = getTableView().getItems().get(getIndex());
                     showEditDialog(dataReservation);
                 });
-                modifyButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
+                modifyButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 modifyButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 deleteButton.setOnAction(event -> {
@@ -205,7 +206,7 @@ public class ReservationController implements Initializable {
                     });
                 });
 
-                deleteButton.setStyle("-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
+                deleteButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30; -fx-pref-width: 70px");
                 deleteButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 approveButton.setOnAction(event -> {
@@ -238,7 +239,7 @@ public class ReservationController implements Initializable {
                         }
                     });
                 });
-                approveButton.setStyle("-fx-background-radius: 30; -fx-background-color: #228B22; -fx-border-radius: 30; -fx-pref-width: 70px");
+                approveButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #228B22; -fx-border-radius: 30; -fx-pref-width: 70px");
                 approveButton.setTextFill(javafx.scene.paint.Color.WHITE);
 
                 refuseButton.setOnAction(event -> {
@@ -330,9 +331,9 @@ public class ReservationController implements Initializable {
                         }
                     });
                 });
-                refuseButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                refuseButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
                 refuseButton.setTextFill(javafx.scene.paint.Color.WHITE);
-                endButton.setStyle("-fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
+                endButton.setStyle("-fx-cursor: hand; -fx-background-radius: 30; -fx-background-color: #FF0000; -fx-border-radius: 30; -fx-pref-width: 70px");
                 endButton.setTextFill(javafx.scene.paint.Color.WHITE);
             }
             @Override
@@ -349,7 +350,7 @@ public class ReservationController implements Initializable {
                         buttonBox.setAlignment(Pos.CENTER);
                         setGraphic(buttonBox);
                     } else if (status.equals("Approved")) {
-                        HBox buttonBox = new HBox(endButton, deleteButton);
+                        HBox buttonBox = new HBox(endButton, modifyButton,deleteButton);
                         buttonBox.setSpacing(10);
                         buttonBox.setAlignment(Pos.CENTER);
                         setGraphic(buttonBox);
@@ -582,7 +583,6 @@ public class ReservationController implements Initializable {
                     showAlert("Error", "Date and Time Field is empty");
                     dialog.showAndWait();
                     return null;
-                    //throw new RuntimeException(e);
                 }
 
                 TableViewReservation.setItems(dataResList);

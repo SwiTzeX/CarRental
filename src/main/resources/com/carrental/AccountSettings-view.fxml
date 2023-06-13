@@ -53,6 +53,11 @@
                         <Insets top="-10.0" />
                      </VBox.margin>
                   </Label>
+                  <Button id="deactivate" fx:id="disable" alignment="CENTER" mnemonicParsing="false" prefHeight="16.0" prefWidth="157.0" style="-fx-background-color: FF5151; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@style/payment.css" text="Disable" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
             <VBox prefHeight="466.0" prefWidth="660.0" spacing="5.0" style="-fx-background-color: #FFF; -fx-border-color: #f0f2ff; -fx-border-radius: 30; -fx-background-radius: 30;">

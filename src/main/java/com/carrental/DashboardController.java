@@ -31,6 +31,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
+    public Label adminName;
     @FXML
     Label countCust;
     @FXML
@@ -81,6 +82,7 @@ public class DashboardController implements Initializable {
         iniAreaChart();
         iniBarChart();
         new Thread(() -> Platform.runLater(()->{
+            adminName.setText(App.getUser().getFullName());
             getCountCust();
             getCountCars();
             getCountTotalSales();

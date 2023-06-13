@@ -4,6 +4,7 @@ import com.carrental.models.Reservation;
 import com.carrental.models.User;
 import com.carrental.models.Vehicle;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import java.awt.event.MouseEvent;
 import javafx.fxml.Initializable;
@@ -166,6 +167,9 @@ public class PaymentController implements Initializable {
    public void EndCheckout(ActionEvent e) {
         Reservation.create(App.getUser(),vehicle,startDate,endDate,0);
         App.getUser().sendNotification("Reservation","Your reservation for "+vehicle.getBrandName()+" "+vehicle.getModelName()+" will be pending until it is approved.");
+        new Thread(() ->
+                Platform.runLater(()-> GMailer.sendAccountConfirmation(App.getUser().getEmail())
+                )).start();
         //Payment Method Paypal
         if(this.getRadioValue()=="Paypal"){
         // Define the URL to redirect to

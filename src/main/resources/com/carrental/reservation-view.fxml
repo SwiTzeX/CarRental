@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -17,40 +16,11 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.carrental.customnodes.MyButton?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ReservationController">
+<AnchorPane style="-fx-background-color: white" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carrental.ReservationController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1250.0" spacing="5.0">
+      <VBox alignment="CENTER" layoutY="144.0" prefHeight="642.0" prefWidth="1250.0" spacing="5.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="1220.0" spacing="200.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="268.0" spacing="10.0" />
-                  <Label prefHeight="36.0" prefWidth="364.0" text="Gestion des reservations" textAlignment="CENTER" textFill="#6279ff">
-                     <font>
-                        <Font name="Arial" size="30.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="271.0" spacing="20.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="121.0" text="Admin Name" textFill="#353550">
-                           <font>
-                              <Font name="Arial" size="20.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/jimmy-fallon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <Separator prefHeight="70.0" prefWidth="1150.0">
-               <VBox.margin>
-                  <Insets left="20.0" right="50.0" />
-               </VBox.margin>
-            </Separator>
-            <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1220.0" spacing="30.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="1193.0" spacing="30.0">
                <children>
                   <CheckBox fx:id="statusId0" mnemonicParsing="false" prefHeight="23.0" prefWidth="100.0" stylesheets="@style/checkbox.css" text="Pending" textFill="#6279ff">
                      <font>
@@ -102,7 +72,7 @@
                         <String fx:value="check-box" />
                      </styleClass>
                   </CheckBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="589.0" spacing="10.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="578.0" spacing="10.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -123,13 +93,16 @@
                            </font>
                         </MyButton>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </HBox>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1190.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
+            <TableView fx:id="TableViewReservation" prefHeight="571.0" prefWidth="1233.0" style="-fx-border-color: #6279FF; -fx-border-width: 2;" styleClass="table" stylesheets="@style/tableview.css">
               <columns>
                 <TableColumn fx:id="col_fullname" prefWidth="118.0" style="-fx-alignment: center;" text="FullName" />
                 <TableColumn fx:id="col_phoneNumber" prefWidth="109.0" style="-fx-alignment: center;" text="Phone Number" />
@@ -138,25 +111,38 @@
                   <TableColumn fx:id="col_price" prefWidth="114.0" style="-fx-alignment: center;" text="Price" />
                   <TableColumn fx:id="col_startDate" prefWidth="151.0" style="-fx-alignment: center;" text="Start Date " />
                   <TableColumn fx:id="col_endDate" prefWidth="162.0" style="-fx-alignment: center;" text="End Date" />
-                  <TableColumn fx:id="col_status" prefWidth="60.0" style="-fx-alignment: center;" text="Status" />
+                  <TableColumn fx:id="col_status" prefWidth="85.0" style="-fx-alignment: center;" text="Status" />
                   <TableColumn fx:id="col_edit" prefWidth="231.0" style="-fx-alignment: center;" text="Edit" />
               </columns>
                <VBox.margin>
-                  <Insets right="30.0" />
+                  <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </TableView>
          </children>
-         <padding>
-            <Insets left="30.0" top="20.0" />
-         </padding>
       </VBox>
-      <Label alignment="TOP_CENTER" layoutX="525.0" layoutY="770.0" prefHeight="30.0" prefWidth="257.0" text="Copyright © UIR Project 2022-2023 " textFill="#6279ff">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
+      <HBox alignment="CENTER_RIGHT" layoutX="955.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="275.0" spacing="10.0">
+         <children>
+            <Label fx:id="adminName" text="ADMIN NAME" textFill="#6279ff">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/blank-user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Separator layoutX="21.0" layoutY="92.0" prefHeight="20.0" prefWidth="1209.0">
          <padding>
-            <Insets top="5.0" />
+            <Insets top="10.0" />
          </padding>
+      </Separator>
+      <Label layoutX="21.0" layoutY="32.0" text="Reservation Management" textFill="#6279ff">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
       </Label>
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package com.carrental.customnodes;
 
 import com.carrental.models.Notification;
 import com.carrental.models.Reservation;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,7 +32,7 @@ public class MyReservationCard extends HBox {
         status.setFont(new Font("Arial",11));
         line1.getChildren().addAll(lbl1,status);
         VBox cardBox = new VBox(title,line1);
-        cardBox.setPrefWidth(180);
+        cardBox.setPrefWidth(175);
         //cardBox.setAlignment(Pos.CENTER_RIGHT);
         this.getChildren().addAll(cardBox);
         if (reservation.getStatus() == 0){
@@ -39,6 +40,7 @@ public class MyReservationCard extends HBox {
             status.setStyle("-fx-text-fill: orange");
             Button cancel = new Button("Cancel");
             this.getChildren().add(cancel);
+            //setMargin(cancel,new Insets(0 ,5,0,0));
             cancel.setStyle("-fx-background-color: red;-fx-text-fill: white");
             cancel.setOnAction(event->{
                 reservation.setStatus(-2);
