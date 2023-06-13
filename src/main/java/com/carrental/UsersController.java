@@ -1,5 +1,6 @@
 package com.carrental;
 
+import com.carrental.customnodes.MyButton;
 import com.carrental.models.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -36,6 +38,9 @@ public class UsersController implements Initializable {
 
 
     public Label adminName;
+    public HBox searchbar;
+    public ImageView findImg;
+    public MyButton clearallfilters;
     @FXML
     private TableColumn<User, Date> creationDate;
 
@@ -493,15 +498,55 @@ public class UsersController implements Initializable {
     }
     @FXML
     private void clearallfilters(ActionEvent event) {
-        invoicestatue.getSelectionModel().clearSelection();
+        /*invoicestatue.getSelectionModel().clearSelection();
         invoicedate.getSelectionModel().clearSelection();
-        roles.getSelectionModel().clearSelection();
+        roles.getSelectionModel().clearSelection();*/
+        invoicestatue = new ComboBox<>();
+        invoicestatue.getStyleClass().add("menu");
+        invoicestatue.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        invoicestatue.setPromptText("Status");
+        invoicestatue.setPrefWidth(169);
+        invoicestatue.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        invoicedate = new ComboBox<>();
+        invoicedate.getStyleClass().add("menu");
+        invoicedate.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        invoicedate.setPromptText("Invoice Date");
+        invoicedate.setPrefWidth(161);
+        invoicedate.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        roles = new ComboBox<>();
+        roles.getStyleClass().add("menu");
+        roles.getStylesheets().add(getClass().getResource("style/menu.css").toExternalForm());
+        roles.setPromptText("Select Roles");
+        roles.setPrefWidth(160);
+        roles.setOnAction(e -> {
+                    applyFilters();
+                }
+        );
+        roles.getItems().addAll("admin", "client");
+        invoicestatue.getItems().addAll("banned", "active");
+        invoicedate.getItems().addAll("newest", "oldest");
+        roles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedRole = newValue;
+            applyFilters();
+        });
+        invoicestatue.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceStatus = newValue;
+            applyFilters();
+        });
+        invoicedate.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInvoiceDate = newValue;
+            applyFilters();
+        });
+        searchbar.getChildren().clear();
+        HBox.setMargin(roles, new Insets(0,0,0,130));
+        searchbar.getChildren().addAll(find,findImg,roles,invoicedate,invoicestatue,clearallfilters,addUser);
         tableview.setItems(userList);
-
-        // Réinitialiser les valeurs par défaut des JComboBox
-        invoicestatue.getSelectionModel().clearSelection();
-        invoicedate.getSelectionModel().clearSelection();
-        roles.getSelectionModel().clearSelection();
 
         tableview.refresh();
     }

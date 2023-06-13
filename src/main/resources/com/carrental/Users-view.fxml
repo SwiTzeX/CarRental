@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -107,59 +108,44 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <HBox layoutX="52.0" layoutY="142.0" prefHeight="70.0" prefWidth="1250.0" spacing="10.0">
+      <HBox fx:id="searchbar" alignment="CENTER_LEFT" layoutX="26.0" layoutY="142.0" prefHeight="70.0" prefWidth="1201.0" spacing="10.0">
          <children>
             <TextField fx:id="find" prefHeight="44.0" prefWidth="234.0" promptText="Search" style="-fx-background-radius: 15 15 15 15; -fx-border-color: WHITW; -fx-border-radius: 15 15 15 15;">
                <opaqueInsets>
-                  <Insets />
                </opaqueInsets>
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="-27.0" top="9.0" />
-               </HBox.margin>
+
             </TextField>
-            <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="findImg" fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/icons8_Search_52px.png" />
                </image>
-               <HBox.margin>
-                  <Insets left="-4.0" top="21.0" />
-               </HBox.margin>
             </ImageView>
             <ComboBox fx:id="roles" prefHeight="45.0" prefWidth="160.0" promptText="Select Roles" styleClass="menu" stylesheets="@style/menu.css">
                <HBox.margin>
-                  <Insets left="122.0" top="10.0" />
-               </HBox.margin>
-            </ComboBox>
+                  <Insets left="130.0" />
+               </HBox.margin></ComboBox>
             <ComboBox fx:id="invoicedate" prefHeight="44.0" prefWidth="161.0" promptText="Invoice Date" styleClass="menu" stylesheets="@style/menu.css">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
             </ComboBox>
             <ComboBox fx:id="invoicestatue" prefHeight="44.0" prefWidth="169.0" promptText="Invoice Status" styleClass="menu" stylesheets="@style/menu.css">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
+
             </ComboBox>
 
             <MyButton fx:id="clearallfilters" mnemonicParsing="false" onAction="#clearallfilters" prefHeight="37.0" prefWidth="128.0" style="-fx-border-radius: 30; -fx-border-width: 2; -fx-background-radius: 30; -fx-background-color: #6279FF #6279FF;" stylesheets="@style/menu.css" text="Clear All Filter" textFill="WHITE">
-               <HBox.margin>
-                  <Insets top="15.0" />
-               </HBox.margin>
             </MyButton>
-            <MyButton fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="134.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
+            <MyButton fx:id="addUser" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-radius: 30; -fx-background-color: #6279FF; -fx-border-radius: 30;" styleClass="button-hover-effect" text="Add User" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
-               <HBox.margin>
-                  <Insets top="15.0" />
-               </HBox.margin>
             </MyButton>
-            
+
 
          </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
       </HBox>
    </children>
 </AnchorPane>
