@@ -1583,10 +1583,4 @@ public class GMailer{
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
-
-
 }
