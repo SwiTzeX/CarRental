@@ -3,7 +3,7 @@
 ## Project Description
 
 This repository contains a project developed during our third year (2022-2023) at the University International of Rabat (UIR). The project received the top grade in the university. It is an application written in Java using JavaFX, focused on vehicle rental. The app provides features such as searching for available vehicles, differentiating between admin and client accounts, an admin dashboard for managing vehicles, reservations, and users, and a notification system.
-The entire project was completed within a span of two weeks, showcasing the team's efficiency and dedication.
+<br/>The entire project was completed within a span of two weeks, showcasing the team's efficiency and dedication.
 
 ## Technologies Used
 
