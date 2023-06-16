@@ -52,12 +52,26 @@ public class MyDatePicker extends StackPane {
 
     public MyDatePicker() {
         super();
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        calendar.set(java.util.Calendar.MINUTE, 0);
+        calendar.set(java.util.Calendar.SECOND, 0);
+        calendar.set(java.util.Calendar.MILLISECOND, 0);
+        date = calendar.getTime();
         setupTexts();
         setupTextField();
         setupDatePicker();
     }
     public MyDatePicker(String promptText) {
         super();
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        calendar.set(java.util.Calendar.MINUTE, 0);
+        calendar.set(java.util.Calendar.SECOND, 0);
+        calendar.set(java.util.Calendar.MILLISECOND, 0);
+        date = calendar.getTime();
         this.promptText = promptText;
         setupTextField();
         setupTexts();

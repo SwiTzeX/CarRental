@@ -69,10 +69,9 @@ public class CommentController implements Initializable {
         else if(numStars == 3) threeStars();
         else if(numStars == 2) twoStars();
         else if(numStars == 1) oneStar();
-        if(App.getUser().isAdmin){
+        choiceMenu.setVisible(false);
+        if(App.getUser() != null && App.getUser().isAdmin) {
             choiceMenu.setVisible(true);
-        }else{
-            choiceMenu.setVisible(false);
         }
         this.review = review;
     }
