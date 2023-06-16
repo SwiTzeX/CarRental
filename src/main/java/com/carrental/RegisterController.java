@@ -114,44 +114,22 @@ public class RegisterController implements Initializable {
         String phone = phonenumid.getText();
         String password = passwordid.getText();
 
-        if (!Nid.isError() && !fullnameid.isError() && !ageid.isError() && !phonenumid.isError() && !mailid.isError() && !passwordid.isError() && !Vpasswordid.isError()){
-            User user = User.create(nationalId,email,phone,Integer.parseInt(age),name,password,0);
-            App.openLogin();
-            new Thread(() -> 
-                Platform.runLater(()-> GMailer.sendAccountConfirmation(email)
-            )).start();
-
+        if (Nid.isError() && fullnameid.isError() && ageid.isError() && phonenumid.isError() && mailid.isError() && passwordid.isError() && Vpasswordid.isError()){
+            return;
         }
+        User.create(nationalId,email,phone,Integer.parseInt(age),name,password,false);
+        App.openLogin();
+        new Thread(() ->
+                Platform.runLater(()-> GMailer.sendAccountConfirmation(email)
+                )).start();
     }
 
     @FXML
     void goToLogin(MouseEvent event) {
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-            Parent login = loader.load();
-
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(login));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+      App.openLogin();
     }
 
-    @FXML
-    void gotohome(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Main-view.fxml"));
-            Parent home = loader.load();
-
-            Stage stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(home));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

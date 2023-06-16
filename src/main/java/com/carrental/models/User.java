@@ -326,9 +326,8 @@ public class User {
         }
         return null;
     }
-    public static User create(String nid, String email, String phoneNumber, Integer age, String fullName, String password, int isAdmin) {
-        int status = 0; // Valeur par défaut pour le statut
-        boolean isAdminRole = (isAdmin == 1); // Vérifie si le rôle est admin
+    public static User create(String nid, String email, String phoneNumber, Integer age, String fullName, String password, boolean isAdmin) {
+        int status = 0;
 
         try {
             Connection conn = SingletonConnection.getConnection();
@@ -347,7 +346,7 @@ public class User {
             }
             stmt.close();
 
-            return new User(id, nid, email, phoneNumber, status, age, fullName, password, isAdminRole, date);
+            return new User(id, nid, email, phoneNumber, status, age, fullName, password, isAdmin, date);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

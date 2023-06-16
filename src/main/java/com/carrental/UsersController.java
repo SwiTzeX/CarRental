@@ -202,10 +202,7 @@ public class UsersController implements Initializable {
                                 if (!newAge.isEmpty()) {
                                     age = Integer.parseInt(newAge);
                                 }
-                                int isAdmin = 0;
-                                if (selectedRole.equals("Admin")) {
-                                    isAdmin = 1;
-                                }
+                                boolean isAdmin = selectedRole.equals("Admin");
                                 User newUser = User.create(newNId, newEmail, newPhone, age, newFullName, newPassword, isAdmin);
                                 if (newUser != null) {
                                     userList.add(newUser);

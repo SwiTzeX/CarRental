@@ -51,22 +51,12 @@ public class LoginController implements Initializable {
        if (u != null && !usernamefield.isError() && !passwordfield.isError() && passwordfield.getText().length()>0) {
            App.setUser(u);
            App.openMain();
-
            }
-
        }
 
     @FXML
     void transfertoregister(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register-view.fxml"));
-            Parent Register = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(Register));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        App.openRegister();
     }
 
     @FXML
@@ -76,8 +66,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // Platform.runLater(() -> mainBox.requestFocus());
-
+       //Platform.runLater(() -> label_login.requestFocus());
         a.setVisible(false);
        usernamefield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
           // System.out.println("Account not found!");
@@ -90,9 +79,9 @@ public class LoginController implements Initializable {
                  }
                  else{
                      if(u.getStatus() == 2){
-                         usernamefield.showError("Account inactive");
+                         usernamefield.showError("Account inactive!");
                      } else if (u.getStatus() == 1) {
-                         usernamefield.showError("Account banned");
+                         usernamefield.showError("Account banned!");
                      }else{
                          usernamefield.hideError();
                      }
@@ -103,16 +92,11 @@ public class LoginController implements Initializable {
        passwordfield.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
            if (!newValue && u != null) {
 
-               //String password = passwordfield.getText();
-              /* System.out.println(u.getEmail());
-               System.out.println(u.getPassword());
-               System.out.println(password);*/
-               boolean o = u.checkPassword(passwordfield.getText());
-               if (!o) {
-                   passwordfield.showError("Password is not working");
+
+               if (!u.checkPassword(passwordfield.getText())) {
+                   passwordfield.showError("Incorrect password.");
                }
                else {
-
                    passwordfield.hideError();
                }
 
