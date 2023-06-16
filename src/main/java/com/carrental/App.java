@@ -59,7 +59,7 @@ public class App extends Application {
                 FXMLLoader loaderX = new FXMLLoader(App.class.getResource("commentSection-view.fxml"));
                 popupStage.setScene(new Scene(loaderX.load()));
                 popupStage.setTitle("Review Panel");
-                popupStage.initModality(Modality.APPLICATION_MODAL); // Set modality to block main window
+                popupStage.initModality(Modality.APPLICATION_MODAL);
                 //popupStage.initStyle(StageStyle.UNDECORATED);
                 popupStage.show();
             }

@@ -66,7 +66,7 @@ public class SearchController implements Initializable {
         });
         returnDateId.myFocusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue){
-                if(!returnDateId.getText().trim().isEmpty() && returnDateId.isError()) {
+                if(!returnDateId.getText().trim().isEmpty() && returnDateId.isError() && returnDateId.getDate().compareTo(pickupDateId.getDate())>0) {
                     returnDateId.hideError();
                 }
             }
@@ -123,6 +123,12 @@ public class SearchController implements Initializable {
             }else{
                 returnTimeId.hideError();
             }
+
+            if(returnDateId.getDate().compareTo(pickupDateId.getDate()) <= 0){
+                returnDateId.showError("Date before the pickupdate");
+                return;
+            }
+
             App.getMainController().setStartDate(pickupDateId.getDate());
             App.getMainController().setEndDate(returnDateId.getDate());
             App.getMainController().setStartTime(pickupTimeId.getDate());

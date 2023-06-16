@@ -1,4 +1,4 @@
-package com.carrental;
+package com.carrental.utils;
 import com.carrental.SingletonConnection;
 
 import java.io.*;
