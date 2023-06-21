@@ -22,8 +22,6 @@ public class User {
     public Date creationDate;
     public boolean isAdmin;
     private SingletonConnection DatabaseManager;
-    private String personalKeyString = "DASDASFDSdsfsdfewrewtdsfgfd28das";
-
 
     public User(Integer id,String nId, String email, String phoneNumber, int status, Integer age, String fullName, String password, boolean isAdmin,Date creationDate) {
         this.id = id;
@@ -37,8 +35,6 @@ public class User {
         this.isAdmin = isAdmin;
         this.creationDate = creationDate;
     }
-
-
     public Date getCreationDate() {
         return creationDate;
     }
